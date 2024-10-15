@@ -1,0 +1,474 @@
+html {
+  font-size: $font-size-base;
+  scroll-behavior: smooth;
+  touch-action: manipulation;
+}
+
+body {
+  min-width: $body-min-width;
+  color: var(--body-font-color);
+  color: #21313c;
+  background: var(--body-background);
+
+  //letter-spacing: 0.33px;
+  font-weight: $body-font-weight;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  box-sizing: border-box;
+  * {
+    box-sizing: inherit;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: $body-font-weight;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+img {
+  vertical-align: baseline;
+}
+
+:focus {
+  @include outline;
+}
+
+aside nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    //margin: 1em 0;
+    margin: 0;
+    margin-bottom: 1em;
+    position: relative;
+  }
+
+  a {
+    display: block;
+  }
+
+  a:hover {
+    opacity: 0.5;
+  }
+
+  ul {
+    margin-top: 0;
+    padding-inline-start: $padding-16;
+  }
+}
+
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding-inline-start: 0px;
+
+  .page-item a {
+    padding: $padding-16;
+  }
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.book-icon {
+  filter: var(--icon-filter);
+}
+
+.book-brand {
+  margin-top: 0;
+  margin-bottom: $padding-16;
+
+  img {
+    height: 1.5em;
+    width: 1.5em;
+    margin-inline-end: $padding-8;
+  }
+
+  display: none;
+}
+
+.book-menu {
+  color: #4c4c4c;
+  flex: 0 0 $menu-width;
+  font-size: $font-size-14;
+  line-height: 1.25;
+
+  .book-menu-content {
+    width: 17rem;
+    padding: $padding-16;
+
+    background: var(--body-background);
+  }
+
+  a,
+  label {
+    color: inherit;
+    cursor: pointer;
+    word-wrap: break-word;
+  }
+
+  a.active {
+    color: var(--color-link);
+    //color: #AF7FEB;
+    color: black;
+	font-weight: 600;
+  }
+
+  input.toggle + label + ul {
+    display: none;
+  }
+
+  input.toggle:checked + label + ul {
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  input.toggle + label::after {
+    color: #d0d0d0;
+    //font-weight: bold;
+    content: "›";
+  }
+
+  input.toggle:checked + label::after {
+    color: #777777;
+    font-weight: bold;
+    content: "›";
+    margin-bottom: 1em;
+  }
+}
+
+// for RTL support
+body[dir="rtl"] .book-menu {
+  input.toggle + label::after {
+    content: "◂";
+  }
+
+  input.toggle:checked + label::after {
+    content: "▾";
+  }
+}
+
+.book-section-flat {
+  margin-top: 0px;
+  margin-bottom: 10px;
+
+  > a,
+  > span,
+  > label {
+    font-weight: bolder;
+    color: black;
+  }
+
+  > ul {
+    padding-inline-start: 0;
+  }
+}
+
+.book-page {
+  min-width: $body-min-width;
+  flex-grow: 1;
+  padding: $padding-16;
+  height: 100%;
+
+  //border-left: 1px solid;
+  //border-left-color: #d0d0d0;
+}
+
+.book-post {
+  margin-bottom: $padding-16 * 3;
+}
+
+.book-header {
+  display: none;
+  margin-bottom: $padding-16;
+
+  label {
+    line-height: 0;
+  }
+
+  img.book-icon {
+    height: 1.5em;
+    width: 1.5em;
+  }
+}
+
+.book-search {
+  position: relative;
+  margin: $padding-16 0;
+  border-bottom: 1px solid transparent;
+
+  input {
+    width: 100%;
+    padding: $padding-8;
+
+    border: 0;
+    border-radius: $border-radius;
+
+    background: var(--gray-100);
+    color: var(--body-font-color);
+
+    &:required + .book-search-spinner {
+      display: block;
+    }
+  }
+
+  .book-search-spinner {
+    position: absolute;
+    top: 0;
+    margin: $padding-8;
+    margin-inline-start: calc(100% - #{$padding-16 + $padding-8});
+
+    width: $padding-16;
+    height: $padding-16;
+
+    border: $padding-1 solid transparent;
+    border-top-color: var(--body-font-color);
+    border-radius: 50%;
+
+    @include spin(1s);
+  }
+
+  small {
+    opacity: 0.5;
+  }
+}
+
+.book-toc {
+  flex: 0 0 $toc-width;
+  font-size: $font-size-12;
+
+  .book-toc-content {
+    width: $toc-width;
+    padding: $padding-16;
+
+    @include fixed;
+  }
+
+  img {
+    height: 1em;
+    width: 1em;
+  }
+
+  nav > ul > li:first-child {
+    margin-top: 0;
+  }
+}
+
+.book-footer {
+  padding-top: $padding-16;
+  font-size: $font-size-14;
+
+  img {
+    height: 1em;
+    width: 1em;
+    margin-inline-end: $padding-8;
+  }
+}
+
+.book-comments {
+  margin-top: $padding-16;
+}
+
+.book-languages {
+  margin-block-end: $padding-16 * 2;
+
+  .book-icon {
+    height: 1em;
+    width: 1em;
+    margin-inline-end: .5em;
+  }
+
+  ul {
+    padding-inline-start: 1.5em;
+  }
+}
+
+// Responsive styles
+.book-menu-content,
+.book-toc-content,
+.book-page,
+.book-header aside,
+.markdown {
+  transition: 0.2s ease-in-out;
+  transition-property: transform, margin, opacity, visibility;
+  will-change: transform, margin, opacity;
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  #menu-control,
+  #toc-control {
+    display: inline;
+  }
+
+  .book-menu {
+    visibility: hidden;
+    margin-inline-start: -$menu-width;
+    font-size: $font-size-base;
+    z-index: 1;
+  }
+
+  .book-toc {
+    display: none;
+  }
+
+  .book-header {
+    display: block;
+  }
+
+  #menu-control:focus ~ main label[for="menu-control"] {
+    @include outline;
+  }
+
+  #menu-control:checked ~ main {
+    .book-menu {
+      visibility: initial;
+    }
+
+    .book-menu .book-menu-content {
+      transform: translateX($menu-width);
+      box-shadow: 0 0 $padding-8 rgba(0, 0, 0, 0.1);
+    }
+
+    .book-page {
+      opacity: 0.25;
+    }
+
+    .book-menu-overlay {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  #toc-control:focus ~ main label[for="toc-control"] {
+    @include outline;
+  }
+
+  #toc-control:checked ~ main {
+    .book-header aside {
+      display: block;
+    }
+  }
+
+  // for RTL support
+  body[dir="rtl"] #menu-control:checked ~ main {
+    .book-menu .book-menu-content {
+      transform: translateX(-$menu-width);
+    }
+  }
+}
+
+// Extra space for big screens
+@media screen and (min-width: $container-max-width) {
+  .book-page,
+  .book-menu .book-menu-content,
+  .book-toc .book-toc-content {
+    padding: $padding-16 * 2 $padding-16;
+  }
+}
+
+/* PreWrapper */ .chroma { background-color: #f5f5f5; border-radius: 10px; font-size: 20px; line-height: 1.7 }
+/* Other */ .chroma .x {  }
+/* Error */ .chroma .err { }
+/* CodeLine */ .chroma .cl {  }
+/* LineLink */ .chroma .lnlinks { outline: none; text-decoration: none; color: inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+/* LineHighlight */ .chroma .hl { background-color: #e5e5e5 }
+/* LineNumbersTable */ .chroma .lnt { white-space: pre; -webkit-user-select: none; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* LineNumbers */ .chroma .ln { white-space: pre; -webkit-user-select: none; user-select: none; margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* Line */ .chroma .line { display: flex; }
+/* Keyword */ .chroma .k { color: #445588; font-weight: 500 }
+/* KeywordConstant */ .chroma .kc { color: #000000; font-weight: bold }
+/* KeywordDeclaration */ .chroma .kd { color: #000000; font-weight:bold }
+/* KeywordNamespace */ .chroma .kn { color: #000000; font-weight: bold }
+/* KeywordPseudo */ .chroma .kp { color: #000000; font-weight: bold }
+/* KeywordReserved */ .chroma .kr { color: #000000; font-weight: bold }
+/* KeywordType */ .chroma .kt { color: #445588; font-weight: bold }
+/* Name */ .chroma .n {  }
+/* NameAttribute */ .chroma .na { color: #008080 }
+/* NameBuiltin */ .chroma .nb { color: #0086b3 }
+/* NameBuiltinPseudo */ .chroma .bp { color: #999999 }
+/* NameClass */ .chroma .nc { }
+/* NameConstant */ .chroma .no { color: #008080 }
+/* NameDecorator */ .chroma .nd { color: #3c5d5d; font-weight: bold }
+/* NameEntity */ .chroma .ni { color: #800080 }
+/* NameException */ .chroma .ne { color: #990000; font-weight: bold }
+/* NameFunction */ .chroma .nf { color: #990000; font-weight: bold }
+/* NameFunctionMagic */ .chroma .fm {  }
+/* NameLabel */ .chroma .nl { color: #990000; font-weight: bold }
+/* NameNamespace */ .chroma .nn { color: #555555 }
+/* NameOther */ .chroma .nx {  }
+/* NameProperty */ .chroma .py {  }
+/* NameTag */ .chroma .nt { color: #000080 }
+/* NameVariable */ .chroma .nv { color: #008080 }
+/* NameVariableClass */ .chroma .vc { color: #008080 }
+/* NameVariableGlobal */ .chroma .vg { color: #008080 }
+/* NameVariableInstance */ .chroma .vi { color: #008080 }
+/* NameVariableMagic */ .chroma .vm {  }
+/* Literal */ .chroma .l {  }
+/* LiteralDate */ .chroma .ld {  }
+/* LiteralString */ .chroma .s { color: #dd1144 }
+/* LiteralStringAffix */ .chroma .sa { color: #dd1144 }
+/* LiteralStringBacktick */ .chroma .sb { color: #dd1144 }
+/* LiteralStringChar */ .chroma .sc { color: #dd1144 }
+/* LiteralStringDelimiter */ .chroma .dl { color: #dd1144 }
+/* LiteralStringDoc */ .chroma .sd { color: #dd1144 }
+/* LiteralStringDouble */ .chroma .s2 { color: #dd1144 }
+/* LiteralStringEscape */ .chroma .se { color: #dd1144 }
+/* LiteralStringHeredoc */ .chroma .sh { color: #dd1144 }
+/* LiteralStringInterpol */ .chroma .si { color: #dd1144 }
+/* LiteralStringOther */ .chroma .sx { color: #dd1144 }
+/* LiteralStringRegex */ .chroma .sr { color: #009926 }
+/* LiteralStringSingle */ .chroma .s1 { color: #dd1144 }
+/* LiteralStringSymbol */ .chroma .ss { color: #990073 }
+/* LiteralNumber */ .chroma .m { color: #009999 }
+/* LiteralNumberBin */ .chroma .mb { color: #009999 }
+/* LiteralNumberFloat */ .chroma .mf { color: #009999 }
+/* LiteralNumberHex */ .chroma .mh { color: #009999 }
+/* LiteralNumberInteger */ .chroma .mi { color: #999 }
+/* LiteralNumberIntegerLong */ .chroma .il { color: #009999 }
+/* LiteralNumberOct */ .chroma .mo { color: #009999 }
+/* Operator */ .chroma .o { color: #000000; font-weight: bold }
+/* OperatorWord */ .chroma .ow { color: #000000; font-weight: bold }
+/* Punctuation */ .chroma .p {  }
+/* Comment */ .chroma .c { color: #999988; }
+/* CommentHashbang */ .chroma .ch { color: #999988; }
+/* CommentMultiline */ .chroma .cm { color: #999988; }
+/* CommentSingle */ .chroma .c1 { color: #999988;  }
+/* CommentSpecial */ .chroma .cs { color: #999999; font-weight: bold; }
+/* CommentPreproc */ .chroma .cp { color: #999999; font-weight: bold;  }
+/* CommentPreprocFile */ .chroma .cpf { color: #999999; font-weight: bold; }
+/* Generic */ .chroma .g {  }
+/* GenericDeleted */ .chroma .gd { color: #000000; background-color: #ffdddd }
+/* GenericEmph */ .chroma .ge { color: #000000; font-style: italic }
+/* GenericError */ .chroma .gr { color: #aa0000 }
+/* GenericHeading */ .chroma .gh { color: #999999 }
+/* GenericInserted */ .chroma .gi { color: #000000; background-color: #ddffdd }
+/* GenericOutput */ .chroma .go { color: #888888 }
+/* GenericPrompt */ .chroma .gp { color: #555555 }
+/* GenericStrong */ .chroma .gs { font-weight: bold }
+/* GenericSubheading */ .chroma .gu { color: #aaaaaa }
+/* GenericTraceback */ .chroma .gt { color: #aa0000 }
+/* GenericUnderline */ .chroma .gl { text-decoration: underline }
+/* TextWhitespace */ .chroma .w { color: #bbbbbb }

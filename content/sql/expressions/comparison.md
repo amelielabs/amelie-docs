@@ -1,0 +1,72 @@
+---
+weight: 3
+title: Comparison
+type: docs
+bookToc: false
+---
+
+## Comparison
+
+The following operations of comparison are supported:
+
+#### **`INT, REAL, BOOL`** and **`TIMESTAMP`**
+
+* expr = expr
+* expr > expr
+* expr >= expr
+* expr < expr
+* expr <= expr
+
+#### **`INTERVAL`** only
+
+* expr = expr
+* expr > expr
+* expr >= expr
+* expr < expr
+* expr <= expr
+
+#### **`VECTOR`** only
+
+* expr = expr
+* expr > expr
+* expr >= expr
+* expr < expr
+* expr <= expr
+
+#### **`STRING`** only
+
+* expr = expr
+
+#### **`OBJECT`** only
+
+* expr = expr
+
+#### **`ARRAY`** only
+
+* expr = expr
+
+#### **`NULL`** only
+
+* expr = expr
+
+---
+
+```SQL
+select 1 > 2
+[false]
+
+select [1,2,3] = [1,2,3]
+[true]
+
+select {"id": 48} = {'id': 48}
+[true]
+
+select now() = now()
+[true]
+
+select now() = now()::int
+[true]
+
+select now() - interval '1 hour' < now()
+[true]
+```

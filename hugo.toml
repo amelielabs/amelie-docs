@@ -1,0 +1,19 @@
+baseURL = 'https://monotone.studio/docs/'
+languageCode = 'en-us'
+title = 'amelie'
+theme = 'hugo-book'
+
+[params]
+  BookSection = '/'
+  BookSearch = false
+  BookRepo = 'https://github.com/monotone-studio/monotone-docs'
+  BookEditPath = 'edit/main'
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
