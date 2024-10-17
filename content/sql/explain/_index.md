@@ -8,8 +8,8 @@ bookToc: false
 ## EXPLAIN / PROFILE Statements
 
 ```SQL
-[EXPLAIN [(PROFILE)]] statement[; ...]
-[PROFILE] statement[; ...]
+[EXPLAIN] [BEGIN;] statement; [...] [COMMIT;]
+[PROFILE] [BEGIN;] statement; [...] [COMMIT;]
 ```
 
 The **`EXPLAIN`** clause returns debug information about the transaction without executing it.

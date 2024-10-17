@@ -12,8 +12,7 @@ statement[; statement ...]
 [COMMIT]
 ```
 
-Amelie transactions are not non-interactive and require that all transaction statements must
-be provided for execution.
+Amelie transactions require that all transaction statements must be provided for execution.
 
 Multiple statements are separated using the **;** symbol or defined using CTE.
 

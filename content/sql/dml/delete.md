@@ -40,15 +40,19 @@ select count(*) from test
 -- with CTE
 with deleted_items as (
     delete from test returning *
-) select count(*) from deleted_items
+) select count(*) from deleted_items;
 [3]
 
 -- alternative CTE form using RETURNING INTO
+begin;
 delete from test returning * into deleted_items;
-select count(*) from deleted_items
+select count(*) from deleted_items;
+commit;
 [3]
 
+begin;
 delete from test returning * into deleted_items;
 select deleted_items::size
+commit;
 [3]
 ```

@@ -92,4 +92,8 @@ amelie bench --uri="http://localhost:3485" --time=60
 
 # do batch insert for 10 secs
 amelie bench --uri="http://localhost:3485" --type="insert" --batch=600
+
+# benchmark using previously saved server credentials
+amelie login home --uri="http://localhost:3485"
+amelie bench home
 ```

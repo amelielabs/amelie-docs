@@ -48,15 +48,17 @@ way to define CTE without arguments.
 -- with CTE
 with deleted_items as (
     delete from collection returning *
-) select count(*) from deleted_items
+) select count(*) from deleted_items;
 [3]
 
 -- alternative CTE form using INTO
+begin;
 delete from collection returning * into deleted_items;
-select count(*) from deleted_items
+select count(*) from deleted_items;
+commit;
 [3]
 
 -- CTE in expressions
-select 1 + 1 into result; select result
+select 1 + 1 into result; select result;
 [2]
 ```

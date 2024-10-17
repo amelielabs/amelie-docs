@@ -93,11 +93,13 @@ select obj from test where obj::has("metrics")
 -- with CTE
 with inserted_items as (
     insert into test values (1), (2), (3) returning *
-) select count(*) from inserted_items
+) select count(*) from inserted_items;
 [3]
 
 -- alternative CTE form using RETURNING INTO
+begin;
 insert into test values (1), (2), (3) returning * into inserted_items;
-select count(*) from inserted_items
+select count(*) from inserted_items;
+commit;
 [3]
 ```

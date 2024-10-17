@@ -61,15 +61,19 @@ update test set obj.data = obj.data::append(4) returning *
 -- with CTE
 with updated_items as (
     update test set data = data::append(4) where id = 1 returning *
-) select count(*) from updated_items
+) select count(*) from updated_items;
 [1]
 
 -- alternative CTE form using RETURNING INTO
+begin;
 update test set data = data::append(4) where id = 1 returning * into updated_items;
-select count(*) from updated_items
+select count(*) from updated_items;
+commit;
 [1]
 
+begin;
 update test set data = data::append(4) where id = 1 returning * into updated_items;
-select updated_items::size
+select updated_items::size;
+commit;
 [1]
 ```

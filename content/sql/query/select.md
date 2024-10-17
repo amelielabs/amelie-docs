@@ -106,7 +106,7 @@ insert into t2 values (1), (2), (3)
 
 with t1_result (id) as (
     select * from t1
-) select t2.* from t2 join t1_result on (t2.id = t1_result.id)
+) select t2.* from t2 join t1_result on (t2.id = t1_result.id);
 [[1], [3]]
 ```
 

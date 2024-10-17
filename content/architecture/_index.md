@@ -127,6 +127,8 @@ New requests will not wait for the Commit event for other ongoing transactions. 
 a dependency graph between transactions and performs Group Abort in case of failure and Group Commit in
 the likely case of success. One session always becomes Group Commit Leader to drive Group Commit logic.
 
+All transactions always operate on a **`STRICT SERIALIZABLE`** level.
+
 ### DDL
 
 DDL operations, such as [CREATE TABLE](/docs/sql/ddl/tables/create) or [DROP TABLE](/docs/sql/ddl/tables/drop), require an exclusive lock.

@@ -20,6 +20,10 @@ amelie logout <login>
 The client uses the **`AMELIE_HOME`** environment variable to identify its home directory. If the variable is not
 provided, it will use **`~/.amelie`**. The home directory contains a login information file and a history file.
 
+The client will separate input statements using the **`;`** symbol and send them separately. If the input starts
+with **`BEGIN`**, the client will read statements until the closing **`COMMIT`** statement and
+only then send the transaction for execution.
+
 The following connection options are supported:
 
 | Argument             | Type | Description |
@@ -50,11 +54,17 @@ amelie --uri="https://localhost:3485" --token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXV
 # connect to the server using TLS, CLI will generate one-time JWT token each time automatically
 amelie --uri="https://localhost:3485" --user="test" --secret="test"
 
-# connect to the server, using saved credentials, CLI will generate and save JWT token
+# connect to the server using saved credentials, CLI will generate and save JWT token
 amelie login home --uri="https://localhost:3485" --user="test" --secret="test"
 amelie home
 
 # connect to the server using saved credentials
 amelie login home --uri="https://localhost:3485" --token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiAidGVzdCIsICJpYXQiOiAxNzI3OTYyMzU3LCAiZXhwIjogMTczNTkxMTE1N30.79g-77QHd82f7cSbeZSXaz4lP_7F3J4bm7EuZOUCmmM"
 amelie home
+
+# connect to the server and send SQL commands for execution
+cat file.sql | amelie home
+
+# remove information about the `home` login
+amelie logout home
 ```

@@ -24,7 +24,7 @@ In case of an error, the transaction will be automatically aborted on all nodes.
 might also abort other ongoing transactions that happen to be already processed (and not **`COMMITED`**) after
 the aborted one (see Execution).
 
-All transactions always operate on a **`SERIALIZABLE`** level.
+All transactions always operate on a **`STRICT SERIALIZABLE`** level.
 
 ### Processing
 
@@ -51,7 +51,7 @@ and manages write-ahead logging (WAL).
 A deterministic approach (Calvin-style) allows for the implementation of a highly performant execution
 pipeline without dealing with complex distributed snapshot issues and avoiding multi-versioning.
 
-The executor is optimized for fast, optimistic, lock-less execution.
+The executor is optimized for fast, optimistic, lockless execution.
 
 Transactions will not wait for the **`COMMIT`** event for other ongoing transactions. Instead, the executor creates
 a dependency graph between transactions and performs **`GROUP ABORT`** in case of failure and **`GROUP COMMIT`** in the likely
