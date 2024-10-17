@@ -8,12 +8,12 @@ bookToc: false
 
 Currently, the Server accepts only **`HTTP/1.1`** plain text **`SQL`** commands directly using the **`POST /`** method.
 
-### **`POST / (application/text)`**
+### **`POST / (text/plain)`**
 
 ```http
 POST / HTTP/1.1
 Host: localhost:3485
-Content-Type: application/text
+Content-Type: text/plain
 Content-Length: 22
 
 SELECT "hello, world!"
@@ -21,7 +21,7 @@ SELECT "hello, world!"
 
 ```sh
 curl -X POST \
--H "Content-Type: application/text" \
+-H "Content-Type: text/plain" \
 -d 'SELECT "hello, world!"' \
 http://localhost:3485/
 ["hello, world!"]
@@ -39,7 +39,7 @@ JWT-based authentication must be used only with **`HTTPS`** connections.
 ```sh
 curl -X POST \
 -H "Authorization: Bearer <JWT>" \
--H "Content-Type: application/text" \
+-H "Content-Type: text/plain" \
 -d 'SELECT "hello, world!"' \
 --cacert ca.crt \
 https://localhost:3485/
