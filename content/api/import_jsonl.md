@@ -24,7 +24,7 @@ The [import](/docs/tutorial/import) command can be used to import **`JSONL`** da
 
 ```http
 POST /public/test HTTP/1.1
-Content-Type: application/json
+Content-Type: application/jsonl
 Content-Length: 32
 
 [0,0,0]
