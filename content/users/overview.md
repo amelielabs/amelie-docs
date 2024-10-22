@@ -20,3 +20,5 @@ Amelie will validate each request and match existing users accordingly. The [CRE
 [DROP USER](/docs/users/drop) commands can be used to add new users or delete existing ones.
 
 JWT-based authentication must be used only with **`HTTPS`** connections.
+
+---

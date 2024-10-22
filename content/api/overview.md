@@ -1,31 +1,13 @@
 ---
-weight: 5
-title: HTTP API
+weight: 1
+title: "Overview"
 bookToc: false
 ---
 
 ## HTTP Request
 
-Currently, the Server accepts only **`HTTP/1.1`** plain text **`SQL`** commands directly using the **`POST /`** method.
-
-### **`POST / (text/plain)`**
-
-```http
-POST / HTTP/1.1
-Host: localhost:3485
-Content-Type: text/plain
-Content-Length: 22
-
-SELECT "hello, world!"
-```
-
-```sh
-curl -X POST \
--H "Content-Type: text/plain" \
--d 'SELECT "hello, world!"' \
-http://localhost:3485/
-["hello, world!"]
-```
+Currently, the Server supports only **`HTTP/1.1`** **`POST`** operations to
+execute plain text **`SQL`** commands and import data based on the **`Content-Type`**.
 
 ### Authentication
 
@@ -36,6 +18,8 @@ a valid JWT token in the format: **`Authentication: Bearer <JWT>`**.
 
 JWT-based authentication must be used only with **`HTTPS`** connections.
 
+Learn more about [Authentication and Users](/docs/tutorial/auth).
+
 ```sh
 curl -X POST \
 -H "Authorization: Bearer <JWT>" \
@@ -45,8 +29,6 @@ curl -X POST \
 https://localhost:3485/
 ["hello, world!"]
 ```
-
-Learn more about [Authentication](/docs/tutorial/auth).
 
 ---
 

@@ -46,6 +46,11 @@ be used as a result in the corresponding [CTE](/docs/sql/transactions/cte) or as
 
 The **`INTO`** clause provides an alternative way to define this statement as a [CTE](/docs/sql/transactions/cte).
 
+### Data Ingestion and Streaming
+
+An alternative way to insert different formats directly into a table without using **`SQL`** is to use the
+[HTTP API](/docs/api/overview).
+
 ---
 
 ```SQL

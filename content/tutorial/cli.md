@@ -20,10 +20,6 @@ amelie logout <login>
 The client uses the **`AMELIE_HOME`** environment variable to identify its home directory. If the variable is not
 provided, it will use **`~/.amelie`**. The home directory contains a login information file and a history file.
 
-The client will separate input statements using the **`;`** symbol and send them separately. If the input starts
-with **`BEGIN`**, the client will read statements until the closing **`COMMIT`** statement and
-only then send the transaction for execution.
-
 The following connection options are supported:
 
 | Argument             | Type | Description |
@@ -37,6 +33,18 @@ The following connection options are supported:
 |  tls_ca          | string | TLS CA certificate file path. |
 |  tls_cert        | string | TLS Client certificate file path. |
 |  tls_key         | string | TLS Client certificate private key file path. |
+
+### Execute SQL commands from Pipe
+
+The client can be run in a pipe mode to execute **`SQL`** commands from **`stdin`**.
+
+```sh
+cat file.sql | amelie --uri="http://localhost:3485"
+```
+
+While reading commands in the pipe mode the client will separate input statements using the **`;`** symbol and send each of
+them separately. If the input starts with **`BEGIN`**, the client will read statements until the closing **`COMMIT`**
+statement and only then send the transaction for execution.
 
 ---
 

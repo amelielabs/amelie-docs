@@ -25,7 +25,8 @@ After the repository is created and the Server started, it is now possible to:
 
 1) [Connect](/docs/tutorial/cli) to the Server using Console Client
 2) Do [Benchmarking](/docs/tutorial/benchmark)
-3) Create your Client Applications using the [HTTP API](/docs/tutorial/api) and [SQL](/docs/sql/overview)
+3) [Import](/docs/tutorial/import) data from files
+4) Create your Client Applications using the [HTTP API](/docs/api/overview) and [SQL](/docs/sql/overview)
 
 To make the Server secure, it would additionally require to:
 
@@ -56,6 +57,7 @@ usage: amelie [command | login] [options]
     stop   <path>
     backup <path> [login] [client options]
     client [login] [client options]
+    import [login] [client options] [options] table files
     bench  [login] [client options] [options]
     login  <login> [client options]
     logout <login>
@@ -114,7 +116,9 @@ usage: amelie [command | login] [options]
     --scale=int
     --init=bool
 
+  import options:
+
+    --format=string
+    --clients=int
+    --batch=int
 ```
-
-
-

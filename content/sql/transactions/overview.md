@@ -66,3 +66,5 @@ The lock is taken in coordination with other sessions first.
 
 Operations such as [CREATE INDEX](/docs/sql/ddl/indexes/create) and [ALTER TABLE ADD COLUMN](/docs/sql/ddl/tables/alter) are
 blocking but completely parallel. Each node will be involved in creating an index for its partitions.
+
+---

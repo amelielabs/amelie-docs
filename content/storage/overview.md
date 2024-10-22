@@ -19,3 +19,5 @@ for each node individually, reducing start time.
 The [CHECKPOINT](/docs/storage/checkpoint) operation creates snapshots. It is possible to scale this process by creating
 and using several workers.  It can be run manually or automatically using periodic intervals. The checkpoint operation is
 also responsible for WAL retention and the automatic removal of older checkpoint directories.
+
+---

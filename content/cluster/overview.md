@@ -35,3 +35,5 @@ While having a distributed database design, Amelie currently does not support ne
 
 In its current form, Amelie does not require the complex maintenance typical of distributed systems and
 works as a single process, hiding all the complexity. Compute nodes do not require additional maintenance.
+
+---

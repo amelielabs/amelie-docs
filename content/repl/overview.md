@@ -25,3 +25,5 @@ slots to identify replica positions. Replication slots are continuously advanced
 They are used to keep older WAL files until all replicas are in sync.
 
 [START/STOP REPLICATION](/docs/repl/start) commands can enable or disable replication on a server.
+
+---
