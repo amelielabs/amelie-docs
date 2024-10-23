@@ -40,6 +40,9 @@ amelie import --uri="localhost" test *.csv
 # import compressed JSON lines file to the test table
 zcat file.jsonl.gz | amelie import home --format=jsonl test
 
+# import json file where each row kept inside array
+jq -c '.[]' file.json | amelie import home --format=jsonl test
+
 # execute SQL commands from file
 cat file.sql | amelie home
 ```
