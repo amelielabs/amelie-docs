@@ -21,7 +21,7 @@ uuid:              a23250c4-6363-e01b-9d58-d8277d8f6332
 version:           1.0.0
 frontends:         5  [51.1, 49.0, 77.7, 81.7, 51.1]
 backends:          11 [36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8]
-memory:            7718 MiB virt / 7043Mib res
+memory:            7718 MiB virt / 7043 Mib res
 connections:       13
 sent:              0.046 MiB/sec
 recv:              425.858 MiB/sec

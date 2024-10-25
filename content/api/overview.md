@@ -67,7 +67,7 @@ HTTP/1.1 400 Bad Request
 Content-Length: 41
 Content-Type: application/json
 
-{"code": 1, "msg": "unterminated string"}
+{"msg": "unterminated string"}
 ```
 
 ### **`403 Forbidden`**
