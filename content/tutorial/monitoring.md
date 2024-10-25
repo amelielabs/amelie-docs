@@ -4,28 +4,36 @@ title: Monitoring
 bookToc: false
 ---
 
-## Monitoring and System Objects
+## Monitoring
 
-The following commands can be used to get information about the system state. Each of the commands
-below has an [equivalent function](/docs/sql/functions/system) for convenience.
+The **`amelie top [login] [client options]`** command can be used to get essential system information about the remote
+server from the console in real time.
+
+See also [SHOW STATUS](/docs/monitoring/show) and [Monitoring](/docs/monitoring/overview).
 
 ---
 
-[SHOW ALL](/docs/configuration/show) – get configuration and additional runtime information.
+```sh
+# connect to the server using URI without authentication
+amelie top --uri="localhost"
 
-[SHOW USERS](/docs/users/show) – show all users defined in the system.
-
-[SHOW NODES](/docs/cluster/show) – show created and active compute nodes in the system.
-
-[SHOW REPLICAS](/docs/repl/show_replicas) – get a list of the status of replica servers.
-
-[SHOW REPLICATION](/docs/repl/show) – get the replication status.
-
-[SHOW WAL](/docs/storage/show) – get information about WAL.
-
-[SHOW SCHEMAS](/docs/sql/ddl/schemas/show) – show schema objects created in the system.
-
-[SHOW TABLES](/docs/sql/ddl/tables/show) – show tables created in the system.
-
-[SHOW VIEWS](/docs/sql/ddl/views/show) – show views created in the system.
-
+uuid:              a23250c4-6363-e01b-9d58-d8277d8f6332
+version:           1.0.0
+frontends:         5  [51.1, 49.0, 77.7, 81.7, 51.1]
+backends:          11 [36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8, 36.8]
+memory:            7718 MiB virt / 7043Mib res
+connections:       13
+sent:              0.046 MiB/sec
+recv:              425.858 MiB/sec
+write:             325.314 MiB/sec
+transactions:      1696 n/sec
+ops:               0.589303 millions/sec
+wals:              67
+checkpoint:        1
+lsn:               34279
+schemas:           2
+tables:            1
+tables_shared:     0
+secondary indexes: 0
+views:             0
+```

@@ -24,7 +24,7 @@ By default, the Server runs without authentication and accepts **`HTTP`** connec
 After the repository is created and the Server started, it is now possible to:
 
 1) [Connect](/docs/tutorial/cli) to the Server using Console Client
-2) Do [Benchmarking](/docs/tutorial/benchmark)
+2) Do [Benchmarking](/docs/tutorial/benchmark) and [Monitor](/docs/tutorial/monitoring) the performance
 3) [Import](/docs/tutorial/import) data from files
 4) Create your Client Applications using the [HTTP API](/docs/api/overview) and [SQL](/docs/sql/overview)
 
@@ -58,6 +58,7 @@ usage: amelie [command | login] [options]
     backup <path> [login] [client options]
     client [login] [client options]
     import [login] [client options] [options] table files
+    top    [login] [client options]
     bench  [login] [client options] [options]
     login  <login> [client options]
     logout <login>
