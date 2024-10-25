@@ -13,7 +13,7 @@ The following benchmarking options are supported:
 
 | Argument          | Type | Description |
 | :---------------- |  :----:  | :----      |
-| type          | string | Benchmark type: **`tpcb`** (default), **`insert`**, **`upsert`**. |
+| type          | string | Benchmark type: **`tpcb`** (default), **`insert`**, **`upsert`**, **`import`**. |
 | threads       | int | Number of client threads (default is 4). |
 | clients       | int | Total number of clients (default is 12). |
 | time          | int | Time in seconds (default is 10). |
@@ -55,17 +55,24 @@ commit
 
 ### Insert Benchmark
 
-Sequentially Insert rows using the [INSERT](/docs/sql/dml/insert) statement. The number of rows can be configured using
+Sequentially Insert rows using the [INSERT](/docs/sql/dml/insert) statement. The number of rows per one operation can be configured using
 the **`batch`** option. The test table's primary index is **`tree`**.
 
 Watch out for available RAM.
 
 ### Upsert Benchmark
 
-Randomly Insert rows using the [INSERT ON CONFLICT DO UPDATE](/docs/sql/dml/insert) statement. The number of rows can be configured
-using the **`batch`** option. The test table's primary index is **`hash`**.
+Randomly Insert rows using the [INSERT ON CONFLICT DO UPDATE](/docs/sql/dml/insert) statement. The number of rows per one operation
+can be configured using the **`batch`** option. The test table's primary index is **`hash`**.
 
 The number of rows in the table is set to 100000 random keys.
+
+### Import Benchmark
+
+Sequentially stream rows using the [HTTP API](/docs/api/import_json). The number of rows per one operation can be configured using
+the **`batch`** option. The test table's primary index is **`tree`**.
+
+Watch out for available RAM.
 
 ### Recommendations
 
