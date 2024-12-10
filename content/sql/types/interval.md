@@ -1,5 +1,5 @@
 ---
-weight: 9
+weight: 11
 title: INTERVAL
 type: docs
 bookToc: false
@@ -7,7 +7,8 @@ bookToc: false
 
 ## INTERVAL
 
-Define a time interval with microsecond precision. This type is similar to **`INTERVAL`**, which PostgreSQL uses.
+Define a time **`INTERVAL`** with microsecond precision. This type is similar in spirit to the `INTERVAL` type, which PostgreSQL uses.
+The type can be used as a column or part of the expression.
 
 **`INTERVAL`** prefix before a string can be used to define interval value explicitly.
 Intervals can be added or subtracted and are mainly used together with timestamps.

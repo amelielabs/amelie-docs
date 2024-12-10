@@ -1,5 +1,5 @@
 ---
-weight: 10
+weight: 12
 title: VECTOR
 type: docs
 bookToc: false
@@ -7,11 +7,10 @@ bookToc: false
 
 ## VECTOR
 
-Vector is identical to an array but optimized for fast float operations.
+**`VECTOR`** type represents an array of floats and is optimized for fast float operations.
 
-Vector values must be integers or reals. Vectors can be compared, added together,
+Vector values must be integers or floats. Vectors can be compared, added together,
 subtracted, multiplied, or divided.
-
 ---
 
 ```SQL
@@ -27,14 +26,17 @@ select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector)
 
 ```SQL
 create table test (id int primary key serial, embedding vector)
-insert into test (embedding) values (vector [3,2,0,1,4])
+insert into test (embedding) values ([3,2,0,1,4])
+insert into test (embedding) values ([2,2,0,1,3])
+insert into test (embedding) values ([1,3,0,1,4])
 
-select * from test
-[[0, [3, 2, 0, 1, 4]]]
+select * format from test
+[[1, [3, 2, 0, 1, 4]], [2, [2, 2, 0, 1, 3]], [3, [1, 3, 0, 1, 4]]]
 
-select type(embbeding) from test
-["vector"]
-
-select embedding::cos_distance([1,3,1,2,0]::vector) from test
-[0.481455]
+select
+   id, embedding::cos_distance([1,3,1,2,0]::vector)
+from
+   test
+order by 2 desc;
+[[1, 0.481455], [3, 0.403715], [2, 0.391419]]
 ```

@@ -1,5 +1,5 @@
 ---
-weight: 8
+weight: 10
 title: TIMESTAMP
 type: docs
 bookToc: false
@@ -7,16 +7,18 @@ bookToc: false
 
 ## TIMESTAMP
 
-Define a timestamp with timezone according to [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)
-with microsecond precision. This type is similar to **`TIMESTAMPTZ`** used by PostgreSQL.
+
+**`TIMESTAMP`** type represents timestamp with a timezone according to the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)
+with microsecond precision. This type is similar to `TIMESTAMPTZ` used by PostgreSQL.
+The type can be used as a column type or a key.
 
 Internally type converted, stored, and operated as a `64-bit` integer representing Unix time in UTC.
 All operations are corrected according to the current timezone settings.
 
-**`CURRENT_TIMESTAMP`** and [now()](/docs/sql/functions/timestamp) can be used to get the current transaction time. **`TIMESTAMP`** prefix
-before a string can be used to explicitly define timestamp value without convertion.
+**`CURRENT_TIMESTAMP`** and [now()](/docs/sql/functions/timestamp) can be used to get the current transaction time.
+**`TIMESTAMP`** prefix before a string can be used to explicitly define timestamp value without convertion.
 
-The type can be used as a key.
+[Timestamp Functions](/docs/sql/functions/timestamp) can be used to do basic operations using timestamps.
 
 ---
 
@@ -50,7 +52,7 @@ select {"at": now(), "id": system.config().uuid}
 ```
 
 ```SQL
-create table test (ts timestamp primary key, metrics array)
+create table test (ts timestamp primary key, metrics json)
 insert into test values (current_timestamp, [1,2,3])
 
 select * from test

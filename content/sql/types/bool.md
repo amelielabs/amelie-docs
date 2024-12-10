@@ -1,5 +1,5 @@
 ---
-weight: 3
+weight: 1
 title: BOOL
 type: docs
 bookToc: false
@@ -7,9 +7,11 @@ bookToc: false
 
 ## BOOL
 
-Defines boolean. The types **`BOOL`** and **`BOOLEAN`** are synonymous.
+Boolean type can be used in logical operations or as a column type.
 
-Accepted values are **`true`** and **`false`**.
+* **`BOOL`**, **`BOOLEAN`**
+
+	Accepted values are **`true`** and **`false`**.
 
 ---
 

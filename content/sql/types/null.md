@@ -1,5 +1,5 @@
 ---
-weight: 7
+weight: 13
 title: 'NULL'
 type: docs
 bookToc: false
@@ -7,10 +7,9 @@ bookToc: false
 
 ## NULL
 
-Define **`NULL`** value.
+**`NULL`** represents missing data and is technically not a type unless explicitly encoded inside a **`JSON`**.
 
-To support document semantics, **`NULL`** values are encoded as separate data objects.
-Unlike traditional SQL, **`NULL`** values can be compared. Arithmetic operations on **`NULL`** values will produce an error.
+Any operations with **`NULL`** values produce **`NULL`**.
 
 Aggregate functions ignore **`NULL`** values.
 
@@ -18,6 +17,9 @@ Aggregate functions ignore **`NULL`** values.
 
 ```SQL
 select null
+[null]
+
+select 1 + null
 [null]
 
 select {"data": null}
@@ -49,5 +51,4 @@ update test set data = id where data is null
 
 select * from test
 [[1, 1], [2, 48], [3, 3]]
-
 ```

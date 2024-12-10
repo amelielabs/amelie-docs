@@ -4,7 +4,7 @@ title: "Timestamp"
 bookToc: false
 ---
 
-## Timestamp Function
+## Timestamp Functions
 
 All timestamp functions are located in the **`public`** schema, which is default.
 

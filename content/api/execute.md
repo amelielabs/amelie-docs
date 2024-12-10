@@ -6,14 +6,14 @@ bookToc: false
 
 ## Execute SQL commands
 
-### **`POST / (text/plain)`**
+### **`POST / (text/plain, application/sql)`**
 
 Execute plain text **`SQL`** commands. The **`POST`** path must be set as root **`/`**.
 
 All provided statements will be executed as a single multi-statement transaction,
 regardless of whether there were **`BEGIN/COMMIT`** statements.
 
-The console [client](/docs/tutorial/cli) can be used to execute **`SQL`** commands from a file.
+The console [client](/docs/tutorial/cli) can be used to execute **`SQL`** commands from a file or pipe.
 
 ---
 

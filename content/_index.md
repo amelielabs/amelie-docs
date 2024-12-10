@@ -8,9 +8,9 @@ bookToc: false
 
 ## Introduction
 
-Amelie is lightweight OLTP SQL document database with a focus on performance and
-throughput for short ACID transactions and real-time analytics. It has unique architecture designed
-for full parallelization and lockless transaction execution.
+Amelie is a lightweight OLTP SQL relational database that focuses on performance and throughput for
+short ACID transactions and real-time analytics. Its unique architecture is designed for full
+parallelization and lockless transaction execution.
 
 Amelie works over HTTP and does not require additional client libraries. Any modern programming
 language or tooling that supports HTTP and JSON can be used directly.

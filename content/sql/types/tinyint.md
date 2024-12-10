@@ -1,18 +1,18 @@
 ---
-weight: 4
-title: INT
+weight: 2
+title: TINYINT
 type: docs
 bookToc: false
 ---
 
-## INT
+## TINYINT
 
 All integer types are signed and can be used in arithmetical operations or as part of
 the primary or secondary key.
 
-* **`I32`**, **`INT32`**, **`INT`**, **`INTEGER`**
-
-  Defines `32bit` integer. The supported range is from **`-2147483648`** to **`2147483647`**.
+* **`I8`**, **`INT8`**, **`TINYINT`**
+  
+  Defines `8bit` integer. The supported range is from **`-128`** to **`127`**.
 
 ---
 
@@ -22,14 +22,14 @@ select 123
 ```
 
 ```SQL
-create table test(id int primary key)
+create table test(id int8 primary key)
 insert into test values (1), (2), (3)
 select id from test
 [1, 2, 3]
 ```
 
 ```SQL
-create table test(id integer primary key serial, data int)
+create table test(id tinyint primary key serial, data int)
 insert into test (data) values (1), (2), (3)
 select * from test
 [[0, 1], [1, 2], [2, 3]]
