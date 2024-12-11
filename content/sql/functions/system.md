@@ -1,5 +1,5 @@
 ---
-weight: 1
+weight: 14
 title: "System"
 bookToc: false
 ---
@@ -10,7 +10,9 @@ All system functions are located in the **`system`** schema.
 
 Following system functions are aliases for corresponding [SHOW](/docs/tutorial/monitoring) commands.
 
-### system.config()
+---
+
+### **`json system.config()`**
 
 Get a system config and current runtime variables.
 
@@ -19,15 +21,17 @@ Same as [SHOW CONFIG](/docs/configuration/show).
 ```SQL
 select system.config()
 [{
-  "version": "1.0",
-  "uuid": "0f49c30f-5cf5-ee72-f3d7-8bfadbaea495",
+  "version": "1.0.0",
+  "uuid": "826e3f5d-6ebd-bd08-748d-57eb5e5cd565",
   "directory": "t",
   "timezone": "Asia/Famagusta",
   "timezone_default": "Asia/Famagusta",
+  "format": "json-pretty",
   "log_enable": true,
   "log_to_file": true,
   "log_to_stdout": true,
   "log_connections": true,
+  "log_options": true,
   "tls_capath": "",
   "tls_ca": "",
   "tls_cert": "",
@@ -39,9 +43,9 @@ select system.config()
   "limit_send": 3145728,
   "limit_recv": 1048576,
   "limit_write": 0,
-  "frontends": 5,
-  "backends": 11,
-  "wal": true,
+  "frontends": 8,
+  "backends": 8,
+  "wal": false,
   "wal_rotate_wm": 104857600,
   "wal_sync_on_rotate": true,
   "wal_sync_on_write": false,
@@ -50,18 +54,18 @@ select system.config()
   "repl_reconnect_ms": 3000,
   "checkpoint_interval": "5 min",
   "checkpoint_workers": 3,
-  "checkpoint": 0,
+  "checkpoint": 12,
   "read_only": false,
-  "lsn": 173943,
-  "psn": 22
+  "lsn": 12,
+  "psn": 25
 }]
 
 select system.config().uuid
-["0f49c30f-5cf5-ee72-f3d7-8bfadbaea495"]
+["826e3f5d-6ebd-bd08-748d-57eb5e5cd565"]
 ```
 ---
 
-### system.users()
+### **`json system.users()`**
 
 Get a list of users.
 
@@ -84,7 +88,7 @@ select name from system.users()
 
 ---
 
-### system.replicas()
+### **`json system.replicas()`**
 
 Get a list of created replicas in the system.
 
@@ -92,8 +96,8 @@ Same as [SHOW REPLICAS](/docs/repl/show_replicas).
 
 ---
 
-### system.repl()
-### system.replication()
+### **`json system.repl()`**
+### **`json system.replication()`**
 
 Get the replication status.
 
@@ -110,7 +114,7 @@ select system.repl()
 
 ---
 
-### system.nodes()
+### **`json system.nodes()`**
 
 Get a list of created nodes in the system.
 
@@ -118,7 +122,7 @@ Same as [SHOW NODES](/docs/cluster/show).
 
 ---
 
-### system.schemas()
+### **`json system.schemas()`**
 
 Get a list of created schemas.
 
@@ -126,7 +130,7 @@ Same as [SHOW SCHEMAS](/docs/sql/ddl/schemas/show).
 
 ---
 
-### system.tables()
+### **`json system.tables()`**
 
 Get a list of created tables.
 
@@ -134,7 +138,7 @@ Same as [SHOW TABLES](/docs/sql/ddl/tables/show).
 
 ---
 
-### system.views()
+### **`json system.views()`**
 
 Get a list of created views.
 
@@ -142,7 +146,7 @@ Same as [SHOW VIEWS](/docs/sql/ddl/views/show).
 
 ---
 
-### system.wal()
+### **`json system.wal()`**
 
 Get the WAL status.
 
@@ -165,7 +169,7 @@ select system.wal()
 
 ---
 
-### system.status()
+### **`json system.status()`**
 
 Show the essential database and process information gathered in one place.
 

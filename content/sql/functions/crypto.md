@@ -8,7 +8,9 @@ bookToc: false
 
 All functions are located in the **`public`** schema, which is default.
 
-### random()
+---
+
+### **`int random()`**
 
 Gen random **`64-bit`** integer.
 
@@ -19,7 +21,7 @@ select random()
 
 ---
 
-### random_uuid()
+### **`string random_uuid()`**
 
 Generate **`UUID`**.
 
@@ -30,7 +32,7 @@ select random_uuid()
 
 ---
 
-### md5(string)
+### **`string md5(string)`**
 
 Get MD5 value of the **`string`**.
 
@@ -41,7 +43,7 @@ select "hello world"::md5
 
 ---
 
-### sha1(string)
+### **`string sha1(string)`**
 
 Get SHA1 value of the **`string`**.
 
@@ -50,10 +52,12 @@ select "hello world"::sha1
 ["2aae6c35c94fcfb415dbe95f408b9ce91ee846ed"]
 ```
 
-### jwt(string, string, secret)
-### jwt(string, obj, secret)
-### jwt(obj, obj, secret)
-### jwt(obj, string, secret)
+---
+
+### **`string jwt(string, string, secret)`**
+### **`string jwt(string, obj, secret)`**
+### **`string jwt(obj, obj, secret)`**
+### **`string jwt(obj, string, secret)`**
 
 Create [JWT](https://jwt.io/) token, which can be used for authentication.
 

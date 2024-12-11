@@ -7,11 +7,9 @@ bookToc: false
 
 ## BOOL
 
-Boolean type can be used in logical operations or as a column type.
+**`BOOL`**, **`BOOLEAN`** type can be used in logical operations or as a column type.
 
-* **`BOOL`**, **`BOOLEAN`**
-
-	Accepted values are **`true`** and **`false`**.
+Accepted values are **`true`** and **`false`**.
 
 ---
 

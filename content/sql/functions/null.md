@@ -1,5 +1,5 @@
 ---
-weight: 5
+weight: 8
 title: "Null"
 bookToc: false
 ---
@@ -8,7 +8,9 @@ bookToc: false
 
 All functions are located in the **`public`** schema, which is default.
 
-### coalesce(...)
+---
+
+### **`any coalesce(...)`**
 
 Return a first non-null argument.
 
@@ -19,7 +21,7 @@ select coalesce(null, 1, null, 2)
 
 ---
 
-### nullif(a, b)
+### **`any nullif(a, b)`**
 
 Return a **`null`** value if **`a`** equals **`b`**, otherwise, it returns **`a`**.
 

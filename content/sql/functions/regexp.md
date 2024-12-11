@@ -8,7 +8,9 @@ bookToc: false
 
 All functions are located in the **`public`** schema, which is default.
 
-### regexp_like(string, pattern)
+---
+
+### **`bool regexp_like(string, pattern)`**
 
 Return true if the **`string`** matches the **`pattern`**.
 
@@ -22,7 +24,7 @@ select '<a href="../">Up</a>'::regexp_like('<(?<tag>[a-z][a-z0-9]*)[^>]*>')
 
 ---
 
-### regexp_substr(string, pattern)
+### **`string regexp_substr(string, pattern)`**
 
 Match and return substring from the **`string`** using the **`pattern`**.
 
@@ -33,18 +35,18 @@ select 'foobarbequebazilbarfbonk'::regexp_substr('(b[^b]+)(b[^b]+)')
 
 ---
 
-### regexp_match(string, pattern)
+### **`json regexp_match(string, pattern)`**
 
 Return an array of substrings which matches the **`pattern`**.
 
 ```SQL
 select 'foobarbequebazilbarfbonk'::regexp_match('(b[^b]+)(b[^b]+)')
-["barbeque", "bar", "beque"]
+[["barbeque", "bar", "beque"]]
 ```
 
 ---
 
-### regexp_replace(string, pattern, with)
+### **`string regexp_replace(string, pattern, with)`**
 
 Match and replace substrings from the **`string`** using the **`pattern`**.
 

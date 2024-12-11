@@ -8,7 +8,9 @@ bookToc: false
 
 All casting functions are located in the **`public`** schema, which is default.
 
-### type(arg)
+---
+
+### **`string type(arg)`**
 
 Return string description of the **`arg`** type.
 
@@ -17,15 +19,14 @@ select "hello"::type
 ["string"]
 
 select {"id": 48}::type
-["object"]
+["json"]
 ```
 
 ---
 
-### int(arg)
+### **`int int(arg)`**
 
-Convert **`arg`** value to **`INT`**. **`arg`** supported types are **`REAL`**, **`BOOL`**, **`INT`**,
-**`TIMESTAMP`** and **`STRING`**.
+Convert **`arg`** value to **`INT`**.
 
 ```SQL
 select '1234'::int
@@ -37,7 +38,32 @@ select "2024-09-26 12:12:10.684550+03"::timestamp::int
 
 ---
 
-### string(arg)
+### **`bool bool(arg)`**
+
+Convert **`arg`** value to **`BOOL`**.
+
+```SQL
+select 1::bool
+[true]
+
+select 0::bool
+[false]
+```
+
+---
+
+### **`double double(arg)`**
+
+Convert **`arg`** value to **`DOUBLE`**.
+
+```SQL
+select type(123::double)
+["double"]
+```
+
+---
+
+### **`string string(arg)`**
 
 Convert **`arg`** value to **`STRING`**.
 
@@ -51,39 +77,26 @@ select {"id": 48, "data": [1,2,3]}::string
 
 ---
 
-### bool(arg)
+### **`json json(arg)`**
 
-Convert **`arg`** value to **`BOOL`**. **`arg`** supported types are **`REAL`**, **`BOOL`**, **`INT`**,
-**`TIMESTAMP`** and **`INTERVAL`**.
+Convert **`arg`** value to **`JSON`**.
 
 ```SQL
-select 1::bool
-[true]
+select 123::json
+[123]
 
-select 0::bool
-[false]
+select 123::json::type
+["json"]
 ```
 
 ---
 
-### real(arg)
+### **`json json_import(string)`**
 
-Convert **`arg`** value to **`REAL`**. **`arg`** supported types are **`REAL`**, **`BOOL`**, **`INT`**,
-**`TIMESTAMP`**.
-
-```SQL
-select type(123::real)
-["real"]
-```
-
----
-
-### native(string)
-
-Convert value from **`STRING`** to a native system type.
+Parse JSON **`STRING`** to **`JSON`** type.
 
 ```SQL
-select "{\"id\": 48, \"data\": [1, 2, 3]}"::native
+select '{"id": 48, "data": [1, 2, 3]}'::json_import
 [{
   "id": 48,
   "data": [1, 2, 3]
@@ -92,7 +105,7 @@ select "{\"id\": 48, \"data\": [1, 2, 3]}"::native
 
 ---
 
-### interval(string)
+### **`interval interval(string)`**
 
 Convert value from **`STRING`** to **`INTERVAL`**.
 
@@ -103,9 +116,9 @@ select '1 hour 5 minutes 6 seconds'::interval
 
 ---
 
-### timestamp(string)
-### timestamp(string, timezone)
-### timestamp(int)
+### **`timestamp timestamp(string, timezone)`**
+### **`timestamp timestamp(string)`**
+### **`timestamp timestamp(int)`**
 
 Convert from **`STRING`** to **`TIMEZONE`**. If the **`timezone`** argument is provided, the
 timestamp will be created according to it.
@@ -141,9 +154,9 @@ select "2024-09-26 12:12:10.684550"::timestamp('UTC')
 ```
 ---
 
-### vector(array)
+### **`vector vector(json)`**
 
-Convert from **`ARRAY`** to **`VECTOR`**. Array values must be integers or reals.
+Convert from **`JSON`** array to **`VECTOR`**. Array values must be integers or floats.
 
 ```SQL
 select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector

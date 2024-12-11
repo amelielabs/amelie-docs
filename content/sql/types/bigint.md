@@ -7,12 +7,12 @@ bookToc: false
 
 ## BIGINT
 
+**`BIGINT`**, **`INT64`**, **`I64`** defines `64bit` integer.
+
 All integer types are signed and can be used in arithmetical operations or as part of
 the primary or secondary key.
 
-* **`I64`**, **`INT64`**, **`BIGINT`**
-
-  Defines `64bit` integer. The supported range is from **`-9223372036854775808`** to **`9223372036854775807`**.
+The supported range is from **`-9223372036854775808`** to **`9223372036854775807`**.
 
 ---
 

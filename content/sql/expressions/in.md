@@ -20,9 +20,6 @@ the expressions (including subqueries results) on the right.
 select 1 in (1,2,3)
 [true]
 
-select 1 in (select 1)
-[true]
-
-select 1 in (select * from [1,2,3])
+select 1 in (select id from test)
 [true]
 ```

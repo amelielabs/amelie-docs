@@ -7,11 +7,7 @@ bookToc: false
 
 ## FLOAT
 
-Floating-point number types with different sizes are supported.
-
-* **`FLOAT`**
-
-	Encoded as 32bit floating-point number.
+**`FLOAT`** defines `32bit` floating-point number.
 
 ---
 

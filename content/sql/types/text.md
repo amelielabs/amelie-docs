@@ -7,11 +7,11 @@ bookToc: false
 
 ## TEXT
 
-Defines a UTF8 encoded string. Types can be used as a part of the primary or secondary key.
+**`TEXT`**, **`STRING`** defines a UTF8 encoded string.
 
-* **`TEXT`**, **`STRING`**
+Single quotes or double quotes can be used to define a string. Strings can contain escape characters.
 
-	Single quotes or double quotes can be used to define a string. Strings can contain escape characters.
+Types can be used as a part of the primary or secondary key.
 
 ---
 

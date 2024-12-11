@@ -8,7 +8,9 @@ bookToc: false
 
 All encoding functions are located in the **`public`** schema, which is default.
 
-### encode(string, encoding)
+---
+
+### **`string encode(string, encoding)`**
 
 Encode the **`string`** using the specified **`encoding`**.
 
@@ -22,7 +24,9 @@ select {"data": [1,2,3]}::string::encode("base64")
 ["eyJkYXRhIjogWzEsIDIsIDNdfQ=="]
 ```
 
-### decode(string, encoding)
+---
+
+### **`string decode(string, encoding)`**
 
 Decode the **`string`** using the specified **`encoding`**.
 

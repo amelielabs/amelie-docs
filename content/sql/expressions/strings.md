@@ -13,6 +13,8 @@ Following string expressions are supported:
 
 * expr || expr
 
+Any operation with **`NULL`** value produce **`NULL`**.
+
 ---
 
 ```SQL

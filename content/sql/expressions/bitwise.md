@@ -18,6 +18,8 @@ Following bitwise operations are supported:
 * expr >> expr
 * ~expr
 
+Any operation with **`NULL`** value produce **`NULL`**.
+
 ---
 
 ```SQL

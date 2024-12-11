@@ -9,18 +9,19 @@ bookToc: false
 
 Unary square brackets **`[]`** operator can be used to create an array object. Arrays can have zero or
 more values. Index operator **`[`** can be used to access array value by index.
-
-[Array Functions](/docs/sql/functions/array) are designed to do basic operations using arrays.
+Array can contain values of any other type.
 
 Unary curly brackets **`{}`** operator can be used to create an object. An object can have zero or more values.
-Each value must have a unique key. The dot operator **`.`** and index operator **`[`** can access the object
-value by key.
+Each value expected to have a unique key, but this is not enforced. The dot operator **`.`** and index
+operator **`[`** can access the object value by key.
 
-[Object Functions](/docs/sql/functions/object) are designed to do basic operations using objects.
+Objects are dynamic, and each value is an expression that is evaluated at runtime.
+It may contain other expressions, function calls, and subqueries.
 
-Both array and object can contain values of any other type. Arrays and objects are dynamic, and
-each value is an expression evaluated at runtime. It may contain other expressions, function
-calls, and subqueries.
+[JSON Functions](/docs/sql/functions/json) can be used to do basic operations using JSON arrays and objects.
+
+Any type can be [casted](/docs/sql/functions/casting) to the **`JSON`**, or a string can be
+parsed and [imported](/docs/sql/functions/json) as the **`JSON`** type.
 
 ---
 
@@ -30,9 +31,6 @@ select [1,2,3]
 
 select [1,2,3][2]
 [3]
-
-select * from [1,2,3]
-[1, 2, 3]
 
 select {"id": 48, "data": [1,2,3]}
 [{
@@ -49,8 +47,8 @@ select {"at": current_timestamp, "id": system.config().uuid}
   "id": "a74fbf39-cc9d-314e-a33e-3aa47559ffe5"
 }]
 
-select {"total": select count(*) from [1,2,3]}
+select {"total": select count(*) from test}
 [{
-  "total": [3]
+  "total": 3
 }]
 ```

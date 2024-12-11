@@ -8,7 +8,9 @@ bookToc: false
 
 All functions are located in the **`public`** schema, which is default.
 
-### error(string)
+---
+
+### **`null error(string)`**
 
 Generate an error.
 
@@ -19,7 +21,7 @@ select error("error message")
 
 ---
 
-### serial(schema, name)
+### **`int serial(schema, name)`**
 
 Get current serial value of the table identified by
 the **`schema`** and **`name`**.

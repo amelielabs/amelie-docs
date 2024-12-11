@@ -9,7 +9,7 @@ bookToc: false
 
 Following arithmetical operations are supported:
 
-#### **`INT`** and **`REAL`**
+#### **`INT, FLOAT, DOUBLE`**
 
 * expr + expr
 * expr - expr
@@ -17,7 +17,7 @@ Following arithmetical operations are supported:
 * expr / expr
 * expr % expr
 
-#### **`TIMESTAMP`** and **`INTERVAL`**
+#### **`TIMESTAMP, INTERVAL`**
 
 * expr + expr
 * expr - expr
@@ -27,6 +27,8 @@ Following arithmetical operations are supported:
 * expr + expr
 * expr - expr
 * expr * expr
+
+Any operation with **`NULL`** value produce **`NULL`**.
 
 ---
 

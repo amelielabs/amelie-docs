@@ -7,12 +7,12 @@ bookToc: false
 
 ## SMALLINT
 
+**`SMALLINT`**, **`INT16`**, **`I16`** defines `16bit` integer.
+
 All integer types are signed and can be used in arithmetical operations or as part of
 the primary or secondary key.
 
-* **`I16`**, **`INT16`**, **`SMALLINT`**
-
-  Defines `16bit` integer. The supported range is from **`-32768`** to **`32767`**.
+The supported range is from **`-32768`** to **`32767`**.
 
 ---
 

@@ -16,9 +16,9 @@ EXISTS (expr)
 ---
 
 ```SQL
-select exists(select * from [])
-[false]
-
-select exists(select * from [1,2,3])
+select exists(select * from test)
 [true]
+
+select exists(select * from test limit 0)
+[false]
 ```

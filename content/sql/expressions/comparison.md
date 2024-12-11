@@ -9,7 +9,7 @@ bookToc: false
 
 The following operations of comparison are supported:
 
-#### **`INT, REAL, BOOL`** and **`TIMESTAMP`**
+#### **`INT, FLOAT, DOUBLE, BOOL, TIMESTAMP`**
 
 * expr = expr
 * expr > expr
@@ -41,13 +41,11 @@ The following operations of comparison are supported:
 
 * expr = expr
 
-#### **`ARRAY`** only
+#### **`JSON`** only
 
 * expr = expr
 
-#### **`NULL`** only
-
-* expr = expr
+Any operation with **`NULL`** value produce **`NULL`**.
 
 ---
 

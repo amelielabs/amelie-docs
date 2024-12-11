@@ -15,8 +15,6 @@ Unary square brackets **`[]`** operator can be used to create an array object. A
 more values. Index operator **`[`** can be used to access array value by index.
 Array can contain values of any other type.
 
-[Array Functions](/docs/sql/functions/array) can be used to do basic operations using JSON arrays.
-
 Unary curly brackets **`{}`** operator can be used to create an object. An object can have zero or more values.
 Each value expected to have a unique key, but this is not enforced. The dot operator **`.`** and index
 operator **`[`** can access the object value by key.
@@ -24,7 +22,7 @@ operator **`[`** can access the object value by key.
 Objects are dynamic, and each value is an expression that is evaluated at runtime.
 It may contain other expressions, function calls, and subqueries.
 
-[Object Functions](/docs/sql/functions/object) can be used to do basic operations using JSON objects.
+[JSON Functions](/docs/sql/functions/json) can be used to do basic operations using JSON arrays and objects.
 
 Any type can be [casted](/docs/sql/functions/casting) to the **`JSON`**, or a string can be
 parsed and [imported](/docs/sql/functions/json) as the **`JSON`** type.

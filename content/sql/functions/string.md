@@ -1,5 +1,5 @@
 ---
-weight: 7
+weight: 3
 title: "String"
 bookToc: false
 ---
@@ -8,10 +8,12 @@ bookToc: false
 
 All string functions are located in the **`public`** schema, which is default.
 
-### length(string)
-### size(string)
+---
 
-Return the **`string`** size.
+### **`int length(arg)`**
+### **`int size(arg)`**
+
+Return the size of the argument, which can be **`STRING`**, **`JSON`** or **`VECTOR`**.
 
 ```SQL
 select "hello"::size
@@ -20,7 +22,7 @@ select "hello"::size
 
 ---
 
-### concat(...)
+### **`string concat(...)`**
 
 Concatenate strings. **`NULL`** values will be ignored.
 
@@ -34,7 +36,7 @@ select concat("a", "b", null, "c")
 
 ---
 
-### lower(string)
+### **`string lower(string)`**
 
 Convert the **`string`** to the lowercase presentation.
 
@@ -45,7 +47,7 @@ select "HELLO"::lower
 
 ---
 
-### upper(string)
+### **`string upper(string)`**
 
 Convert the **`string`** to the uppercase presentation.
 
@@ -56,8 +58,8 @@ select "hello"::upper
 
 ---
 
-### substr(string, pos)
-### substr(string, pos, count)
+### **`string substr(string, pos)`**
+### **`string substr(string, pos, count)`**
 
 Copy substring starting from **`pos`**. The position starts from one.
 
@@ -71,7 +73,7 @@ select "hello world"::substr(7, 2)
 
 ---
 
-### strpos(string, substring)
+### **`int strpos(string, substring)`**
 
 Return **`substring`** position in the **`string`**. Position starts from one.
 If the **`substring`** is not found, zero will be returned.
@@ -83,7 +85,7 @@ select "hello world"::strpos("world")
 
 ---
 
-### replace(string, from, to)
+### **`string replace(string, from, to)`**
 
 Replace substring in the **`string`**.
 
@@ -94,12 +96,12 @@ select "hello world"::replace("hello", "hi")
 
 ---
 
-### ltrim(string)
-### ltrim(string, filter)
-### rtrim(string)
-### rtrim(string, filter)
-### trim(string)
-### trim(string, filter)
+### **`string ltrim(string)`**
+### **`string ltrim(string, filter)`**
+### **`string rtrim(string)`**
+### **`string rtrim(string, filter)`**
+### **`string trim(string)`**
+### **`string trim(string, filter)`**
 
 Remove characters defined by the **`filter`** string from the left, right, or left and
 right parts of the **`string`**. If **`filter`** is not
@@ -115,7 +117,7 @@ select "XxXxYXZxXhello world"::ltrim("XxYZZ")
 
 ---
 
-### like(string, pattern)
+### **`bool like(string, pattern)`**
 
 Identical to the [LIKE](/docs/sql/expressions/like) operator.
 

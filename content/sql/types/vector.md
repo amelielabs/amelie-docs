@@ -11,6 +11,7 @@ bookToc: false
 
 Vector values must be integers or floats. Vectors can be compared, added together,
 subtracted, multiplied, or divided.
+
 ---
 
 ```SQL
@@ -29,12 +30,12 @@ create table test (id int primary key serial, embedding vector)
 insert into test (embedding) values ([3,2,0,1,4])
 insert into test (embedding) values ([2,2,0,1,3])
 insert into test (embedding) values ([1,3,0,1,4])
-
-select * format from test
+select * from test
 [[1, [3, 2, 0, 1, 4]], [2, [2, 2, 0, 1, 3]], [3, [1, 3, 0, 1, 4]]]
 
+-- order rows by similarity
 select
-   id, embedding::cos_distance([1,3,1,2,0]::vector)
+   id, embedding::cos_distance(vector [1,3,1,2,0])
 from
    test
 order by 2 desc;

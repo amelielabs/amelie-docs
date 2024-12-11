@@ -8,8 +8,7 @@ bookToc: false
 ## Transactions
 
 Amelie supports non-interactive deterministic distributed multi-statement ACID transactions.
-
-Non-interactive means that all transaction statements (including the optional [BEGIN/COMMIT](/docs/sql/transactions/begin_commit))
+Non-interactive means that all transaction statements (including [BEGIN/COMMIT](/docs/sql/transactions/begin_commit))
 must be provided for execution.
 
 Amelie is designed for short ACID transactions and fast real-time analytics. It is not intended for
@@ -36,12 +35,12 @@ After being received and parsed, each transaction is compiled into two bytecode 
 A **`Virtual Machine`** (VM) interprets bytecode until completion and produces an accessible result.
 There are several VM contexts. One for each transaction coordinator and one for each compute node in the system.
 
-[EXPLAIN/PROFILE](/docs/sql/explain/) commands can be used to get more details the transaction and its bytecode.
-
-Each session acts as a distributed transaction coordinator.
+Each session acts as a distributed transaction coordinator for compute nodes.
 
 Amelie generates an optimized parallel plan for executing multi-statement transactions and [CTE](/docs/sql/transactions/cte).
 It will combine together node requests to reduce wait times and speed up the execution of non-dependable CTE statements.
+
+[EXPLAIN/PROFILE](/docs/sql/explain/) commands can be used to get more details about the transaction and its bytecode.
 
 ### Execution
 

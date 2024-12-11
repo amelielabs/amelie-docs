@@ -17,7 +17,7 @@ expr operator ALL (expr)
 
 Supported **`operators`** are: **`=`**, **`>`**, **`>=`**, **`<`**, **`<=`**.
 
-The expression must be either **`ARRAY`** or **`Subquery`**.
+The expression must be either **`JSON array`** or **`Subquery`**.
 
 ---
 
@@ -25,9 +25,9 @@ The expression must be either **`ARRAY`** or **`Subquery`**.
 select 1 = any ([1,2,3])
 [true]
 
-select 1 = any (select * from [1,2,3])
+select 1 = any (select id from test)
 [true]
 
-select 1 = all ([1,2,3])
+select 1 = all (select id from test)
 [false]
 ```

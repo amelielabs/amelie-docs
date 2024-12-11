@@ -1,5 +1,5 @@
 ---
-weight: 8
+weight: 7
 title: "Vector"
 bookToc: false
 ---
@@ -8,11 +8,45 @@ bookToc: false
 
 All vector functions are located in the **`public`** schema, which is default.
 
-### cos_distance(vector, vector)
+---
+
+### **`vector vector(json)`**
+
+Convert from **`JSON`** array to **`VECTOR`**. Array values must be integers or floats.
+
+```SQL
+select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector
+[1.5, 3.15, 4.5]
+```
+
+---
+
+### **`vector cos_distance(vector, vector)`**
 
 Calculate cosine distance between two vectors.
 
 ```SQL
 select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector)
 [0.481455]
+```
+
+```SQL
+create table test (id int primary key serial, embedding vector)
+insert into test (embedding) values ([3,2,0,1,4])
+insert into test (embedding) values ([2,2,0,1,3])
+insert into test (embedding) values ([1,3,0,1,4])
+select * from test
+[[1, [3, 2, 0, 1, 4]], [2, [2, 2, 0, 1, 3]], [3, [1, 3, 0, 1, 4]]]
+
+-- order rows by similarity
+select id, embedding::cos_distance(vector [1,3,1,2,0])
+from test
+order by 2 desc;
+[[1, 0.481455], [3, 0.403715], [2, 0.391419]]
+
+-- find the most alike row
+select id from test
+order by embedding::cos_distance(vector [1,3,1,2,0]) desc
+limit 1;
+[1]
 ```

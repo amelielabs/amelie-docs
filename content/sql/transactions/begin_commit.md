@@ -1,12 +1,13 @@
 ---
 weight: 2
-title: "BEGIN/COMMIT"
+title: "BEGIN / COMMIT"
 bookToc: false
 ---
 
 ## BEGIN / COMMIT Statements
 
 ```SQL
+[EXPLAIN | PROFILE]
 [BEGIN]
 statement[; statement ...]
 [COMMIT]

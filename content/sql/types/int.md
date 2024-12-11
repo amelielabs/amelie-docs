@@ -7,12 +7,12 @@ bookToc: false
 
 ## INT
 
+**`INT`**, **`INTEGER`**, **`INT32`**, **`I32`** defines `32bit` integer.
+
 All integer types are signed and can be used in arithmetical operations or as part of
 the primary or secondary key.
 
-* **`I32`**, **`INT32`**, **`INT`**, **`INTEGER`**
-
-  Defines `32bit` integer. The supported range is from **`-2147483648`** to **`2147483647`**.
+The supported range is from **`-2147483648`** to **`2147483647`**.
 
 ---
 

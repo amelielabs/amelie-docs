@@ -15,13 +15,14 @@ expr::[schema.]function_name[(arguments)]
 
 Amelie implements standard built-in functions for different purposes.
 The call operator **`()`** is used to call a function. Each function has an associated schema.
+If the schema is not defined, the function will be searched in the **`public`** schema.
 
 Any function with one or more arguments can be executed in the format of the method using the **`::`** operator.
 A method call is an alternative way to call a function. It automatically passes the left
 expression result as the first argument to the function call, allowing functions to be called
 in a chain one by one without nesting.
 
-In the method call format, the parentheses **`()`** can be omitted if a function has only one argument.
+In the method call format, the parentheses **`()`** can be omitted if the function has only one argument.
 
 ---
 

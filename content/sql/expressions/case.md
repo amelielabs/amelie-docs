@@ -25,24 +25,34 @@ END
   `CASE` returns the result of the **`THEN`** clause if its corresponding **`WHEN`** clause evaluates to true.
 
 For both cases, if no matches are found, the result of the **`ELSE`** clause will be returned or **`NULL`**
-if the **`ELSE`** clause is not defined.
+if the **`ELSE`** clause is not defined. All expression types must match.
 
 ---
 
 ```SQL
+-- case expr with else
 select
 	case 0
 		when 1 then 1
 		when 2 then 2
-		else 'not found'
+		else 3
 	end;
-["not found"]
+[3]
 
+-- case expr
+select
+	case 0
+		when 1 then 1
+		when 2 then 2
+	end;
+[null]
+
+-- case without expr
 select
 	case
-		when * = 2 then 'found'
+		when id = 2 then 'found'
 		else 'not found'
 	end
-from [1,2,3];
+from test;
 ["not found", "found", "not found"]
 ```

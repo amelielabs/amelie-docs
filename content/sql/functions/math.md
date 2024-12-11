@@ -1,5 +1,5 @@
 ---
-weight: 8
+weight: 9
 title: "Math"
 bookToc: false
 ---
@@ -8,7 +8,9 @@ bookToc: false
 
 All math functions are located in the **`public`** schema, which is default.
 
-### greatest(...)
+---
+
+### **`any greatest(...)`**
 
 Compare arguments and return max.
 
@@ -19,7 +21,7 @@ select greatest(1,2,3)
 
 ---
 
-### least(...)
+### **`any least(...)`**
 
 Compare arguments and return min.
 
@@ -30,9 +32,10 @@ select least(1,2,3)
 
 ---
 
-### abs(arg)
+### **`int abs(int)`**
+### **`double fabs(double)`**
 
-Compute absolute value of the integer or real.
+Compute absolute value of the integer or double.
 
 ```SQL
 select (-63)::abs
@@ -41,9 +44,9 @@ select (-63)::abs
 
 ---
 
-### round(real)
+### **`int round(double)`**
 
-Round **`real`** value and return int.
+Round **`double`** value and return int.
 
 ```SQL
 select 3.14::round
@@ -52,9 +55,9 @@ select 3.14::round
 
 ---
 
-### sign(arg)
+### **`int sign(arg)`**
 
-Return **`-1, 0`** or **`1`** depending of the **`int`** or **`real`** sign.
+Return **`-1, 0`** or **`1`** depending of the **`int`** or **`double`** sign.
 
 ```SQL
 select -3::sign
@@ -66,7 +69,7 @@ select 0::sign
 
 ---
 
-### ceil(real)
+### **`double ceil(double)`**
 
 Return the smallest int value not less than argument.
 
@@ -77,7 +80,7 @@ select 3.14::ceil
 
 ---
 
-### exp(real)
+### **`double exp(double)`**
 
 Returns the natural exponential of the value.
 
@@ -88,7 +91,7 @@ select exp(1.0)
 
 ---
 
-### floor(real)
+### **`double floor(double)`**
 
 Return the largest int value, which is not greater than the argument.
 
@@ -99,36 +102,38 @@ select 3.14::floor
 
 ---
 
-### mod(arg, arg)
+### **`int mod(int, int)`**
+### **`double fmod(double, double)`**
 
-Get the remainder after division. Supported types are **`int`** and **`real`**.
+Get the remainder after division. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select mod(9, 4)
 [1]
 
-select mod(30.0, 3.6)
+select fmod(30.0, 3.6)
 [1.2]
 ```
 
 ---
 
-### power(x, y)
+### **`int pow(int, int)`**
+### **`double fpow(double, double)`**
 
 Return the value of x raised to the power of y.
-Supported types are **`int`** and **`real`**.
+Supported types are **`int`** and **`double`**.
 
 ```SQL
-select power(9, 3)
+select pow(9, 3)
 [729]
 
-select power(9.1, 3.2)
+select fpow(9.1, 3.2)
 [1172.01]
 ```
 
 ---
 
-### trunc(real)
+### **`double trunc(double)`**
 
 Round to the nearest int value that is not larger in magnitude.
 
@@ -142,7 +147,7 @@ select trunc(-48.8023)
 
 ---
 
-### pi()
+### **`double pi()`**
 
 Return the value of PI.
 
@@ -153,10 +158,10 @@ select pi()
 
 ---
 
-### sqrt(arg)
+### **`double sqrt(arg)`**
 
 Return non-negative square root of the argument.
-Supported types are **`int`** and **`real`**.
+Supported types are **`int`** and **`double`**.
 
 ```SQL
 select sqrt(2)
@@ -165,9 +170,9 @@ select sqrt(2)
 
 ---
 
-### acos(arg)
+### **`double acos(arg)`**
 
-Return the arc cosine of the argument. Supported types are **`int`** and **`real`**.
+Return the arc cosine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select acos(1)
@@ -176,9 +181,9 @@ select acos(1)
 
 ---
 
-### acosh(arg)
+### **`double acosh(arg)`**
 
-Return the the inverse hyperbolic cosine of the argument. Supported types are **`int`** and **`real`**.
+Return the the inverse hyperbolic cosine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select acosh(1)
@@ -187,9 +192,9 @@ select acosh(1)
 
 ---
 
-### asin(arg)
+### **`double asin(arg)`**
 
-Return the arc sine of the argument. Supported types are **`int`** and **`real`**.
+Return the arc sine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select asin(1)
@@ -198,9 +203,9 @@ select asin(1)
 
 ---
 
-### asinh(arg)
+### **`double asinh(arg)`**
 
-Return the inverse hyperbolic sine of the argument. Supported types are **`int`** and **`real`**.
+Return the inverse hyperbolic sine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select asinh(1)
@@ -209,9 +214,9 @@ select asinh(1)
 
 ---
 
-### atan(arg)
+### **`double atan(arg)`**
 
-Return the arc tangent of the argument. Supported types are **`int`** and **`real`**.
+Return the arc tangent of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select atan(1)
@@ -220,9 +225,9 @@ select atan(1)
 
 ---
 
-### atanh(arg)
+### **`double atanh(arg)`**
 
-Return the inverse hyperbolic tangent of the argument. Supported types are **`int`** and **`real`**.
+Return the inverse hyperbolic tangent of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select atanh(0.5)
@@ -231,10 +236,10 @@ select atanh(0.5)
 
 ---
 
-### atan2(y, x)
+### **`double atan2(y, x)`**
 
 Return the principal value of the arc tangent of **`y / x`**, using the signs of the two
-arguments to determine the quadrant of the result. Supported types are **`int`** and **`real`**.
+arguments to determine the quadrant of the result. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select atan2(1, 0)
@@ -243,9 +248,9 @@ select atan2(1, 0)
 
 ---
 
-### cos(arg)
+### **`double cos(arg)`**
 
-Return the cosine of the argument. Supported types are **`int`** and **`real`**.
+Return the cosine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select cos(1)
@@ -254,9 +259,9 @@ select cos(1)
 
 ---
 
-### cosh(arg)
+### **`double cosh(arg)`**
 
-Return the hyperbolic cosine of the argument. Supported types are **`int`** and **`real`**.
+Return the hyperbolic cosine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select cosh(1)
@@ -265,9 +270,9 @@ select cosh(1)
 
 ---
 
-### sin(arg)
+### **`double sin(arg)`**
 
-Return the sine of the argument. Supported types are **`int`** and **`real`**.
+Return the sine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select sin(1)
@@ -276,9 +281,9 @@ select sin(1)
 
 ---
 
-### sinh(arg)
+### **`double sinh(arg)`**
 
-Return the hyperbolic sine of the argument. Supported types are **`int`** and **`real`**.
+Return the hyperbolic sine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select sin(1)
@@ -287,9 +292,9 @@ select sin(1)
 
 ---
 
-### tan(arg)
+### **`double tan(arg)`**
 
-Return the tangent of the argument. Supported types are **`int`** and **`real`**.
+Return the tangent of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select tan(1)
@@ -298,9 +303,9 @@ select tan(1)
 
 ---
 
-### tanh(arg)
+### **`double tanh(arg)`**
 
-Return the hyperbolic tangent of the argument. Supported types are **`int`** and **`real`**.
+Return the hyperbolic tangent of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select tanh(1)
@@ -309,9 +314,9 @@ select tanh(1)
 
 ---
 
-### ln(arg)
+### **`double ln(arg)`**
 
-Return the natural logarithm on the argument. Supported types are **`int`** and **`real`**.
+Return the natural logarithm on the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select ln(2.0)
@@ -320,10 +325,10 @@ select ln(2.0)
 
 ---
 
-### log(arg)
-### log10(arg)
+### **`double log(arg)`**
+### **`double log10(arg)`**
 
-Return the base 10 logarithm of the argument. Supported types are **`int`** and **`real`**.
+Return the base 10 logarithm of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select log(1000)
@@ -331,9 +336,9 @@ select log(1000)
 
 ---
 
-### log2(arg)
+### **`double log2(arg)`**
 
-Return the base 2 logarithm of the argument. Supported types are **`int`** and **`real`**.
+Return the base 2 logarithm of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
 select log2(16)

@@ -7,12 +7,12 @@ bookToc: false
 
 ## TINYINT
 
+**`TINYINT`**, **`INT8`**, **`I8`** defines `8bit` integer.
+
 All integer types are signed and can be used in arithmetical operations or as part of
 the primary or secondary key.
 
-* **`I8`**, **`INT8`**, **`TINYINT`**
-  
-  Defines `8bit` integer. The supported range is from **`-128`** to **`127`**.
+The supported range is from **`-128`** to **`127`**.
 
 ---
 
