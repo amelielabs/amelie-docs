@@ -29,6 +29,4 @@ below has an [equivalent function](/docs/sql/functions/system) for convenience.
 
 [SHOW TABLES](/docs/sql/ddl/tables/show) – show tables created in the system.
 
-[SHOW VIEWS](/docs/sql/ddl/views/show) – show views created in the system.
-
 ---

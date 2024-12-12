@@ -13,6 +13,7 @@ bookToc: false
 | directory         |  string  | read-only | Base directory |
 | timezone_default  |  string  | cli       | Default server timezone |
 | timezone          |  string  | session   | Session timezone, set to `timezone_default` if not defined |
+| format            |  string  | session   | Session result format |
 
 ---
 
@@ -22,4 +23,7 @@ show uuid
 
 select system.config().uuid
 ["a74fbf39-cc9d-314e-a33e-3aa47559ffe5"]
+
+show format
+["json-pretty"]
 ```

@@ -26,13 +26,12 @@ the memory size of the original table to complete while the previous table is ke
 operation repeating during WAL replay, it is recommended to run the [CHECKPOINT](/docs/storage/checkpoint) operation right
 after its completion.
 
-Instead of following the traditional relational approach of adding and dropping new
-columns, it is recommended to organize tables by separating and creating volatile columns
-as document values (objects and arrays) or ultimately moving to store objects (schemaless).
+Is recommended to organize tables by separating and creating volatile columns
+using JSON (to store objects or arrays).
 
 ---
 
 ```SQL
 create table test (device int primary key)
-alter table test add column metrics array
+alter table test add column metrics json
 ```

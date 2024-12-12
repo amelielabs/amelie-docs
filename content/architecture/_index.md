@@ -56,48 +56,56 @@ After being parsed, each SQL DML or Query statement generates two bytecode secti
 * The second one is for the actual data access and modification for each node individually
 
 ```text {style="github-dark"}
-> explain select count(*) from test
-
-bytecode [coordinator]
---------
- 0            send_all        0      0      0
- 1                recv        0      0      0
- 2    group_merge_recv        0      0      0
- 3                 set        1      0      0
- 4    cursor_open_expr        1      0      6
- 5                 jmp        9      0      0
- 6     group_read_aggr        2      1      0
- 7             set_add        1      2      0
- 8         cursor_next        1      6      0
- 9        cursor_close        1      0      0
-10             cte_set        0      1      0
-11                body        0      0      0
-12                 ret        0      0      0
-
-bytecode [node]
---------
- 0               group        0      0      0
- 1           group_add        0      0      0
- 2                null        1      0      0
- 3                push        1      0      0
- 4         group_write        0      0      0
- 5             int_min        1      0      0
- 6                push        1      0      0
- 7         cursor_open        0      0      9      # public.test (primary)
- 8                 jmp       13      0      0
- 9         cursor_read        1      0      0
-10                push        1      0      0
-11         group_write        0      0      0
-12         cursor_next        0      9      0
-13        cursor_close        0      0      0
-14              result        0      0      0
-15                 ret        0      0      0
+explain select count(*) from test
+[{
+  "bytecode": {
+    "coordinator": {
+      "00": "send_all            0      0      -     # public.test",
+      "01": "recv                0      0      0     ",
+      "02": "merge_recv_agg      0      0      20    ",
+      "03": "set                 1      1      0     ",
+      "04": "store_open          1      0      6     ",
+      "05": "jmp                 10     0      0     ",
+      "06": "count               2      1      0     ",
+      "07": "push                2      0      0     ",
+      "08": "set_add             1      0      0     ",
+      "09": "store_next          1      6      0     ",
+      "10": "store_open          1      1      0     ",
+      "11": "cte_set             0      1      0     ",
+      "12": "content             0      -      -     ",
+      "13": "ret                 0      0      0     "
+    },
+    "node": {
+      "00": "set                 0      1      1     ",
+      "01": "int                 1      -      0     # -2147483648",
+      "02": "push                1      0      0     ",
+      "03": "table_open          0      0      5     # public.test (primary)",
+      "04": "jmp                 12     0      0     ",
+      "05": "bool                1      1      0     ",
+      "06": "push                1      0      0     ",
+      "07": "set_get             1      0      0     ",
+      "08": "int                 2      -      0     # 1",
+      "09": "push                2      0      0     ",
+      "10": "set_agg             0      1      20    ",
+      "11": "table_next          0      5      0     ",
+      "12": "table_close         0      0      0     ",
+      "13": "bool                1      1      0     ",
+      "14": "push                1      0      0     ",
+      "15": "set_get             1      0      0     ",
+      "16": "null                2      0      0     ",
+      "17": "push                2      0      0     ",
+      "18": "set_agg             0      1      20    ",
+      "19": "result              0      0      0     ",
+      "20": "ret                 0      0      0     "
+    }
+  }
+}]
 ```
 
 ### Virtual Machine
 
 A virtual machine interprets bytecode until completion and produces an accessible result.
-The VM implementation uses an optimized register-based bytecode interpreter, similar to one used in modern
+The VM implementation uses an optimized register-based bytecode interpreter, similar to the spirit of one used in modern
 programming languages.
 
 Using this approach would allow to implement even more efficient JIT (Just-In-Time) compilation to machine
@@ -111,21 +119,17 @@ executed only on one node, and others will need to be executed on several nodes.
 
 ### Deterministic Executor
 
-There are a couple of approaches to handling distributed transaction concurrency issues. For a
-performance-oriented database, the obvious choice might be to introduce a conflict-resolving graph and
-deal with the necessity of garbage collection (MVCC).
+Amelie follows a deterministic transactions approach (Calvin-style) for transaction processing since
+it allows implementing a highly performant execution pipeline without dealing with complex distributed
+snapshot issues and avoids multi-versioning (MVCC) altogether. It does not require periodic garbage collection and VACUUM.
 
-In the case of the highly parallel distributed in-memory database, we chose to follow a deterministic approach instead
-(Calvin-style) since it allows us to implement a highly performant execution pipeline without
-dealing with complex distributed snapshot issues and avoid multi-versioning.
+The Amelie executor plays a crucial role in the system. It is responsible for executing distributed transactions
+in a deterministic order, implementing Group Commit, and managing write-ahead logging (WAL).
 
-Another reason is that Amelie is a document database, which makes it possible and easy to keep frequently accessed
-and updated data together for better performance. The Amelie executor plays a crucial role in the system.
-It is responsible for executing distributed transactions in a deterministic order, implementing Group Commit,
-and managing write-ahead logging (WAL).  The executor is optimized for pipelining and optimistic execution.
-New requests will not wait for the Commit event for other ongoing transactions. Instead, the executor creates
-a dependency graph between transactions and performs Group Abort in case of failure and Group Commit in
-the likely case of success. One session always becomes Group Commit Leader to drive Group Commit logic.
+The executor is optimized for pipelining and optimistic execution. New requests will not wait for the Commit event
+for other ongoing transactions. Instead, the executor creates a dependency graph between transactions and
+performs Group Abort in case of failure and Group Commit in the likely case of success. One session always becomes
+Group Commit Leader to drive Group Commit logic.
 
 All transactions always operate on a **`STRICT SERIALIZABLE`** level.
 
@@ -139,14 +143,15 @@ blocking but completely parallel. Each worker node will be involved in creating 
 
 ### Distributed and Shared Tables
 
-By default, all tables are distributed, meaning each table will have partitions created on each node for
-parallel access or modification. It's important to note that currently, distributed tables cannot be part of a
-JOIN with other distributed tables. However, they can be used as a part of a multi-statement transaction or CTE.
+By default, all tables are **`distributed`**, meaning each table will have partitions created on each node
+for parallel access or modification. It's important to note that currently, distributed tables cannot
+be part of a JOIN with other distributed tables. However, they can be used as a part of a
+multi-statement transaction or CTE.
 
-There is also a special type of table called Shared. Those tables are not partitioned and are available for
-direct read access from any node. They can be used to implement efficient parallel JOIN operations with
-other distributed tables. Frequent updating of a shared table is not efficient since it requires coordination
-and exclusive access.
+To address this issue, we created a special type of table called **`shared`**. Those tables are not partitioned and
+are available for direct read access from any node. They can be used to implement efficient parallel
+JOIN operations with other distributed tables. However, frequent updating of a shared table is less
+efficient since it requires coordination and exclusive access.
 
 ### Data Persistency
 

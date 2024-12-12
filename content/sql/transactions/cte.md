@@ -22,7 +22,7 @@ non-dependable CTE statements.
 ### RETURNING
 
 ```SQL
-RETURNING expression [AS alias], ... [FORMAT 'type']
+RETURNING expression [AS alias][, ...] [FORMAT 'type']
 ```
 
 All DML statements have a **`RETURNING`** clause, which allows the assignment of CTE value

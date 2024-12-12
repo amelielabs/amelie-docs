@@ -23,7 +23,7 @@ Supported options are:
 |  tls_cert        | string | The client certificate. |
 |  tls_key         | string | The client certificate key. |
 
-Replica connection will be start automatically if the replication is active.
+Replica connection will start automatically if the replication is active.
 
 ---
 

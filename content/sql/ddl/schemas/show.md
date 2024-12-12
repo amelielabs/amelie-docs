@@ -21,24 +21,18 @@ show schemas
 [{
   "system": {
     "name": "system",
-    "system": true,
-    "create": false
+    "system": true
   },
   "public": {
     "name": "public",
-    "system": true,
-    "create": true
+    "system": true
   },
   "test": {
     "name": "test",
-    "system": false,
-    "create": true
+    "system": false
   }
 }]
 
 select system.schemas().public.system
 [true]
-
-select name from system.schemas()
-["system", "public", "test"]
 ```

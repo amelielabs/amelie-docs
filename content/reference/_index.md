@@ -14,7 +14,6 @@ bookToc: false
 * [CREATE SCHEMA](/docs/sql/ddl/schemas/create)
 * [CREATE TABLE](/docs/sql/ddl/tables/create)
 * [CREATE INDEX](/docs/sql/ddl/indexes/create)
-* [CREATE VIEW](/docs/sql/ddl/views/create)
 * [CREATE USER](/docs/users/create)
 * [CREATE NODE](/docs/cluster/create)
 * [CREATE REPLICA](/docs/repl/create)
@@ -25,7 +24,6 @@ bookToc: false
 * [DROP SCHEMA](/docs/sql/ddl/schemas/drop)
 * [DROP TABLE](/docs/sql/ddl/tables/drop)
 * [DROP INDEX](/docs/sql/ddl/indexes/drop)
-* [DROP VIEW](/docs/sql/ddl/views/drop)
 * [DROP USER](/docs/users/drop)
 * [DROP NODE](/docs/cluster/drop)
 * [DROP REPLICA](/docs/repl/drop)
@@ -35,7 +33,6 @@ bookToc: false
 * [ALTER SCHEMA](/docs/sql/ddl/schemas/alter)
 * [ALTER TABLE](/docs/sql/ddl/tables/alter)
 * [ALTER INDEX](/docs/sql/ddl/indexes/alter)
-* [ALTER VIEW](/docs/sql/ddl/views/alter)
 
 {{% /columns %}}
 
@@ -81,7 +78,6 @@ bookToc: false
 
 * [SHOW SCHEMAS](/docs/sql/ddl/schemas/show)
 * [SHOW TABLES](/docs/sql/ddl/tables/show)
-* [SHOW VIEWS](/docs/sql/ddl/views/show)
 
 <--->
 

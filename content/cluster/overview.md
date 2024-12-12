@@ -21,7 +21,7 @@ interfering with other nodes.
 
 Amelie supports non-interactive deterministic distributed multi-statement ACID transactions.
 The Amelie executor executes distributed transactions in a deterministic order, implements **`GROUP COMMIT`**,
-and manages write-ahead logging (WAL). All transactions always operate on a **`SERIALIZABLE`** level.
+and manages write-ahead logging (WAL). All transactions always operate on a **`STRICT SERIALIZABLE`** level.
 
 During initial repository creation, the number of compute nodes and frontend workers will be set automatically
 according to the number of CPU cores in the system or configured manually. Compute nodes can also be created or

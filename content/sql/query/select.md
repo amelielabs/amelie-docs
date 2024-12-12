@@ -7,30 +7,30 @@ bookToc: false
 ## SELECT Statement
 
 ```SQL
-SELECT [DISTINCT] expr[, ...]
-[INTO cte]
-[[FROM [schema.]object_name | cte | expr[, ...]
- [JOIN [schema.]object_name | cte | expr ON (expr) [, ...]]
+SELECT [DISTINCT [ON (expr, ...)]] expr [AS alias] [, ...]
+[FORMAT type]
+[[FROM [schema.]relation | cte | (SELECT ...) [, ...]
+ [JOIN [schema.]relation | cte | (SELECT ...) ON (expr) [, ...]]
  [USE INDEX (name)]]
-[GROUP BY expr[, ...]]
 [WHERE expr]
-[ORDER BY [ASC|DESC] expr[, ...]]
+[GROUP BY column_order | alias | expr[, ...] [HAVING expr]]
+[ORDER BY column_order | alias | expr [ASC|DESC] [, ...]]
 [LIMIT expr] [OFFSET expr]
 ```
 
-Retrieve rows from a table, view, CTE, array, or object.
+Retrieve rows from a table, CTE result, or subquery.
 
 If the object schema is not defined, the object will be searched in the **`public`** schema.
 
 Select operation is distributed and transactional and will be executed on one or more nodes if tables are
 involved. Amelie is designed to split the work between partitions and compute nodes (**`PUSHDOWN`**).
 
-Operations such as **`GROUP BY`**, **`ORDER BY`**, partial aggregations, and **`JOIN`** will be executed individually per
+Operations such as **`GROUP BY`**, **`ORDER BY`** and **`JOIN`** will be executed individually per
 compute node in parallel. After the successful execution, the results of each computation are merged together,
 processed, and returned.
 
-It is possible to join tables, views, CTE, arrays, and objects together. Currently, only **`INNER JOIN`** is supported and
-will be extended in future releases. Joining distributed tables directly has some limitations.
+Currently, only **`INNER JOIN`** is supported and will be extended in future releases. Joining distributed
+tables directly has some limitations.
 
 Select can be part of a multi-statement transaction and executed inside expressions (as subquery).
 
@@ -41,7 +41,7 @@ Amelie is designed for short ACID transactions and fast real-time analytics. It 
 multi-statement transactions or queries that generate large amounts of data. There are configurable limits for
 transaction size.
 
-The **`INTO`** clause provides an alternative way to define the statement as a CTE.
+The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 ### Index and Keys matching
 
@@ -55,32 +55,113 @@ inside partitions.
 
 ### Distributed JOIN and Shared Tables
 
-By default, all tables are **`distributed`**, meaning each distributed table will have partitions created on each node
+By default, all tables are **`DISTRIBUTED`**, meaning each distributed table will have partitions created on each node
 for parallel access or modification. Currently, distributed tables cannot be used directly in a **`JOIN`** with other
 distributed tables. However, they can be used in a multi-statement transaction or CTE.
 
-There is also a particular type of table called **`shared`**. Those tables have only one partition and are available for
+There is also a particular type of table called **`SHARED`**. Those tables have only one partition and are available for
 direct read access from any node. They can be used to implement efficient parallel **`JOIN`** operations with other
 distributed tables. Frequent updating of a shared table is inefficient since it requires coordination and exclusive access.
 
 ### Subqueries
 
-Currently, subqueries can be made to shared tables, views, and expressions only. Subqueries to other distributed tables
+Currently, subqueries can be made to shared tables, and CTE results. Subqueries to other distributed tables
 are not supported directly. Instead, CTE must be used. It will guarantee that a query to the distributed table is
 executed only once and not nested.
 
 ---
 
 ```SQL
+-- get the number of hits for the last hour for each device
+create table test (
+  time      timestamp,
+  device_id int,
+  primary key(time, device_id)
+);
+
+insert into test values ('2024-12-12 13:53:52.712025', 1);
+insert into test values ('2024-12-12 14:20:52.712025', 1);
+insert into test values ('2024-12-12 14:25:52.712025', 2);
+insert into test values ('2024-12-12 14:27:52.712025', 1);
+
+-- do parallel GROUP BY and ORDER BY on each compute node
+select device_id, count(*) as hits
+format 'json-obj'
+from test
+where time >= timestamp '2024-12-12 14:30:00' - interval '1 hour'
+group by 1
+order by 1;
+[{"device_id": 1, "hits": 3}, {"device_id": 2, "hits": 1}]
+```
+
+```SQL
+-- using generated stored and resolved columns to
+-- group inserts by 1 hour per device_id and aggregate hits
+create table test (
+  time      timestamp as ( time::date_bin(interval '1 hour') ) stored,
+  device_id int,
+  hits      int default 1 as ( hits + 1 ) resolved,
+  primary key(time, device_id)
+);
+
+insert into test(time, device_id) values ('2024-12-12 13:53:52.712025', 1);
+insert into test(time, device_id) values ('2024-12-12 14:20:52.712025', 1);
+insert into test(time, device_id) values ('2024-12-12 14:25:52.712025', 2);
+insert into test(time, device_id) values ('2024-12-12 14:27:52.712025', 1);
+
+-- GROUP BY is not needed, since rows are already aggregated
+select time, device_id, hits
+format 'json-obj-pretty'
+from test
+order by 1;
+[{
+  "time": "2024-12-12 13:00:00+02",
+  "device_id": 1,
+  "hits": 1
+}, {
+  "time": "2024-12-12 14:00:00+02",
+  "device_id": 2,
+  "hits": 1
+}, {
+  "time": "2024-12-12 14:00:00+02",
+  "device_id": 1,
+  "hits": 2
+}]
+```
+
+```SQL
+-- similarity search using vector
+create table test (id int primary key serial, embedding vector)
+insert into test (embedding) values ([3,2,0,1,4])
+insert into test (embedding) values ([2,2,0,1,3])
+insert into test (embedding) values ([1,3,0,1,4])
+select * from test
+[[1, [3, 2, 0, 1, 4]], [2, [2, 2, 0, 1, 3]], [3, [1, 3, 0, 1, 4]]]
+
+-- order rows by similarity
+select id, embedding::cos_distance(vector [1,3,1,2,0])
+from test
+order by 2 desc;
+[[1, 0.481455], [3, 0.403715], [2, 0.391419]]
+
+-- find the most alike row
+select id from test
+order by embedding::cos_distance(vector [1,3,1,2,0]) desc
+limit 1;
+[1]
+```
+
+```SQL
+-- JSON expressions
 select {"at": current_timestamp, "id": system.config().uuid}
 [{
   "at": "2024-09-26 16:14:00.722393+03",
   "id": "a74fbf39-cc9d-314e-a33e-3aa47559ffe5"
 }]
 
-select {"list": select * from [1,2,3]}
+select {"total": select count(*) from test}
 [{
-  "list": [1, 2, 3]
+  "total": 3
 }]
 ```
 
@@ -104,20 +185,9 @@ create table t2 (id int primary key)
 insert into t1 values (1), (3)
 insert into t2 values (1), (2), (3)
 
+-- t1_result will be passed down for parallel JOIN with t2
 with t1_result (id) as (
     select * from t1
 ) select t2.* from t2 join t1_result on (t2.id = t1_result.id);
 [[1], [3]]
-```
-
-```SQL
-select now()
-["2024-09-29 10:56:52.753882+03"]
-
-select *, count(*)
-from generate_series(now() - interval '1 hour', now() - interval '1 min', interval '1 min')
-group by date_bin(interval '15 minutes', *, now() - interval '1 hour')
-order by *;
-[["2024-09-29 09:56:53.681898+03", 15], ["2024-09-29 10:11:53.681898+03", 15],
- ["2024-09-29 10:26:53.681898+03", 15], ["2024-09-29 10:41:53.681898+03", 15]]
 ```

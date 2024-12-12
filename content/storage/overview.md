@@ -6,7 +6,6 @@ bookToc: false
 
 ## Data Storage and Durability
 
-
 Amelie supports ACID transactions and Commits only if data is written to WAL first (unless it is configured not to do so).
 
 The persistency model is based on classic In-Memory database logic using WAL and monotonically increasing

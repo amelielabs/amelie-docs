@@ -8,9 +8,9 @@ bookToc: false
 ## UPDATE Statement
 
 ```SQL
-UPDATE [schema.]table_name SET column[.path] = expr[, ... ]
+UPDATE [schema.]table_name SET column[.path] = expr | DEFAULT [, ... ] 
 [WHERE expr]
-[RETURNING expr [INTO cte]]
+[RETURNING expr [AS alias][, ...] [FORMAT type]]
 ```
 
 Update rows in the table.
@@ -20,17 +20,15 @@ Update can be part of a multi-statement transaction.
 
 If the table schema is not defined, the table name will be searched in the **`public`** schema.
 
-The path path can be nested if the update column is a **`OBJECT`**.
-
-The **`RETURNING`** clause allows the defined expression value to be returned in case of successful completion. This value can
+The **`RETURNING`** clause allows the values to be returned in case of successful completion. The values can
 be used as a result in the corresponding [CTE](/docs/sql/transactions/cte) or as a standalone result.
 
-The **`INTO`** clause provides an alternative way to define this statement as a [CTE](/docs/sql/transactions/cte).
+The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 ---
 
 ```SQL
-create table test (id int primary key, data array)
+create table test (id int primary key, data json)
 insert into test values (1, [1,2,3]), (2, ['a', 'b', 'c'])
 
 select data from test
@@ -41,7 +39,7 @@ update test set data = data::append(4) where id = 1 returning *
 ```
 
 ```SQL
-create table test (id int primary key, obj object)
+create table test (id int primary key, obj json)
 insert into test values (1, {"id": 1, "data": null})
 
 update test set obj.data = [1,2,3] returning *
@@ -62,18 +60,5 @@ update test set obj.data = obj.data::append(4) returning *
 with updated_items as (
     update test set data = data::append(4) where id = 1 returning *
 ) select count(*) from updated_items;
-[1]
-
--- alternative CTE form using RETURNING INTO
-begin;
-update test set data = data::append(4) where id = 1 returning * into updated_items;
-select count(*) from updated_items;
-commit;
-[1]
-
-begin;
-update test set data = data::append(4) where id = 1 returning * into updated_items;
-select updated_items::size;
-commit;
 [1]
 ```

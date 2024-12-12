@@ -4,18 +4,22 @@ title: "Aggregates"
 bookToc: false
 ---
 
-## Partial Aggregates
+## Aggregate Functions
 
 Amelie executes aggregate functions individually per compute node in parallel.
-After the successful execution, each computation's results are merged, processed, and returned.
+After the successful execution, each computation's results (partial aggregates) are merged, processed, and returned.
 
-Amelie supports the following aggregate functions:
+Following aggregate functions are supported:
 
-* **`count(expr)`**
-* **`sum(expr)`**
-* **`avg(expr)`**
-* **`min(expr)`**
-* **`max(expr)`**
+* **`count(any)`**
+* **`sum(int)`**
+* **`sum(double)`**
+* **`avg(int)`**
+* **`avg(double)`**
+* **`min(int)`**
+* **`min(double)`**
+* **`max(int)`**
+* **`max(double)`**
 
 All functions ignore **`NULL`** values.
 
@@ -28,6 +32,4 @@ create table test (id int primary key)
 insert into test values (1), (2), (3)
 select count(*), min(id), max(id), sum(id), avg(id) from test
 [[3, 1, 3, 6, 2]]
-select count(*) from [1, 2, null, 3]
-[3]
 ```

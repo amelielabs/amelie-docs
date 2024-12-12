@@ -28,7 +28,4 @@ select system.users().test
 [{
   "name": "test"
 }]
-
-select name from system.users()
-["test"]
 ```

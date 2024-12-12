@@ -24,16 +24,17 @@ create schema test
 
 show schemas
 [{
-  "name": "system",
-  "system": true,
-  "create": false
-}, {
-  "name": "public",
-  "system": true,
-  "create": true
-}, {
-  "name": "test",
-  "system": false,
-  "create": true
+  "system": {
+    "name": "system",
+    "system": true
+  },
+  "public": {
+    "name": "public",
+    "system": true
+  },
+  "test": {
+    "name": "test",
+    "system": false
+  }
 }]
 ```

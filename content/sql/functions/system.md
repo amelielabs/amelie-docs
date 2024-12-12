@@ -8,7 +8,7 @@ bookToc: false
 
 All system functions are located in the **`system`** schema.
 
-Following system functions are aliases for corresponding [SHOW](/docs/tutorial/monitoring) commands.
+Following system functions are aliases for corresponding [SHOW](/docs//monitoring/overview) commands.
 
 ---
 

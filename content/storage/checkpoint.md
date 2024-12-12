@@ -20,7 +20,7 @@ will return without error.
 
 It is possible to scale this process by using several workers. By default, the number of workers
 is set as defined in the **`checkpoint_workers`** config variable. The **`checkpoint_interval`** variable can be
-configured to run the checkpoint operation periodically. It is set to 5 minutes by default.
+configured to run the checkpoint operation periodically. It is set to **`5 minutes`** by default.
 
 The checkpoint operation is also responsible for WAL retention and automatically removing older
 checkpoint directories.

@@ -25,11 +25,15 @@ show tables
     "shared": false,
     "columns": [{
       "name": "id",
-      "type": "int",
+      "type": 2,
+      "type_size": 4,
       "constraint": {
         "not_null": true,
-        "generated": 0,
-        "modulo": 9223372036854775807,
+        "serial": false,
+        "random": false,
+        "random_modulo": 9223372036854775807,
+        "as_stored": "",
+        "as_resolved": "",
         "default": null
       }
     }],
@@ -39,89 +43,76 @@ show tables
       "unique": true,
       "primary": true,
       "keys": [{
-        "ref": 0,
-        "type": "int",
-        "path": ""
+        "column": 0
       }]
     }],
     "partitions": [{
-      "id": 23,
-      "node": "69a4d13c-5977-7ef3-8e39-89ba9905bf99",
+      "id": 50,
+      "node": "8ce9b211-8624-ed5d-c9d2-241c78f16f9a",
       "min": 0,
       "max": 736
     }, {
-      "id": 24,
-      "node": "1b8d1aeb-7128-de49-8f1e-64251002b165",
+      "id": 51,
+      "node": "26e5e42a-67ca-5d6c-6c1b-1bf8116943a8",
       "min": 736,
       "max": 1472
     }, {
-      "id": 25,
-      "node": "3f63ddba-60b9-ddae-a2cf-eb25df5d9d3b",
+      "id": 52,
+      "node": "22a57593-2ccb-98eb-3321-b2816b9fb4ac",
       "min": 1472,
       "max": 2208
     }, {
-      "id": 26,
-      "node": "61d24724-1795-a5cf-d6ff-01dd245b5666",
+      "id": 53,
+      "node": "1c34c0b1-da70-2623-0217-ab2f102b5116",
       "min": 2208,
       "max": 2944
     }, {
-      "id": 27,
-      "node": "c426f4c0-3ce1-0ba1-1af7-8dbb0e3ed93a",
+      "id": 54,
+      "node": "36064abc-fe69-d214-0e53-9c5e3b3e8160",
       "min": 2944,
       "max": 3680
     }, {
-      "id": 28,
-      "node": "1078dd91-21b8-723c-c787-fbd1c7468869",
+      "id": 55,
+      "node": "8b5f91bd-c6d2-bd84-f3b4-e76b51f8af00",
       "min": 3680,
       "max": 4416
     }, {
-      "id": 29,
-      "node": "4cdc5f85-ba26-e902-f976-91b0d6c241c6",
+      "id": 56,
+      "node": "2bad7851-4522-2b3e-cd42-e34a59d9630e",
       "min": 4416,
       "max": 5152
     }, {
-      "id": 30,
-      "node": "10984861-f867-991c-2f93-de449ce484fb",
+      "id": 57,
+      "node": "a90bd338-691a-e0e9-50d1-8524fda1ac61",
       "min": 5152,
       "max": 5888
     }, {
-      "id": 31,
-      "node": "23ee0716-8d66-167f-c760-9b20fbaa1bf7",
+      "id": 58,
+      "node": "e7f15ffe-5463-8ba4-e12d-d636c43941db",
       "min": 5888,
       "max": 6624
     }, {
-      "id": 32,
-      "node": "0a780a21-78b7-19bc-b2d2-766f2247c9d8",
+      "id": 59,
+      "node": "182bcbe3-0afe-0e91-4b14-68c1584c276c",
       "min": 6624,
       "max": 7360
     }, {
-      "id": 33,
-      "node": "558a2971-60b6-ec06-c8ae-c9c0b5973a2d",
+      "id": 60,
+      "node": "baa1f250-c164-ca4e-c1e2-2469a7b93067",
       "min": 7360,
       "max": 8096
     }]
   }
 }]
 
-select system.tables()::type
-["object"]
-
 select system.tables()['public.test'].indexes
-[{
+[[{
   "name": "primary",
   "type": 2,
   "unique": true,
   "primary": true,
   "keys": [{
-    "ref": 0,
-    "type": "int",
-    "path": ""
+    "column": 0
   }]
-}]
-
-select *.schema, *.name from system.tables()
-[["public", "test"]]
-
-select count(*), min(*.min), max(*.max) from system.tables()['public.test'].partitions
-[[11, 0, 8096]]
+}]]
 ```

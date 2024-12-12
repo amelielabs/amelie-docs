@@ -22,7 +22,4 @@ show users
 [{
   "name": "test"
 }]
-
-select name from system.users()
-["test"]
 ```
