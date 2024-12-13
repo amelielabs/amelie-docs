@@ -25,6 +25,8 @@ Learn more about its [Architecture](/docs/architecture/) and [Get Started](/docs
 
 {{% columns %}}
 
+#### DDL
+
 * [CREATE SCHEMA](/docs/sql/ddl/schemas/create)
 * [CREATE TABLE](/docs/sql/ddl/tables/create)
 * [CREATE INDEX](/docs/sql/ddl/indexes/create)
@@ -35,6 +37,8 @@ Learn more about its [Architecture](/docs/architecture/) and [Get Started](/docs
 
 <--->
 
+####
+
 * [DROP SCHEMA](/docs/sql/ddl/schemas/drop)
 * [DROP TABLE](/docs/sql/ddl/tables/drop)
 * [DROP INDEX](/docs/sql/ddl/indexes/drop)
@@ -43,6 +47,8 @@ Learn more about its [Architecture](/docs/architecture/) and [Get Started](/docs
 * [DROP REPLICA](/docs/repl/drop)
 
 <--->
+
+####
 
 * [ALTER SCHEMA](/docs/sql/ddl/schemas/alter)
 * [ALTER TABLE](/docs/sql/ddl/tables/alter)
@@ -53,6 +59,9 @@ Learn more about its [Architecture](/docs/architecture/) and [Get Started](/docs
 
 {{% columns %}}
 
+#### DML
+
+
 * [INSERT / UPSERT](/docs/sql/dml/insert)
 * [UPDATE](/docs/sql/dml/update)
 * [DELETE](/docs/sql/dml/delete)
@@ -60,9 +69,13 @@ Learn more about its [Architecture](/docs/architecture/) and [Get Started](/docs
 
 <--->
 
+#### Query
+
 * [SELECT](/docs/sql/query/select)
 
 <--->
+
+####
 
 * [Functions](/docs/sql/functions/system)
 * [Expressions](/docs/sql/expressions/arithmetical)
@@ -74,11 +87,15 @@ Learn more about its [Architecture](/docs/architecture/) and [Get Started](/docs
 
 {{% columns %}}
 
+#### Replication
+
 * [START REPLICATION](/docs/repl/start)
 * [SUBSCRIBE](/docs/repl/subscribe)
 * [CHECKPOINT](/docs/storage/checkpoint)
 
 <--->
+
+#### 
 
 * [STOP REPLICATION](/docs/repl/stop)
 * [UNSUBSCRIBE](/docs/repl/unsubscribe)
@@ -90,10 +107,14 @@ Learn more about its [Architecture](/docs/architecture/) and [Get Started](/docs
 
 {{% columns %}}
 
+#### System
+
 * [SHOW SCHEMAS](/docs/sql/ddl/schemas/show)
 * [SHOW TABLES](/docs/sql/ddl/tables/show)
 
 <--->
+
+#### 
 
 * [SHOW USERS](/docs/users/show)
 * [SHOW NODES](/docs/cluster/show)
@@ -102,6 +123,8 @@ Learn more about its [Architecture](/docs/architecture/) and [Get Started](/docs
 * [SHOW WAL](/docs/storage/show)
 
 <--->
+
+#### 
 
 * [SHOW ALL](/docs/configuration/show)
 * [SHOW CONFIG](/docs/configuration/show)

@@ -137,19 +137,19 @@ insert into example (embedding) values ([3,2,0,1,4]);
 insert into example (embedding) values ([2,2,0,1,3]);
 insert into example (embedding) values ([1,3,0,1,4]);
 select * from example;
-[[1, [3, 2, 0, 1, 4]], [2, [2, 2, 0, 1, 3]], [3, [1, 3, 0, 1, 4]]]
+[[0, [3, 2, 0, 1, 4]], [1, [2, 2, 0, 1, 3]], [2, [1, 3, 0, 1, 4]]]
 
 -- order rows by similarity
 select id, embedding::cos_distance(vector [1,3,1,2,0])
 from example
 order by 2 desc;
-[[1, 0.481455], [3, 0.403715], [2, 0.391419]]
+[[1, 0.481455], [2, 0.403715], [1, 0.391419]]
 
 -- find the most alike row
 select id from example
 order by embedding::cos_distance(vector [1,3,1,2,0]) desc
 limit 1;
-[1]
+[0]
 ```
 
 ```SQL
