@@ -16,9 +16,9 @@ interval. If the interval is not defined, **`1 year`** will be set automatically
 ---
 
 ```SQL
-create user test secret 'test'
+create user test secret 'test';
 
-create token test expire '3 month'
+create token test expire '3 month';
 ["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiAidGVzdCIsICJpYXQiOiAxNzI3OTYyMzU3LCAiZXhwIjogMTczNTkxMTE1N30.79g-77QHd82f7cSbeZSXaz4lP_7F3J4bm7EuZOUCmmM"]
 ```
 

@@ -16,5 +16,5 @@ Start replication and connect to replicas.
 ---
 
 ```SQL
-start repl
+start repl;
 ```

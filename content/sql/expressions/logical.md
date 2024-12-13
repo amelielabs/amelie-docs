@@ -15,12 +15,12 @@ Following basic logical operations are supported:
 ---
 
 ```SQL
-select not true
+select not true;
 [false]
 
-select true and true
+select true and true;
 [true]
 
-select 0 and 1
+select 0 and 1;
 [false]
 ```

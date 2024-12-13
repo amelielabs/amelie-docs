@@ -17,9 +17,9 @@ the expressions (including subqueries results) on the right.
 ---
 
 ```SQL
-select 1 in (1,2,3)
+select 1 in (1,2,3);
 [true]
 
-select 1 in (select id from test)
+select 1 in (select id from test);
 [true]
 ```

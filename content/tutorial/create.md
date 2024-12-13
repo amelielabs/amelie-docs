@@ -40,8 +40,8 @@ The most notable options are:
 | listen            | array | List of the addresses to accept connections. By default, it accepts all connections without authentication. |
 
 
-The [listen](/docs/configuration/server) option can be configured to accept connections from different network addresses,
-with or without authentication, with or without using the [TLS certificates](/docs/configuration/tls).
+The [listen](/docs/configuration/settings) option can be configured to accept connections from different network addresses,
+with or without authentication, with or without using the [TLS certificates](/docs/configuration/settings).
 
 ## Cluster Configuration
 

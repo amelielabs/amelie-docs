@@ -19,7 +19,7 @@ System schemas **`system`** and **`public`** cannot be altered.
 ---
 
 ```SQL
-create schema test
-alter schema test rename to example
-drop schema example
+create schema example;
+alter schema example rename to example2;
+drop schema example2;
 ```

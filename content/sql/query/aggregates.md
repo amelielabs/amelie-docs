@@ -28,8 +28,8 @@ There are also [Lambda Aggregates](/docs/sql/query/lambda), a unique aggregate t
 ---
 
 ```SQL
-create table test (id int primary key)
-insert into test values (1), (2), (3)
-select count(*), min(id), max(id), sum(id), avg(id) from test
+create table example (id int primary key);
+insert into example values (1), (2), (3);
+select count(*), min(id), max(id), sum(id), avg(id) from example;
 [[3, 1, 3, 6, 2]]
 ```

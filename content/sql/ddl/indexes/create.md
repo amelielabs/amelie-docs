@@ -48,6 +48,6 @@ Currently, the **`CREATE INDEX`** operation cannot be part of multi-statement tr
 ---
 
 ```SQL
-create table metrics (id int primary key, ts timestamp) with (type = 'hash')
-create index ts_idx on metrics (ts) with (type = 'tree')
+create table metrics (id int primary key, ts timestamp) with (type = 'hash');
+create index ts_idx on metrics (ts) with (type = 'tree');
 ```

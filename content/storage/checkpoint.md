@@ -28,17 +28,17 @@ checkpoint directories.
 ---
 
 ```SQL
-checkpoint
+checkpoint;
 
-show checkpoint_interval
+show checkpoint_interval;
 ["5 min"]
 
-show checkpoint_workers
+show checkpoint_workers;
 [3]
 
-show checkpoint
+show checkpoint;
 [210]
 
-show lsn
+show lsn;
 [210]
 ```

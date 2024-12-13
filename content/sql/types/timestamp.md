@@ -23,28 +23,28 @@ All operations are corrected according to the current timezone settings.
 ---
 
 ```SQL
-select now(), current_timestamp
+select now(), current_timestamp;
 ["2024-09-26 17:11:03.640011+03", "2024-09-26 17:11:03.640011+03"]
 
-select system.config().timezone
+select system.config().timezone;
 ["Asia/Famagusta"]
 
-select current_timestamp - interval '5 hours'
+select current_timestamp - interval '5 hours';
 ["2024-09-26 12:12:10.684550+03"]
 
-select timestamp "2024-09-26 12:12:10.684550+03"
+select timestamp "2024-09-26 12:12:10.684550+03";
 ["2024-09-26 09:12:10.684550+00"]
 
-select "2024-09-26 12:12:10.684550+03"::timestamp
+select "2024-09-26 12:12:10.684550+03"::timestamp;
 ["2024-09-26 09:12:10.684550+00"]
 
-select "2024-09-26 12:12:10.684550+03"::timestamp::int
+select "2024-09-26 12:12:10.684550+03"::timestamp::int;
 [1727341930684550]
 
-select 1727341930684550::timestamp
+select 1727341930684550::timestamp;
 ["2024-09-26 12:12:10.684550+03"]
 
-select {"at": now(), "id": system.config().uuid}
+select {"at": now(), "id": system.config().uuid};
 [{
   "at": "2024-09-26 16:14:00.722393+03",
   "id": "a74fbf39-cc9d-314e-a33e-3aa47559ffe5"
@@ -52,14 +52,14 @@ select {"at": now(), "id": system.config().uuid}
 ```
 
 ```SQL
-create table test (ts timestamp primary key, metrics json)
-insert into test values (current_timestamp, [1,2,3])
+create table example (ts timestamp primary key, metrics json);
+insert into example values (current_timestamp, [1,2,3]);
 
-select * from test
+select * from example;
 [["2024-09-26 17:13:34.621227+03", [1, 2, 3]]]
 
-set timezone to 'UTC'
+set timezone to 'UTC';
 
-select * from test
+select * from example;
 [["2024-09-26 14:13:34.621227+00", [1, 2, 3]]]
 ```

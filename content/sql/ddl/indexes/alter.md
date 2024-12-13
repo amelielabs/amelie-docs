@@ -19,7 +19,7 @@ The **`ALTER INDEX`** operation cannot be part of multi-statement transactions.
 ---
 
 ```SQL
-create table metrics (id int primary key, ts timestamp) with (type = 'hash')
-create index ts_idx on metrics (ts) with (type = 'tree')
-alter index ts_idx on metrics rename to ts_renamed
+create table metrics (id int primary key, ts timestamp) with (type = 'hash');
+create index ts_idx on metrics (ts) with (type = 'tree');
+alter index ts_idx on metrics rename to ts_renamed;
 ```

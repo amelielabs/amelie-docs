@@ -18,5 +18,5 @@ The **`DROP TABLE`** operation cannot be part of multi-statement transactions.
 ---
 
 ```SQL
-drop table public.test
+drop table public.example;
 ```

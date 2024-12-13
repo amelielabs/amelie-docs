@@ -12,6 +12,6 @@ bookToc: false
 ---
 
 ```SQL
-select 3.14
+select 3.14;
 [3.14]
 ```

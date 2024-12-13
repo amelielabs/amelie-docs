@@ -11,7 +11,7 @@ Setting up certificates allows the server to create secure **`HTTPS TLS`** conne
 The TLS support, along with the authentication, can be enabled (or turned off) for each listening address individually.
 For example, it is possible to turn off the authentication for localhost and enable it for other network interfaces.
 
-Learn more about the [Server TLS Settings](/docs/configuration/tls) and the [Server Configuration](/docs/configuration/server).
+Learn more about the [Server TLS Settings](/docs/configuration/settings) and the [Server Configuration](/docs/configuration/settings).
 
 ## Self-Signed Certificates
 

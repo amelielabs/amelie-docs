@@ -20,7 +20,7 @@ Supported encodings are:
 * **`base64url`**
 
 ```SQL
-select {"data": [1,2,3]}::string::encode("base64")
+select {"data": [1,2,3]}::string::encode("base64");
 ["eyJkYXRhIjogWzEsIDIsIDNdfQ=="]
 ```
 
@@ -36,7 +36,7 @@ Supported encodings are:
 * **`base64url`**
 
 ```SQL
-select "eyJkYXRhIjogWzEsIDIsIDNdfQ=="::decode("base64")::native
+select "eyJkYXRhIjogWzEsIDIsIDNdfQ=="::decode("base64")::json_import;
 [{
   "data": [1, 2, 3]
 }]

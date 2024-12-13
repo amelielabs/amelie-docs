@@ -27,9 +27,9 @@ expr >= a AND expr <= b
 ---
 
 ```SQL
-select 3 between 1 and 3
+select 3 between 1 and 3;
 [true]
 
-select id from test where id between 1 and 4
+select id from test where id between 1 and 4;
 [1, 2, 3, 4]
 ```

@@ -17,20 +17,20 @@ The supported range is from **`-32768`** to **`32767`**.
 ---
 
 ```SQL
-select 123
+select 123;
 [123]
 ```
 
 ```SQL
-create table test(id int16 primary key)
-insert into test values (1), (2), (3)
-select id from test
-[1, 2, 3]
+create table example (id smallint primary key serial, data int);
+insert into example (data) values (1), (2), (3);
+select * from example;
+[[0, 1], [1, 2], [2, 3]]
 ```
 
 ```SQL
-create table test(id smallint primary key serial, data int)
-insert into test (data) values (1), (2), (3)
-select * from test
-[[0, 1], [1, 2], [2, 3]]
+create table example (id int16 primary key);
+insert into example values (1), (2), (3);
+select id from example;
+[1, 2, 3]
 ```

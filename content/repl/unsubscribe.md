@@ -16,25 +16,25 @@ Unsubscribe from the primary server and become the primary server itself.
 
 ```SQL
 -- set primary id on replica server and start the replication
-subscribe "00000000-0000-0000-0000-000000000000"
-start repl
+subscribe "00000000-0000-0000-0000-000000000000";
+start repl;
 
-show read_only
+show read_only;
 [true]
 
-show repl
+show repl;
 [{
   "active": true,
   "role": "replica",
   "primary": "00000000-0000-0000-0000-000000000000"
 }]
 
-unsubscribe
+unsubscribe;
 
-show read_only
+show read_only;
 [false]
 
-show repl
+show repl;
 [{
   "active": true,
   "role": "primary",

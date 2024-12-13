@@ -73,21 +73,21 @@ executed only once and not nested.
 
 ```SQL
 -- get the number of hits for the last hour for each device
-create table test (
+create table example (
   time      timestamp,
   device_id int,
   primary key(time, device_id)
 );
 
-insert into test values ('2024-12-12 13:53:52.712025', 1);
-insert into test values ('2024-12-12 14:20:52.712025', 1);
-insert into test values ('2024-12-12 14:25:52.712025', 2);
-insert into test values ('2024-12-12 14:27:52.712025', 1);
+insert into example values ('2024-12-12 13:53:52.712025', 1);
+insert into example values ('2024-12-12 14:20:52.712025', 1);
+insert into example values ('2024-12-12 14:25:52.712025', 2);
+insert into example values ('2024-12-12 14:27:52.712025', 1);
 
 -- do parallel GROUP BY and ORDER BY on each compute node
 select device_id, count(*) as hits
 format 'json-obj'
-from test
+from example
 where time >= timestamp '2024-12-12 14:30:00' - interval '1 hour'
 group by 1
 order by 1;
@@ -97,22 +97,22 @@ order by 1;
 ```SQL
 -- using generated stored and resolved columns to
 -- group inserts by 1 hour per device_id and aggregate hits
-create table test (
+create table example (
   time      timestamp as ( time::date_bin(interval '1 hour') ) stored,
   device_id int,
   hits      int default 1 as ( hits + 1 ) resolved,
   primary key(time, device_id)
 );
 
-insert into test(time, device_id) values ('2024-12-12 13:53:52.712025', 1);
-insert into test(time, device_id) values ('2024-12-12 14:20:52.712025', 1);
-insert into test(time, device_id) values ('2024-12-12 14:25:52.712025', 2);
-insert into test(time, device_id) values ('2024-12-12 14:27:52.712025', 1);
+insert into example(time, device_id) values ('2024-12-12 13:53:52.712025', 1);
+insert into example(time, device_id) values ('2024-12-12 14:20:52.712025', 1);
+insert into example(time, device_id) values ('2024-12-12 14:25:52.712025', 2);
+insert into example(time, device_id) values ('2024-12-12 14:27:52.712025', 1);
 
 -- GROUP BY is not needed, since rows are already aggregated
 select time, device_id, hits
 format 'json-obj-pretty'
-from test
+from example
 order by 1;
 [{
   "time": "2024-12-12 13:00:00+02",
@@ -131,21 +131,21 @@ order by 1;
 
 ```SQL
 -- similarity search using vector
-create table test (id int primary key serial, embedding vector)
-insert into test (embedding) values ([3,2,0,1,4])
-insert into test (embedding) values ([2,2,0,1,3])
-insert into test (embedding) values ([1,3,0,1,4])
-select * from test
+create table example (id int primary key serial, embedding vector);
+insert into example (embedding) values ([3,2,0,1,4]);
+insert into example (embedding) values ([2,2,0,1,3]);
+insert into example (embedding) values ([1,3,0,1,4]);
+select * from example;
 [[1, [3, 2, 0, 1, 4]], [2, [2, 2, 0, 1, 3]], [3, [1, 3, 0, 1, 4]]]
 
 -- order rows by similarity
 select id, embedding::cos_distance(vector [1,3,1,2,0])
-from test
+from example
 order by 2 desc;
 [[1, 0.481455], [3, 0.403715], [2, 0.391419]]
 
 -- find the most alike row
-select id from test
+select id from example
 order by embedding::cos_distance(vector [1,3,1,2,0]) desc
 limit 1;
 [1]
@@ -153,13 +153,13 @@ limit 1;
 
 ```SQL
 -- JSON expressions
-select {"at": current_timestamp, "id": system.config().uuid}
+select {"at": current_timestamp, "id": system.config().uuid};
 [{
   "at": "2024-09-26 16:14:00.722393+03",
   "id": "a74fbf39-cc9d-314e-a33e-3aa47559ffe5"
 }]
 
-select {"total": select count(*) from test}
+select {"total": select count(*) from example};
 [{
   "total": 3
 }]
@@ -167,23 +167,23 @@ select {"total": select count(*) from test}
 
 ```SQL
 -- distributed JOIN using shared dictionary table
-create table collection(id int primary key)
-create shared table dict(id int primary key) with (type = 'hash')
+create table collection(id int primary key);
+create shared table dict(id int primary key) with (type = 'hash');
 
-insert into dict values (1), (3)
-insert into collection values (1), (2), (3)
+insert into dict values (1), (3);
+insert into collection values (1), (2), (3);
 
-select c.* from collection c join dict on (dict.id = c.id)
+select c.* from collection c join dict on (dict.id = c.id);
 [[1], [3]]
 ```
 
 ```SQL
 -- distributed JOIN using CTE
-create table t1 (id int primary key)
-create table t2 (id int primary key)
+create table t1 (id int primary key);
+create table t2 (id int primary key);
 
-insert into t1 values (1), (3)
-insert into t2 values (1), (2), (3)
+insert into t1 values (1), (3);
+insert into t2 values (1), (2), (3);
 
 -- t1_result will be passed down for parallel JOIN with t2
 with t1_result (id) as (

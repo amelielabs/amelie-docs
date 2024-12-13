@@ -21,14 +21,14 @@ it is recommended to run the [CHECKPOINT](/docs/storage/checkpoint) operation ri
 ---
 
 ```SQL
-create table test (id int primary key)
+create table example (id int primary key);
 
-insert into test values (1)
-insert into test values (2)
-insert into test values (2)
+insert into example values (1);
+insert into example values (2);
+insert into example values (2);
 
-truncate test
+truncate example;
 
-select * from test
+select * from example;
 []
 ```

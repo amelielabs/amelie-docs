@@ -15,7 +15,7 @@ Get current Write-Ahead Log (WAL) status.
 ---
 
 ```SQL
-show wal
+show wal;
 [{
   "active": true,
   "rotate_wm": 104857600,
@@ -28,6 +28,6 @@ show wal
   "slots_min": -1
 }]
 
-select system.wal().files
+select system.wal().files;
 [1]
 ```

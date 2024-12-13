@@ -16,5 +16,5 @@ Stop replication and close connections to replicas.
 ---
 
 ```SQL
-stop repl
+stop repl;
 ```

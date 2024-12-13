@@ -15,7 +15,7 @@ All functions are located in the **`public`** schema, which is default.
 Return a first non-null argument.
 
 ```SQL
-select coalesce(null, 1, null, 2)
+select coalesce(null, 1, null, 2);
 [1]
 ```
 
@@ -26,6 +26,6 @@ select coalesce(null, 1, null, 2)
 Return a **`null`** value if **`a`** equals **`b`**, otherwise, it returns **`a`**.
 
 ```SQL
-select nullif(1, 1)
+select nullif(1, 1);
 [null]
 ```

@@ -19,7 +19,7 @@ represent the runtime state.
 ---
 
 ```SQL
-show all
+show all;
 [{
   "version": "1.0.0",
   "uuid": "826e3f5d-6ebd-bd08-748d-57eb5e5cd565",
@@ -60,6 +60,6 @@ show all
   "psn": 25
 }]
 
-select system.config().uuid
+select system.config().uuid;
 ["826e3f5d-6ebd-bd08-748d-57eb5e5cd565"]
 ```

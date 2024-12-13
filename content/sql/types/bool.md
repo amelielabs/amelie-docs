@@ -14,10 +14,10 @@ Accepted values are **`true`** and **`false`**.
 ---
 
 ```SQL
-select true and false
+select true and false;
 [false]
 
-select {"enabled": true}
+select {"enabled": true};
 [{
   "enabled": true
 }]

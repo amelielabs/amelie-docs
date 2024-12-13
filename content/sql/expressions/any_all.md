@@ -22,12 +22,12 @@ The expression must be either **`JSON array`** or **`Subquery`**.
 ---
 
 ```SQL
-select 1 = any ([1,2,3])
+select 1 = any ([1,2,3]);
 [true]
 
-select 1 = any (select id from test)
+select 1 = any (select id from test);
 [true]
 
-select 1 = all (select id from test)
+select 1 = all (select id from test);
 [false]
 ```

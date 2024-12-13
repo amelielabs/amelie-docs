@@ -15,7 +15,7 @@ All vector functions are located in the **`public`** schema, which is default.
 Convert from **`JSON`** array to **`VECTOR`**. Array values must be integers or floats.
 
 ```SQL
-select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector
+select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector;
 [1.5, 3.15, 4.5]
 ```
 
@@ -26,26 +26,26 @@ select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector
 Calculate cosine distance between two vectors.
 
 ```SQL
-select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector)
+select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector);
 [0.481455]
 ```
 
 ```SQL
-create table test (id int primary key serial, embedding vector)
-insert into test (embedding) values ([3,2,0,1,4])
-insert into test (embedding) values ([2,2,0,1,3])
-insert into test (embedding) values ([1,3,0,1,4])
-select * from test
+create table example (id int primary key serial, embedding vector);
+insert into example (embedding) values ([3,2,0,1,4]);
+insert into example (embedding) values ([2,2,0,1,3]);
+insert into example (embedding) values ([1,3,0,1,4]);
+select * from example;
 [[1, [3, 2, 0, 1, 4]], [2, [2, 2, 0, 1, 3]], [3, [1, 3, 0, 1, 4]]]
 
 -- order rows by similarity
 select id, embedding::cos_distance(vector [1,3,1,2,0])
-from test
+from example
 order by 2 desc;
 [[1, 0.481455], [3, 0.403715], [2, 0.391419]]
 
 -- find the most alike row
-select id from test
+select id from example
 order by embedding::cos_distance(vector [1,3,1,2,0]) desc
 limit 1;
 [1]

@@ -17,5 +17,5 @@ The compute node can only be removed if no table uses it.
 ---
 
 ```SQL
-drop node "3a0803be-917f-6400-a5cb-3344f126a58b"
+drop node "3a0803be-917f-6400-a5cb-3344f126a58b";
 ```

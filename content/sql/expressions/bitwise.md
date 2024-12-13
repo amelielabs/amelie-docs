@@ -23,6 +23,6 @@ Any operation with **`NULL`** value produce **`NULL`**.
 ---
 
 ```SQL
-select 1 << 4
+select 1 << 4;
 [16]
 ```

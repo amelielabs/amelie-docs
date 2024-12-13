@@ -15,7 +15,7 @@ All functions are located in the **`public`** schema, which is default.
 Generate an error.
 
 ```SQL
-select error("error message")
+select error("error message");
 {"code": 1, "msg": "error message"}
 ```
 
@@ -27,10 +27,10 @@ Get current serial value of the table identified by
 the **`schema`** and **`name`**.
 
 ```SQL
-create table test (id int primary key serial)
-insert into test () values (), (), ()
-select * from test
+create table example (id int primary key serial);
+insert into example () values (), (), ();
+select * from example;
 [[0], [1], [2]]
-select serial("public", "test")
+select serial("public", "example");
 [3]
 ```

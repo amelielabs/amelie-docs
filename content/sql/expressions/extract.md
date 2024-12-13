@@ -35,18 +35,18 @@ Supported fields are:
 ---
 
 ```SQL
-select extract(us from timestamp '2001-01-16 20:38:40.123456')
+select extract(us from timestamp '2001-01-16 20:38:40.123456');
 [123456]
 
-select extract(us from '2001-01-16 20:38:40.123456'::timestamp)
+select extract(us from '2001-01-16 20:38:40.123456'::timestamp);
 [123456]
 
-select timestamp '2001-01-16 20:38:40.123456'::extract('us')
+select timestamp '2001-01-16 20:38:40.123456'::extract('us');
 [123456]
 
-select extract(min from interval '3 days 2 hr 47 min')
+select extract(min from interval '3 days 2 hr 47 min');
 [47]
 
-select '3 days 2 hr 47 min'::interval::extract('min')
+select '3 days 2 hr 47 min'::interval::extract('min');
 [47]
 ```

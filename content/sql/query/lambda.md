@@ -32,27 +32,27 @@ used with distributed tables (currently lambda does not support partial state me
 ---
 
 ```SQL
-create shared table test (id int primary key);
-insert into test values (1), (2), (3);
+create shared table example (id int primary key);
+insert into example values (1), (2), (3);
 
 -- similair to count(*)
-select 0 -> self + 1 from test;
+select 0 -> self + 1 from example;
 [3]
 
 -- aggregate into string
-select "" -> self::concat(id::string) from test;
+select "" -> self::concat(id::string) from example;
 ["123"]
 
 -- aggregate into JSON array
-select [] -> self::append(id) from test;
+select [] -> self::append(id) from example;
 [[1, 2, 3]]
 
 -- aggregate into JSON array in reverse
-select [] -> self::push(id) from test;
+select [] -> self::push(id) from example;
 [[3, 2, 1]]
 
 -- aggregate into JSON object
-select {} -> self::set("key_" || id::string, id) from test;
+select {} -> self::set("key_" || id::string, id) from example;
 [{
   "key_1": 1,
   "key_2": 2,
@@ -60,17 +60,17 @@ select {} -> self::set("key_" || id::string, id) from test;
 }]
 
 -- aggregate average using two lambdas
-select (0.0 -> self + id) / (0 -> self + 1) from test;
+select (0.0 -> self + id) / (0 -> self + 1) from example;
 [2]
 
 -- build json object with field which contains aggregated md5 sums
-select {"hashes": [] -> self::append(id::string::md5)} from test;
+select {"hashes": [] -> self::append(id::string::md5)} from example;
 [{
   "hashes": ["c4ca4238a0b923820dcc509a6f75849b", "c81e728d9d4c2f636f067f89cc14862c",
              "eccbc87e4b5ce2fe28308fd9f2a7baf3"]
 }]
 
 -- aggregate with GROUP BY
-select id, 0 -> self + 1 from test group by id;
+select id, 0 -> self + 1 from example group by id;
 [[1, 1], [2, 1], [3, 1]]
 ```

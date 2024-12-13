@@ -12,8 +12,8 @@ Stars are used as a placeholder for all target columns in the **`SELECT`** state
 ---
 
 ```SQL
-create table test (id int primary key)
-insert into test values (1), (2), (3)
-select * format 'json-obj' from test
+create table example (id int primary key);
+insert into example values (1), (2), (3);
+select * format 'json-obj' from example;
 [{"id": 1}, {"id": 2}, {"id": 3}]
 ```

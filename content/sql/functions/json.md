@@ -17,10 +17,10 @@ All array functions are located in the **`public`** schema, which is default.
 Append one or more values to the JSON **`array`**.
 
 ```SQL
-select [1]::append(2,3)
+select [1]::append(2,3);
 [1, 2, 3]
 
-select [1]::push_back(2,3)
+select [1]::push_back(2,3);
 [1, 2, 3]
 ```
 
@@ -31,7 +31,7 @@ select [1]::push_back(2,3)
 Add one or more values to the begining of the JSON **`array`**.
 
 ```SQL
-select [3]::push(1,2)
+select [3]::push(1,2);
 [1, 2, 3]
 ```
 
@@ -42,10 +42,10 @@ select [3]::push(1,2)
 Remove first element from the JSON **`array`**.
 
 ```SQL
-select [1,2,3]::pop
+select [1,2,3]::pop;
 [2, 3]
 
-select []::pop
+select []::pop;
 []
 ```
 ---
@@ -55,10 +55,10 @@ select []::pop
 Remove last element from the JSON **`array`**.
 
 ```SQL
-select [1,2,3]::pop_back
+select [1,2,3]::pop_back;
 [1, 2]
 
-select []::pop_back
+select []::pop_back;
 []
 ```
 
@@ -69,7 +69,7 @@ select []::pop_back
 Place value in the JSON **`array`** at the **`position`**. The position starts from zero.
 
 ```SQL
-select [1,2,3]::put(1, 'two')
+select [1,2,3]::put(1, 'two');
 [1, "two", 3]
 ```
 
@@ -80,7 +80,7 @@ select [1,2,3]::put(1, 'two')
 Remove element from the JSON **`array`** at the **`position`**. The position starts from zero.
 
 ```SQL
-select [1,2,3]::remove(1)
+select [1,2,3]::remove(1);
 [1, 3]
 ```
 
@@ -97,18 +97,18 @@ All object functions are located in the **`public`** schema, which is default.
 Set the JSON **`obj`** key at the **`path`** to the **`value`**. The **`path`** can be compound.
 
 ```SQL
-select {}::set("id", 48)
+select {}::set("id", 48);
 [{
   "id": 48
 }]
 
-select {}::set("id", 48)::set("data", [1,2,3])
+select {}::set("id", 48)::set("data", [1,2,3]);
 [{
   "id": 48,
   "data": [1, 2, 3]
 }]
 
-select {"a": {"b": 123}}::set("a.b", 321)
+select {"a": {"b": 123}}::set("a.b", 321);
 [{
   "a": {
     "b": 321
@@ -123,7 +123,7 @@ select {"a": {"b": 123}}::set("a.b", 321)
 Remove key at the **`path`** from the JSON **`obj`**. The **`path`** can be compound.
 
 ```SQL
-select {"a": {"b": 123}}::unset("a.b")
+select {"a": {"b": 123}}::unset("a.b");
 [{
   "a": {}
 }]
@@ -136,6 +136,6 @@ select {"a": {"b": 123}}::unset("a.b")
 Return true if the JSON **`obj`** key at the **`path`** exists. The **`path`** can be compound.
 
 ```SQL
-select {"a": {"b": 123}}::has("a.b")
+select {"a": {"b": 123}}::has("a.b");
 [true]
 ```

@@ -21,7 +21,7 @@ only new tables will start using it.
 ---
 
 ```SQL
-create node "3a0803be-917f-6400-a5cb-3344f126a58b"
+create node "3a0803be-917f-6400-a5cb-3344f126a58b";
 
-create compute node
+create compute node;
 ```

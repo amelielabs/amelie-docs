@@ -28,27 +28,27 @@ The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of
 ---
 
 ```SQL
-create table test (id int primary key, data json)
-insert into test values (1, [1,2,3]), (2, ['a', 'b', 'c'])
+create table example (id int primary key, data json);
+insert into example values (1, [1,2,3]), (2, ['a', 'b', 'c']);
 
-select data from test
+select data from example;
 [[1, 2, 3], ["a", "b", "c"]]
 
-update test set data = data::append(4) where id = 1 returning *
+update example set data = data::append(4) where id = 1 returning *;
 [[1, [1, 2, 3, 4]]]
 ```
 
 ```SQL
-create table test (id int primary key, obj json)
-insert into test values (1, {"id": 1, "data": null})
+create table example (id int primary key, obj json);
+insert into example values (1, {"id": 1, "data": null});
 
-update test set obj.data = [1,2,3] returning *
+update example set obj.data = [1,2,3] returning *;
 [[1, {
   "id": 1,
   "data": [1, 2, 3]
 }]]
 
-update test set obj.data = obj.data::append(4) returning *
+update example set obj.data = obj.data::append(4) returning *;
 [[1, {
   "id": 1,
   "data": [1, 2, 3, 4]
@@ -58,7 +58,7 @@ update test set obj.data = obj.data::append(4) returning *
 ```SQL
 -- with CTE
 with updated_items as (
-    update test set data = data::append(4) where id = 1 returning *
+    update example set data = data::append(4) where id = 1 returning *
 ) select count(*) from updated_items;
 [1]
 ```

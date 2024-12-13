@@ -15,13 +15,13 @@ Show tables created in the system.
 ---
 
 ```SQL
-create table test (id int primary key)
+create table example (id int primary key);
 
-show tables
+show tables;
 [{
-  "public.test": {
+  "public.example": {
     "schema": "public",
-    "name": "test",
+    "name": "example",
     "shared": false,
     "columns": [{
       "name": "id",
@@ -105,7 +105,7 @@ show tables
   }
 }]
 
-select system.tables()['public.test'].indexes
+select system.tables()['public.example'].indexes;
 [[{
   "name": "primary",
   "type": 2,

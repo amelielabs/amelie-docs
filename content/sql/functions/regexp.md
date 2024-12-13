@@ -15,10 +15,10 @@ All functions are located in the **`public`** schema, which is default.
 Return true if the **`string`** matches the **`pattern`**.
 
 ```SQL
-select 'foobarbequebazilbarfbonk'::regexp_like('(b[^b]+)(b[^b]+)')
+select 'foobarbequebazilbarfbonk'::regexp_like('(b[^b]+)(b[^b]+)');
 [true]
 
-select '<a href="../">Up</a>'::regexp_like('<(?<tag>[a-z][a-z0-9]*)[^>]*>')
+select '<a href="../">Up</a>'::regexp_like('<(?<tag>[a-z][a-z0-9]*)[^>]*>');
 [true]
 ```
 
@@ -29,7 +29,7 @@ select '<a href="../">Up</a>'::regexp_like('<(?<tag>[a-z][a-z0-9]*)[^>]*>')
 Match and return substring from the **`string`** using the **`pattern`**.
 
 ```SQL
-select 'foobarbequebazilbarfbonk'::regexp_substr('(b[^b]+)(b[^b]+)')
+select 'foobarbequebazilbarfbonk'::regexp_substr('(b[^b]+)(b[^b]+)');
 ["barbeque"]
 ```
 
@@ -40,7 +40,7 @@ select 'foobarbequebazilbarfbonk'::regexp_substr('(b[^b]+)(b[^b]+)')
 Return an array of substrings which matches the **`pattern`**.
 
 ```SQL
-select 'foobarbequebazilbarfbonk'::regexp_match('(b[^b]+)(b[^b]+)')
+select 'foobarbequebazilbarfbonk'::regexp_match('(b[^b]+)(b[^b]+)');
 [["barbeque", "bar", "beque"]]
 ```
 
@@ -51,6 +51,6 @@ select 'foobarbequebazilbarfbonk'::regexp_match('(b[^b]+)(b[^b]+)')
 Match and replace substrings from the **`string`** using the **`pattern`**.
 
 ```SQL
-select 'foobarbequebazilbarfbonk'::regexp_replace('(b[^b]+)(b[^b]+)', '_')
+select 'foobarbequebazilbarfbonk'::regexp_replace('(b[^b]+)(b[^b]+)', '_');
 ["foo__bonk"]
 ```

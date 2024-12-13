@@ -20,6 +20,6 @@ System schemas **`system`** and **`public`** cannot be dropped.
 ---
 
 ```SQL
-create schema test
-drop schema test
+create schema example;
+drop schema example;
 ```

@@ -15,12 +15,10 @@ Create a user identified by **`name`** if it does not exist with the optional **
 ---
 
 ```SQL
-create user test
-show users
+create user test;
+
+show users;
 [{
   "name": "test"
 }]
-
-select name from system.users()
-["test"]
 ```

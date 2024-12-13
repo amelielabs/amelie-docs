@@ -17,12 +17,12 @@ expression result is **`NULL`**.
 ---
 
 ```SQL
-select null is null
+select null is null;
 [true]
 
-select {"data": null}.data::type
+select {"data": null}.data::type;
 ["json"]
 
-select {"data": null}.data = null::json
+select {"data": null}.data = null::json;
 [true]
 ```

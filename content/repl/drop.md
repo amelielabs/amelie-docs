@@ -15,5 +15,5 @@ Close connection and remove replica object identified by **`ID`** if it exists.
 ---
 
 ```SQL
-drop replica "00000000-0000-0000-0000-000000000001"
+drop replica "00000000-0000-0000-0000-000000000001";
 ```

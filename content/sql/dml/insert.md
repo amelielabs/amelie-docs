@@ -66,28 +66,28 @@ An alternative way to insert different formats directly into a table without usi
 ---
 
 ```SQL
-create table test (id int primary key, matches int)
-insert into test values (1, 0) on conflict do update set matches = matches + 1
-insert into test values (1, 0) on conflict do update set matches = matches + 1
-insert into test values (1, 0) on conflict do update set matches = matches + 1
-select * from test
+create table example (id int primary key, matches int);
+insert into example values (1, 0) on conflict do update set matches = matches + 1;
+insert into example values (1, 0) on conflict do update set matches = matches + 1;
+insert into example values (1, 0) on conflict do update set matches = matches + 1;
+select * from example;
 [[1, 2]]
 ```
 
 ```SQL
-create table test (device int primary key, metrics json)
-insert into test values (48, [1,2,3]), (56, [3,1])
-select * from test
+create table example (device int primary key, metrics json);
+insert into example values (48, [1,2,3]), (56, [3,1]);
+select * from example;
 [[48, [1, 2, 3]], [56, [3, 1]]]
 ```
 
 ```SQL
-create table test (id int primary key serial, obj json)
+create table example (id int primary key serial, obj json);
 
-insert into test (obj) values ({"metrics": [1,2,3]})
-insert into test (obj) values ({"metrics": [1,2,3]})
+insert into example (obj) values ({"metrics": [1,2,3]});
+insert into example (obj) values ({"metrics": [1,2,3]});
 
-select * from test
+select * from example;
 [[0, {
   "metrics": [1, 2, 3]
 }], [1, {
@@ -96,27 +96,27 @@ select * from test
 ```
 
 ```SQL
-create table test (
+create table example (
   device_id int primary key,
   hits      int default 1 as ( hits + 1 ) resolved
-) with (type = 'hash')
+) with (type = 'hash');
 
-insert into test (device_id) values (1)
-insert into test (device_id) values (1) on conflict do resolve
-insert into test (device_id) values (1) on conflict do resolve
+insert into example (device_id) values (1);
+insert into example (device_id) values (1) on conflict do resolve;
+insert into example (device_id) values (1) on conflict do resolve;
 
 -- ON CONFLICT DO RESOLVE can be ommited, if the table
 -- has resolved columns
-insert into test (device_id) values (1)
+insert into example (device_id) values (1);
 
-select * from test
+select * from example;
 [1, 4]
 ```
 
 ```SQL
 -- with CTE
 with inserted_items as (
-    insert into test values (1), (2), (3) returning *
+    insert into example values (1), (2), (3) returning *
 ) select count(*) from inserted_items;
 [3]
 ```

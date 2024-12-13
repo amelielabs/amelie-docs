@@ -45,12 +45,12 @@ Intervals can be added or subtracted and are mainly used together with timestamp
 ---
 
 ```SQL
-select current_timestamp - interval '5 hours'
+select current_timestamp - interval '5 hours';
 ["2024-09-26 12:12:10.684550+03"]
 
-select '1 hour 5 minutes 6 seconds'::interval
+select '1 hour 5 minutes 6 seconds'::interval;
 ["1 hour 5 minutes 6 seconds"]
 
-select interval '1 hour 5 minutes 6 seconds'
+select interval '1 hour 5 minutes 6 seconds';
 ["1 hour 5 minutes 6 seconds"]
 ```

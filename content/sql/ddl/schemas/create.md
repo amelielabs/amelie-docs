@@ -20,9 +20,9 @@ Amelie has two predefined system schemas: **`system`** and **`public`**.
 ---
 
 ```SQL
-create schema test
+create schema example;
 
-show schemas
+show schemas;
 [{
   "system": {
     "name": "system",
@@ -32,8 +32,8 @@ show schemas
     "name": "public",
     "system": true
   },
-  "test": {
-    "name": "test",
+  "example": {
+    "name": "example",
     "system": false
   }
 }]

@@ -34,9 +34,9 @@ using the [jwt()](/docs/sql/functions/crypto) function or any external authentic
 For security reasons, JWT-based authentication must be used only with **`HTTPS`** connections.
 
 ```SQL
-create user test secret 'test'
+create user example secret 'example'
 
-create token test expire '3 month'
+create token example expire '3 month'
 ["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiAidGVzdCIsICJpYXQiOiAxNzI3OTYyMzU3LCAiZXhwIjogMTczNTkxMTE1N30.79g-77QHd82f7cSbeZSXaz4lP_7F3J4bm7EuZOUCmmM"]
 ```
 
@@ -59,4 +59,4 @@ configuration file:
 }]
 ```
 
-Learn more about the [Server Configuration](/docs/configuration/server).
+Learn more about the [Server Configuration](/docs/configuration/settings).

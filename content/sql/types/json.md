@@ -30,25 +30,25 @@ parsed and [imported](/docs/sql/functions/json) as the **`JSON`** type.
 ---
 
 ```SQL
-select [1,2,3]
+select [1,2,3];
 [1,2,3]
 
-select [1,2,3]::append(4)
+select [1,2,3]::append(4);
 [1,2,3,4]
 
-select ["a", null, {}]
+select ["a", null, {}];
 ["a", null, {}]
 
-select {"id": 48, "data": [1,2,3]}
+select {"id": 48, "data": [1,2,3]};
 [{
   "id": 48,
   "data": [1, 2, 3]
 }]
 
-select {"id": 48, "data": [1,2,3]}.data[0]
+select {"id": 48, "data": [1,2,3]}.data[0];
 [1]
 
-select {"at": current_timestamp, "id": system.config().uuid}
+select {"at": current_timestamp, "id": system.config().uuid};
 [{
   "at": "2024-09-26 16:14:00.722393+03",
   "id": "a74fbf39-cc9d-314e-a33e-3aa47559ffe5"
@@ -56,17 +56,17 @@ select {"at": current_timestamp, "id": system.config().uuid}
 ```
 
 ```SQL
-create table test (id int primary key, metrics json)
-insert into test values (1, [1,2,3]), (2, ['a','b','c'])
+create table example (id int primary key, metrics json);
+insert into example values (1, [1,2,3]), (2, ['a','b','c']);
 
-select * from test
+select * from example;
 [[1, [1, 2, 3]], [2, ["a", "b", "c"]]]
 
-select metrics from test
+select metrics from example;
 [[1, 2, 3], ["a", "b", "c"]]
 
-update test set metrics = metrics::append(4) where id = 1
+update example set metrics = metrics::append(4) where id = 1;
 
-select metrics from test
+select metrics from example;
 [[1, 2, 3, 4], ["a", "b", "c"]]
 ```

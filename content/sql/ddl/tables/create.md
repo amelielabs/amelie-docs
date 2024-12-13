@@ -104,18 +104,18 @@ create table metrics (
   data json
 ) with (type = 'hash');
 
-insert into metrics values (42, [1,2,3])
+insert into metrics values (42, [1,2,3]);
 
-select * from metrics
+select * from metrics;
 [[42, [1, 2, 3]]]
 
-select * format 'json-obj-pretty' from metrics
+select * format 'json-obj-pretty' from metrics;
 [{
   "device_id": 42,
   "data": [1, 2, 3]
 }]
 
-select {"id": device_id, "metrics": data} from metrics
+select {"id": device_id, "metrics": data} from metrics;
 [{
   "id": 42,
   "metrics": [1, 2, 3]
@@ -124,14 +124,14 @@ select {"id": device_id, "metrics": data} from metrics
 
 ```SQL
 --- using generated columns to indexate JSON data
-create table test (
+create table example (
   id   int primary key as (data.id::int) stored,
   data json
-)
+);
 
-insert into test (data) values ({"id": 1}), ({"id": 2}), ({"id": 3})
+insert into example (data) values ({"id": 1}), ({"id": 2}), ({"id": 3});
 
-select id from test
+select id from example;
 [1, 2, 3]
 ```
 
@@ -140,18 +140,18 @@ select id from test
 -- using generated stored and resolved columns to
 -- group inserts by last 5 seconds per device_id and aggregate hits
 --
-create table test (
+create table example (
   time      timestamp as ( current_timestamp::date_bin(interval '5 sec') ) stored,
   device_id int,
   hits      int default 1 as ( hits + 1 ) resolved,
   primary key(time, device_id)
-)
+);
 
-insert into test (device_id) values (1)
-insert into test (device_id) values (1)
-insert into test (device_id) values (1)
-insert into test (device_id) values (1)
+insert into example (device_id) values (1);
+insert into example (device_id) values (1);
+insert into example (device_id) values (1);
+insert into example (device_id) values (1);
 
-select * from test
+select * from example;
 [["2024-12-11 17:03:30+02", 1, 4]]
 ```

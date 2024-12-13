@@ -11,7 +11,7 @@ Get a list of the status of replica servers.
 ---
 
 ```SQL
-show replicas
+show replicas;
 [{
   "00000000-0000-0000-0000-000000000001": {
     "id": "00000000-0000-0000-0000-000000000001",
@@ -22,7 +22,7 @@ show replicas
   }
 }]
 
-select system.replicas()['00000000-0000-0000-0000-000000000001']
+select system.replicas()['00000000-0000-0000-0000-000000000001'];
 [{
   "id": "00000000-0000-0000-0000-000000000001",
   "uri": "http://localhost:3481",

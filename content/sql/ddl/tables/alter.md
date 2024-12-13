@@ -32,6 +32,6 @@ using JSON (to store objects or arrays).
 ---
 
 ```SQL
-create table test (device int primary key)
-alter table test add column metrics json
+create table example (device int primary key);
+alter table example add column metrics json;
 ```

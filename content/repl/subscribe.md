@@ -20,16 +20,16 @@ commands only from the primary server.
 
 ```SQL
 -- set primary id on replica server and start the replication
-subscribe "00000000-0000-0000-0000-000000000000"
-start repl
+subscribe "00000000-0000-0000-0000-000000000000";
+start repl;
 
-show repl
+show repl;
 [{
   "active": true,
   "role": "replica",
   "primary": "00000000-0000-0000-0000-000000000000"
 }]
 
-show read_only
+show read_only;
 [true]
 ```

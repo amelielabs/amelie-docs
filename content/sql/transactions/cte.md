@@ -1,6 +1,6 @@
 ---
 weight: 3
-title: "CTE / RETURNING"
+title: "Common Table Expression (CTE)"
 bookToc: false
 ---
 
@@ -19,14 +19,17 @@ Amelie generates an optimized parallel plan for executing multi-statement transa
 It combines multiple node requests together to reduce wait times and speed up the execution of
 non-dependable CTE statements.
 
-### RETURNING
+All DML statements have a **`RETURNING`** clause, which allows the assignment of CTE value
+after its execution.
+
+### RETURNING Clause
 
 ```SQL
 RETURNING expression [AS alias][, ...] [FORMAT 'type']
 ```
 
-All DML statements have a **`RETURNING`** clause, which allows the assignment of CTE value
-after its execution.
+All DML statements support a **`RETURNING`** clause, allowing the updated or
+inserted data to be returned.
 
 The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 

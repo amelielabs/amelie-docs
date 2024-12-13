@@ -15,7 +15,7 @@ Show schema objects created in the system.
 ---
 
 ```SQL
-create schema test
+create schema example;
 
 show schemas
 [{
@@ -27,12 +27,12 @@ show schemas
     "name": "public",
     "system": true
   },
-  "test": {
-    "name": "test",
+  "example": {
+    "name": "example",
     "system": false
   }
 }]
 
-select system.schemas().public.system
+select system.schemas().public.system;
 [true]
 ```

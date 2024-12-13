@@ -50,21 +50,21 @@ Any operation with **`NULL`** value produce **`NULL`**.
 ---
 
 ```SQL
-select 1 > 2
+select 1 > 2;
 [false]
 
-select [1,2,3] = [1,2,3]
+select [1,2,3] = [1,2,3];
 [true]
 
-select {"id": 48} = {'id': 48}
+select {"id": 48} = {'id': 48};
 [true]
 
-select now() = now()
+select now() = now();
 [true]
 
-select now() = now()::int
+select now() = now()::int;
 [true]
 
-select now() - interval '1 hour' < now()
+select now() - interval '1 hour' < now();
 [true]
 ```

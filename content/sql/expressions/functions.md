@@ -27,17 +27,17 @@ In the method call format, the parentheses **`()`** can be omitted if the functi
 ---
 
 ```SQL
-select append([1,2,3], 4)
+select append([1,2,3], 4);
 [1,2,3,4]
 
-select [1,2,3]::public.append(4)
+select [1,2,3]::public.append(4);
 [1,2,3,4]
 
-update test set data = data::append(4) where id = 1
+update test set data = data::append(4) where id = 1;
 
-select "2024-09-26 12:12:10.684550+03"::timestamp::int
+select "2024-09-26 12:12:10.684550+03"::timestamp::int;
 [1727341930684550]
 
-select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector)
+select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector);
 [0.481455]
 ```

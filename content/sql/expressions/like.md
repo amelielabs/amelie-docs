@@ -24,9 +24,9 @@ Escape characters can be used to match template characters.
 ---
 
 ```SQL
-select 'http://google.com' like '%google%'
+select 'http://google.com' like '%google%';
 [true]
 
-select 'http://google.com'::like('%google%')
+select 'http://google.com'::like('%google%');
 [true]
 ```

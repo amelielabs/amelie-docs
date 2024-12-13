@@ -16,7 +16,7 @@ All string functions are located in the **`public`** schema, which is default.
 Return the size of the argument, which can be **`STRING`**, **`JSON`** or **`VECTOR`**.
 
 ```SQL
-select "hello"::size
+select "hello"::size;
 [5]
 ```
 
@@ -27,10 +27,10 @@ select "hello"::size
 Concatenate strings. **`NULL`** values will be ignored.
 
 ```SQL
-select "hello"::concat(" world!")
+select "hello"::concat(" world!");
 ["hello world!"]
 
-select concat("a", "b", null, "c")
+select concat("a", "b", null, "c");
 ["abc"]
 ```
 
@@ -41,7 +41,7 @@ select concat("a", "b", null, "c")
 Convert the **`string`** to the lowercase presentation.
 
 ```SQL
-select "HELLO"::lower
+select "HELLO"::lower;
 ["hello"]
 ```
 
@@ -52,7 +52,7 @@ select "HELLO"::lower
 Convert the **`string`** to the uppercase presentation.
 
 ```SQL
-select "hello"::upper
+select "hello"::upper;
 ["HELLO"]
 ```
 
@@ -64,10 +64,10 @@ select "hello"::upper
 Copy substring starting from **`pos`**. The position starts from one.
 
 ```SQL
-select "hello world"::substr(7)
+select "hello world"::substr(7);
 ["world"]
 
-select "hello world"::substr(7, 2)
+select "hello world"::substr(7, 2);
 ["wo"]
 ```
 
@@ -79,7 +79,7 @@ Return **`substring`** position in the **`string`**. Position starts from one.
 If the **`substring`** is not found, zero will be returned.
 
 ```SQL
-select "hello world"::strpos("world")
+select "hello world"::strpos("world");
 [7]
 ```
 
@@ -90,7 +90,7 @@ select "hello world"::strpos("world")
 Replace substring in the **`string`**.
 
 ```SQL
-select "hello world"::replace("hello", "hi")
+select "hello world"::replace("hello", "hi");
 ["hi world"]
 ```
 
@@ -108,10 +108,10 @@ right parts of the **`string`**. If **`filter`** is not
 defined **`" \t\v\n\f"`** characters will be used.
 
 ```SQL
-select "   \t hello world"::ltrim
+select "   \t hello world"::ltrim;
 ["hello world"]
 
-select "XxXxYXZxXhello world"::ltrim("XxYZZ")
+select "XxXxYXZxXhello world"::ltrim("XxYZZ");
 ["hello world"]
 ```
 
@@ -131,9 +131,9 @@ The **`pattern`** is a regular string with two special characters used for templ
 Escape characters can be used to match template characters.
 
 ```SQL
-select 'http://google.com' like '%google%'
+select 'http://google.com' like '%google%';
 [true]
 
-select 'http://google.com'::like('%google%')
+select 'http://google.com'::like('%google%');
 [true]
 ```

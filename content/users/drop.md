@@ -15,5 +15,5 @@ Drop the user identified by name if it exists.
 ---
 
 ```SQL
-drop user test
+drop user example;
 ```

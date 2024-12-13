@@ -15,10 +15,10 @@ Change the user secret.
 ---
 
 ```SQL
-create user test
-alter user test secret "secret"
+create user test;
+alter user test secret "secret";
 
-show users
+show users;
 [{
   "name": "test"
 }]

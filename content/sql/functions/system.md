@@ -19,7 +19,7 @@ Get a system config and current runtime variables.
 Same as [SHOW CONFIG](/docs/configuration/show).
 
 ```SQL
-select system.config()
+select system.config();
 [{
   "version": "1.0.0",
   "uuid": "826e3f5d-6ebd-bd08-748d-57eb5e5cd565",
@@ -60,7 +60,7 @@ select system.config()
   "psn": 25
 }]
 
-select system.config().uuid
+select system.config().uuid;
 ["826e3f5d-6ebd-bd08-748d-57eb5e5cd565"]
 ```
 ---
@@ -72,18 +72,15 @@ Get a list of users.
 Same as [SHOW USERS](/docs/users/show).
 
 ```SQL
-select system.users()
+select system.users();
 [{
   "name": "test"
 }]
 
-select system.users().test
+select system.users().test;
 [{
   "name": "test"
 }]
-
-select name from system.users()
-["test"]
 ```
 
 ---
@@ -104,7 +101,7 @@ Get the replication status.
 Same as [SHOW REPL](/docs/repl/show) or [SHOW REPLICATION](/docs/repl/show).
 
 ```SQL
-select system.repl()
+select system.repl();
 [{
   "active": false,
   "role": "primary",
@@ -153,7 +150,7 @@ Get the WAL status.
 Same as [SHOW WAL](/docs/storage/show).
 
 ```SQL
-select system.wal()
+select system.wal();
 [{
   "active": true,
   "rotate_wm": 104857600,
@@ -176,7 +173,7 @@ Show the essential database and process information gathered in one place.
 Same as [SHOW STATUS](/docs/monitoring/show).
 
 ```SQL
-select system.status()
+select system.status();
 [{
   "uuid": "ad41adcf-6479-f931-a491-2e27272c8a50",
   "version": "1.0.0",
@@ -224,6 +221,6 @@ select system.status()
   }
 }]
 
-select system.status().uuid
+select system.status().uuid;
 ["ad41adcf-6479-f931-a491-2e27272c8a50"]
 ```

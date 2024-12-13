@@ -28,18 +28,18 @@ The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of
 ---
 
 ```SQL
-create table test (id int primary key, data json)
-insert into test values (1, [1,2,3]), (2, ['a', 'b', 'c'])
-delete from test
+create table example (id int primary key, data json);
+insert into example values (1, [1,2,3]), (2, ['a', 'b', 'c']);
+delete from example;
 
-select count(*) from test
+select count(*) from example;
 [0]
 ```
 
 ```SQL
 -- with CTE
 with deleted_items as (
-    delete from test returning *
+    delete from example returning *
 ) select count(*) from deleted_items;
 [3]
 ```

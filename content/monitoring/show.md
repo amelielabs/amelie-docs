@@ -17,7 +17,7 @@ See also [amelie top](/docs/tutorial/monitoring) command.
 ---
 
 ```SQL
-show status
+show status;
 [{
   "uuid": "ad41adcf-6479-f931-a491-2e27272c8a50",
   "version": "1.0.0",
@@ -65,6 +65,6 @@ show status
   }
 }]
 
-select system.status().uuid
+select system.status().uuid;
 ["ad41adcf-6479-f931-a491-2e27272c8a50"]
 ```

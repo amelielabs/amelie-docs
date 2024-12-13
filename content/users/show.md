@@ -15,16 +15,16 @@ Show all users defined in the system.
 ---
 
 ```SQL
-create user test
+create user test;
 
-show users
+show users;
 [{
   "test": {
     "name": "test"
   }
 }]
 
-select system.users().test
+select system.users().test;
 [{
   "name": "test"
 }]

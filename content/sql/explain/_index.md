@@ -27,13 +27,13 @@ There are several VM contexts. One for each transaction coordinator and one for 
 ---
 
 ```SQL
-create table test (id int primary key)
+create table example (id int primary key);
 
-explain select count(*) from test
+explain select count(*) from example;
 [{
   "bytecode": {
     "coordinator": {
-      "00": "send_all            0      0      -     # public.test",
+      "00": "send_all            0      0      -     # public.example",
       "01": "recv                0      0      0     ",
       "02": "merge_recv_agg      0      0      20    ",
       "03": "set                 1      1      0     ",
@@ -52,7 +52,7 @@ explain select count(*) from test
       "00": "set                 0      1      1     ",
       "01": "int                 1      -      0     # -2147483648",
       "02": "push                1      0      0     ",
-      "03": "table_open          0      0      5     # public.test (primary)",
+      "03": "table_open          0      0      5     # public.example (primary)",
       "04": "jmp                 12     0      0     ",
       "05": "bool                1      1      0     ",
       "06": "push                1      0      0     ",
@@ -76,11 +76,11 @@ explain select count(*) from test
 ```
 
 ```SQL
-profile select count(*) from test
+profile select count(*) from example
 [{
   "bytecode": {
     "coordinator": {
-      "00": "send_all            0      0      -     # public.test",
+      "00": "send_all            0      0      -     # public.example",
       "01": "recv                0      0      0     ",
       "02": "merge_recv_agg      0      0      20    ",
       "03": "set                 1      1      0     ",
@@ -99,7 +99,7 @@ profile select count(*) from test
       "00": "set                 0      1      1     ",
       "01": "int                 1      -      0     # -2147483648",
       "02": "push                1      0      0     ",
-      "03": "table_open          0      0      5     # public.test (primary)",
+      "03": "table_open          0      0      5     # public.example (primary)",
       "04": "jmp                 12     0      0     ",
       "05": "bool                1      1      0     ",
       "06": "push                1      0      0     ",
