@@ -21,6 +21,6 @@ amelie backup ./repo_copy --uri="https://localhost:3485" --token="eyJhbGciOiJIUz
 amelie start ./repo_copy
 
 # do remote server backup, use saved credentials to connect
-amelie login srv --uri="https://localhost:3485" --token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiAidGVzdCIsICJpYXQiOiAxNzI3OTYyMzU3LCAiZXhwIjogMTczNTkxMTE1N30.79g-77QHd82f7cSbeZSXaz4lP_7F3J4bm7EuZOUCmmM"
-amelie backup ./repo_copy srv
+amelie login home --uri="https://localhost:3485" --token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiAidGVzdCIsICJpYXQiOiAxNzI3OTYyMzU3LCAiZXhwIjogMTczNTkxMTE1N30.79g-77QHd82f7cSbeZSXaz4lP_7F3J4bm7EuZOUCmmM"
+amelie backup ./repo_copy home
 ```

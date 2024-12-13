@@ -8,6 +8,7 @@ bookToc: false
 ## DELETE Statement
 
 ```SQL
+[WITH cte_name ...]
 DELETE FROM [schema.]table_name
 [WHERE expr]
 [RETURNING expr [AS alias][, ...] [FORMAT type]]

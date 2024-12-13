@@ -8,6 +8,7 @@ bookToc: false
 ## UPDATE Statement
 
 ```SQL
+[WITH cte_name ...]
 UPDATE [schema.]table_name SET column[.path] = expr | DEFAULT [, ... ] 
 [WHERE expr]
 [RETURNING expr [AS alias][, ...] [FORMAT type]]

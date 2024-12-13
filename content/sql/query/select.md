@@ -7,6 +7,7 @@ bookToc: false
 ## SELECT Statement
 
 ```SQL
+[WITH cte_name ...]
 SELECT [DISTINCT [ON (expr, ...)]] expr [AS alias] [, ...]
 [FORMAT type]
 [[FROM [schema.]relation | cte | (SELECT ...) [, ...]
@@ -14,7 +15,7 @@ SELECT [DISTINCT [ON (expr, ...)]] expr [AS alias] [, ...]
  [USE INDEX (name)]]
 [WHERE expr]
 [GROUP BY column_order | alias | expr[, ...] [HAVING expr]]
-[ORDER BY column_order | alias | expr [ASC|DESC] [, ...]]
+[ORDER BY column_order | alias | expr [ASC | DESC] [, ...]]
 [LIMIT expr] [OFFSET expr]
 ```
 

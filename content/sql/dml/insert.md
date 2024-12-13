@@ -9,6 +9,7 @@ bookToc: false
 
 
 ```SQL
+[WITH cte_name ...]
 INSERT INTO [schema.]table_name [(column[, ...])]
 VALUES (value[, ...])[, ...]
 [ON CONFLICT DO NOTHING | ERROR | RESOLVE | UPDATE ... [WHERE]]
