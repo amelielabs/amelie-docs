@@ -7,10 +7,12 @@ bookToc: false
 ## SHOW STATUS Statement
 
 ```SQL
-SHOW STATUS
+SHOW STATUS [FORMAT type]
 ```
 
 Show the essential database and process information gathered in one place.
+
+The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 See also [amelie top](/docs/tutorial/monitoring) command.
 
@@ -27,8 +29,7 @@ show status;
     "schemas": 2,
     "tables": 0,
     "tables_shared": 0,
-    "secondary_indexes": 0,
-    "views": 0
+    "secondary_indexes": 0
   },
   "process": {
     "uptime": 0,

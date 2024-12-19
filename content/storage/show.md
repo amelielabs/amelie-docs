@@ -7,10 +7,12 @@ bookToc: false
 ## SHOW WAL Statement
 
 ```SQL
-SHOW WAL
+SHOW WAL [FORMAT type]
 ```
 
 Get current Write-Ahead Log (WAL) status.
+
+The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 ---
 

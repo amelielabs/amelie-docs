@@ -19,7 +19,7 @@ below has an [equivalent function](/docs/sql/functions/system) for convenience.
 
 [SHOW NODES](/docs/cluster/show) – show created and active compute nodes in the system.
 
-[SHOW REPLICAS](/docs/repl/show_replicas) – get a list of the status of replica servers.
+[SHOW REPLICAS](/docs/repl/show_replica) – get a list of the status of replica servers.
 
 [SHOW REPLICATION](/docs/repl/show) – get the replication status.
 

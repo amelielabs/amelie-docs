@@ -135,13 +135,6 @@ Same as [SHOW TABLES](/docs/sql/ddl/tables/show).
 
 ---
 
-### **`json system.views()`**
-
-Get a list of created views.
-
-Same as [SHOW VIEWS](/docs/sql/ddl/views/show).
-
----
 
 ### **`json system.wal()`**
 
@@ -184,7 +177,6 @@ select system.status();
     "tables": 0,
     "tables_shared": 0,
     "secondary_indexes": 0,
-    "views": 0
   },
   "process": {
     "uptime": 0,

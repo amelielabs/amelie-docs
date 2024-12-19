@@ -7,14 +7,16 @@ bookToc: false
 ## SHOW ALL Statement
 
 ```SQL
-SHOW ALL
-SHOW CONFIG
+SHOW ALL [FORMAT type]
+SHOW CONFIG [FORMAT type]
 ```
 
 Show configuration and runtime settings.
 
 Most options can be changed only in the configuration file or command line. Some options are read-only and
 represent the runtime state.
+
+The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 ---
 

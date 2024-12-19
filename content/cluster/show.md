@@ -1,77 +1,66 @@
 ---
 weight: 4
-title: "SHOW NODES"
+title: "SHOW NODE"
 bookToc: false
 ---
 
-## SHOW NODES Statement
+## SHOW NODE Statement
 
 ```SQL
-SHOW NODES
+SHOW NODES [EXTENDED] [FORMAT type]
+SHOW NODE id [EXTENDED] [FORMAT type]
 ```
 
 Show created and active compute nodes in the system.
+
+The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 ---
 
 ```SQL
 show nodes;
 [{
-  "5224e75c-4436-1f92-fd1c-2ea48fd086ec": {
-    "id": "5224e75c-4436-1f92-fd1c-2ea48fd086ec",
-    "compute": true
-  },
-  "63e7cadc-401f-3397-d9ca-6bb83a85522c": {
-    "id": "63e7cadc-401f-3397-d9ca-6bb83a85522c",
-    "compute": true
-  },
-  "a59a6d75-0534-773c-ae6c-520347e996e3": {
-    "id": "a59a6d75-0534-773c-ae6c-520347e996e3",
-    "compute": true
-  },
-  "029c29d2-1c32-c620-acc8-8af3100d5c5b": {
-    "id": "029c29d2-1c32-c620-acc8-8af3100d5c5b",
-    "compute": true
-  },
-  "a8dc2582-e5c9-30ec-ea8f-740452941231": {
-    "id": "a8dc2582-e5c9-30ec-ea8f-740452941231",
-    "compute": true
-  },
-  "20c70448-74af-b71a-1bb4-5e395dd04e11": {
-    "id": "20c70448-74af-b71a-1bb4-5e395dd04e11",
-    "compute": true
-  },
-  "a23b7fda-5652-8e86-98c2-1bf7fc055ed4": {
-    "id": "a23b7fda-5652-8e86-98c2-1bf7fc055ed4",
-    "compute": true
-  },
-  "08bfd8e1-463e-3c30-d18b-95bace40ab8b": {
-    "id": "08bfd8e1-463e-3c30-d18b-95bace40ab8b",
-    "compute": true
-  },
-  "9a04d955-9387-730c-d6f9-228ee318436e": {
-    "id": "9a04d955-9387-730c-d6f9-228ee318436e",
-    "compute": true
-  },
-  "c86d4fd0-7815-ac3e-52d2-59093217b91a": {
-    "id": "c86d4fd0-7815-ac3e-52d2-59093217b91a",
-    "compute": true
-  },
-  "00d07853-94d7-8fb5-63a6-3f7ed08638db": {
-    "id": "00d07853-94d7-8fb5-63a6-3f7ed08638db",
-    "compute": true
-  }
+  "id": "74f303a3-c434-fda7-59ca-bce4d9dca6a9"
+}, {
+  "id": "c5ec6e00-4a76-f47f-2f30-d617afc34fcd"
+}, {
+  "id": "f928a78a-3417-ffe1-356c-4ec069088558"
+}, {
+  "id": "da8ffa7f-ab01-5d19-f425-95999f566c6c"
+}, {
+  "id": "b56c9b73-6c85-c151-8534-26865833f1be"
+}, {
+  "id": "6762162a-c1d9-5427-b5fa-3ef9d50f4f06"
+}, {
+  "id": "46e4731e-8a92-7653-7d9d-1b95299ddd0b"
+}, {
+  "id": "5d0d5104-0615-7aeb-2ce8-b71cd5c72962"
+}, {
+  "id": "d683a637-bb1d-740b-83c3-4f9753a03085"
+}, {
+  "id": "f702818d-281f-7069-9eca-d50f78d0e6b1"
+}, {
+  "id": "e5971ded-2d9a-186e-7a0f-f1dd7897fe45"
 }]
 
 select system.nodes()::size;
 [11]
 
-select system.nodes()['00d07853-94d7-8fb5-63a6-3f7ed08638db'];
+select id from system.nodes();
+["74f303a3-c434-fda7-59ca-bce4d9dca6a9", "c5ec6e00-4a76-f47f-2f30-d617afc34fcd",
+ "f928a78a-3417-ffe1-356c-4ec069088558", "da8ffa7f-ab01-5d19-f425-95999f566c6c",
+ "b56c9b73-6c85-c151-8534-26865833f1be", "6762162a-c1d9-5427-b5fa-3ef9d50f4f06",
+ "46e4731e-8a92-7653-7d9d-1b95299ddd0b", "5d0d5104-0615-7aeb-2ce8-b71cd5c72962",
+ "d683a637-bb1d-740b-83c3-4f9753a03085", "f702818d-281f-7069-9eca-d50f78d0e6b1",
+ "e5971ded-2d9a-186e-7a0f-f1dd7897fe45"]
+
+show node '74f303a3-c434-fda7-59ca-bce4d9dca6a9';
 [{
-  "id": "00d07853-94d7-8fb5-63a6-3f7ed08638db",
-  "compute": true
+  "id": "74f303a3-c434-fda7-59ca-bce4d9dca6a9"
 }]
 
-select system.nodes()::has('00d07853-94d7-8fb5-63a6-3f7ed08638db');
-[true]
+select system.node('74f303a3-c434-fda7-59ca-bce4d9dca6a9');
+[{
+  "id": "74f303a3-c434-fda7-59ca-bce4d9dca6a9"
+}]
 ```

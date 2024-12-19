@@ -7,15 +7,16 @@ bookToc: false
 ## FORMAT Clause
 
 ```SQL
-FORMAT '<type>[-modifier [...]]'
-
 SELECT expr, ... [FORMAT 'type']
 RETURNING expr, ... [FORMAT 'type']
+SHOW ... [FORMAT 'type']
+
+FORMAT '<type>[-modifier [...]]'
 ```
 
-The **`FORMAT`** clause can specify result formatting and set the **`Content-Type`**.
+The **`FORMAT`** clause can specify how the result should be formatted and set the **`Content-Type`**.
 
-The **`FORMAT`** clause can be specified for the [SELECT](/docs/sql/query/select) statement and [RETURNING](/docs/sql/transactions/cte) clause used by all DML Statements.
+The **`FORMAT`** clause can be specified for the [SELECT](/docs/sql/query/select) statement, [RETURNING](/docs/sql/transactions/cte) clause used by all DML Statements, and [SHOW](/docs/monitoring/overview).
 Format string can have zero or more modifiers, each separated with a **`-`** symbol.
 Modifiers can be defined in any order.
 

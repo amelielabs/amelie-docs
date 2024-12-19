@@ -7,11 +7,13 @@ bookToc: false
 ## SHOW REPL Statement
 
 ```SQL
-SHOW REPLICATION
-SHOW REPL
+SHOW REPLICATION [FORMAT type]
+SHOW REPL [FORMAT type]
 ```
 
 Get the replication status.
+
+The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 ---
 

@@ -1,16 +1,19 @@
 ---
 weight: 6
-title: "SHOW USERS"
+title: "SHOW USER"
 bookToc: false
 ---
 
-## SHOW USERS Statement
+## SHOW USER Statement
 
 ```SQL
-SHOW USERS
+SHOW USERS [FORMAT type]
+SHOW USER name [FORMAT type]
 ```
 
-Show all users defined in the system.
+Show users defined in the system.
+
+The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 ---
 
@@ -19,13 +22,17 @@ create user test;
 
 show users;
 [{
-  "test": {
-    "name": "test"
-  }
+  "name": "test"
 }]
 
-select system.users().test;
+select name from system.users();
+["test"]
+
+show user test;
 [{
   "name": "test"
 }]
+
+select system.user('test').name;
+["test"]
 ```

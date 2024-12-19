@@ -7,11 +7,14 @@ bookToc: false
 ## ALTER TABLE Statement
 
 ```SQL
+ALTER TABLE [IF EXISTS] [schema.]name ADD COLUMN name type [constraints]
+ALTER TABLE [IF EXISTS] [schema.]name DROP COLUMN name
 ALTER TABLE [IF EXISTS] [schema.]name RENAME TO [schema.]name
 ALTER TABLE [IF EXISTS] [schema.]name SET SERIAL TO value
-ALTER TABLE [IF EXISTS] [schema.]name COLUMN ADD name type [constraints]
-ALTER TABLE [IF EXISTS] [schema.]name COLUMN DROP name
-ALTER TABLE [IF EXISTS] [schema.]name COLUMN RENAME name TO name
+ALTER TABLE [IF EXISTS] [schema.]name RENAME COLUMN name TO name
+ALTER TABLE [IF EXISTS] [schema.]name SET COLUMN name DEFAULT const
+ALTER TABLE [IF EXISTS] [schema.]name SET COLUMN name AS (expr) <STORED | RESOLVED>
+ALTER TABLE [IF EXISTS] [schema.]name UNSET COLUMN name <DEFAULT | STORED | RESOLVED>
 ```
 
 Change the definition of a table if it exists.

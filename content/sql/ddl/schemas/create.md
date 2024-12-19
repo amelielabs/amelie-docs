@@ -23,18 +23,5 @@ Amelie has two predefined system schemas: **`system`** and **`public`**.
 create schema example;
 
 show schemas;
-[{
-  "system": {
-    "name": "system",
-    "system": true
-  },
-  "public": {
-    "name": "public",
-    "system": true
-  },
-  "example": {
-    "name": "example",
-    "system": false
-  }
-}]
+[{"name": "system"}, {"name": "public"}, {"name": "example"}]
 ```
