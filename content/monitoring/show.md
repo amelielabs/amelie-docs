@@ -47,7 +47,6 @@ show status;
     "recv_bytes": 76
   },
   "wal": {
-    "active": true,
     "checkpoint": 15627754,
     "lsn": 15627754,
     "lsn_min": 15593964,

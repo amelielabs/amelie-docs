@@ -23,7 +23,7 @@ below has an [equivalent function](/docs/sql/functions/system) for convenience.
 
 [SHOW REPLICATION](/docs/repl/show) – get the replication status.
 
-[SHOW WAL](/docs/storage/show) – get information about WAL.
+[SHOW WAL](/docs/reliability/show) – get information about WAL.
 
 [SHOW SCHEMAS](/docs/sql/ddl/schemas/show) – show schema objects created in the system.
 

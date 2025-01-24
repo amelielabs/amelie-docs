@@ -11,6 +11,7 @@ After the successful execution, each computation's results (partial aggregates) 
 
 Following aggregate functions are supported:
 
+* **`count(distinct any)`**
 * **`count(any)`**
 * **`sum(int)`**
 * **`sum(double)`**

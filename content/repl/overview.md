@@ -20,7 +20,7 @@ The Primary server connects to replica servers identified by the created replica
 streams WAL changes.
 
 The replica server can become outdated if its **`WAL LSN`** is no longer available on the Primary server
-(because of [CHECKPOINT](/docs/storage/checkpoint) operation). To prevent this, the primary server creates replication
+(because of [CHECKPOINT](/docs/reliability/checkpoint) operation). To prevent this, the primary server creates replication
 slots to identify replica positions. Replication slots are continuously advanced and synced with replica states.
 They are used to keep older WAL files until all replicas are in sync.
 

@@ -16,6 +16,7 @@ type:
 	smallint
 	int
 	bigint
+	serial
 	float
 	double
 	text
@@ -24,6 +25,7 @@ type:
 	interval
 	date
 	vector
+	uuid
 
 option:
 	name = expr
@@ -39,7 +41,7 @@ If the index type is not defined, it will default to the **`tree`**.
 
 Operations such as **`CREATE INDEX`** and [ALTER TABLE ADD/DROP COLUMN](/docs/sql/ddl/tables/alter) are blocking but completely parallel.
 Each node will create an index for its partitions. To avoid this operation repeating during WAL replay, it is recommended to
-run the [CHECKPOINT](/docs/storage/checkpoint) operation right after its completion.
+run the [CHECKPOINT](/docs/reliability/checkpoint) operation right after its completion.
 
 It is possible to index JSON documents by creating table keys as generated columns which
 point to other column JSON data.

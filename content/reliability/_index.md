@@ -1,6 +1,6 @@
 ---
 weight: 12
-title: Data Storage
+title: Reliability
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

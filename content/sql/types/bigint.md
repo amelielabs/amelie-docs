@@ -22,7 +22,7 @@ select 123;
 ```
 
 ```SQL
-create table example (id bigint primary key serial, data int);
+create table example (id serial primary key, data int);
 insert into example (data) values (1), (2), (3);
 select * from example;
 [[0, 1], [1, 2], [2, 3]]

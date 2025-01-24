@@ -176,12 +176,11 @@ select system.table('example').columns;
 
 Get the WAL status.
 
-Same as [SHOW WAL](/docs/storage/show).
+Same as [SHOW WAL](/docs/reliability/show).
 
 ```SQL
 select system.wal();
 [{
-  "active": true,
   "rotate_wm": 104857600,
   "sync_on_rotate": true,
   "sync_on_write": false,

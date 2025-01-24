@@ -29,7 +29,7 @@ select id from example;
 ```
 
 ```SQL
-create table example (id integer primary key serial, data int);
+create table example (id integer primary key as identity, data int);
 insert into example (data) values (1), (2), (3);
 select * from example;
 [[0, 1], [1, 2], [2, 3]]

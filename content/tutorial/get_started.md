@@ -97,7 +97,6 @@ usage: amelie [command | login] [options]
     --limit_write=int
     --frontends=int
     --backends=int
-    --wal=bool
     --wal_rotate_wm=int
     --wal_sync_on_rotate=bool
     --wal_sync_on_write=bool

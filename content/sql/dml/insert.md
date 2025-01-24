@@ -11,7 +11,7 @@ bookToc: false
 ```SQL
 [WITH cte_name ...]
 INSERT INTO [schema.]table_name [(column[, ...])]
-VALUES (value[, ...])[, ...]
+VALUES (value[, ...])[, ...] | SELECT ...
 [ON CONFLICT DO NOTHING | ERROR | RESOLVE | UPDATE ... [WHERE]]
 [RETURNING expr [AS alias][, ...] [FORMAT type]]
 ```
@@ -26,7 +26,7 @@ If the table schema is not defined, the table name will be searched in the **`pu
 If the column list is not defined, all values must correspond to the table column types. If the column list is
 defined, only the list-defined columns will be set to the corresponding values. Non-defined column values will be
 set to **`NULL`**, **`SERIAL`** value or **`DEFAULT`** constraint value will be used (if defined).
-If more than one **`SERIAL`** columns are used, they will share the same value.
+If more than one identity columns columns are used, they will share the same value.
 
 If the row already exists (according to the primary key), the table primary index unique constraint violation error
 will be emitted. The **`ON CONFLICT`** clause allows to change this behavior:
@@ -68,7 +68,7 @@ An alternative way to insert different formats directly into a table without usi
 
 ```SQL
 create table example (id int primary key, matches int);
-insert into example values (1, 0) on conflict do update set matches = matches + 1;
+insert into example values (1, 0);
 insert into example values (1, 0) on conflict do update set matches = matches + 1;
 insert into example values (1, 0) on conflict do update set matches = matches + 1;
 select * from example;
@@ -83,7 +83,7 @@ select * from example;
 ```
 
 ```SQL
-create table example (id int primary key serial, obj json);
+create table example (id serial primary key, obj json);
 
 insert into example (obj) values ({"metrics": [1,2,3]});
 insert into example (obj) values ({"metrics": [1,2,3]});

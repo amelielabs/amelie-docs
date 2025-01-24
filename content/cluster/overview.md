@@ -4,7 +4,7 @@ title: "Overview"
 bookToc: false
 ---
 
-## Clustering
+## Compute Cluster
 
 Amelie has a two-level architecture.
 

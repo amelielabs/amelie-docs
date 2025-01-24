@@ -47,7 +47,6 @@ show all;
   "limit_write": 0,
   "frontends": 8,
   "backends": 8,
-  "wal": false,
   "wal_rotate_wm": 104857600,
   "wal_sync_on_rotate": true,
   "wal_sync_on_write": false,

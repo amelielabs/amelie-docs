@@ -158,7 +158,7 @@ efficient since it requires coordination and exclusive access.
 Amelie supports ACID transactions and Commits only if data is written to WAL first (unless it is configured not to do so).
 
 The persistency model is based on classic In-Memory database logic using WAL with periodic Snapshotting.
-[CHECKPOINT](/docs/storage/checkpoint) operation is used to create data snapshot, it allows to scale this process by
+[CHECKPOINT](/docs/reliability/checkpoint) operation is used to create data snapshot, it allows to scale this process by
 running snapshot for each node individually in parallel. Checkpoint operation also is responsible for WAL retention.
 
 During restart, the database finds and reads the latest snapshot files in parallel for each node individually,

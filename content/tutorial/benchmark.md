@@ -19,7 +19,8 @@ The following benchmarking options are supported:
 | time          | int | Time in seconds (default is 10). |
 | batch         | int | Number of rows in one insert/upsert statement (default is 500). |
 | scale         | int | The scale factor for `tpcb` test (default is 1). |
-| init          | int | Prepare tables for testing (default is true). |
+| init          | bool | Prepare tables for testing (default is true). |
+| unlogged      | bool | Mark tables as unlogged (default is false). |
 
 ### TPC-B Style Benchmark
 
@@ -90,7 +91,7 @@ Watch out for available RAM.
 
 ### Recommendations
 
-Please note that the number of **`frontends`**, **`backends`** in the system, as well as **`wal`** directly
+Please note that the number of **`frontends`**, **`backends`** in the system, as well as using **`unlogged`** tables directly
 impact the server performance. It is a good idea to start with defaults and then alter the numbers
 to see how the server responds.
 

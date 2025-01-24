@@ -22,13 +22,6 @@ select 123;
 ```
 
 ```SQL
-create table example (id smallint primary key serial, data int);
-insert into example (data) values (1), (2), (3);
-select * from example;
-[[0, 1], [1, 2], [2, 3]]
-```
-
-```SQL
 create table example (id int16 primary key);
 insert into example values (1), (2), (3);
 select id from example;

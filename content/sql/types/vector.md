@@ -30,7 +30,7 @@ select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector);
 
 ```SQL
 -- similarity search
-create table example (id int primary key serial, embedding vector);
+create table example (id serial primary key, embedding vector);
 insert into example (embedding) values ([3,2,0,1,4]);
 insert into example (embedding) values ([2,2,0,1,3]);
 insert into example (embedding) values ([1,3,0,1,4]);

@@ -9,14 +9,14 @@ bookToc: false
 ```SQL
 [WITH cte_name ...]
 SELECT [DISTINCT [ON (expr, ...)]] expr [AS alias] [, ...]
-[FORMAT type]
 [[FROM [schema.]relation | cte | (SELECT ...) [, ...]
- [JOIN [schema.]relation | cte | (SELECT ...) ON (expr) [, ...]]
+ [JOIN [schema.]relation | cte | (SELECT ...) ON (expr) [, ...] | USING (column)]
  [USE INDEX (name)]]
 [WHERE expr]
 [GROUP BY column_order | alias | expr[, ...] [HAVING expr]]
 [ORDER BY column_order | alias | expr [ASC | DESC] [, ...]]
 [LIMIT expr] [OFFSET expr]
+[FORMAT type]
 ```
 
 Retrieve rows from a table, CTE result, or subquery.
@@ -87,11 +87,11 @@ insert into example values ('2024-12-12 14:27:52.712025', 1);
 
 -- do parallel GROUP BY and ORDER BY on each compute node
 select device_id, count(*) as hits
-format 'json-obj'
 from example
 where time >= timestamp '2024-12-12 14:30:00' - interval '1 hour'
 group by 1
-order by 1;
+order by 1
+format 'json-obj';
 [{"device_id": 1, "hits": 3}, {"device_id": 2, "hits": 1}]
 ```
 
@@ -112,9 +112,9 @@ insert into example(time, device_id) values ('2024-12-12 14:27:52.712025', 1);
 
 -- GROUP BY is not needed, since rows are already aggregated
 select time, device_id, hits
-format 'json-obj-pretty'
 from example
-order by 1;
+order by 1
+format 'json-obj-pretty';
 [{
   "time": "2024-12-12 13:00:00+02",
   "device_id": 1,
@@ -132,7 +132,7 @@ order by 1;
 
 ```SQL
 -- similarity search using vector
-create table example (id int primary key serial, embedding vector);
+create table example (id serial primary key, embedding vector);
 insert into example (embedding) values ([3,2,0,1,4]);
 insert into example (embedding) values ([2,2,0,1,3]);
 insert into example (embedding) values ([1,3,0,1,4]);

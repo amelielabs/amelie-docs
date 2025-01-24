@@ -19,7 +19,6 @@ The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of
 ```SQL
 show wal;
 [{
-  "active": true,
   "rotate_wm": 104857600,
   "sync_on_rotate": true,
   "sync_on_write": false,

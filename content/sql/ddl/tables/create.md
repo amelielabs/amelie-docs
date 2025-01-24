@@ -7,7 +7,7 @@ bookToc: false
 ## CREATE TABLE Statement
 
 ```SQL
-CREATE [SHARED | DISTRIBUTED] TABLE [IF NOT EXISTS] [schema.]name
+CREATE [UNLOGGED] [SHARED | DISTRIBUTED] TABLE [IF NOT EXISTS] [schema.]name
 (column [, ...] [, primary key (keys)])
 [WITH (options)]
 
@@ -20,6 +20,7 @@ type:
 	smallint
 	int
 	bigint
+	serial
 	float
 	double
 	text
@@ -28,13 +29,13 @@ type:
 	interval
 	date	
 	vector
+	uuid
 
 constraints:
 	NOT NULL
 	DEFAULT const
-	SERIAL
 	PRIMARY KEY
-	[ALWAYS GENERATED] AS (expr) <STORED | RESOLVED>
+	[ALWAYS GENERATED] AS [(expr)] <IDENTITY | STORED | RESOLVED>
 
 primary key:
 	PRIMARY KEY [(column_name[, ...])] 
@@ -46,8 +47,8 @@ options:
 Create a new table if it does not exist.
 
 If the schema name is not defined, it will be set to **`public`** by default. One or more columns must be
-defined as a **`PRIMARY KEY`**. Currently, only **`INT`**, **`STRING`**, and **`TIMESTAMP`** columns can be used as
-part of a key.
+defined as a **`PRIMARY KEY`**. Currently, only **`INT`**, **`STRING`**, **`TIMESTAMP`** and **`UUID`** columns can
+be used as part of a key.
 
 The table **`primary`** index will be automatically created using a defined index type and the primary key.
 The primary index is always created as **`UNIQUE`**. Supported index types are **`hash`** and **`tree`**. The index type can
@@ -79,9 +80,26 @@ available for direct read access from any node. Their primary purpose is to impl
 JOIN`** operations with other distributed tables. Frequent updating of a shared table is
 less efficient since it requires coordination and exclusive access.
 
+### Unlogged Tables
+
+Using the **`UNLOGGED`** clause, it is possible to create tables whose DML operations will not be
+part of the WAL (and replication streaming). The [CHECKPOINT](/docs/reliability/checkpoint) operation handles
+the same way as regular tables and saves data that is available at the moment of snapshot.
+Unlogged tables can provide a significant performance boost.
+
+DDL operations are handled the same way as regular tables and are unaffected.
+
 ### Generated Columns
 
-Amelie supports two types of generated columns: **`STORED`** and **`RESOLVED`**.
+Amelie supports several types of generated columns:
+
+* **`ALWAYS GENERATED AS IDENTITY`**
+  
+  Identity columns allow you to automatically assign a unique number to a column. If a table has more than
+  one identity column, they will share the same value. Only columns with **`INT`** and **`BIGINT`** types can be
+  used as identity columns.
+
+  Using **`SERIAL`** as a column type will make the column as an identity column using **`BIGINT`** type.
 
 * **`ALWAYS GENERATED AS (expr) STORED`**
 

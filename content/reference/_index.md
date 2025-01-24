@@ -77,7 +77,7 @@ bookToc: false
 
 * [START REPLICATION](/docs/repl/start)
 * [SUBSCRIBE](/docs/repl/subscribe)
-* [CHECKPOINT](/docs/storage/checkpoint)
+* [CHECKPOINT](/docs/reliability/checkpoint)
 
 <--->
 
@@ -108,10 +108,10 @@ bookToc: false
 * [SHOW USER](/docs/users/show)
 * [SHOW NODES](/docs/cluster/show)
 * [SHOW NODE](/docs/cluster/show)
-* [SHOW REPLICAS](/docs/repl/show_replicas)
-* [SHOW REPLICA](/docs/repl/show_replicas)
+* [SHOW REPLICAS](/docs/repl/show_replica)
+* [SHOW REPLICA](/docs/repl/show_replica)
 * [SHOW REPLICATION](/docs/repl/show)
-* [SHOW WAL](/docs/storage/show)
+* [SHOW WAL](/docs/reliability/show)
 * [SHOW STATUS](/docs/monitoring/show)
 
 <--->

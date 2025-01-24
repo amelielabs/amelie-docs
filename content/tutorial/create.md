@@ -36,7 +36,6 @@ The most notable options are:
 | default_timezone  | string | Timezone to use. If not provided, the system timezone will be used. |
 | frontends         | int | The number of frontend workers. It will be set automatically based on the number of CPU cores if not provided. |
 | backends          | int | The number of pre-created compute nodes (backend workers). It will be set automatically based on the number of CPU cores if not provided. |
-| wal               | bool | Use Write-Ahead Log (WAL) (enabled by default). |
 | listen            | array | List of the addresses to accept connections. By default, it accepts all connections without authentication. |
 
 
@@ -45,7 +44,7 @@ with or without authentication, with or without using the [TLS certificates](/do
 
 ## Cluster Configuration
 
-Options **frontends**, **backends** and **wal** directly impact the server performance.
+Options **frontends**, **backends** and using **`unlogged`** tables directly impact the server performance.
 
 The number of **frontend** workers can be changed at the server start, and the number of **backend** workers (compute nodes)
 can be modified later using the [CREATE NODE](/docs/cluster/create) and [DROP NODE](/docs/cluster/drop) commands.

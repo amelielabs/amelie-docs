@@ -21,16 +21,16 @@ select error("error message");
 
 ---
 
-### **`int serial(schema, name)`**
+### **`int identity_of(schema, name)`**
 
 Get current serial value of the table identified by
 the **`schema`** and **`name`**.
 
 ```SQL
-create table example (id int primary key serial);
+create table example (id int primary key generated always as identity);
 insert into example () values (), (), ();
 select * from example;
 [[0], [1], [2]]
-select serial("public", "example");
+select identity_of("public", "example");
 [3]
 ```
