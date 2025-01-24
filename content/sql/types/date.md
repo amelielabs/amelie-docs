@@ -8,7 +8,7 @@ bookToc: false
 ## DATE
 
 **`DATE`** type represents date according to the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601).
-Internally type converted, stored, and operated as a 32-bit integer representing [Julian Day](https://en.wikipedia.org/wiki/Julian_day).
+Internally type converted, stored, and operated as a `32-bit` integer representing [Julian Day](https://en.wikipedia.org/wiki/Julian_day).
 
 The supported range is from **`0001-01-01`** to **`9999-12-31`**.
 

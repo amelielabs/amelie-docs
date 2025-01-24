@@ -187,3 +187,14 @@ Convert from **`json`** array to **`vector`**. Array values must be integers or 
 select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector;
 [1.5, 3.15, 4.5]
 ```
+
+---
+
+### **`uuid uuid(string)`**
+
+Convert from **`string`** to **`uuid`**.
+
+```SQL
+select "4845888e-dbc4-88bc-2e22-9673ccd23bee"::uuid;
+["4845888e-dbc4-88bc-2e22-9673ccd23bee"]
+```

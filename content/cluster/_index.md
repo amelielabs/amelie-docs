@@ -1,6 +1,6 @@
 ---
 weight: 11
-title: Cluster
+title: Compute Cluster
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

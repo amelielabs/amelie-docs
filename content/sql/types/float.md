@@ -7,7 +7,7 @@ bookToc: false
 
 ## FLOAT
 
-**`FLOAT`**, **`F32`** defines `32bit` floating-point number.
+**`FLOAT`**, **`F32`** defines `32-bit` floating-point number.
 
 ---
 

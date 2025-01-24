@@ -7,7 +7,7 @@ bookToc: false
 
 ## INT
 
-**`INT`**, **`INTEGER`**, **`INT32`**, **`I32`** defines `32bit` integer.
+**`INT`**, **`INTEGER`**, **`INT32`**, **`I32`** defines `32-bit` integer.
 
 All integer types are signed and can be used in arithmetical operations or as part of
 the primary or secondary key.

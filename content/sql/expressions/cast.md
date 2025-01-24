@@ -13,7 +13,7 @@ CAST (expr AS type)
 
 **`CAST`** operator is used to convert the **`expression`** from one type to another.
 
-Depending on the **`type`**, one of the [casting](/docs/sql/functions/casting) functions will be called.
+**`CAST`** implemented as an alias to the [casting](/docs/sql/functions/casting) functions.
 
 ---
 

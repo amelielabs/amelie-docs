@@ -19,47 +19,6 @@ Get a system config and current runtime variables.
 Same as [SHOW CONFIG](/docs/configuration/show).
 
 ```SQL
-select system.config();
-[{
-  "version": "1.0.0",
-  "uuid": "826e3f5d-6ebd-bd08-748d-57eb5e5cd565",
-  "directory": "t",
-  "timezone": "Asia/Famagusta",
-  "timezone_default": "Asia/Famagusta",
-  "format": "json-pretty",
-  "log_enable": true,
-  "log_to_file": true,
-  "log_to_stdout": true,
-  "log_connections": true,
-  "log_options": true,
-  "tls_capath": "",
-  "tls_ca": "",
-  "tls_cert": "",
-  "tls_key": "",
-  "listen": [{
-    "host": "*",
-    "port": 3485
-  }],
-  "limit_send": 3145728,
-  "limit_recv": 1048576,
-  "limit_write": 0,
-  "frontends": 8,
-  "backends": 8,
-  "wal": false,
-  "wal_rotate_wm": 104857600,
-  "wal_sync_on_rotate": true,
-  "wal_sync_on_write": false,
-  "repl": false,
-  "repl_primary": "",
-  "repl_reconnect_ms": 3000,
-  "checkpoint_interval": "5 min",
-  "checkpoint_workers": 3,
-  "checkpoint": 12,
-  "read_only": false,
-  "lsn": 12,
-  "psn": 25
-}]
-
 select system.config().uuid;
 ["826e3f5d-6ebd-bd08-748d-57eb5e5cd565"]
 ```
@@ -85,11 +44,38 @@ select system.users().test;
 
 ---
 
+### **`json system.user(string)`**
+
+Show user information.
+
+Same as [SHOW USER](/docs/users/show).
+
+```SQL
+select system.user('test').name;
+["test"]
+```
+
+---
+
 ### **`json system.replicas()`**
 
 Get a list of created replicas in the system.
 
-Same as [SHOW REPLICAS](/docs/repl/show_replicas).
+Same as [SHOW REPLICAS](/docs/repl/show_replica).
+
+---
+
+### **`json system.replica(string)`**
+### **`json system.replica(uuid)`**
+
+Get the status of a replica.
+
+Same as [SHOW REPLICA](/docs/repl/show_replica).
+
+```SQL
+select system.replica('00000000-0000-0000-0000-000000000001').uri;
+["http://localhost:3481"]
+```
 
 ---
 
@@ -119,6 +105,22 @@ Same as [SHOW NODES](/docs/cluster/show).
 
 ---
 
+### **`json system.node(string)`**
+### **`json system.node(uuid)`**
+
+Show node information.
+
+Same as [SHOW NODE](/docs/cluster/show).
+
+```SQL
+select system.node('74f303a3-c434-fda7-59ca-bce4d9dca6a9');
+[{
+  "id": "74f303a3-c434-fda7-59ca-bce4d9dca6a9"
+}]
+```
+
+---
+
 ### **`json system.schemas()`**
 
 Get a list of created schemas.
@@ -127,11 +129,45 @@ Same as [SHOW SCHEMAS](/docs/sql/ddl/schemas/show).
 
 ---
 
+### **`json system.schema(string)`**
+
+Show schema information.
+
+Same as [SHOW SCHEMA](/docs/sql/ddl/schemas/show).
+
+```SQL
+select system.schema('example').system;
+[false]
+```
+
+---
+
 ### **`json system.tables()`**
 
 Get a list of created tables.
 
 Same as [SHOW TABLES](/docs/sql/ddl/tables/show).
+
+---
+
+### **`json system.table(string)`**
+
+Show table information.
+
+Same as [SHOW TABLE](/docs/sql/ddl/tables/show).
+
+```SQL
+select system.table('example').columns;
+[[{
+  "name": "primary",
+  "type": 2,
+  "unique": true,
+  "primary": true,
+  "keys": [{
+    "column": 0
+  }]
+}]]
+```
 
 ---
 

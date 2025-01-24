@@ -47,10 +47,21 @@ The following operations of comparison are supported:
 #### **`STRING`** only
 
 * expr = expr
+* expr <> expr
 
 #### **`JSON`** only
 
 * expr = expr
+* expr <> expr
+
+#### **`UUID`** only
+
+* expr = expr
+* expr <> expr
+* expr > expr
+* expr >= expr
+* expr < expr
+* expr <= expr
 
 Any operation with **`NULL`** value produce **`NULL`**.
 

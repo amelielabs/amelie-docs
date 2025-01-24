@@ -7,7 +7,7 @@ bookToc: false
 
 ## DOUBLE
 
-**`DOUBLE`**, **`F64`** defines `64bit` floating-point number.
+**`DOUBLE`**, **`F64`** defines `64-bit` floating-point number.
 
 ---
 
