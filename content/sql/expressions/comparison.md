@@ -9,9 +9,18 @@ bookToc: false
 
 The following operations of comparison are supported:
 
-#### **`INT, FLOAT, DOUBLE, BOOL, TIMESTAMP`**
+#### **`INT, FLOAT, DOUBLE, BOOL`**
+* expr = expr
+* expr <> expr
+* expr > expr
+* expr >= expr
+* expr < expr
+* expr <= expr
+
+#### **`INT, TIMESTAMP, DATE`**
 
 * expr = expr
+* expr <> expr
 * expr > expr
 * expr >= expr
 * expr < expr
@@ -20,6 +29,7 @@ The following operations of comparison are supported:
 #### **`INTERVAL`** only
 
 * expr = expr
+* expr <> expr
 * expr > expr
 * expr >= expr
 * expr < expr
@@ -28,16 +38,13 @@ The following operations of comparison are supported:
 #### **`VECTOR`** only
 
 * expr = expr
+* expr <> expr
 * expr > expr
 * expr >= expr
 * expr < expr
 * expr <= expr
 
 #### **`STRING`** only
-
-* expr = expr
-
-#### **`OBJECT`** only
 
 * expr = expr
 

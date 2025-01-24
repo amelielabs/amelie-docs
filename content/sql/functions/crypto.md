@@ -21,9 +21,9 @@ select random();
 
 ---
 
-### **`string random_uuid()`**
+### **`uuid random_uuid()`**
 
-Generate **`UUID`**.
+Generate **`uuid`**.
 
 ```SQL
 select random_uuid();

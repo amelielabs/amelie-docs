@@ -26,6 +26,7 @@ type:
 	json
 	timestamp
 	interval
+	date	
 	vector
 
 constraints:

@@ -19,8 +19,20 @@ Following arithmetical operations are supported:
 
 #### **`TIMESTAMP, INTERVAL`**
 
-* expr + expr
-* expr - expr
+* timestamp + interval = timestamp
+* timestamp - interval = timestamp
+* timestamp - timestamp = interval
+
+#### **`DATE, INT`**
+
+* date + int = date
+* date - int = date
+* date - date = int (days)
+
+#### **`DATE, INTERVAL`**
+
+* date + interval = timestamp
+* date - interval = timestamp
 
 #### **`VECTOR`** only
 

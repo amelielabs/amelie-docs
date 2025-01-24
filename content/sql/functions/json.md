@@ -131,7 +131,7 @@ select {"a": {"b": 123}}::unset("a.b");
 
 ---
 
-### **`json has(obj, path)`**
+### **`bool has(obj, path)`**
 
 Return true if the JSON **`obj`** key at the **`path`** exists. The **`path`** can be compound.
 

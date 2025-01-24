@@ -1,24 +1,27 @@
 ---
 weight: 6
-title: "Timestamp"
+title: "Time"
 bookToc: false
 ---
 
-## Timestamp Functions
+## Time Functions
 
-All timestamp functions are located in the **`public`** schema, which is default.
+All time functions are located in the **`public`** schema, which is default.
 
 ---
 
 ### **`timestamp timestamp(string, timezone)`**
 ### **`timestamp timestamp(string)`**
 ### **`timestamp timestamp(int)`**
+### **`timestamp timestamp(date)`**
 
-Convert from **`STRING`** to **`TIMEZONE`**. If the **`timezone`** argument is provided, the
+Convert from **`string`** to **`timestamp`**. If the **`timezone`** argument is provided, the
 timestamp will be created according to it.
 
-Convert from **`INT`** to **`TIMEZONE`**. The first argument is expected to be the
+Convert from **`int`** to **`timestamp`**. The first argument is expected to be the
 Unix epoch in UTC with microsecond precision.
+
+Convert from **`date`** to **`timestamp`**. The time will be set to **`00:00:00`**.
 
 ```SQL
 select timestamp("2024-09-26 12:12:10.684550+03");
@@ -45,6 +48,9 @@ select "2024-09-26 12:12:10.684550"::timestamp('UTC');
 set timezone to 'UTC'
 select "2024-09-26 12:12:10.684550"::timestamp('UTC');
 ["2024-09-26 12:12:10.684550+00"]
+
+select current_date::timestamp;
+["2024-09-26 00:00:00+00"]
 ```
 
 ---
@@ -158,13 +164,15 @@ select '3 days 2 hr 47 min 33 sec'::interval::interval_trunc('hour');
 ---
 
 ### **`int extract(string, interval)`**
-### **`int extract(interval, string)`**
 ### **`int extract(string, timestamp)`**
 ### **`int extract(string, timestamp, timezone)`**
+### **`int extract(string, date)`**
+### **`int extract(interval, string)`**
 ### **`int extract(timestamp, string)`**
 ### **`int extract(timestamp, string, timezone)`**
+### **`int extract(date, string)`**
 
-Extract the time-specific value from the **`timestamp`** or **`interval`**.
+Extract the time-specific value from the **`timestamp`**, **`interval`** or **`date`**.
 
 Supported fields are:
 

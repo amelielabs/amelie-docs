@@ -16,8 +16,8 @@ Types can be used as a part of the primary or secondary key.
 ---
 
 ```SQL
-select "Hello World!";
-["Hello World"]
+select "こんにちは";
+["こんにちは"]
 
 select 'Hello World!';
 ["Hello World"]
@@ -32,5 +32,5 @@ select {"text": "Hello " || "World!"};
 create table example (id text primary key);
 insert into example values ("hello world");
 select id from example;
-["Hello World"]
+["hello world"]
 ```

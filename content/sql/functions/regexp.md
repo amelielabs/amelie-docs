@@ -8,6 +8,8 @@ bookToc: false
 
 All functions are located in the **`public`** schema, which is default.
 
+All string functions work with UTF-8 encoded strings.
+
 ---
 
 ### **`bool regexp_like(string, pattern)`**

@@ -15,10 +15,12 @@ The type can be used as a column type or a key.
 Internally type converted, stored, and operated as a `64-bit` integer representing Unix time in UTC.
 All operations are corrected according to the current timezone settings.
 
-**`CURRENT_TIMESTAMP`** and [now()](/docs/sql/functions/timestamp) can be used to get the current transaction time.
+The supported range is from **`1970-01-01 00:00:00.000000`** to **`9999-12-31 23:59:59.999999`**.
+
+**`CURRENT_TIMESTAMP`** and [now()](/docs/sql/functions/time) can be used to get the current transaction time.
 **`TIMESTAMP`** prefix before a string can be used to explicitly define timestamp value without convertion.
 
-[Timestamp Functions](/docs/sql/functions/timestamp) can be used to do basic operations using timestamps.
+[Time Functions](/docs/sql/functions/time) can do basic operations using timestamps, intervals, and dates.
 
 ---
 

@@ -20,7 +20,7 @@ Comparison is inclusive, and identical to:
 expr >= a AND expr <= b
 ```
 
-**`BETWEEN`** operator accepts values as consts of the following types: **`INT`**, **`FLOAT`**, **`DOUBLE`**, **`STRING`**, **`INTERVAL`** and **`TIMESTAMP`**.
+**`BETWEEN`** operator accepts values as consts of the following types: **`INT`**, **`FLOAT`**, **`DOUBLE`**, **`STRING`**, **`INTERVAL`**, **`TIMESTAMP`** and **`DATE`**.
 
 **`BETWEEN`** operator can be used to define range scan start/stop keys ([SELECT FROM WHERE](/docs/sql/query/select)).
 

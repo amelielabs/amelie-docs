@@ -8,16 +8,32 @@ bookToc: false
 
 All string functions are located in the **`public`** schema, which is default.
 
+All string functions work with UTF-8 encoded strings.
+
 ---
 
 ### **`int length(arg)`**
 ### **`int size(arg)`**
 
-Return the size of the argument, which can be **`STRING`**, **`JSON`** or **`VECTOR`**.
+Return the size of the argument, which can be **`string`**, **`json`** or **`vector`**.
 
 ```SQL
+select "こんにちは"::length;
+[5]
+
 select "hello"::size;
 [5]
+```
+
+---
+
+### **`int octet_length(arg)`**
+
+Return the size of the argument in bytes, which can be **`string`**, **`json`** or **`vector`**.
+
+```SQL
+select "こんにちは"::octet_length;
+[15]
 ```
 
 ---
@@ -38,7 +54,7 @@ select concat("a", "b", null, "c");
 
 ### **`string lower(string)`**
 
-Convert the **`string`** to the lowercase presentation.
+Convert the ASCII characters of **`string`** to the lowercase presentation.
 
 ```SQL
 select "HELLO"::lower;
@@ -49,7 +65,7 @@ select "HELLO"::lower;
 
 ### **`string upper(string)`**
 
-Convert the **`string`** to the uppercase presentation.
+Convert the ASCII characters of **`string`** to the uppercase presentation.
 
 ```SQL
 select "hello"::upper;

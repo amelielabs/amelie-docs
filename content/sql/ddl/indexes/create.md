@@ -22,6 +22,7 @@ type:
 	json
 	timestamp
 	interval
+	date
 	vector
 
 option:

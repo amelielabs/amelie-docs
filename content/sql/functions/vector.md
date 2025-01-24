@@ -12,7 +12,7 @@ All vector functions are located in the **`public`** schema, which is default.
 
 ### **`vector vector(json)`**
 
-Convert from **`JSON`** array to **`VECTOR`**. Array values must be integers or floats.
+Convert from **`json`** array to **`vector`**. Array values must be integers or floats.
 
 ```SQL
 select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector;

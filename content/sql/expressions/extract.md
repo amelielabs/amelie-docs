@@ -12,7 +12,7 @@ EXTRACT(field FROM expr)
 ```
 
 The **`EXTRACT`** operator extracts the time-specific value **`field`** from the
-**`expression`**. Supported expression types are **`TIMESTAMP`** and **`INTERVAL`**.
+**`expression`**. Supported expression types are **`TIMESTAMP`**, **`INTERVAL`** and **`DATE`**.
 
 Supported fields are:
 
@@ -30,7 +30,7 @@ Supported fields are:
 * microsecond
 * us
 
-**`EXTRACT`** implemented as an alias to the [extract()](/docs/sql/functions/timestamp) function.
+**`EXTRACT`** implemented as an alias to the [extract()](/docs/sql/functions/time) function.
 
 ---
 

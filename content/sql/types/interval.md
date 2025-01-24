@@ -42,6 +42,8 @@ Intervals can be added or subtracted and are mainly used together with timestamp
 * microsecond
 * us
 
+[Time Functions](/docs/sql/functions/time) can do basic operations using timestamps, intervals, and dates.
+
 ---
 
 ```SQL
