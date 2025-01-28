@@ -95,8 +95,8 @@ usage: amelie [command | login] [options]
     --limit_send=int
     --limit_recv=int
     --limit_write=int
-    --frontends=int
-    --backends=int
+    --hosts=int
+    --nodes=int
     --wal_rotate_wm=int
     --wal_sync_on_rotate=bool
     --wal_sync_on_write=bool

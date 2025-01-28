@@ -97,27 +97,11 @@ select system.repl();
 
 ---
 
-### **`json system.nodes()`**
+### **`json system.compute()`**
 
-Get a list of created nodes in the system.
+Get a list of created compute nodes in the system.
 
-Same as [SHOW NODES](/docs/cluster/show).
-
----
-
-### **`json system.node(string)`**
-### **`json system.node(uuid)`**
-
-Show node information.
-
-Same as [SHOW NODE](/docs/cluster/show).
-
-```SQL
-select system.node('74f303a3-c434-fda7-59ca-bce4d9dca6a9');
-[{
-  "id": "74f303a3-c434-fda7-59ca-bce4d9dca6a9"
-}]
-```
+Same as [SHOW COMPUTE](/docs/compute/show).
 
 ---
 
@@ -205,8 +189,8 @@ select system.status();
 [{
   "uuid": "ad41adcf-6479-f931-a491-2e27272c8a50",
   "version": "1.0.0",
-  "frontends": 5,
-  "backends": 11,
+  "hosts": 5,
+  "nodes": 11,
   "db": {
     "schemas": 2,
     "tables": 0,
@@ -220,8 +204,8 @@ select system.status();
     "mem_shared": 5083136,
     "cpu_count": 16,
     "cpu": 26477970,
-    "cpu_frontends": [0, 0, 0, 0, 0],
-    "cpu_backends": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    "cpu_hosts": [0, 0, 0, 0, 0],
+    "cpu_nodes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   "net": {
     "connections": 1,

@@ -1,6 +1,6 @@
 ---
 weight: 11
-title: Compute Cluster
+title: IO and Compute
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

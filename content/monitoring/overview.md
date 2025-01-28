@@ -17,7 +17,7 @@ below has an [equivalent function](/docs/sql/functions/system) for convenience.
 
 [SHOW USERS](/docs/users/show) – show all users defined in the system.
 
-[SHOW NODES](/docs/cluster/show) – show created and active compute nodes in the system.
+[SHOW COMPUTE](/docs/compute/show) – show created and active compute nodes in the system.
 
 [SHOW REPLICAS](/docs/repl/show_replica) – get a list of the status of replica servers.
 

@@ -134,16 +134,16 @@ show limit_write;
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----:       | :---- |
-| frontends         |  int     | cli          | Number of frontend workers |
-| backends          |  int     | init cli     | Number of backend workers (compute nodes) |
+| hosts             |  int     | cli          | Number of hosts workers |
+| nodes             |  int     | init cli     | Number of compute nodes |
 
 ---
 
 ```SQL
-show frontends;
+show hosts;
 [5]
 
-show backends;
+show nodes;
 [12]
 ```
 

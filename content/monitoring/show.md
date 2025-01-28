@@ -23,8 +23,8 @@ show status;
 [{
   "uuid": "ad41adcf-6479-f931-a491-2e27272c8a50",
   "version": "1.0.0",
-  "frontends": 5,
-  "backends": 11,
+  "hosts": 5,
+  "nodes": 11,
   "db": {
     "schemas": 2,
     "tables": 0,
@@ -38,8 +38,8 @@ show status;
     "mem_shared": 5083136,
     "cpu_count": 16,
     "cpu": 26477970,
-    "cpu_frontends": [0, 0, 0, 0, 0],
-    "cpu_backends": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    "cpu_hosts": [0, 0, 0, 0, 0],
+    "cpu_nodes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   },
   "net": {
     "connections": 1,

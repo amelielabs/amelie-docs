@@ -17,7 +17,6 @@ bookToc: false
 * [CREATE TABLE](/docs/sql/ddl/tables/create)
 * [CREATE INDEX](/docs/sql/ddl/indexes/create)
 * [CREATE USER](/docs/users/create)
-* [CREATE NODE](/docs/cluster/create)
 * [CREATE REPLICA](/docs/repl/create)
 * [CREATE TOKEN](/docs/users/create_token)
 
@@ -29,7 +28,6 @@ bookToc: false
 * [DROP TABLE](/docs/sql/ddl/tables/drop)
 * [DROP INDEX](/docs/sql/ddl/indexes/drop)
 * [DROP USER](/docs/users/drop)
-* [DROP NODE](/docs/cluster/drop)
 * [DROP REPLICA](/docs/repl/drop)
 
 <--->
@@ -39,6 +37,7 @@ bookToc: false
 * [ALTER SCHEMA](/docs/sql/ddl/schemas/alter)
 * [ALTER TABLE](/docs/sql/ddl/tables/alter)
 * [ALTER INDEX](/docs/sql/ddl/indexes/alter)
+* [ALTER COMPUTE](/docs/compute/alter)
 
 {{% /columns %}}
 
@@ -106,8 +105,7 @@ bookToc: false
 
 * [SHOW USERS](/docs/users/show)
 * [SHOW USER](/docs/users/show)
-* [SHOW NODES](/docs/cluster/show)
-* [SHOW NODE](/docs/cluster/show)
+* [SHOW COMPUTE](/docs/compute/show)
 * [SHOW REPLICAS](/docs/repl/show_replica)
 * [SHOW REPLICA](/docs/repl/show_replica)
 * [SHOW REPLICATION](/docs/repl/show)
