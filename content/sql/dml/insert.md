@@ -18,7 +18,7 @@ VALUES (value[, ...])[, ...] | SELECT ...
 
 Insert one or more rows into the table.
 
-The Insert operation is distributed and will transactionally update table partitions on one or more nodes.
+The Insert operation is distributed and will transactionally update table partitions on one or more backends.
 Insert can be part of a multi-statement transaction.
 
 If the table schema is not defined, the table name will be searched in the **`public`** schema.

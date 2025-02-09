@@ -27,7 +27,7 @@ lambda state.
 Lambda expressions can help work with JSON and do some non-trivial transformations.
 
 Lambda can be used with shared tables and expressions, but it currently cannot be
-used with distributed tables (currently lambda does not support partial state merging).
+used with partitioned tables (currently lambda does not support partial state merging).
 
 ---
 

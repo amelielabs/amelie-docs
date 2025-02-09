@@ -24,7 +24,7 @@ Change the definition of a table if it exists.
 Currently, the **`ALTER TABLE`** operation cannot be part of multi-statement transactions.
 
 Operations such as [CREATE INDEX](/docs/sql/ddl/indexes/create) and **`ALTER TABLE ADD/DROP COLUMN`** are blocking but
-completely parallel. Each worker node will create an index for its partitions.
+completely parallel. Each backer worker will create an index for its partitions.
 
 **`ALTER TABLE ADD/DROP COLUMN`** is a memory-expensive operation that requires at least double
 the memory size of the original table to complete while the previous table is kept. To avoid this

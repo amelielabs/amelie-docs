@@ -14,13 +14,36 @@ Following system functions are aliases for corresponding [SHOW](/docs//monitorin
 
 ### **`json system.config()`**
 
-Get a system config and current runtime variables.
+Get a system config.
 
 Same as [SHOW CONFIG](/docs/configuration/show).
 
 ```SQL
 select system.config().uuid;
 ["826e3f5d-6ebd-bd08-748d-57eb5e5cd565"]
+```
+
+---
+
+### **`json system.state()`**
+
+Get a system state information.
+
+Same as [SHOW STATE](/docs/monitoring/show_state).
+
+```SQL
+select system.state()
+[{
+  "version": "0.1.0",
+  "directory": "./test_repo",
+  "uuid": "cd580566-6cf7-fb90-737d-50dd8abdbc79",
+  "frontends": 8,
+  "backends": 8,
+  "checkpoint": 1,
+  "lsn": 1,
+  "psn": 0,
+  "read_only": false
+}]
 ```
 ---
 
@@ -97,11 +120,11 @@ select system.repl();
 
 ---
 
-### **`json system.compute()`**
+### **`json system.backends()`**
 
-Get a list of created compute nodes in the system.
+Get a list of created backend workers in the system.
 
-Same as [SHOW COMPUTE](/docs/compute/show).
+Same as [SHOW BACKENDS](/docs/compute/show).
 
 ---
 
@@ -165,73 +188,73 @@ Same as [SHOW WAL](/docs/reliability/show).
 ```SQL
 select system.wal();
 [{
-  "rotate_wm": 104857600,
-  "sync_on_rotate": true,
-  "sync_on_write": false,
-  "lsn": 58,
+  "lsn": 1,
   "lsn_min": 1,
   "files": 1,
   "slots": 0,
-  "slots_min": -1
+  "slots_min": -1,
+  "writes": 0,
+  "writes_bytes": 0,
+  "ops": 0,
+  "checkpoint": 1
 }]
 ```
 
 ---
 
-### **`json system.status()`**
+### **`json system.metrics()`**
 
 Show the essential database and process information gathered in one place.
 
-Same as [SHOW STATUS](/docs/monitoring/show).
+Same as [SHOW METRICS](/docs/monitoring/show).
 
 ```SQL
-select system.status();
+select system.metrics();
 [{
-  "uuid": "ad41adcf-6479-f931-a491-2e27272c8a50",
-  "version": "1.0.0",
-  "hosts": 5,
-  "nodes": 11,
+  "uuid": "cd580566-6cf7-fb90-737d-50dd8abdbc79",
+  "version": "0.1.0",
+  "frontends": 8,
+  "backends": 8,
   "db": {
     "schemas": 2,
     "tables": 0,
     "tables_shared": 0,
-    "secondary_indexes": 0,
+    "secondary_indexes": 0
   },
   "process": {
     "uptime": 0,
-    "mem_virt": 1371725824,
-    "mem_resident": 10760192,
-    "mem_shared": 5083136,
+    "mem_virt": 1371512832,
+    "mem_resident": 10932224,
+    "mem_shared": 5267456,
     "cpu_count": 16,
-    "cpu": 26477970,
-    "cpu_hosts": [0, 0, 0, 0, 0],
-    "cpu_nodes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    "cpu": 22891059,
+    "cpu_frontends": [0, 0, 0, 0, 0, 0, 0, 0],
+    "cpu_backends": [0, 0, 0, 0, 0, 0, 0, 0]
   },
   "net": {
     "connections": 1,
     "sent_bytes": 0,
-    "recv_bytes": 76
+    "recv_bytes": 77
   },
   "wal": {
-    "active": true,
-    "checkpoint": 15627754,
-    "lsn": 15627754,
-    "lsn_min": 15593964,
+    "lsn": 1,
+    "lsn_min": 1,
     "files": 1,
     "slots": 0,
     "slots_min": -1,
     "writes": 0,
     "writes_bytes": 0,
-    "ops": 0
+    "ops": 0,
+    "checkpoint": 1
   },
   "repl": {
     "active": false,
     "role": "primary",
     "primary": null,
-    "replicas": {}
+    "replicas": []
   }
 }]
 
-select system.status().uuid;
-["ad41adcf-6479-f931-a491-2e27272c8a50"]
+select system.metrics().uuid;
+["cd580566-6cf7-fb90-737d-50dd8abdbc79"]
 ```

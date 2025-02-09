@@ -16,7 +16,7 @@ DELETE FROM [schema.]table_name
 
 Delete rows in the table.
 
-The Delete operation is distributed and will transactionally update table partitions on one or more nodes.
+The Delete operation is distributed and will transactionally update table partitions on one or more backends.
 Delete can be part of a multi-statement transaction.
 
 If the table schema is not defined, the table name will be searched in the **`public`** schema.

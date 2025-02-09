@@ -21,7 +21,7 @@ Currently only Linux environments are supported.
 #### Build Release
 
 ```sh
-git clone https://github.com/pmwkaa/amelie
+git clone https://github.com/amelielabs/amelie
 cd amelie
 make release
 ```
@@ -29,7 +29,7 @@ make release
 #### Build Release (pass cmake options directly)
 
 ```sh
-git clone https://github.com/pmwkaa/amelie
+git clone https://github.com/amelielabs/amelie
 cd amelie
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=<install_path> .
@@ -39,7 +39,7 @@ make
 #### Build Debug
 
 ```sh
-git clone https://github.com/pmwkaa/amelie
+git clone https://github.com/amelielabs/amelie
 cd amelie
 make debug
 ```

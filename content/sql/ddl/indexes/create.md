@@ -33,14 +33,14 @@ option:
 
 Create a secondary index.
 
-All primary indexes are always **`UNIQUE`**. Secondary unique indexes for distributed tables are not supported.
+All primary indexes are always **`UNIQUE`**. Secondary unique indexes for partitioned tables are not supported.
 The **`UNIQUE`** indexes can be created only with shared tables.
 
 Currently, supported index types are **`hash`** and **`tree`**. The **`WITH`** clause allows you to select the index type.
 If the index type is not defined, it will default to the **`tree`**.
 
 Operations such as **`CREATE INDEX`** and [ALTER TABLE ADD/DROP COLUMN](/docs/sql/ddl/tables/alter) are blocking but completely parallel.
-Each node will create an index for its partitions. To avoid this operation repeating during WAL replay, it is recommended to
+Each backend worker will create an index for its partitions. To avoid this operation repeating during WAL replay, it is recommended to
 run the [CHECKPOINT](/docs/reliability/checkpoint) operation right after its completion.
 
 It is possible to index JSON documents by creating table keys as generated columns which

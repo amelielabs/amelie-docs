@@ -17,7 +17,7 @@ Primary server connection.  The [UNSUBSCRIBE](/docs/repl/unsubscribe) command ca
 primary server and become the primary server itself.
 
 The Primary server connects to replica servers identified by the created replica object and continuously
-streams WAL changes.
+streams WAL changes. The connection must be direct without using a proxy server.
 
 The replica server can become outdated if its **`WAL LSN`** is no longer available on the Primary server
 (because of [CHECKPOINT](/docs/reliability/checkpoint) operation). To prevent this, the primary server creates replication

@@ -1,5 +1,5 @@
 ---
-weight: 3
+weight: 13
 title: "Common Table Expression (CTE)"
 bookToc: false
 ---
@@ -16,7 +16,7 @@ CTE statements and statements without CTE can be used together. Multiple stateme
 using the **;** symbol or defined using CTE.
 
 Amelie generates an optimized parallel plan for executing multi-statement transactions and CTE.
-It combines multiple node requests together to reduce wait times and speed up the execution of
+It combines multiple requests together to reduce wait times and speed up the execution of
 non-dependable CTE statements.
 
 All DML statements have a **`RETURNING`** clause, which allows the assignment of CTE value

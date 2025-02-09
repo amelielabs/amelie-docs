@@ -46,7 +46,7 @@ Additionally, it is possible to setup [Replication](/docs/repl/overview).
 
 ```text
 $ amelie --help
-amelie (version: 1.0)
+amelie (version: 0.1.0)
 
 usage: amelie [command | login] [options]
 
@@ -82,11 +82,14 @@ usage: amelie [command | login] [options]
   server options:
 
     --uuid=string
-    --timezone_default=string
+    --timezone=string
+    --format=string
+    --shutdown=string
     --log_enable=bool
     --log_to_file=bool
     --log_to_stdout=bool
     --log_connections=bool
+    --log_options=bool
     --tls_capath=string
     --tls_ca=string
     --tls_cert=string
@@ -95,13 +98,11 @@ usage: amelie [command | login] [options]
     --limit_send=int
     --limit_recv=int
     --limit_write=int
-    --hosts=int
-    --nodes=int
-    --wal_rotate_wm=int
+    --frontends=int
+    --backends=int
+    --wal_size=int
     --wal_sync_on_rotate=bool
     --wal_sync_on_write=bool
-    --repl=bool
-    --repl_primary=string
     --repl_reconnect_ms=int
     --checkpoint_interval=string
     --checkpoint_workers=int
@@ -114,11 +115,14 @@ usage: amelie [command | login] [options]
     --clients=int
     --time=int
     --scale=int
+    --batch=int
     --init=bool
+    --unlogged=bool
 
   import options:
 
     --format=string
     --clients=int
     --batch=int
+
 ```

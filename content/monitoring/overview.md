@@ -11,13 +11,15 @@ below has an [equivalent function](/docs/sql/functions/system) for convenience.
 
 ---
 
-[SHOW STATUS](/docs/monitoring/show) – get the essential system information for monitoring.
+[SHOW METRICS](/docs/monitoring/show) – get the essential system information for monitoring.
 
-[SHOW ALL](/docs/configuration/show) – get configuration and additional runtime information.
+[SHOW CONFIG](/docs/configuration/show) – get the configuration settings.
+
+[SHOW STATE](/docs/monitoring/show_state) – get system state information.
 
 [SHOW USERS](/docs/users/show) – show all users defined in the system.
 
-[SHOW COMPUTE](/docs/compute/show) – show created and active compute nodes in the system.
+[SHOW BACKENDS](/docs/compute/show) – show created and active backend workers in the system.
 
 [SHOW REPLICAS](/docs/repl/show_replica) – get a list of the status of replica servers.
 

@@ -17,8 +17,7 @@ amelie init ./repo
 ```
 
 Server options can be changed directly by modifying the configuration file when the server is not
-running. Please note that the server dynamically updates the configuration file and keeps the information
-about users and replicas.
+running.
 
 Some options can be changed dynamically using the [SET](/docs/configuration/set) command or passed to
 the **`amelie start`**.
@@ -33,20 +32,20 @@ The most notable options are:
 | Argument             | Type | Description |
 | :---------------- |  :----:  | :----      |
 | uuid              | string | Set server UUID. If not provided, it will be generated automatically. |
-| default_timezone  | string | Timezone to use. If not provided, the system timezone will be used. |
-| hosts             | int | The number of hosts workers. It will be set automatically based on the number of CPU cores if not provided. |
-| nodes             | int | The number of pre-created compute nodes. It will be set automatically based on the number of CPU cores if not provided. |
+| timezone  | string | Timezone to use. If not provided, the system timezone will be used. |
+| frontends         | int | The number of frontend workers. It will be set automatically based on the number of CPU cores if not provided. |
+| backends          | int | The number of pre-created backend workers. It will be set automatically based on the number of CPU cores if not provided. |
 | listen            | array | List of the addresses to accept connections. By default, it accepts all connections without authentication. |
 
 
 The [listen](/docs/configuration/settings) option can be configured to accept connections from different network addresses,
 with or without authentication, with or without using the [TLS certificates](/docs/configuration/settings).
 
-## Cluster Configuration
+### IO and Compute workers
 
-Options **hosts**, **nodes** and using **`unlogged`** tables directly impact the server performance.
+Options **frontends**, **backends** and using **`unlogged`** tables directly impact the performance.
 
-The number of **hosts** workers can be changed at the server start, and the number of **nodes** workers (compute nodes)
-can be modified later using the [ALTER COMPUTE](/docs/compute/alter) command.
+The number of **frontend** workers can be changed at the server start, and the number of **backend** workers
+can be modified later using the [CREATE BACKEND](/docs/compute/create) command.
 
-[Learn more](/docs/compute/overview) about the Cluster.
+[Learn more](/docs/compute/overview) about the IO and Compute processing.

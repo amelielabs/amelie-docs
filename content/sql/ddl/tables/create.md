@@ -7,7 +7,7 @@ bookToc: false
 ## CREATE TABLE Statement
 
 ```SQL
-CREATE [UNLOGGED] [SHARED | DISTRIBUTED] TABLE [IF NOT EXISTS] [schema.]name
+CREATE [UNLOGGED] [SHARED] TABLE [IF NOT EXISTS] [schema.]name
 (column [, ...] [, primary key (keys)])
 [WITH (options)]
 
@@ -55,8 +55,9 @@ The primary index is always created as **`UNIQUE`**. Supported index types are *
 be selected using the **`WITH`** clause. If the index type is not defined, it will default to **`tree`**.
 
 All tables are automatically partitioned (hash partitioning), and partitions are created on one or
-more nodes. Amelie uses consistent hashing to assign each partition interval to a node. **`PRIMARY KEY`**
-columns are used as the partition key.
+more backends. Amelie uses consistent hashing to assign each partition interval to a backend worker.
+
+**`PRIMARY KEY`** columns are used as the partition key.
 
 Organizing tables by separating and creating volatile columns as JSON values (objects and arrays) is recommended.
 It is possible to index JSON documents by creating table keys as generated columns which
@@ -64,30 +65,44 @@ point to other column JSON data.
 
 Currently, the **`CREATE TABLE`** operation cannot be part of multi-statement transactions.
 
-There are two types of tables: **`DISTRIBUTED`** and **`SHARED`**.
+There are two types of tables: **`PARTITIONED`** and **`SHARED`**.
 
-### Distributed Tables
+### Partitioned Tables
 
-By default, all tables are **`DISTRIBUTED`**, meaning each distributed table will have partitions
-created on each node for parallel access or modification. Currently, distributed tables cannot
-be used directly in a JOIN with other distributed tables. However, they can be used in a multi-statement
-transaction or [CTE](/docs/sql/transactions/cte).
+By default, all tables are partitioned and distributed. Partitions will be created on each backend
+worker for parallel access or modification.
+
+Due to the distributed database nature, the way partitioned tables are operated has some limitations.
+The primary goal is to eliminate distributed round-trips to the backend workers and ideally execute all
+transaction statements in one goal.
+
+Partitioned tables cannot be directly joined with other partitioned tables, and the same limitation applies to subqueries.
+Instead, the transaction must use CTE to achieve the same effect. Amelie treats [CTE](/docs/sql/transactions/cte) as separate
+statements to combine and execute non-dependable statements in one operation on backend workers. The query planner tries to
+rewrite queries using CTE whenever it can.
+
+Another efficient way to JOIN partitioned tables is by using shared tables.
 
 ### Shared Tables
 
-There is also a particular type of table called **`SHARED`**. Those tables have only one partition and are
-available for direct read access from any node. Their primary purpose is to implement efficient **`parallel
-JOIN`** operations with other distributed tables. Frequent updating of a shared table is
-less efficient since it requires coordination and exclusive access.
+Shared tables are not partitioned (single partition) and are available for concurrent direct read access from
+any backend worker.
+
+The purpose of shared tables is to support efficient **`Parallel JOIN`** operations with other partitioned tables,
+where shared tables are used as dictionary tables. However, frequently updating a shared table is less
+efficient since it requires coordination and exclusive access.
+
+Shared tables can be joined with other shared tables or CTE results without limitations. However, currently, only
+one partitioned table can be directly joined with shared tables.
 
 ### Unlogged Tables
 
-Using the **`UNLOGGED`** clause, it is possible to create tables whose DML operations will not be
-part of the WAL (and replication streaming). The [CHECKPOINT](/docs/reliability/checkpoint) operation handles
-the same way as regular tables and saves data that is available at the moment of snapshot.
-Unlogged tables can provide a significant performance boost.
+Any table can be created using the **`UNLOGGED`** clause.
 
-DDL operations are handled the same way as regular tables and are unaffected.
+The unlogged tables DML will be excluded from WAL (and replication streaming), and the table's data will be saved
+during the database [CHECKPOINT](/docs/reliability/checkpoint) and recovered upon restart from the last checkpoint.
+
+Unlogged tables can provide an additional performance boost for highly volatile tables.
 
 ### Generated Columns
 
@@ -142,7 +157,7 @@ select {"id": device_id, "metrics": data} from metrics;
 ```
 
 ```SQL
---- using generated columns to indexate JSON data
+-- using generated columns to indexate JSON data
 create table example (
   id   int primary key as (data.id::int) stored,
   data json

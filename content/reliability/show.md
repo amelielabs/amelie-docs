@@ -19,15 +19,17 @@ The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of
 ```SQL
 show wal;
 [{
-  "rotate_wm": 104857600,
-  "sync_on_rotate": true,
-  "sync_on_write": false,
-  "lsn": 210,
+  "lsn": 1,
   "lsn_min": 1,
   "files": 1,
   "slots": 0,
-  "slots_min": -1
+  "slots_min": -1,
+  "writes": 0,
+  "writes_bytes": 0,
+  "ops": 0,
+  "checkpoint": 1
 }]
+]
 
 select system.wal().files;
 [1]

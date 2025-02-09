@@ -91,18 +91,20 @@ Watch out for available RAM.
 
 ### Recommendations
 
-Please note that the number of **`hosts`**, **`nodes`** in the system, as well as using **`unlogged`** tables directly
-impact the server performance. It is a good idea to start with defaults and then alter the numbers
-to see how the server responds.
+Please note that the number of **`frontends`**, **`backends`** in the system, as well as using **`unlogged`** tables directly
+impact the performance. It is a good idea to start with defaults and then alter the numbers
+to see how is affects the performance.
 
 More is not always better, especially if you are running benchmarks on the same machine. There is a possible
 situation when workers will start competing for CPU cores and locking each other.
 
-[Learn more](/docs/compute/overview) about the Cluster.
+[Learn more](/docs/compute/overview) about the IO and Compute.
 
 ### Third-Party Benchmarking tools
 
-Using any HTTP benchmarking tool configured to generate custom requests (SQL) is possible.
+Using any HTTP benchmarking tool configured to generate custom requests is possible.
+
+Please ensure the benchmarking tool can adequately adjust the pressure level to match the processing capabilities.
 
 One such tool is [wrk](https://github.com/wg/wrk/tree/master).
 

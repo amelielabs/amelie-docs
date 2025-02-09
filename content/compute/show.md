@@ -1,23 +1,23 @@
 ---
-weight: 3
-title: "SHOW COMPUTE"
+weight: 4
+title: "SHOW BACKENDS"
 bookToc: false
 ---
 
-## SHOW COMPUTE Statement
+## SHOW BACKENDS Statement
 
 ```SQL
-SHOW COMPUTE [POOL] [FORMAT type]
+SHOW BACKENDS [FORMAT type]
 ```
 
-Show created and active compute nodes in the system.
+Show created and active backend workers in the system.
 
 The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 
 ---
 
 ```SQL
-show compute;
+show backends;
 [{
   "id": "74f303a3-c434-fda7-59ca-bce4d9dca6a9"
 }, {
@@ -42,10 +42,10 @@ show compute;
   "id": "e5971ded-2d9a-186e-7a0f-f1dd7897fe45"
 }]
 
-select system.compute()::size;
+select system.backends()::size;
 [11]
 
-select id from system.compute();
+select id from system.backends();
 ["74f303a3-c434-fda7-59ca-bce4d9dca6a9", "c5ec6e00-4a76-f47f-2f30-d617afc34fcd",
  "f928a78a-3417-ffe1-356c-4ec069088558", "da8ffa7f-ab01-5d19-f425-95999f566c6c",
  "b56c9b73-6c85-c151-8534-26865833f1be", "6762162a-c1d9-5427-b5fa-3ef9d50f4f06",

@@ -16,7 +16,7 @@ UPDATE [schema.]table_name SET column[.path] = expr | DEFAULT [, ... ]
 
 Update rows in the table.
 
-The Update operation is distributed and will transactionally update table partitions on one or more nodes.
+The Update operation is distributed and will transactionally update table partitions on one or more backends.
 Update can be part of a multi-statement transaction.
 
 If the table schema is not defined, the table name will be searched in the **`public`** schema.

@@ -1,13 +1,13 @@
 ---
 weight: 2
-title: "SHOW STATUS"
+title: "SHOW METRICS"
 bookToc: false
 ---
 
-## SHOW STATUS Statement
+## SHOW METRICS Statement
 
 ```SQL
-SHOW STATUS [FORMAT type]
+SHOW METRICS [FORMAT type]
 ```
 
 Show the essential database and process information gathered in one place.
@@ -19,52 +19,52 @@ See also [amelie top](/docs/tutorial/monitoring) command.
 ---
 
 ```SQL
-show status;
+show metrics;
 [{
-  "uuid": "ad41adcf-6479-f931-a491-2e27272c8a50",
-  "version": "1.0.0",
-  "hosts": 5,
-  "nodes": 11,
+  "uuid": "cd580566-6cf7-fb90-737d-50dd8abdbc79",
+  "version": "0.1.0",
+  "frontends": 8,
+  "backends": 8,
   "db": {
     "schemas": 2,
-    "tables": 0,
+    "tables": 1,
     "tables_shared": 0,
     "secondary_indexes": 0
   },
   "process": {
     "uptime": 0,
-    "mem_virt": 1371725824,
-    "mem_resident": 10760192,
-    "mem_shared": 5083136,
+    "mem_virt": 1371512832,
+    "mem_resident": 11137024,
+    "mem_shared": 5394432,
     "cpu_count": 16,
-    "cpu": 26477970,
-    "cpu_hosts": [0, 0, 0, 0, 0],
-    "cpu_nodes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    "cpu": 43300122,
+    "cpu_frontends": [0, 0, 0, 0, 0, 0, 0, 0],
+    "cpu_backends": [0, 0, 0, 0, 0, 0, 0, 0]
   },
   "net": {
     "connections": 1,
-    "sent_bytes": 0,
-    "recv_bytes": 76
+    "sent_bytes": 10492,
+    "recv_bytes": 1866
   },
   "wal": {
-    "checkpoint": 15627754,
-    "lsn": 15627754,
-    "lsn_min": 15593964,
+    "lsn": 2,
+    "lsn_min": 1,
     "files": 1,
     "slots": 0,
     "slots_min": -1,
-    "writes": 0,
-    "writes_bytes": 0,
-    "ops": 0
+    "writes": 1,
+    "writes_bytes": 817,
+    "ops": 1,
+    "checkpoint": 2
   },
   "repl": {
     "active": false,
     "role": "primary",
     "primary": null,
-    "replicas": {}
+    "replicas": []
   }
 }]
 
-select system.status().uuid;
-["ad41adcf-6479-f931-a491-2e27272c8a50"]
+select system.metrics().db.tables
+[1]
 ```

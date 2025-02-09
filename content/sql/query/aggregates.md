@@ -6,7 +6,7 @@ bookToc: false
 
 ## Aggregate Functions
 
-Amelie executes aggregate functions individually per compute node in parallel.
+Amelie executes aggregate functions individually per backend in parallel.
 After the successful execution, each computation's results (partial aggregates) are merged, processed, and returned.
 
 Following aggregate functions are supported:

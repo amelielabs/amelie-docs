@@ -9,8 +9,8 @@ bookToc: false
 ```SQL
 [WITH cte_name ...]
 SELECT [DISTINCT [ON (expr, ...)]] expr [AS alias] [, ...]
-[[FROM [schema.]relation | cte | (SELECT ...) [, ...]
- [JOIN [schema.]relation | cte | (SELECT ...) ON (expr) [, ...] | USING (column)]
+[[FROM [schema.]relation | cte | (expr | SELECT ...) [, ...]
+ [JOIN [schema.]relation | cte | (expr | SELECT ...) ON (expr) [, ...] | USING (column)]
  [USE INDEX (name)]]
 [WHERE expr]
 [GROUP BY column_order | alias | expr[, ...] [HAVING expr]]
@@ -19,23 +19,23 @@ SELECT [DISTINCT [ON (expr, ...)]] expr [AS alias] [, ...]
 [FORMAT type]
 ```
 
-Retrieve rows from a table, CTE result, or subquery.
+Retrieve rows from a table, CTE result, expression, or subquery.
 
 If the object schema is not defined, the object will be searched in the **`public`** schema.
 
-Select operation is distributed and transactional and will be executed on one or more nodes if tables are
-involved. Amelie is designed to split the work between partitions and compute nodes (**`PUSHDOWN`**).
+Select operation is distributed and transactional and will be executed on one or more backends if tables are
+involved. Amelie is designed to split the work between partitions and backend workers (**`PUSHDOWN`**).
 
 Operations such as **`GROUP BY`**, **`ORDER BY`** and **`JOIN`** will be executed individually per
-compute node in parallel. After the successful execution, the results of each computation are merged together,
+backend in parallel. After the successful execution, the results of each computation are merged together,
 processed, and returned.
 
-Currently, only **`INNER JOIN`** is supported and will be extended in future releases. Joining distributed
+Currently, only **`INNER JOIN`** is supported and will be extended in future releases. Joining partitioned
 tables directly has some limitations.
 
 Select can be part of a multi-statement transaction and executed inside expressions (as subquery).
 
-Amelie generates an optimized parallel plan for executing multi-statement transactions and CTE. It combines node
+Amelie generates an optimized parallel plan for executing multi-statement transactions and CTE. It combines
 requests (pipeline) to reduce wait times and speed up the execution of non-dependable CTE statements.
 
 Amelie is designed for short ACID transactions and fast real-time analytics. It is not intended for long, complex,
@@ -51,24 +51,40 @@ It tries to identify whether the operation requires a **`range scan`** (start, s
 This logic applies to the **`UPDATE`** and **`DELETE`** operations as well.
 
 It is possible to force a query to use a specific index by using the **`USE INDEX`** clause for each table target. Primary index
-keys are used for partitioning, where the primary or secondary index can be used by compute nodes for data scan
+keys are used for partitioning, where the primary or secondary index can be used by backends for data scan
 inside partitions.
 
 ### Distributed JOIN and Shared Tables
 
-By default, all tables are **`DISTRIBUTED`**, meaning each distributed table will have partitions created on each node
-for parallel access or modification. Currently, distributed tables cannot be used directly in a **`JOIN`** with other
-distributed tables. However, they can be used in a multi-statement transaction or CTE.
+By default, all tables are **`PARTITIONED`** and distributed. Partitions will be created on each backend
+worker for parallel access or modification.
 
-There is also a particular type of table called **`SHARED`**. Those tables have only one partition and are available for
-direct read access from any node. They can be used to implement efficient parallel **`JOIN`** operations with other
-distributed tables. Frequent updating of a shared table is inefficient since it requires coordination and exclusive access.
+Due to the distributed database nature, the way partitioned tables are operated has some limitations.
+The primary goal is to eliminate distributed round-trips to the backend workers and ideally execute all
+transaction statements in one goal.
+
+Partitioned tables cannot be directly joined with other partitioned tables, and the same limitation applies to subqueries.
+Instead, the transaction must use CTE to achieve the same effect. Amelie treats [CTE](/docs/sql/transactions/cte) as separate
+statements to combine and execute non-dependable statements in one operation on backend workers. The query planner tries to
+rewrite queries using CTE whenever it can.
+
+Another efficient way to JOIN partitioned tables is by using shared tables.
+
+**`SHARED`** tables are not partitioned (single partition) and are available for concurrent direct read access from
+any backend worker.
+
+The purpose of shared tables is to support efficient **`Parallel JOIN`** operations with other partitioned tables,
+where shared tables are used as dictionary tables. However, frequently updating a shared table is less
+efficient since it requires coordination and exclusive access.
+
+Shared tables can be joined with other shared tables or CTE results without limitations. However, currently, only
+one partitioned table can be directly joined with shared tables.
 
 ### Subqueries
 
-Currently, subqueries can be made to shared tables, and CTE results. Subqueries to other distributed tables
-are not supported directly. Instead, CTE must be used. It will guarantee that a query to the distributed table is
-executed only once and not nested.
+Currently, subqueries can be made to shared tables, [CTE](/docs/sql/transactions/cte) results, and expressions.
+Subqueries to other partitioned tables are not supported directly. Instead, CTE must be used. It will guarantee
+that a query to the partitioned table is executed only once and not nested.
 
 ---
 
@@ -85,7 +101,7 @@ insert into example values ('2024-12-12 14:20:52.712025', 1);
 insert into example values ('2024-12-12 14:25:52.712025', 2);
 insert into example values ('2024-12-12 14:27:52.712025', 1);
 
--- do parallel GROUP BY and ORDER BY on each compute node
+-- do parallel GROUP BY and ORDER BY on each backend
 select device_id, count(*) as hits
 from example
 where time >= timestamp '2024-12-12 14:30:00' - interval '1 hour'
