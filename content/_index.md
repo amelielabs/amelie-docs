@@ -79,13 +79,30 @@ Learn more about [How It Works](/docs/compute/overview) and [Get Started](/docs/
 
 <--->
 
-####
+#### &nbsp;
 
 * [Types](/docs/sql/types/bool)
 * [Functions](/docs/sql/functions/casting)
 * [Expressions](/docs/sql/expressions/arithmetical)
 * [Aggregates](/docs/sql/query/aggregates)
 * [Lambda](/docs/sql/query/lambda)
+
+{{% /columns %}}
+
+{{% columns %}}
+
+#### Transactions
+
+* [BEGIN / COMMIT](/docs/sql/begin_commit)
+* [CTE](/docs/sql/cte)
+
+<--->
+
+#### &nbsp;
+
+* [EXPLAIN](/docs/sql/explain)
+
+<--->
 
 {{% /columns %}}
 

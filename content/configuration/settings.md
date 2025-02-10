@@ -11,7 +11,7 @@ represent the runtime state.
 
 Session options can be changed using the [SET](/docs/configuration/set) command.
 
-## Main Settings
+### Main Settings
 
 | Name              | Type     | Mode      | Description |
 | :---------------- | :------: | :----    | :---- |
@@ -33,7 +33,7 @@ show format;
 ["json-pretty"]
 ```
 
-## Logger Settings
+### Logger Settings
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
@@ -50,7 +50,7 @@ show log_connections;
 [true]
 ```
 
-## TLS Certificates
+### TLS Certificates
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
@@ -69,7 +69,7 @@ select system.config().tls_cert;
 [""]
 ```
 
-## Server Settings
+### Server Settings
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
@@ -107,7 +107,7 @@ select system.config().listen;
 }]
 ```
 
-## Session Limits
+### Session Limits
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
@@ -128,7 +128,7 @@ show limit_write;
 [0]
 ```
 
-## IO and Compute Workers
+### IO and Compute Workers
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
@@ -142,7 +142,7 @@ show frontends;
 [5]
 ```
 
-## WAL Settings
+### WAL Settings
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
@@ -150,7 +150,7 @@ show frontends;
 | wal_sync_on_rotate |  bool   | cli | Sync the previous WAL file when a new one is created (enabled by default) |
 | wal_sync_on_write |  bool    | cli | Sync the current WAL file on each write (disabled by default) |
 
-## Replication Settings
+### Replication Settings
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
@@ -171,7 +171,7 @@ show repl;
 }]
 ```
 
-## Checkpoint
+### Checkpoint
 
 | Name                | Type     | Mode         | Description |
 | :----------------   | :------: | :----       | :---- |
