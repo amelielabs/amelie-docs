@@ -4,7 +4,7 @@ title: "Overview"
 bookToc: false
 ---
 
-![image description](/docs/architecture/architecture.png)
+![image description](/docs/compute/architecture.png)
 
 ### Full Parallelization of IO and Compute
 
