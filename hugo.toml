@@ -1,4 +1,4 @@
-baseURL = 'https://monotone.studio/docs/'
+baseURL = 'https://amelielabs.io/docs/'
 languageCode = 'en-us'
 title = 'amelie'
 theme = 'hugo-book'
@@ -6,7 +6,7 @@ theme = 'hugo-book'
 [params]
   BookSection = '/'
   BookSearch = false
-  BookRepo = 'https://github.com/monotone-studio/monotone-docs'
+  BookRepo = 'https://github.com/amelielabs/amelie-docs'
   BookEditPath = 'edit/main'
 
 [markup]
