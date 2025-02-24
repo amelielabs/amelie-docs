@@ -100,9 +100,15 @@ usage: amelie [command | login] [options]
     --limit_write=int
     --frontends=int
     --backends=int
-    --wal_size=int
-    --wal_sync_on_rotate=bool
+    --wal_worker=bool
+    --wal_crc=bool
+    --wal_sync_on_create=bool
+    --wal_sync_on_close=bool
     --wal_sync_on_write=bool
+    --wal_sync_interval=string
+    --wal_size=int
+    --wal_truncate=int
+    --repl_readahead=int
     --repl_reconnect_ms=int
     --checkpoint_interval=string
     --checkpoint_workers=int

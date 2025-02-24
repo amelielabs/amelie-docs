@@ -22,7 +22,7 @@ The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of
 ```SQL
 show config
 [{
-  "uuid": "cd580566-6cf7-fb90-737d-50dd8abdbc79",
+  "uuid": "654205bb-38f6-2aca-266b-903cef964563",
   "timezone": "Asia/Famagusta",
   "format": "json-pretty",
   "shutdown": "fast",
@@ -43,14 +43,20 @@ show config
   "limit_recv": 1048576,
   "limit_write": 0,
   "frontends": 8,
-  "wal_size": 67108864,
-  "wal_sync_on_rotate": true,
+  "wal_worker": true,
+  "wal_crc": true,
+  "wal_sync_on_create": true,
+  "wal_sync_on_close": true,
   "wal_sync_on_write": false,
+  "wal_sync_interval": "1 sec",
+  "wal_size": 67108864,
+  "wal_truncate": 0,
+  "repl_readahead": 262144,
   "repl_reconnect_ms": 3000,
   "checkpoint_interval": "5 min",
   "checkpoint_workers": 3
 }]
 
 select system.config().uuid;
-["cd580566-6cf7-fb90-737d-50dd8abdbc79"]
+["654205bb-38f6-2aca-266b-903cef964563"]
 ```

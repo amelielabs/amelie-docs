@@ -146,14 +146,20 @@ show frontends;
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
-| wal_size          |  int     | cli | The number of operations per WAL file. When the current WAL file reaches this value, a new file will be created |
-| wal_sync_on_rotate |  bool   | cli | Sync the previous WAL file when a new one is created (enabled by default) |
-| wal_sync_on_write |  bool    | cli | Sync the current WAL file on each write (disabled by default) |
+| wal_worker        |  bool    | cli | WAL worker thread for fsync() and file creation (enabled by default). |
+| wal_crc           |  bool    | cli | Calculate and validate checksums during WAL write and read (enabled by default). |
+| wal_sync_on_create |  bool   | cli | Sync the WAL file together with the directory after creation (enabled by default). |
+| wal_sync_on_close |  bool    | cli | Sync the WAL file before closing (enabled default). |
+| wal_sync_on_write |  bool    | cli | Sync the WAL file on each write (disabled by default). |
+| wal_sync_interval |  string  | cli | Sync the WAL file every interval ("1 sec" by default). |
+| wal_size          |  int     | cli | When the current WAL file reaches this value, a new file will be created. |
+| wal_truncate      |  int     | cli | Truncate WAL files to the specified LSN value to recover invalid WAL files and bring them to a valid location after a crash (0 is disabled). This operation is potentially dangerous. To proceed, it is recommended that you create a copy of the WAL data first. |
 
 ### Replication Settings
 
 | Name              | Type     | Mode         | Description |
 | :---------------- | :------: | :----       | :---- |
+| repl_readahead    |  int     | cli | The amount of data to read from WAL in bytes before sending it to the replica. |
 | repl_reconnect_ms |  int     | cli | Reconnect interval in ms |
 
 
