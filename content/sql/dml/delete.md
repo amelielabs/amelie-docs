@@ -22,7 +22,7 @@ Delete can be part of a multi-statement transaction.
 If the table schema is not defined, the table name will be searched in the **`public`** schema.
 
 The **`RETURNING`** clause allows the values to be returned in case of successful completion. The values can
-be used as a result in the corresponding [CTE](/docs/sql/transactions/cte) or as a standalone result.
+be used as a result in the corresponding [CTE](/docs/sql/cte) or as a standalone result.
 
 The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
 

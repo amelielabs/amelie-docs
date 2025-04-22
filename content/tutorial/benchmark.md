@@ -13,8 +13,8 @@ The following benchmarking options are supported:
 
 | Argument          | Type | Description |
 | :---------------- |  :----:  | :----      |
-| type          | string | Benchmark type: **`tpcb`** (default), **`insert`**, **`upsert`**, **`resolved`**, **`import`**. |
-| threads       | int | Number of client threads (default is 4). |
+| type          | string | Benchmark type: **`tpcb`** (default), **`insert`**, **`upsert`**, **`resolved`**, **`import`**, **`decre`**. |
+| threads       | int | Number of client threads (default is 1). |
 | clients       | int | Total number of clients (default is 12). |
 | time          | int | Time in seconds (default is 10). |
 | batch         | int | Number of rows in one insert/upsert statement (default is 500). |
@@ -88,6 +88,11 @@ Sequentially stream rows using the [HTTP API](/docs/api/import_json). The number
 the **`batch`** option. The test table's primary index is **`tree`**.
 
 Watch out for available RAM.
+
+### Debit/Credit Benchmark
+
+Execute basic financial transactions which include two update. The number of transactions per one round-trip can be configured using
+the **`batch`** option (try lower values). The test table's primary index is **`hash`**.
 
 ### Recommendations
 

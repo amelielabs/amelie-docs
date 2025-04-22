@@ -33,8 +33,7 @@ option:
 
 Create a secondary index.
 
-All primary indexes are always **`UNIQUE`**. Secondary unique indexes for partitioned tables are not supported.
-The **`UNIQUE`** indexes can be created only with shared tables.
+All primary indexes are always **`UNIQUE`**. Secondary unique indexes are supported if the table has one partition.
 
 Currently, supported index types are **`hash`** and **`tree`**. The **`WITH`** clause allows you to select the index type.
 If the index type is not defined, it will default to the **`tree`**.

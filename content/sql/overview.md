@@ -34,15 +34,10 @@ All transactions always operate on a **`STRICT SERIALIZABLE`** level.
 
 ### Tables
 
-Amelie supports two types of tables: **`PARTITIONED`** and **`SHARED`**.
+All tables are **`PARTITIONED`** and distributed. Partitions will be created on each backend worker for
+parallel access or modification.
 
-By default, all tables are **`PARTITIONED`** and distributed. Partitions will be created on each backend worker for
-parallel access or modification. Partitioned tables has some limitations.
-
-**`SHARED`** tables are not partitioned (single partition) and are available for concurrent direct read access from any backend worker.
-The purpose of shared tables is to support efficient Parallel JOIN.
-
-Learn more about the [Partitioned and Shared tables](/docs/sql/ddl/tables/create).
+Learn more about the [Partitioned Tables](/docs/sql/ddl/tables/create).
 
 ### DDL
 

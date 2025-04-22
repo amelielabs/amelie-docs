@@ -22,8 +22,5 @@ select 123;
 ```
 
 ```SQL
-create table example (id int16 primary key);
-insert into example values (1), (2), (3);
-select id from example;
-[1, 2, 3]
+create table example (id int primary key, data int16);
 ```

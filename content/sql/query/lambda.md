@@ -26,13 +26,12 @@ lambda state.
 
 Lambda expressions can help work with JSON and do some non-trivial transformations.
 
-Lambda can be used with shared tables and expressions, but it currently cannot be
-used with partitioned tables (currently lambda does not support partial state merging).
+Lambda can be used with single partition tables and expressions.
 
 ---
 
 ```SQL
-create shared table example (id int primary key);
+create table example (id int primary key) partitions 1;
 insert into example values (1), (2), (3);
 
 -- similair to count(*)

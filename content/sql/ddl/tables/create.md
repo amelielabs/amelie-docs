@@ -7,8 +7,9 @@ bookToc: false
 ## CREATE TABLE Statement
 
 ```SQL
-CREATE [UNLOGGED] [SHARED] TABLE [IF NOT EXISTS] [schema.]name
+CREATE [UNLOGGED] TABLE [IF NOT EXISTS] [schema.]name
 (column [, ...] [, primary key (keys)])
+[PARTITIONS count]
 [WITH (options)]
 
 column:
@@ -65,35 +66,19 @@ point to other column JSON data.
 
 Currently, the **`CREATE TABLE`** operation cannot be part of multi-statement transactions.
 
-There are two types of tables: **`PARTITIONED`** and **`SHARED`**.
-
 ### Partitioned Tables
 
-By default, all tables are partitioned and distributed. Partitions will be created on each backend
-worker for parallel access or modification.
+All tables are partitioned and distributed across CPU cores. Partitions will be created on each backend worker for parallel access or modification.
+The number of partitions can be specified using the **`PARTITIONS`** clause. If the number of partitions is not
+defined, it will be set to the number of backends. The table cannot have more partitions than the current number of active backends.
 
-Due to the distributed database nature, the way partitioned tables are operated has some limitations.
-The primary goal is to eliminate distributed round-trips to the backend workers and ideally execute all
-transaction statements in one goal.
+Partitioned tables can be directly joined with other partitioned tables and used in subqueries.
+Amelie coordinates access to partitions created on other backends for those cases to avoid concurrent
+writes simultaneously.
 
-Partitioned tables cannot be directly joined with other partitioned tables, and the same limitation applies to subqueries.
-Instead, the transaction must use CTE to achieve the same effect. Amelie treats [CTE](/docs/sql/transactions/cte) as separate
-statements to combine and execute non-dependable statements in one operation on backend workers. The query planner tries to
-rewrite queries using CTE whenever it can.
-
-Another efficient way to JOIN partitioned tables is by using shared tables.
-
-### Shared Tables
-
-Shared tables are not partitioned (single partition) and are available for concurrent direct read access from
-any backend worker.
-
-The purpose of shared tables is to support efficient **`Parallel JOIN`** operations with other partitioned tables,
-where shared tables are used as dictionary tables. However, frequently updating a shared table is less
-efficient since it requires coordination and exclusive access.
-
-Shared tables can be joined with other shared tables or CTE results without limitations. However, currently, only
-one partitioned table can be directly joined with shared tables.
+Additionally, expressions or CTE can be used to JOIN data. Amelie treats [CTE](/docs/sql/transactions/cte) as separate
+statements to combine and execute non-dependable statements in one operation on backend workers. The query planner
+tries to rewrite queries using CTE whenever it can.
 
 ### Unlogged Tables
 
@@ -143,16 +128,16 @@ insert into metrics values (42, [1,2,3]);
 select * from metrics;
 [[42, [1, 2, 3]]]
 
-select * format 'json-obj-pretty' from metrics;
-[{
-  "device_id": 42,
-  "data": [1, 2, 3]
-}]
-
 select {"id": device_id, "metrics": data} from metrics;
 [{
   "id": 42,
   "metrics": [1, 2, 3]
+}]
+
+select * format 'json-obj-pretty' from metrics;
+[{
+  "device_id": 42,
+  "data": [1, 2, 3]
 }]
 ```
 

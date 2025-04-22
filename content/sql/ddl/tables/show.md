@@ -24,7 +24,6 @@ show tables
 [{
   "schema": "public",
   "name": "example",
-  "shared": false,
   "unlogged": false
 }]
 
@@ -32,7 +31,6 @@ show tables extended;
 [{
   "schema": "public",
   "name": "example",
-  "shared": false,
   "unlogged": false,
   "columns": [{
     "name": "id",
@@ -107,7 +105,6 @@ show table example;
 [{
   "schema": "public",
   "name": "example",
-  "shared": false,
   "unlogged": false
 }]
 

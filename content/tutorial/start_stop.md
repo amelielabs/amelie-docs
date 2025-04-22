@@ -35,14 +35,6 @@ amelie start ./repo
 
 The **`amelie stop <directory>`** command can stop an active server.
 
-During the shutdown procedure, the server checks the **`shutdown`** configuration variable
-and acts accordingly.
-
-* **`graceful`**  - do a complete shutdown and free memory indexes.
-* **`fast`** - do a complete shutdown and do not free memory indexes.
-
-The **`fast`** mode is the default.
-
 ```text
 amelie stop ./repo
 ```

@@ -45,90 +45,21 @@ Additionally, it is possible to setup [Replication](/docs/repl/overview).
 ---
 
 ```text
-$ amelie --help
-amelie (version: 0.1.0)
+amelie (version: 0.3.0)
 
-usage: amelie [command | login] [options]
+Usage: amelie [COMMAND | LOGIN] [OPTIONS]
 
-  commands:
+Commands:
 
-    init   <path> [server options]
-    start  <path> [server options]
-    stop   <path>
-    backup <path> [login] [client options]
-    client [login] [client options]
-    import [login] [client options] [options] table files
-    top    [login] [client options]
-    bench  [login] [client options] [options]
-    login  <login> [client options]
-    logout <login>
-
-  client options:
-
-    --name=string
-    --uri=string
-    --user=string
-    --secret=string
-    --token=string
-    --path=string
-    --tls_capath=string
-    --tls_ca=string
-    --tls_cert=string
-    --tls_key=string
-    --tls_server=string
-    --debug=string
-    --json=string
-
-  server options:
-
-    --uuid=string
-    --timezone=string
-    --format=string
-    --shutdown=string
-    --log_enable=bool
-    --log_to_file=bool
-    --log_to_stdout=bool
-    --log_connections=bool
-    --log_options=bool
-    --tls_capath=string
-    --tls_ca=string
-    --tls_cert=string
-    --tls_key=string
-    --listen=json
-    --limit_send=int
-    --limit_recv=int
-    --limit_write=int
-    --frontends=int
-    --backends=int
-    --wal_worker=bool
-    --wal_crc=bool
-    --wal_sync_on_create=bool
-    --wal_sync_on_close=bool
-    --wal_sync_on_write=bool
-    --wal_sync_interval=string
-    --wal_size=int
-    --wal_truncate=int
-    --repl_readahead=int
-    --repl_reconnect_ms=int
-    --checkpoint_interval=string
-    --checkpoint_workers=int
-    --json=string
-
-  bench options:
-
-    --type=string
-    --threads=int
-    --clients=int
-    --time=int
-    --scale=int
-    --batch=int
-    --init=bool
-    --unlogged=bool
-
-  import options:
-
-    --format=string
-    --clients=int
-    --batch=int
-
+  init       Create a database repository
+  start      Start a server
+  stop       Stop a server
+  backup     Create backup of a remote server
+  login      Create or update login information
+  logout     Delete login information
+  client     Connect to a remote server
+  import     Import data to a remote server
+  top        Get information about remote server
+  bench      Run benchmarks on a server
+  test       Run tests
 ```

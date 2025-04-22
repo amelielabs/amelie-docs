@@ -17,10 +17,7 @@ amelie init ./repo
 ```
 
 Server options can be changed directly by modifying the configuration file when the server is not
-running.
-
-Some options can be changed dynamically using the [SET](/docs/configuration/set) command or passed to
-the **`amelie start`**.
+running or passed to the **`amelie start`**.
 
 ### Initial Configuration
 

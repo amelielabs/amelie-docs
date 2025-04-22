@@ -218,7 +218,6 @@ select system.metrics();
   "db": {
     "schemas": 2,
     "tables": 0,
-    "tables_shared": 0,
     "secondary_indexes": 0
   },
   "process": {

@@ -54,37 +54,22 @@ It is possible to force a query to use a specific index by using the **`USE INDE
 keys are used for partitioning, where the primary or secondary index can be used by backends for data scan
 inside partitions.
 
-### Distributed JOIN and Shared Tables
+### HEAP-only scan
 
-By default, all tables are **`PARTITIONED`** and distributed. Partitions will be created on each backend
-worker for parallel access or modification.
+Using the **`USE HEAP`** clause, it is possible to force a query read directly from a memory allocator
+context to avoid using indexes.
 
-Due to the distributed database nature, the way partitioned tables are operated has some limitations.
-The primary goal is to eliminate distributed round-trips to the backend workers and ideally execute all
-transaction statements in one goal.
+### Parallel JOIN and Subqueries
 
-Partitioned tables cannot be directly joined with other partitioned tables, and the same limitation applies to subqueries.
-Instead, the transaction must use CTE to achieve the same effect. Amelie treats [CTE](/docs/sql/transactions/cte) as separate
-statements to combine and execute non-dependable statements in one operation on backend workers. The query planner tries to
-rewrite queries using CTE whenever it can.
+All tables are partitioned and distributed across CPU cores. Partitions will be created on each backend worker for parallel access or modification.
 
-Another efficient way to JOIN partitioned tables is by using shared tables.
+Partitioned tables can be directly joined with other partitioned tables and used in subqueries.
+Amelie coordinates access to partitions created on other backends for those cases to avoid concurrent
+writes simultaneously.
 
-**`SHARED`** tables are not partitioned (single partition) and are available for concurrent direct read access from
-any backend worker.
-
-The purpose of shared tables is to support efficient **`Parallel JOIN`** operations with other partitioned tables,
-where shared tables are used as dictionary tables. However, frequently updating a shared table is less
-efficient since it requires coordination and exclusive access.
-
-Shared tables can be joined with other shared tables or CTE results without limitations. However, currently, only
-one partitioned table can be directly joined with shared tables.
-
-### Subqueries
-
-Currently, subqueries can be made to shared tables, [CTE](/docs/sql/transactions/cte) results, and expressions.
-Subqueries to other partitioned tables are not supported directly. Instead, CTE must be used. It will guarantee
-that a query to the partitioned table is executed only once and not nested.
+Additionally, expressions or CTE can be used to JOIN data. Amelie treats [CTE](/docs/sql/transactions/cte) as separate
+statements to combine and execute non-dependable statements in one operation on backend workers. The query planner
+tries to rewrite queries using CTE whenever it can.
 
 ---
 
@@ -183,28 +168,50 @@ select {"total": select count(*) from example};
 ```
 
 ```SQL
--- distributed JOIN using shared dictionary table
-create table collection(id int primary key);
-create shared table dict(id int primary key) with (type = 'hash');
-
-insert into dict values (1), (3);
-insert into collection values (1), (2), (3);
-
-select c.* from collection c join dict on (dict.id = c.id);
-[[1], [3]]
-```
-
-```SQL
--- distributed JOIN using CTE
-create table t1 (id int primary key);
-create table t2 (id int primary key);
-
-insert into t1 values (1), (3);
-insert into t2 values (1), (2), (3);
-
--- t1_result will be passed down for parallel JOIN with t2
-with t1_result (id) as (
-    select * from t1
-) select t2.* from t2 join t1_result on (t2.id = t1_result.id);
-[[1], [3]]
+-- UPDATE using subquery
+--
+-- Pushdown UPDATE to each related table partition (to each backend worker per cpu
+-- core for parallel update) with coordinated point lookup access to
+-- other partitioned table.
+--
+explain update test set data = data + 1 where exists (select true from ref where id = test.id)
+[{
+  "bytecode": {
+    "frontend": {
+      "00": "send_all            0      0      -     # public.test",
+      "01": "recv                0      0      0     ",
+      "02": "null                0      0      0     ",
+      "03": "cte_set             0      0      0     ",
+      "04": "ret                 0      0      0     "
+    },
+    "backend": {
+      "00": "table_open_part     0      0      23    # public.test (primary)",
+      "01": "set                 0      1      0     ",
+      "02": "table_readi32       1      0      0     ",
+      "03": "push                1      0      0     ",
+      "04": "table_openl         1      20     12    # public.ref (primary)",
+      "05": "table_readi32       1      1      0     ",
+      "06": "table_readi32       2      0      0     ",
+      "07": "equii               3      1      2     ",
+      "08": "jntr                12     3      0     ",
+      "09": "bool                1      1      0     ",
+      "10": "push                1      0      0     ",
+      "11": "set_add             0      0      0     ",
+      "12": "table_close         1      0      0     ",
+      "13": "exists              1      0      0     ",
+      "14": "jntr                22     1      0     ",
+      "15": "int                 0      -      0     # 1",
+      "16": "push                0      0      0     ",
+      "17": "table_readi32       0      0      1     ",
+      "18": "int                 1      -      0     # 1",
+      "19": "addii               2      0      1     ",
+      "20": "push                2      0      0     ",
+      "21": "update              0      1      0     ",
+      "22": "table_next          0      1      0     ",
+      "23": "table_close         0      0      0     ",
+      "24": "ret                 0      0      0     "
+    }
+  },
+  "access": [["public.test", "rw"], ["public.ref", "ro_exclusive"]]
+}]
 ```

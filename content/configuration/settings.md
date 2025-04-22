@@ -9,16 +9,13 @@ bookToc: false
 Most options can be changed only in the configuration file or command line. Some options are read-only and
 represent the runtime state.
 
-Session options can be changed using the [SET](/docs/configuration/set) command.
-
 ### Main Settings
 
 | Name              | Type     | Mode      | Description |
 | :---------------- | :------: | :----    | :---- |
 | uuid              |  string  | cli       | Server ID |
-| timezone          |  string  | cli, session | System and session timezone |
-| format            |  string  | cli, session | System and session result format |
-| shutdown          |  string  | cli          | System shutdown mode: **`fast`** (default) or **`graceful`**.  |
+| timezone          |  string  | cli | System and session timezone |
+| format            |  string  | cli | System and session result format |
 
 ---
 

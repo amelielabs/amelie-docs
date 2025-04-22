@@ -25,7 +25,6 @@ show config
   "uuid": "654205bb-38f6-2aca-266b-903cef964563",
   "timezone": "Asia/Famagusta",
   "format": "json-pretty",
-  "shutdown": "fast",
   "log_enable": true,
   "log_to_file": true,
   "log_to_stdout": true,

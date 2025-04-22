@@ -45,7 +45,10 @@ select "2024-09-26 12:12:10.684550"::timestamp('Asia/Famagusta');
 select "2024-09-26 12:12:10.684550"::timestamp('UTC');
 ["2024-09-26 15:12:10.684550+03"]
 
-set timezone to 'UTC'
+...
+show timezone;
+["UTC"]
+
 select "2024-09-26 12:12:10.684550"::timestamp('UTC');
 ["2024-09-26 12:12:10.684550+00"]
 

@@ -56,11 +56,7 @@ select {"at": now(), "id": system.config().uuid};
 create table example (ts timestamp primary key, metrics json);
 insert into example values (current_timestamp, [1,2,3]);
 
+-- timestamp converted based on current timezone settings
 select * from example;
 [["2024-09-26 17:13:34.621227+03", [1, 2, 3]]]
-
-set timezone to 'UTC';
-
-select * from example;
-[["2024-09-26 14:13:34.621227+00", [1, 2, 3]]]
 ```

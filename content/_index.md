@@ -155,7 +155,6 @@ Learn more about [How It Works](/docs/compute/overview) and [Get Started](/docs/
 #### &nbsp;
 
 * [SHOW CONFIG](/docs/configuration/show)
-* [SET](/docs/configuration/set)
 
 {{% /columns %}}
 

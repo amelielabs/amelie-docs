@@ -13,10 +13,9 @@ Currently only Linux environments are supported.
 #### Dependencies
 
 - cmake
-- gcc (recommended) or clang
+- clang
 - openssl
 - libpcre
-- libcurl (test suite)
 
 #### Build Release
 
@@ -49,5 +48,5 @@ make debug
 ```sh
 make
 cd test
-./amelie-test
+../build/amelie test
 ```
