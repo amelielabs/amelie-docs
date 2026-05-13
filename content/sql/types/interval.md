@@ -2,7 +2,7 @@
 weight: 11
 title: INTERVAL
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## INTERVAL

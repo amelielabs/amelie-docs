@@ -1,7 +1,7 @@
 ---
 weight: 12
 title: "BEGIN / COMMIT"
-bookToc: false
+bookToc: true
 ---
 
 ## BEGIN / COMMIT Statements

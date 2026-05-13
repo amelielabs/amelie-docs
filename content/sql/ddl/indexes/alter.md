@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "ALTER INDEX"
-bookToc: false
+bookToc: true
 ---
 
 

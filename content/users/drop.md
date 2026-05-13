@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: "DROP USER"
-bookToc: false
+bookToc: true
 ---
 
 ## DROP USER Statement

@@ -1,7 +1,7 @@
 ---
 weight: 7
 title: TLS Certificates
-bookToc: false
+bookToc: true
 ---
 
 ## TLS Certificates

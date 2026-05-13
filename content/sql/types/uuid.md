@@ -2,7 +2,7 @@
 weight: 14
 title: UUID
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## UUID

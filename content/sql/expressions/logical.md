@@ -2,7 +2,7 @@
 weight: 2
 title: Logical
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## Logical Operations

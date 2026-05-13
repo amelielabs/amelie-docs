@@ -6,6 +6,7 @@ $padding-16: 1rem !default;
 
 $font-size-base: 18px !default;
 $font-size-12: 0.75rem !default;
+$font-size-13: 0.820rem !default;
 $font-size-14: 0.900rem !default;
 $font-size-16: 1rem !default;
 
@@ -14,11 +15,11 @@ $border-radius: $padding-4 !default;
 $body-font-weight: normal !default;
 
 $body-min-width: 20rem !default;
-$container-max-width: 80rem !default;
+$container-max-width: 85rem !default;
 
 $header-height: 3.5rem !default;
-$menu-width: 18rem !default;
-$toc-width: 16rem !default;
+$menu-width: 15rem !default;
+$toc-width: 14rem !default;
 
 $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
 
@@ -34,8 +35,8 @@ $hint-colors: (
   --gray-200: #e9ecef;
   --gray-500: #adb5bd;
 
-  --color-link: #0055bb;
-  --color-visited-link: #8440f1;
+  --color-link: #202020; //#0055bb;
+  --color-visited-link: #202020; //#8440f1;
 
   --body-background: white;
   --body-font-color: black;

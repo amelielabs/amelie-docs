@@ -2,7 +2,7 @@
 weight: 6
 title: JSON
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## JSON Expressions

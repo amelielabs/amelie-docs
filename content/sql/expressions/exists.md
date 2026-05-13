@@ -2,7 +2,7 @@
 weight: 14
 title: EXISTS
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## EXISTS operator

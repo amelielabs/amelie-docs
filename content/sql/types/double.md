@@ -2,7 +2,7 @@
 weight: 7
 title: DOUBLE
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## DOUBLE

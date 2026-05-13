@@ -7,7 +7,7 @@ theme = 'hugo-book'
   BookSection = '/'
   BookSearch = false
   BookRepo = 'https://github.com/amelielabs/amelie-docs'
-  BookEditPath = 'edit/main'
+# BookEditPath = 'edit/main'
 
 [markup]
   [markup.highlight]

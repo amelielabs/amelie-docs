@@ -1,7 +1,7 @@
 ---
 weight: 9
 title: Backup and Restore
-bookToc: false
+bookToc: true
 ---
 
 ## Backup and Restore

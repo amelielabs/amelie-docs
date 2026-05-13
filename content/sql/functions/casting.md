@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "Type Casting"
-bookToc: false
+bookToc: true
 ---
  
 ## Type Casting

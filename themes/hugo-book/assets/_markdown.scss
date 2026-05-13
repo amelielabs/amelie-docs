@@ -2,15 +2,16 @@
 
 .markdown {
 
-  line-height: 1.60;
+  padding-left: 20px;
+  padding-right: 10px;
+
+  line-height: 1.55;
   //font-family: helvetica;
 
   // remove padding at the beginning of page
   > :first-child {
     margin-top: 0;
   }
-
-  color: #4c4c4c;
 
   h1,
   h2,
@@ -19,11 +20,10 @@
   h5,
   h6 {
     color: black;
-    font-weight: 600; //normal;
-    line-height: 1;
+    font-weight: 600;
 
     margin-top: 2.0rem;
-    margin-bottom: 1.5rem ; //$padding-16;
+    //margin-bottom: 1.5rem ; //$padding-16;
 
     a.anchor {
       opacity: 0;
@@ -34,46 +34,89 @@
 
     &:hover a.anchor,
     a.anchor:focus {
+      color: #a4a4a4;
       opacity: initial;
     }
   }
 
+  h1 {
+    color: black;
+    font-weight: 600;
+    font-size: 4.0em;
+    line-height: 1.5;
+  }
+
+  h2,
+  h3,
   h4,
   h5,
   h6 {
-    font-weight: bolder;
-  }
-
-  h5 {
-    font-size: 0.875em;
-  }
-
-  h6 {
-    font-size: 0.75em;
+   // line-height: 1;
   }
 
   b,
   optgroup,
   strong {
-    font-weight: 400;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 5px;
-	padding-right: 5px;
-    background: #f0f0f0;
+    font-weight: normal;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 7px;
+	padding-right: 7px;
+    background: #f1f1f1;
     border-radius: 10px;
   }
 
   a {
-    text-decoration: none;
+	//text-decoration: underline;
+	font-weight: 600;
 
+	/*
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
     }
     &:visited {
-      color: var(--color-visited-link);
+    	text-decoration: none;
+      // color: var(--color-visited-link);
     }
+	*/
   }
+
+  ////////////////////////////////////////////
+
+  /*
+	:root {
+		--font-sans: "Inter", system-ui, sans-serif;
+		--accent-color: #10b981;
+	}
+	*/
+
+  /*
+	body {
+		font-family: var(--font-sans);
+		font-size: 16px;
+		line-height: 1.75;
+		color: #374151;
+	}
+	*/
+
+	h1 { font-size: 2.25rem; font-weight: 700; color: #111827; }
+	h2 { font-size: 1.75rem; font-weight: 600; color: #1f2937; margin-top: 2.5rem; }
+	h3 { font-size: 1.4rem;  font-weight: 600; color: #374151; }
+
+	/*
+	a {
+		color: var(--accent-color);
+		font-weight: 500;
+	}
+
+	a:hover {
+		color: #059669;
+		text-decoration: underline;
+	}
+	*/
+
+
+  ////////////////////////////////////////////
 
   img {
     max-width: 100%;

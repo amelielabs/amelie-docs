@@ -2,7 +2,7 @@
 weight: 8
 title: BETWEEN
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## BETWEEN operator

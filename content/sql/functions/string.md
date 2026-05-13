@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "String"
-bookToc: false
+bookToc: true
 ---
 
 ## String Functions

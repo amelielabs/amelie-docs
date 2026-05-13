@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "FORMAT"
-bookToc: false
+bookToc: true
 ---
 
 ## FORMAT Clause

@@ -1,7 +1,7 @@
 ---
 weight: 5
 title: "ALTER USER"
-bookToc: false
+bookToc: true
 ---
 
 ## ALTER USER Statement

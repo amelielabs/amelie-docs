@@ -2,7 +2,7 @@
 weight: 12
 title: CASE
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## CASE operator

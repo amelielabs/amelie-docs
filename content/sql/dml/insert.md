@@ -2,7 +2,7 @@
 weight: 2
 title: INSERT / UPSERT
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## INSERT Statement

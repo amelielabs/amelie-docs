@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: "JSON"
-bookToc: false
+bookToc: true
 ---
 
 ## JSON Array Functions

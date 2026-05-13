@@ -1,10 +1,10 @@
 ---
 weight: 1
 title: Overview
-bookToc: false
+bookToc: true
 ---
 
-## SQL
+### SQL
 
 The SQL dialect is based on **`ANSI SQL`**, **`PostgreSQL`** and extended with unique features, such as
 native JSON support and [Lambda aggregates](/docs/sql/query/lambda).

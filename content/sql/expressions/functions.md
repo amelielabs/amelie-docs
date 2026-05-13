@@ -2,7 +2,7 @@
 weight: 7
 title: Functions / Methods
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## Function and Method call

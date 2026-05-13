@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: Build and Install
-bookToc: false
+bookToc: true
 ---
 
 ## Build and Install

@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: "SHOW SCHEMA"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW SCHEMA Statement

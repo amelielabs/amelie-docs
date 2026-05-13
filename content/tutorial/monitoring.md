@@ -1,7 +1,7 @@
 ---
 weight: 8
 title: Monitoring
-bookToc: false
+bookToc: true
 ---
 
 ## Monitoring

@@ -1,7 +1,7 @@
 ---
 weight: 1
 title: "CREATE TABLE"
-bookToc: false
+bookToc: true
 ---
 
 ## CREATE TABLE Statement

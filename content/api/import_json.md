@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: "Import JSON data"
-bookToc: false
+bookToc: true
 ---
 
 ## Import JSON data

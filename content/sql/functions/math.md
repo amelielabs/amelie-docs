@@ -1,7 +1,7 @@
 ---
 weight: 9
 title: "Math"
-bookToc: false
+bookToc: true
 ---
 
 ## Mathematical Functions

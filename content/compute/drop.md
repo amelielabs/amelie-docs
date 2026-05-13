@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "DROP BACKEND"
-bookToc: false
+bookToc: true
 ---
 
 ## DROP BACKEND Statement

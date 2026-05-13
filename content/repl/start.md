@@ -1,7 +1,7 @@
 ---
 weight: 5
 title: "START REPLICATION"
-bookToc: false
+bookToc: true
 ---
 
 ## START REPLICATION Statement

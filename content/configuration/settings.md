@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: "System Settings"
-bookToc: false
+bookToc: true
 ---
 
 ## Configuration Settings

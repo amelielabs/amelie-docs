@@ -1,7 +1,7 @@
 ---
 weight: 10
 title: Benchmarking
-bookToc: false
+bookToc: true
 ---
 
 ## Benchmarking

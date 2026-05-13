@@ -1,7 +1,7 @@
 ---
 weight: 1
 title: "CREATE INDEX"
-bookToc: false
+bookToc: true
 ---
 
 ## CREATE INDEX Statement

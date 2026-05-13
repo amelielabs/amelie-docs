@@ -2,7 +2,7 @@
 weight: 11
 title: IN
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## IN operator

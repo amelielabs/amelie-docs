@@ -2,7 +2,7 @@
 weight: 3
 title: SMALLINT
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## SMALLINT

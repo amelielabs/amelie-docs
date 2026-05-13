@@ -1,7 +1,7 @@
 ---
 weight: 6
 title: Authentication and Users
-bookToc: false
+bookToc: true
 ---
 
 ## Authentication and Users

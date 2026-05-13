@@ -1,7 +1,7 @@
 ---
 weight: 13
 title: "Common Table Expressions (CTE)"
-bookToc: false
+bookToc: true
 ---
 
 ## Common Table Expressions

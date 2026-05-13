@@ -2,7 +2,7 @@
 weight: 1
 title: BOOL
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## BOOL

@@ -2,7 +2,7 @@
 weight: 12
 title: DATE
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## DATE

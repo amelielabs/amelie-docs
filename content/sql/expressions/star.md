@@ -2,7 +2,7 @@
 weight: 17
 title: '*'
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## SELECT [alias.]*

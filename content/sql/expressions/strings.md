@@ -2,7 +2,7 @@
 weight: 5
 title: Strings
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## String Expressions

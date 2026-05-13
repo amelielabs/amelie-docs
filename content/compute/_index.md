@@ -1,6 +1,6 @@
 ---
 weight: 11
-title: IO and Compute
+title: Compute & IO
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

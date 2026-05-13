@@ -2,7 +2,7 @@
 weight: 10
 title: ANY / ALL
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## ANY / ALL operator

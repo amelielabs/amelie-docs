@@ -2,7 +2,7 @@
 weight: 4
 title: DELETE
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## DELETE Statement

@@ -1,7 +1,7 @@
 ---
 weight: 11
 title: "Crypto"
-bookToc: false
+bookToc: true
 ---
 
 ## Random, Cryptographic and Hashing Functions

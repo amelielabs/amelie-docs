@@ -1,7 +1,7 @@
 ---
 weight: 11
 title: EXPLAIN
-bookToc: false
+bookToc: true
 ---
 
 ## EXPLAIN / PROFILE Statements

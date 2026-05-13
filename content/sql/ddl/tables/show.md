@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: "SHOW TABLE"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW TABLE Statement

@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "DROP TABLE"
-bookToc: false
+bookToc: true
 ---
 
 ## DROP TABLE Statement

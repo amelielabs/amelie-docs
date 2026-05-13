@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "ALTER SCHEMA"
-bookToc: false
+bookToc: true
 ---
 
 ## ALTER SCHEMA Statement

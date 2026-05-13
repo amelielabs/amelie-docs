@@ -2,7 +2,7 @@
 weight: 10
 title: TIMESTAMP
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## TIMESTAMP

@@ -2,7 +2,7 @@
 weight: 9
 title: IS
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## IS operator

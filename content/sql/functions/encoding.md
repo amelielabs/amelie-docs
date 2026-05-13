@@ -1,7 +1,7 @@
 ---
 weight: 10
 title: "Encoding"
-bookToc: false
+bookToc: true
 ---
 
 ## Functions for Data Encoding

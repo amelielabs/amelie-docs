@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "Aggregates"
-bookToc: false
+bookToc: true
 ---
 
 ## Aggregate Functions

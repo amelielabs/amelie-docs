@@ -1,7 +1,7 @@
 ---
 weight: 9
 title: "SHOW REPL"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW REPL Statement

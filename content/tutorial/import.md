@@ -1,7 +1,7 @@
 ---
 weight: 5
 title: Import Data
-bookToc: false
+bookToc: true
 ---
 
 ## Import Data Files

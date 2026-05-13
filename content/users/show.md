@@ -1,7 +1,7 @@
 ---
 weight: 6
 title: "SHOW USER"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW USER Statement

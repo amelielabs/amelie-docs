@@ -1,7 +1,7 @@
 ---
 weight: 8
 title: "UNSUBSCRIBE"
-bookToc: false
+bookToc: true
 ---
 
 ## UNSUBSCRIBE Statement

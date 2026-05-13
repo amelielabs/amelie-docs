@@ -1,7 +1,7 @@
 ---
 weight: 6
 title: "STOP REPLICATION"
-bookToc: false
+bookToc: true
 ---
 
 ## STOP REPLICATION Statement

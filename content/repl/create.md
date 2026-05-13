@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "CREATE REPLICA"
-bookToc: false
+bookToc: true
 ---
 
 ## CREATE REPLICA Statement

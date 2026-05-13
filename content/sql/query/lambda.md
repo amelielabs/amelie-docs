@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: "Lambda"
-bookToc: false
+bookToc: true
 ---
 
 ## Lambda

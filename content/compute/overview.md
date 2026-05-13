@@ -1,7 +1,7 @@
 ---
 weight: 1
 title: "Overview"
-bookToc: false
+bookToc: true
 ---
 
 ![image description](/docs/compute/architecture.png)

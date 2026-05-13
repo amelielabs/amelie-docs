@@ -1,7 +1,7 @@
 ---
 weight: 12
 title: "Regexp"
-bookToc: false
+bookToc: true
 ---
 
 ## Regular Expressions

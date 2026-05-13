@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "SHOW WAL"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW WAL Statement
@@ -29,7 +29,6 @@ show wal;
   "ops": 0,
   "checkpoint": 1
 }]
-]
 
 select system.wal().files;
 [1]

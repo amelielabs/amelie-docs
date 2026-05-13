@@ -2,7 +2,7 @@
 weight: 3
 title: Comparison
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## Comparison

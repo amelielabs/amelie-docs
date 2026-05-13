@@ -2,7 +2,7 @@
 weight: 3
 title: UPDATE
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## UPDATE Statement

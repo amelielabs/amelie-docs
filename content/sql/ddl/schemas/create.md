@@ -1,7 +1,7 @@
 ---
 weight: 1
 title: "CREATE SCHEMA"
-bookToc: false
+bookToc: true
 ---
 
 ## CREATE SCHEMA Statement

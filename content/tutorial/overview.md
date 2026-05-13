@@ -1,7 +1,7 @@
 ---
 weight: 1
-title: Get Started
-bookToc: false
+title: Overview
+bookToc: true
 ---
 
 ## Get Started

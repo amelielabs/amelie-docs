@@ -2,7 +2,7 @@
 weight: 15
 title: 'NULL'
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## NULL

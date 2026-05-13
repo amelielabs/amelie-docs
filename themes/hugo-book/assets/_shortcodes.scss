@@ -79,13 +79,24 @@
   // {{< button >}}
   a.book-btn {
     display: inline-block;
-    font-size: $font-size-14;
-    color: var(--color-link);
+    font-size: $font-size-16;
+    // color: #303030;
+	//color: #B39CE5;
+
+    font-size: 2rem;
+    font-weight: 500;
+    color: #111827;
+
     line-height: $padding-16 * 2;
     padding: 0 $padding-16;
-    border: $padding-1 solid var(--color-link);
-    border-radius: $border-radius;
+    border: $padding-1 solid #efefef;
     cursor: pointer;
+
+    border-radius: $border-radius;
+    border: 1px solid #e5e7eb;
+    background: 1px solid #f0f0f0;
+    text-decoration: none;
+    padding: 80px;
 
     &:hover {
       text-decoration: none;

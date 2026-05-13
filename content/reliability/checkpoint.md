@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "CHECKPOINT"
-bookToc: false
+bookToc: true
 ---
 
 ## CHECKPOINT Statement

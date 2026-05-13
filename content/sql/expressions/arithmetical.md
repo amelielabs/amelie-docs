@@ -2,7 +2,7 @@
 weight: 1
 title: Arithmetical
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## Arithmetical Expressions

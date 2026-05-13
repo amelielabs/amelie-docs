@@ -1,6 +1,6 @@
 ---
 weight: 12
-title: Reliability
+title: Reliability & Durability
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

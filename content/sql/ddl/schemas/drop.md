@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "DROP SCHEMA"
-bookToc: false
+bookToc: true
 ---
 
 ## DROP SCHEMA Statement

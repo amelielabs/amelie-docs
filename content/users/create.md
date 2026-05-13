@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "CREATE USER"
-bookToc: false
+bookToc: true
 ---
 
 ## CREATE USER Statement

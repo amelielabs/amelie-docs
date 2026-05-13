@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "ALTER TABLE"
-bookToc: false
+bookToc: true
 ---
 
 ## ALTER TABLE Statement

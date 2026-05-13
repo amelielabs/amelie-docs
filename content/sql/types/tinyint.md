@@ -2,7 +2,7 @@
 weight: 2
 title: TINYINT
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## TINYINT

@@ -2,7 +2,7 @@
 weight: 4
 title: Bitwise
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## Bitwise Operations

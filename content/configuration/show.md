@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "SHOW CONFIG"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW CONFIG Statement

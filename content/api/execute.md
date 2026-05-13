@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "Execute SQL"
-bookToc: false
+bookToc: true
 ---
 
 ## Execute SQL commands

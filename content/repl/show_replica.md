@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: "SHOW REPLICA"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW REPLICA Statement

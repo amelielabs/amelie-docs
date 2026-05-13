@@ -1,7 +1,7 @@
 ---
 weight: 7
 title: "Vector"
-bookToc: false
+bookToc: true
 ---
 
 ## Vector Functions

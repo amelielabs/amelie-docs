@@ -21,6 +21,7 @@ $endLevel: 6;
 
 .book-toc nav#TableOfContents ul {
   li {
+    margin: 10px;
     counter-increment: item;
 	color: red;
 

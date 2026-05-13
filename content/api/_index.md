@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "HTTP API"
+title: "API"
 bookFlatSection: false
 bookCollapseSection: true
 ---

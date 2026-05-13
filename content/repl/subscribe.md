@@ -1,7 +1,7 @@
 ---
 weight: 7
 title: "SUBSCRIBE"
-bookToc: false
+bookToc: true
 ---
 
 ## SUBSCRIBE Statement

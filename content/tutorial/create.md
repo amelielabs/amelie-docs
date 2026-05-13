@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: Create Repository
-bookToc: false
+bookToc: true
 ---
 
 ## Create Repository

@@ -1,7 +1,7 @@
 ---
 weight: 6
 title: "Time"
-bookToc: false
+bookToc: true
 ---
 
 ## Time Functions

@@ -1,7 +1,7 @@
 ---
 weight: 1
 title: "SELECT"
-bookToc: false
+bookToc: true
 ---
 
 ## SELECT Statement

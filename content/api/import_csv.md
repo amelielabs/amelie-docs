@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "Import CSV data"
-bookToc: false
+bookToc: true
 ---
 
 ## Import CSV data

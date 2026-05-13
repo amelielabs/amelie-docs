@@ -2,7 +2,7 @@
 weight: 5
 title: TRUNCATE
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## TRUNCATE Statement

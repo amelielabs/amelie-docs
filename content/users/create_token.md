@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "CREATE TOKEN"
-bookToc: false
+bookToc: true
 ---
 
 ## CREATE TOKEN Statement

@@ -1,6 +1,6 @@
 ---
 weight: 1
-title: "Tutorial"
+title: "Get Started"
 bookFlatSection: false
 bookCollapseSection: true
 ---

@@ -1,7 +1,7 @@
 ---
 weight: 4
 title: CLI
-bookToc: false
+bookToc: true
 ---
 
 ## Console Client

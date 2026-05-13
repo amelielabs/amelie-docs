@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "SHOW METRICS"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW METRICS Statement

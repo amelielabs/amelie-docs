@@ -2,7 +2,7 @@
 weight: 5
 title: BIGINT
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## BIGINT

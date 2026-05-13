@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "DROP REPLICA"
-bookToc: false
+bookToc: true
 ---
 
 ## DROP REPLICA Statement

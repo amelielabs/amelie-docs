@@ -2,7 +2,7 @@
 weight: 16
 title: CAST
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## CAST operator

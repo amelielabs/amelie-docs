@@ -2,7 +2,7 @@
 weight: 4
 title: INT
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## INT

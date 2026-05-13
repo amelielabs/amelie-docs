@@ -2,7 +2,7 @@
 weight: 6
 title: FLOAT
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## FLOAT

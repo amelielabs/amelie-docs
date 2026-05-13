@@ -2,7 +2,7 @@
 weight: 15
 title: EXTRACT
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## EXTRACT operator

@@ -2,7 +2,7 @@
 weight: 13
 title: VECTOR
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## VECTOR

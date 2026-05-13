@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: "SHOW STATE"
-bookToc: false
+bookToc: true
 ---
 
 ## SHOW STATE Statement

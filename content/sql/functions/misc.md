@@ -1,7 +1,7 @@
 ---
 weight: 13
 title: "Misc"
-bookToc: false
+bookToc: true
 ---
 
 ## Misc Functions

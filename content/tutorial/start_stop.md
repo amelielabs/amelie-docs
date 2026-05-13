@@ -1,7 +1,7 @@
 ---
 weight: 3
 title: Run Server
-bookToc: false
+bookToc: true
 ---
 
 ## Start Server

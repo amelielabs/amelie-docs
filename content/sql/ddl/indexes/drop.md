@@ -1,7 +1,7 @@
 ---
 weight: 2
 title: "DROP INDEX"
-bookToc: false
+bookToc: true
 ---
 
 ## DROP INDEX Statement

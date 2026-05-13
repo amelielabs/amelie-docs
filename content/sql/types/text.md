@@ -2,7 +2,7 @@
 weight: 8
 title: TEXT
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## TEXT

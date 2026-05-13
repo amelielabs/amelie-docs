@@ -2,7 +2,7 @@
 weight: 13
 title: LIKE
 type: docs
-bookToc: false
+bookToc: true
 ---
 
 ## LIKE operator

@@ -1,7 +1,7 @@
 ---
 weight: 8
 title: "Null"
-bookToc: false
+bookToc: true
 ---
 
 ## Functions to work with NULL
