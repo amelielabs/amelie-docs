@@ -1,6 +1,6 @@
 ---
-weight: 4
-title: "Lambda"
+weight: 3
+title: "Lambda Aggregates"
 bookToc: true
 ---
 

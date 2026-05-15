@@ -2,15 +2,15 @@
 
 .markdown {
 
-  padding-left: 20px;
-  padding-right: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
 
-  line-height: 1.55;
-  //font-family: helvetica;
+  //line-height: 1.65;
+  line-height: 1.70;
 
   // remove padding at the beginning of page
   > :first-child {
-    margin-top: 0;
+    margin-top: 5px;
   }
 
   h1,
@@ -22,7 +22,7 @@
     color: black;
     font-weight: 600;
 
-    margin-top: 2.0rem;
+    //margin-top: 2.0rem;
     //margin-bottom: 1.5rem ; //$padding-16;
 
     a.anchor {
@@ -46,13 +46,9 @@
     line-height: 1.5;
   }
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-   // line-height: 1;
-  }
+  h1 { font-size: 2.25rem; font-weight: 700; }
+  h2 { font-size: 1.70rem; font-weight: 600; }
+  h3 { font-size: 1.3rem;  font-weight: 600; }
 
   b,
   optgroup,
@@ -67,56 +63,18 @@
   }
 
   a {
-	//text-decoration: underline;
-	font-weight: 600;
+	text-decoration: none;
+	font-weight: 400;
+    color: #4C79CE;
 
-	/*
     &:hover {
-      text-decoration: none;
+		text-decoration: none;
     }
     &:visited {
-    	text-decoration: none;
-      // color: var(--color-visited-link);
+		text-decoration: none;
     }
-	*/
   }
 
-  ////////////////////////////////////////////
-
-  /*
-	:root {
-		--font-sans: "Inter", system-ui, sans-serif;
-		--accent-color: #10b981;
-	}
-	*/
-
-  /*
-	body {
-		font-family: var(--font-sans);
-		font-size: 16px;
-		line-height: 1.75;
-		color: #374151;
-	}
-	*/
-
-	h1 { font-size: 2.25rem; font-weight: 700; color: #111827; }
-	h2 { font-size: 1.75rem; font-weight: 600; color: #1f2937; margin-top: 2.5rem; }
-	h3 { font-size: 1.4rem;  font-weight: 600; color: #374151; }
-
-	/*
-	a {
-		color: var(--accent-color);
-		font-weight: 500;
-	}
-
-	a:hover {
-		color: #059669;
-		text-decoration: underline;
-	}
-	*/
-
-
-  ////////////////////////////////////////////
 
   img {
     max-width: 100%;

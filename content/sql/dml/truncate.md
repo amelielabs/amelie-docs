@@ -1,5 +1,5 @@
 ---
-weight: 5
+weight: 4
 title: TRUNCATE
 type: docs
 bookToc: true

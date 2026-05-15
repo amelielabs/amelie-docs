@@ -1,7 +1,7 @@
 ---
 weight: 2
-title: SQL Reference
+title: 'SQL Reference'
 type: docs
-bookFlatSection: false
-bookCollapseSection: true
+bookFlatSection: true
+bookCollapseSection: false
 ---

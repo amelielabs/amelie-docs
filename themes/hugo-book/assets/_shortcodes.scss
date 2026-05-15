@@ -112,4 +112,51 @@
       }
     }
   }
+
+  // {{< steps >}}
+  .book-steps {
+    position: relative;
+
+    >ol {
+      counter-reset: steps;
+      list-style: none;
+      padding-inline-start: $padding-16 + $padding-4;
+      margin-top: $padding-16 * 2;
+
+      >li::before {
+        content: counter(steps);
+        counter-increment: steps;
+
+		font-size: 16px;
+		//font-weight: 600;
+
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        left: $padding-4;
+
+        height: $padding-16 * 1.5;
+        width: $padding-16 * 1.5;
+        padding: 4px; //$padding-4;
+        border-radius: 32px; // $padding-8;
+
+        white-space: nowrap;
+        //line-height: $padding-16;
+
+        color: white;
+        background: #202020;
+      }
+
+      >li {
+        @extend .markdown-inner;
+        border-inline-start: $padding-1 solid #e5e7eb;
+        padding-inline-start: 32px;
+        padding-bottom: $padding-16 * 2;
+      }
+
+      >li:last-child {
+        border: 0;
+      }
+    }
+  }
 }

@@ -26,8 +26,9 @@
 body {
   font-family: 'Inter', sans-serif;
   font-size: 17px;
-  line-height: 1.75;
+  line-height: 1.70;
   color: #374151;
+  //color: #5c5c5c;
 }
 
 code {
@@ -41,4 +42,71 @@ code {
 
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+
+.steps {
+    max-width: 800px;
+    margin: 40px 0;
+}
+
+.step {
+    display: flex;
+    gap: 24px;
+    position: relative;
+    padding-bottom: 32px;
+}
+
+.step:last-child {
+    padding-bottom: 0;
+}
+
+/* Vertical line between steps */
+.step::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 40px;
+    bottom: -10px;
+    width: 3px;
+    background: #e2e8f0;
+    z-index: 0;
+}
+
+.step:last-child::before {
+    display: none;
+}
+
+/* Step number circle */
+.step-number {
+    width: 32px;
+    height: 32px;
+    background: #10b981;           /* Mintlify green */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Content */
+.step-content {
+    flex: 1;
+    padding-top: 4px;
+}
+
+.step-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+}
+
+.step-content p {
+    margin: 0;
+    color: #64748b;
+    line-height: 1.7;
 }

@@ -1,5 +1,5 @@
 ---
-weight: 2
+weight: 1
 title: INSERT / UPSERT
 type: docs
 bookToc: true

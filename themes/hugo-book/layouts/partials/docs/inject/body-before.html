@@ -1,11 +1,36 @@
 
-<div style="width: auto; background: white; height: 60px; border-bottom: 1px solid; border-bottom-color: #e5e7eb;">
+<style>
+	.menu_top {
+	  position: sticky;
+	  top: 0;
+	  height: 100vh;
+	  overflow-y: auto;
+	  z-index: 100;
+      width: auto;
+      background: white;
+      height: 60px;
+      border-bottom: 1px solid #e5e7eb;
+	}
+</style>
 
+<div class="menu_top">
 	<div class="container flex" style="padding-left: 10px; padding-top: 18px">
 
-	<a href="/docs/" style="">
+	<a href="/docs/" style="height: 30px; ">
 	<img src="/docs/menu_logo.svg" />
 	</a>
+
+	<div style="float: center; margin-left: auto; padding-right: 10px; font-size: 0.850rem;">
+    {{ partial "docs/search" . }}
+	</div>
+
+	<!--<div style="float: center; margin-left: auto; padding-right: 10px; font-size: 0.850rem;">-->
+	<!--<div class="book-search">-->
+	<!--<input type="text" id="book-search-input" placeholder="{{ i18n "Search" }}" aria-label="{{ i18n "Search" }}" maxlength="64" data-hotkeys="s/" />-->
+	<!--<div class="book-search-spinner hidden"></div>-->
+	<!--<ul id="book-search-results"></ul>-->
+	<!--</div>-->
+	<!--</div>-->
 
 	<div style="float: right; margin-left: auto; padding-right: 10px; font-size: 0.850rem;">
 		<span style="color: #888888; border: 1px solid; border-color: #e5e7eb; padding: 10px; border-radius: 26px; ">Slack</span>
@@ -13,6 +38,7 @@
 		<span style="color: #888888; border: 1px solid; border-color: #e5e7eb; padding: 10px; border-radius: 26px; ">GitHub</span>
 		</span>
 	</div>
+
 
 	</div>
 </div>
