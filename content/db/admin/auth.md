@@ -4,7 +4,7 @@ title: Authentication and Users
 bookToc: true
 ---
 
-## Authentication and Users
+# Authentication and Users
 
 By default, the Server runs without authentication and accepts **`HTTP`** connections on the **`3485`** port.
 The Server will validate each request and match existing users if authentication is enabled.

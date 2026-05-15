@@ -4,7 +4,7 @@ title: Backup and Restore
 bookToc: true
 ---
 
-## Backup and Restore
+# Backup and Restore
 
 The **`amelie backup <directory> [login] [client options]`** command can be used to create a hot backup (full copy)
 of the remote server repository into the specified directory.

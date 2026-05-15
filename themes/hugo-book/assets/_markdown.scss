@@ -54,12 +54,16 @@
   optgroup,
   strong {
     font-weight: normal;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-left: 7px;
-	padding-right: 7px;
+    font-size: 16px;
+
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 6px;
+	padding-right: 6px;
+
     background: #f1f1f1;
     border-radius: 10px;
+	white-space: nowrap;
   }
 
   a {
@@ -130,14 +134,12 @@
     border-collapse: collapse;
     margin-top: $padding-16;
     margin-bottom: $padding-16;
-    font-size: 17px;
-
-	table-layout: fixed;
-	width: 1000px;
+    //font-size: 17px;
 
     tr th,
     tr td {
-      padding: $padding-8 $padding-16;
+	  padding: 17px;
+      //padding: $padding-8 $padding-16;
       border-bottom: 1px solid #f0f0f0;
     }
 

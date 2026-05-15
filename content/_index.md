@@ -17,11 +17,4 @@ It scales linearly with the number of CPU cores both for IO and Compute separate
 performs automatic partitioning, and generates parallel group plans for
 all types of queries.
 
-### Features
-
-Amelie has support for [Hot Backup](/docs/tutorial/backup) and [Async Logical Replication](/docs/repl/overview), which allows
-fault-tolerant primary-replica setups to be created.
-
-The [SQL](/docs/sql/overview) commands can be executed, or data can be imported using the [HTTP API](/docs/api/execute) or [CLI](/docs/tutorial/cli).
-
-Learn more about [How It Works](/docs/compute/overview) and [Get Started](/docs/tutorial/get_started).
+Learn more about [How It Works](/docs/db/architecture/overview) and [Get Started](/docs/get_started/quickstart).

@@ -4,11 +4,13 @@ title: Run Server
 bookToc: true
 ---
 
+# Run Server
+
 ## Start Server
 
 The **`amelie start <directory> [options]`** command starts a server.
 
-Optional [server options](/docs/configuration/show) can be passed to the command.
+Optional [server options](/docs/db/admin//configuration/settings) can be passed to the command.
 
 The Server will be started in the current terminal session, waiting for the
 **`SIGINT`** (`Ctrl + C`) or **`SIGTERM`** signals to shut down. The **--daemon=true** option can be used to start the
@@ -19,16 +21,15 @@ The server creates and keeps the log file **`<directory>/log`**.
 
 During the start, the Server does the following steps:
 
-1) Finds the latest checkpoint and replays partition files in parallel
-2) Replays WAL files starting from the latest checkpoint
-2) Starts Replication (if configured)
-3) Starts accepting incoming connections
-
-By default, the Server runs without authentication and accepts **`HTTP`** connections on the **`3485`** port and a
-**`UNIX socket file`** in the directory.
+{{% steps %}}
+1. Reads the catalog file and loads partition files in parallel
+2. Replays WAL files
+3. Starts Replication (if configured)
+4. Starts accepting incoming connections
+{{% /steps %}}
 
 ```text
-amelie start ./repo
+amelie start --daemon=true ./repo
 ```
 
 ## Stop Server

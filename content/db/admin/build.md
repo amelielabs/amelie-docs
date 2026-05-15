@@ -1,10 +1,10 @@
 ---
 weight: 2
-title: Installation
+title: Build
 bookToc: true
 ---
 
-## Build and Install
+# Build and Install
 
 #### OS
 

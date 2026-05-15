@@ -4,7 +4,7 @@ title: TLS Certificates
 bookToc: true
 ---
 
-## TLS Certificates
+# TLS Certificates
 
 Setting up certificates allows the server to create secure **`HTTPS TLS`** connections with clients.
 

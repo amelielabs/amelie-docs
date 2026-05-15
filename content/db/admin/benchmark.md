@@ -4,7 +4,7 @@ title: Benchmarking
 bookToc: true
 ---
 
-## Benchmarking
+# Benchmarking
 
 The **`amelie bench [login] [client options] [bench options]`** command can be used for server benchmarking
 using predefined tests. The command is compatible with the [Console Client](/docs/tutorial/cli) options.
