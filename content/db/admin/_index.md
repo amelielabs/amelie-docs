@@ -1,5 +1,5 @@
 ---
-weight: 11
+weight: 1
 title: Administration
 bookFlatSection: false
 bookCollapseSection: true
