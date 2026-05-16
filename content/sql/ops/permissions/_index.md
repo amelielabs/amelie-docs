@@ -1,6 +1,6 @@
 ---
-weight: 4
-title: Transactions
+weight: 3
+title: Permissions
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

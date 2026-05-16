@@ -1,6 +1,6 @@
 ---
-weight: 4
-title: Transactions
+weight: 5
+title: Subscriptions
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

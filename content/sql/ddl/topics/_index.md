@@ -1,6 +1,6 @@
 ---
 weight: 4
-title: Transactions
+title: Topics
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

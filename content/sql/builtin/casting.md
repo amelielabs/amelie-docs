@@ -1,6 +1,6 @@
 ---
 weight: 2
-title: "Type Casting"
+title: "Casting"
 bookToc: true
 ---
  
