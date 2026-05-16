@@ -10,9 +10,8 @@ The **`amelie init <directory> [options]`** command is used to create a database
 
 Optional [server options](/docs/db/admin/configuration/settings) can be passed to the command.
 
-Options passed during
-repository creation will be saved in the configuration file, which will be created inside the directory:
-**`<directory>/config.json`**
+Options passed during repository creation will be saved in the configuration file, which will be created
+inside the directory: **`<directory>/config.json`**
 
 ```text
 amelie init ./repo
@@ -38,6 +37,8 @@ The most important options are:
 By default, the server configured to accepts **`HTTP`** connections on port **`8080`** and the **`UNIX socket file`**
 created in the repository.
 
+## Remote Connections
+
 For security reasons, Amelie will listen only on the **`localhost`** addresses. Local connections
 considered secure will be allowed to connect as the **`amelie`** superuser without
 authentication.
@@ -46,6 +47,8 @@ External connections must be configured manually in **`<directory>/server.json`*
 	
 All external connections must include valid [TLS certificates](/docs/db/admin/tls) and will require to create
 additional [Users and Agents](/docs/db/admin/auth) with valid authentication tokens.
+
+It is forbidded to use **`amelie`** superuser in remote connections.
 
 ## IO and Compute workers
 

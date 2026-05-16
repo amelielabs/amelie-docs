@@ -6,14 +6,28 @@ bookToc: true
 
 # Monitoring
 
-The **`amelie top [login] [client options]`** command can be used to get essential system information about the remote
-server from the console in real time.
+The [SHOW](/docs/sql/ops/show) command can be used to get information about the system state.
 
-See also [SHOW METRICS](/docs/monitoring/show) and [Monitoring](/docs/monitoring/overview).
+All system information stored and presented in JSON.
 
 ---
 
-```sh
-# connect to the server using URI without authentication
-amelie top --uri="localhost"
+```sql
+SHOW TABLES;
+
+tables
+──────
+{
+  "user": "amelie",
+  "name": "test"
+}
+
+SELECT * FROM SHOW TABLES;
+
+tables
+──────
+{
+  "user": "amelie",
+  "name": "test"
+}
 ```

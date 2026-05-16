@@ -97,6 +97,9 @@ ul.pagination {
 .book-menu {
   flex: 0 0 $menu-width;
 
+  border-right: 1px solid;
+  border-right-color: #e5e7eb;
+
   /*
   position: sticky;
   top: 0;
@@ -106,10 +109,10 @@ ul.pagination {
   */
 
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.60;
   color: #374151;
 
-  transition: color 0.2s;
+  //transition: color 0.2s;
 
   .book-menu-content {
     width: 14rem;
@@ -178,7 +181,7 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-section-flat {
-  line-height: 1.65;
+  //line-height: 1.65;
   //padding-top: 10px;
   margin-top: 8px;
   margin-bottom: 40px;
@@ -186,7 +189,7 @@ body[dir="rtl"] .book-menu {
   > a,
   > span,
   > label {
-	font-size: 15px;
+	//font-size: 15px;
     font-weight: 600;
     color: black;
   }
@@ -204,8 +207,8 @@ body[dir="rtl"] .book-menu {
   padding: $padding-16;
   height: 100%;
 
-  border-left: 1px solid;
-  border-left-color: #e5e7eb;
+  //border-left: 1px solid;
+  //border-left-color: #e5e7eb;
 }
 
 .book-post {
@@ -278,7 +281,7 @@ body[dir="rtl"] .book-menu {
   border-left: 1px solid #e5e7eb;
 
   .book-toc-content {
-    margin-top: 90px;
+    margin-top: 95px;
     width: $toc-width;
 	padding-left: $padding-16;
     //margin-top: $padding-16;

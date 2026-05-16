@@ -6,18 +6,18 @@ bookToc: true
 
 # TLS Certificates
 
-Setting up certificates allows the server to create secure **`HTTPS TLS`** connections with clients.
+Setting up certificates allows the server accept **`HTTPS`** secure connections with clients.
 
-The TLS support, along with the authentication, can be enabled (or turned off) for each listening address individually.
-For example, it is possible to turn off the authentication for localhost and enable it for other network interfaces.
-
-Learn more about the [Server TLS Settings](/docs/configuration/settings) and the [Server Configuration](/docs/configuration/settings).
+It is mandatory for all external connections to include a valid TLS certificates and authentication tokens.
+External connections must be allowed and [configured manually](/docs/db/admin/create) along side with the TLS
+settings.
 
 ## Self-Signed Certificates
 
 The following steps can be done to generate and use a minimal server self-signed server certificate (which will act as a CA certificate for clients):
 
-1. Generate a self-signed Certificate for the Server
+{{% steps %}}
+1. Generate a self-signed Certificate for the server
 
    ```sh
    # generate server private key
@@ -27,22 +27,22 @@ The following steps can be done to generate and use a minimal server self-signed
    openssl req -new -x509 -days 36500 -key server.key -out server.crt
    ```
 
-2. Copy the Server Certificate and Key to the **`repo/certs`** directory
+2. Copy the server certificate and Key to the **`repo/certs`** directory
 
    ```sh
    cp server.crt repo/certs
    cp server.key repo/certs
    ```
 
-3. Update the Server configuration file settings **`repo/config.json`**:
+3. Update the server configuration file settings **`repo/server.json`** matching your external interface:
 
    ```SQL
-   "tls_cert": "certs/server.crt",
-   "tls_key": "certs/server.key",
-   "listen": [{
-	  "host": "*",
-	  "port": 3485,
-	  "tls": true
+    {
+	  "host": "<host_name>",
+	  "port": 8080,
+	  "tls": true,
+	  "tls_cert": "certs/server.crt",
+	  "tls_key": "certs/server.key"
 	}]
    ```
 
@@ -50,11 +50,11 @@ The following steps can be done to generate and use a minimal server self-signed
 
    ```sh
    # connect to the server using TLS
-   amelie --uri="https://localhost:3485" --tls_ca="server.crt"
+   amelie https://<host_name>
 
-   # connect to the server using TLS (server certificate is not verified)
-   amelie --uri="https://localhost:3485"
+   # connect to the server using TLS (with server certificate validation)
+   amelie https://<host_name> --tls_ca="server.crt"
    ```
+{{% /steps %}}
 
 Please note that the server does not verify client certificates in the following setup.
-The [Authentication](/docs/tutorial/auth) can be enabled to validate client requests over **`HTTPS`** connections.
