@@ -17,20 +17,13 @@ The supported range is from **`-2147483648`** to **`2147483647`**.
 ---
 
 ```SQL
-select 123;
-[123]
+SELECT 123 as example;
+
+example
+───────
+123
 ```
 
 ```SQL
-create table example (id int primary key);
-insert into example values (1), (2), (3);
-select id from example;
-[1, 2, 3]
-```
-
-```SQL
-create table example (id integer primary key as identity, data int);
-insert into example (data) values (1), (2), (3);
-select * from example;
-[[0, 1], [1, 2], [2, 3]]
+CREATE TABLE example (id integer primary key, data int);
 ```

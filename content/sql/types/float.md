@@ -12,6 +12,9 @@ bookToc: true
 ---
 
 ```SQL
-select 3.14;
-[3.14]
+SELECT 3.14 as example;
+
+example
+───────
+3.14
 ```

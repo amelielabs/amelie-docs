@@ -6,15 +6,15 @@ bookToc: true
 
 # Welcome to Amelie
 
-## Welcome to Amelie
+Built to operate on the **frontline**, Amelie serves as a **fast operational database**
+that powers real-time, data-intensive applications and intelligent systems —
+even under **heavy contention** and **multi-tenancy**.
 
-Fast OLTP, parallel vector search, instant branching, pub/sub,
-and real-time event streaming —  all unified in one
-in-memory relational database.
+Fast OLTP without conflicts or contention. Parallel vector search. Instant branching.
+Pub/Sub and real-time event streaming — all unified in one in-memory relational database.
 
-Amelie allows full parallelization and lockless transaction processing.
-It scales linearly with the number of CPU cores both for IO and Compute separately,
-performs automatic partitioning, and generates parallel group plans for
-all types of queries.
+Amelie delivers **full parallelization** and **lock-free transaction processing**. It scales linearly with the
+number of CPU cores for both IO and Compute independently, automatically partitions data, and generates
+parallel execution plans for any query type.
 
 Learn more about [How It Works](/docs/db/architecture/overview) and [Get Started](/docs/get_started/quickstart).

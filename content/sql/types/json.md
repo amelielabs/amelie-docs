@@ -22,51 +22,51 @@ operator **`[`** can access the object value by key.
 Objects are dynamic, and each value is an expression that is evaluated at runtime.
 It may contain other expressions, function calls, and subqueries.
 
-[JSON Functions](/docs/sql/functions/json) can be used to do basic operations using JSON arrays and objects.
+[JSON Functions](/docs/sql/builtin/json) can be used to do basic operations using JSON arrays and objects.
 
-Any type can be [casted](/docs/sql/functions/casting) to the **`JSON`**, or a string can be
-parsed and [imported](/docs/sql/functions/json) as the **`JSON`** type.
+Any type can be [casted](/docs/sql/builtin/casting) to the **`JSON`**, or a string can be
+parsed and [imported](/docs/sql/builtin/json) as the **`JSON`** type.
 
 ---
 
 ```SQL
-select [1,2,3];
-[1,2,3]
+SELECT [1,2,3] as example;
 
-select [1,2,3]::append(4);
+example
+───────
+[1, 2, 3]
+
+SELECT [1,2,3]::append(4);
+
+append
+──────
 [1,2,3,4]
 
-select ["a", null, {}];
-["a", null, {}]
+SELECT {"id": 48, "data": [1,2,3]} as example;
 
-select {"id": 48, "data": [1,2,3]};
-[{
+example
+───────
+{
   "id": 48,
   "data": [1, 2, 3]
-}]
+}
 
-select {"id": 48, "data": [1,2,3]}.data[0];
-[1]
+SELECT {"id": 48, "data": [1,2,3]}.data[0] as data;
 
-select {"at": current_timestamp, "id": system.config().uuid};
-[{
-  "at": "2024-09-26 16:14:00.722393+03",
-  "id": "a74fbf39-cc9d-314e-a33e-3aa47559ffe5"
-}]
+data
+────
+1
+
+SELECT {"at": current_timestamp, "id": show().uuid} as json;
+
+json
+────
+{
+  "at": "2026-05-17 17:08:19.596411+03",
+  "id": "b9b6fbf1-85de-9a0b-63e2-3233e03c6803"
+}
 ```
 
 ```SQL
-create table example (id int primary key, metrics json);
-insert into example values (1, [1,2,3]), (2, ['a','b','c']);
-
-select * from example;
-[[1, [1, 2, 3]], [2, ["a", "b", "c"]]]
-
-select metrics from example;
-[[1, 2, 3], ["a", "b", "c"]]
-
-update example set metrics = metrics::append(4) where id = 1;
-
-select metrics from example;
-[[1, 2, 3, 4], ["a", "b", "c"]]
+CREATE TABLE example (id int primary key, metrics json);
 ```

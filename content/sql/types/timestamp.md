@@ -16,47 +16,69 @@ All operations are corrected according to the current timezone settings.
 
 The supported range is from **`1970-01-01 00:00:00.000000`** to **`9999-12-31 23:59:59.999999`**.
 
-**`CURRENT_TIMESTAMP`** and [now()](/docs/sql/functions/time) can be used to get the current transaction time.
+**`CURRENT_TIMESTAMP`** and [now()](/docs/sql/builtin/time) can be used to get the current transaction time.
 **`TIMESTAMP`** prefix before a string can be used to explicitly define timestamp value without convertion.
 
-[Time Functions](/docs/sql/functions/time) can do basic operations using timestamps, intervals, and dates.
+[Time Functions](/docs/sql/builtin/time) can do basic operations using timestamps, intervals, and dates.
 
 ---
 
 ```SQL
-select now(), current_timestamp;
-["2024-09-26 17:11:03.640011+03", "2024-09-26 17:11:03.640011+03"]
+SELECT now(), current_timestamp;
 
-select system.config().timezone;
-["Asia/Famagusta"]
+now                               current_timestamp
+────────────────────────────────────────────────────────────────────
+2026-05-17 17:11:26.953909+03     2026-05-17 17:11:26.953909+03
 
-select current_timestamp - interval '5 hours';
-["2024-09-26 12:12:10.684550+03"]
+SELECT show().timezone;
 
-select timestamp "2024-09-26 12:12:10.684550+03";
-["2024-09-26 09:12:10.684550+00"]
+timezone
+────────
+"Asia/Famagusta"
 
-select "2024-09-26 12:12:10.684550+03"::timestamp;
-["2024-09-26 09:12:10.684550+00"]
+SELECT current_timestamp - interval '5 hours' as expr;
 
-select "2024-09-26 12:12:10.684550+03"::timestamp::int;
-[1727341930684550]
+expr
+────
+2026-05-17 12:12:41.498522+03
 
-select 1727341930684550::timestamp;
-["2024-09-26 12:12:10.684550+03"]
+SELECT timestamp "2024-09-26 12:12:10.684550+03" as const;
 
-select {"at": now(), "id": system.config().uuid};
-[{
-  "at": "2024-09-26 16:14:00.722393+03",
-  "id": "a74fbf39-cc9d-314e-a33e-3aa47559ffe5"
-}]
+const
+─────
+2024-09-26 12:12:10.684550+03
+
+SELECT "2024-09-26 12:12:10.684550+03"::timestamp;
+
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
+
+SELECT "2024-09-26 12:12:10.684550+03"::timestamp::int;
+
+int
+───
+1727341930684550
+
+SELECT 1727341930684550::timestamp;
+
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
+
+SELECT {
+  "at": now(),
+  "id": show('config').uuid
+} as json;
+
+json
+────
+{
+  "at": "2026-05-17 17:16:05.048230+03",
+  "id": "b9b6fbf1-85de-9a0b-63e2-3233e03c6803"
+}
 ```
 
 ```SQL
-create table example (ts timestamp primary key, metrics json);
-insert into example values (current_timestamp, [1,2,3]);
-
--- timestamp converted based on current timezone settings
-select * from example;
-[["2024-09-26 17:13:34.621227+03", [1, 2, 3]]]
+CREATE TABLE example (ts timestamp primary key, metrics json);
 ```

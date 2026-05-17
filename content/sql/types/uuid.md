@@ -18,26 +18,32 @@ The type can be used as a part of the primary or secondary key.
 ---
 
 ```SQL
-select uuid "00000000-0000-0000-0000-000000000000";
-["00000000-0000-0000-0000-000000000000"]
+SELECT uuid "00000000-0000-0000-0000-000000000000" as id;
 
-select "00000000-0000-0000-0000-000000000000"::uuid;
-["00000000-0000-0000-0000-000000000000"]
+id
+──
+00000000-0000-0000-0000-000000000000
 
-select random_uuid();
-["4845888e-dbc4-88bc-2e22-9673ccd23bee"]
+SELECT "00000000-0000-0000-0000-000000000000"::uuid;
 
-select uuid "00000000-0000-0000-0000-000000000000" <
-       uuid "00000000-0000-0000-0000-000000000001";
-[true]
+uuid
+────
+00000000-0000-0000-0000-000000000000
+
+SELECT random_uuid();
+
+random_uuid
+───────────
+5ce51e2e-af77-37e6-29e6-f3a9717ddb6c
+
+SELECT uuid "00000000-0000-0000-0000-000000000000" <
+       uuid "00000000-0000-0000-0000-000000000001" as expr;
+
+expr
+────
+true
 ```
 
 ```SQL
-create table example (id uuid primary key) with (type = 'hash')
-insert into example values ("00000000-0000-0000-0000-000000000000")
-insert into example values ("00000000-0000-0000-0000-000000000001")
-insert into example values ("00000000-0000-0000-0000-000000000002")
-select * from example order by id
-["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000001",
- "00000000-0000-0000-0000-000000000002"]
+CREATE TABLE example (id uuid primary key using hash);
 ```

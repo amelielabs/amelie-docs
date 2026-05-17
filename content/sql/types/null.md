@@ -16,39 +16,23 @@ Aggregate functions ignore **`NULL`** values.
 ---
 
 ```SQL
-select null;
-[null]
+SELECT null as const;
 
-select 1 + null;
-[null]
+const
+─────
+null
 
-select {"data": null};
-[{
+SELECT 1 + null as expr;
+
+expr
+────
+null
+
+SELECT {"data": null} as json;
+
+json
+────
+{
   "data": null
-}]
-```
-
-```SQL
-create table example (id int primary key, data int);
-
-insert into example values (1, null);
-insert into example values (2, 48);
-insert into example values (3, null);
-
-select * from example;
-[[1, null], [2, 48], [3, null]]
-
-select * from example where data is not null;
-[[2, 48]]
-
-select count(data) from example;
-[1]
-
-select count(*) from example where data = null;
-[2]
-
-update example set data = id where data is null;
-
-select * from example;
-[[1, 1], [2, 48], [3, 3]]
+}
 ```

@@ -42,17 +42,26 @@ Intervals can be added or subtracted and are mainly used together with timestamp
 * microsecond
 * us
 
-[Time Functions](/docs/sql/functions/time) can do basic operations using timestamps, intervals, and dates.
+[Time Functions](/docs/sql/builtin/time) can do basic operations using timestamps, intervals, and dates.
 
 ---
 
 ```SQL
-select current_timestamp - interval '5 hours';
-["2024-09-26 12:12:10.684550+03"]
+SELECT current_timestamp - interval '5 hours' as expr;
 
-select '1 hour 5 minutes 6 seconds'::interval;
-["1 hour 5 minutes 6 seconds"]
+expr
+────
+2026-05-17 12:18:06.521268+03
 
-select interval '1 hour 5 minutes 6 seconds';
-["1 hour 5 minutes 6 seconds"]
+SELECT '1 hour 5 minutes 6 seconds'::interval;
+
+interval
+────────
+1 hour 5 minutes 6 seconds
+
+SELECT interval '1 hour 5 minutes 6 seconds' as const;
+
+const
+─────
+1 hour 5 minutes 6 seconds
 ```

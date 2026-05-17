@@ -16,21 +16,19 @@ Types can be used as a part of the primary or secondary key.
 ---
 
 ```SQL
-select "こんにちは";
-["こんにちは"]
+SELECT 'こんにちは' as example;
 
-select 'Hello World!';
-["Hello World"]
+example
+───────
+こんにちは
 
-select {"text": "Hello " || "World!"};
-[{
-  "text": "Hello World!"
-}]
+SELECT 'Hello World!' as example;
+
+example
+───────
+Hello World!
 ```
 
 ```SQL
-create table example (id text primary key);
-insert into example values ("hello world");
-select id from example;
-["hello world"]
+CREATE TABLE example (id text primary key);
 ```

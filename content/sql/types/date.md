@@ -12,45 +12,63 @@ Internally type converted, stored, and operated as a `32-bit` integer representi
 
 The supported range is from **`0001-01-01`** to **`9999-12-31`**.
 
-**`CURRENT_DATE`** and [now()](/docs/sql/functions/time) can be used to get the current date and transaction time.
+**`CURRENT_DATE`** and [now()](/docs/sql/builtin/time) can be used to get the current date and transaction time.
 **`DATE`** prefix before a string can be used to explicitly define date value without convertion.
 
-[Time Functions](/docs/sql/functions/time) can do basic operations using timestamps, intervals, and dates.
+[Time Functions](/docs/sql/builtin/time) can do basic operations using timestamps, intervals, and dates.
 
 ---
 
 ```SQL
-select current_date;
-["2025-01-24"]
+SELECT current_date;
 
-select date "2025-01-24";
-["2025-01-24"]
+current_date
+────────────
+2026-05-17
 
-select "2025-01-24"::date;
-["2025-01-24"]
+SELECT date '2025-01-24' as const;
 
-select now();
+const
+─────
+2025-01-24
+
+SELECT '2025-01-24'::date;
+
+date
+────
+2025-01-24
+
+SELECT now();
 ["2025-01-24 13:49:08.221255+02"]
 
-select now()::date;
-["2025-01-24"]
+SELECT now()::date;
 
-select current_date::int;
-[2460700]
+date
+────
+2026-05-17
 
-select current_date + interval '5 days 5 hours 5 secs';
-["2025-01-29 05:00:05+00"]
+SELECT current_date::int;
 
-select {"date": current_date, "id": system.config().uuid};
-[{
-  "date": "2025-01-24",
-  "id": "c86e5e6b-caba-0f78-4c2e-7cb13f5a588a"
-}]
+int
+───
+2461178
+
+SELECT current_date + interval '5 days 5 hours 5 secs' as ts;
+
+ts
+──
+2026-05-22 08:00:05+03
+
+SELECT {"date": current_date, "id": show().uuid} as json;
+
+json
+────
+{
+  "date": "2026-05-17",
+  "id": "b9b6fbf1-85de-9a0b-63e2-3233e03c6803"
+}
 ```
 
 ```SQL
-create table example (id serial primary key, inserted_at date);
-insert into example (inserted_at) values (current_date);
-select * from example
-[[0, "2025-01-24"]]
+CREATE TABLE example (id serial primary key, inserted_at date);
 ```

@@ -17,10 +17,13 @@ The supported range is from **`-128`** to **`127`**.
 ---
 
 ```SQL
-select 123;
-[123]
+SELECT 123 as example;
+
+example
+───────
+123
 ```
 
 ```SQL
-create table example (id int primary key, data int8);
+CREATE TABLE example (id int primary key, data int8);
 ```

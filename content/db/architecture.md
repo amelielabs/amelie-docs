@@ -5,37 +5,41 @@ bookToc: true
 ---
 
 ![image description](/docs/compute/architecture.png)
-
 ### Our Vision
-
-We believe the future belongs to real-time, intelligent systems —
-like AI agents that need to make fast decisions, maintain memory,
-coordinate with each other, and manage state reliably.
+	
+We believe the future belongs to real-time, intelligent systems — especially AI agents
+that need to make fast decisions, coordinate with each other, react instantly,
+maintain memory, and manage state reliably without conflicts.
 
 Traditional relational databases were built for a different era.
 
-We built Amelie from the ground up as a high-performance, in-memory relational database to
-serve as the backbone for modern real-time, data-intensive applications and AI agents.
+Amelie was designed from the ground up as a high-performance, in-memory relational
+database — purpose-built to serve as the backbone for modern real-time, data-intensive applications and AI agents.
+
+It is engineered to operate on the frontline: acting as a fast, reliable operational database
+that powers intelligent systems even under heavy contention and multi-tenancy.
 
 ### Project Goals
 
-Our goal was to create a relational database that exists in the same reality as classic
-databases like PostgreSQL (which we all love) but bridges the gap between SQL and NoSQL,
-providing competitive performance and an alternative.
+Our goal was to create a relational database that lives in the same world as classics
+like PostgreSQL or MySQL — but bridges the gap between SQL and NoSQL, delivering competitive performance
+with a modern alternative.
 
-Revisiting common architectural bottlenecks such as lock contentions, IO processing, and the necessity for
-multi-versioning, we wanted to create a database that does things differently for most
-use cases involving short transactions.
+We revisited core architectural bottlenecks — lock contention, inefficient IO, and multi-versioning —
+and built a system that does things differently for workloads with short, high-velocity transactions.
 
-We wanted to make a feature-rich database that makes sense for modern workloads. Make Ultra-Fast OLTP,
-parallel vector search, instant branching, pub/sub, and real-time event
-streaming —  all unified in one in-memory relational database.
+Amelie eliminates write-write conflicts entirely. Concurrent updates to the same keys never cause
+aborts or rollbacks. This makes it exceptionally well-suited for high-volatility domains such as
+Fintech, IoT (real-time device state), and dynamic AI agent systems.
 
-Easy to access via HTTP API and MCP for apps and AI agents.
+It unifies ultra-fast OLTP, parallel vector search, instant branching, pub/sub, and
+real-time event streaming — all in one in-memory relational database.
+
+With easy access through HTTP APIs and native MCP support for both applications and AI agents.
 
 ### Full Parallelization of IO and Compute
 
-Amelie has a unique architecture for full parallelization and lockless transaction processing.
+We built unique architecture for full parallelization and lockless transaction processing.
 It treats local machine CPU cores as distributed system nodes, sharding, partitioning, and generating
 parallel group plans for all queries.
 
@@ -57,12 +61,12 @@ The Amelie executor executes distributed transactions in a deterministic order, 
 and manages write-ahead logging (WAL). All transactions always operate on a **`STRICT SERIALIZABLE`** level.
 
 The current implementation does not support network-distributed transactions — all distributed transactions are local
-and executed as part of a single process involving backend worker threads.
+and executed as part of the single process involving backend worker threads.
 
-Transaction commits only if data is written to **`WAL`** first (unless it is configured not to do so).
+Transaction commits only if data is written to **`WAL`** first (with unlogged relations support).
 In case of an error, the transaction will be automatically aborted. An aborted transaction
 might also abort other ongoing transactions that happen to be already processed (and not **`COMMITED`**) after
-the aborted one (see Execution).
+the aborted one. This is the only case when transaction can potentially get a conflict.
 
 ### Frontend Processing
 
@@ -96,6 +100,30 @@ The worker executes incoming requests in a strict order driven by the Executor. 
 bytecode explicitly generated for this worker to be executed by its virtual machine context.
 
 Backend workers can be created or dropped dynamically.
+
+### Partitioning
+
+All tables are partitioned (having at least 1 partition).
+Partitions are created on each backend worker for parallel access or modification.
+
+Partitions are implemented as dedicated **`Pods`** and work as coroutines with dedicated serial queues.
+Backends workers host Pods. There is no strict association between the partitions (pods) and backends.
+This enables independent dynamic scaling, moving, and rebalancing pods between backends.
+
+### Heaps and Indexes
+
+Partitions store rows in Heaps. **`Heap`** is a custom memory-allocator context designed for fast
+in-memory usage and on-disk persistence. It has a shared-nothing design
+(access by one partition at a time, with some exceptions). Designed for instant drop and disk write as a
+large continuous memory blocks.
+
+Amelie tables are Index-organized Tables (IOT). Tables always have a primary index. 
+All indexes are built per partition and point directly to rows from the Heap. Secondary indexes
+also point to the row, making them as fast as the primary index.
+
+Tables can be directly joined with other tables and used in subqueries.
+Amelie coordinates access to partitions created on other backends for those cases to avoid concurrent
+writes simultaneously.
 
 ### Sharding
 
@@ -156,19 +184,6 @@ modern programming languages.
 Using this approach would allow to implement even more efficient JIT (Just-In-Time) compilation to machine
 code in the future, using bytecode as an intermidient representation.
 
-### Partitioning
-
-All tables are partitioned (having at least 1 partition).
-Partitions are created on each backend worker for parallel access or modification.
-
-Partitions are implemented as dedicated **`pods`** and work as coroutines with dedicated serial queues.
-Backends workers host Pods. There is no strict association between the partitions (pods) and backends.
-This enables independent dynamic scaling, moving, and rebalancing pods between backends.
-
-Tables can be directly joined with other tables and used in subqueries.
-Amelie coordinates access to partitions created on other backends for those cases to avoid concurrent
-writes simultaneously.
-
 ### Deterministic Executor
 
 Amelie follows a deterministic transaction processing approach.
@@ -178,8 +193,10 @@ distributed snapshot issues and avoids multi-versioning (MVCC) altogether. It do
 periodic garbage collection and VACUUM.
 
 The executor plays a crucial role in the system. It is responsible for executing distributed
-transactions in a deterministic order, implementing **`Group Commit`**, and managing write-ahead
+transactions in a deterministic order, implementing **`GROUP COMMIT`**, and managing write-ahead
 logging (WAL).
+
+The **`GROUP COMMIT`** logic is separated into dedicated worker.
 
 Each transaction either creates a new transaction group or matches an existing one by
 analyzing overlapping partitions with other active transactions. This allows non-overlapping partitions on
@@ -191,16 +208,22 @@ for the Commit event for other ongoing transactions. Instead, the executor creat
 graph between transactions and performs Group Abort in case of failure and Group Commit in the
 likely case of success.
 
-The **`GROUP COMMIT`** logic is separated into dedicated worker.
+### Transactions Without Conflicts
 
-All transactions always operate on a **`STRICT SERIALIZABLE`** level.
+Due to the serial processing design, Amelie does not have transactional conflicts typical of MVCC systems.
+
+All transactions always operate on a **`STRICT SERIALIZABLE`** level. This means that they always work and
+own the latest, actual state of data.
+
+Concurrent updates to the same keys never cause aborts, which is very beneficial in cases such as Fintech,
+IoT (real-time state updates per device), or volatile AI-agentic systems.
 
 ### Reliability
 
 Amelie supports ACID transactions and Commits only if data is written to WAL first (unless it is configured not to do so).
 
 The persistency model is based on classic in-memory database logic using WAL and monotonically increasing
-**`LSN`** (Log Sequence Number) with periodic Snapshotting.
+**`LSN`** (Log Sequence Number) with periodic snapshotting.
 
 During restart, Amelie finds and reads the latest catalog file and replays WAL.
 The catalog file keeps information about relations and partitions. All partitions are loaded in parallel
@@ -213,4 +236,5 @@ Amelie is not using `fork(2)` for CoW.
 All snapshotting and service operations (such as index creation) are executed in multiple stages in
 the background, allowing per-partition concurrency without locking ongoing transactions.
 
-Catalog is decoupled from the actual checkpoint, which allows per-partition operations individually.
+Catalog is decoupled from the actual checkpoint, which allows per-partition operations individually
+to reduce memory usage and the system preasure.

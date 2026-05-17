@@ -15,33 +15,49 @@ subtracted, multiplied, or divided.
 ---
 
 ```SQL
-select vector [1,2,3];
+SELECT vector [1,2,3] as const;
+
+const
+─────
 [1, 2, 3]
 
 select [1,2,3]::vector;
+
+vector
+──────
 [1, 2, 3]
 
-select vector [1.0, 2.1, 3] * vector [1.5, 1.5, 1.5];
-[1.5, 3.15, 4.5]
+SELECT [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector);
 
-select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector);
-[0.481455]
+cos_distance
+────────────
+0.481455
 ```
 
 ```SQL
--- similarity search
-create table example (id serial primary key, embedding vector);
-insert into example (embedding) values ([3,2,0,1,4]);
-insert into example (embedding) values ([2,2,0,1,3]);
-insert into example (embedding) values ([1,3,0,1,4]);
-select * from example;
-[[0, [3, 2, 0, 1, 4]], [1, [2, 2, 0, 1, 3]], [2, [1, 3, 0, 1, 4]]]
+-- similarity vector search
+CREATE TABLE example (id serial primary key, embedding vector);
+INSERT INTO example (embedding) values ([3,2,0,1,4]);
+INSERT INTO example (embedding) values ([2,2,0,1,3]);
+INSERT INTO example (embedding) values ([1,3,0,1,4]);
+SELECT * FROM example;
+
+id  embedding
+─────────────────────
+0   [3, 2, 0, 1, 4]
+1   [2, 2, 0, 1, 3]
+2   [1, 3, 0, 1, 4]
 
 -- order rows by similarity
-select
+SELECT
    id, embedding::cos_distance(vector [1,3,1,2,0])
-from
+FROM
    example
-order by 2 desc;
-[[0, 0.481455], [2, 0.403715], [1, 0.391419]]
+ORDER BY 2 desc;
+
+id  cos_distance
+──────────────────
+0   0.481455
+2   0.403715
+1   0.391419
 ```

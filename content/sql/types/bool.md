@@ -14,11 +14,9 @@ Accepted values are **`true`** and **`false`**.
 ---
 
 ```SQL
-select true and false;
-[false]
+SELECT true and false as bool;
 
-select {"enabled": true};
-[{
-  "enabled": true
-}]
+bool
+────
+false
 ```
