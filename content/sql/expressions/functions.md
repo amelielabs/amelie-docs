@@ -8,9 +8,9 @@ bookToc: true
 ## Function and Method call
 
 ```SQL
-[schema.]function_name(arguments)
+[user.]function_name(arguments)
 
-expr::[schema.]function_name[(arguments)]
+expr::[user.]function_name[(arguments)]
 ```
 
 Amelie implements standard built-in functions for different purposes.
@@ -27,17 +27,23 @@ In the method call format, the parentheses **`()`** can be omitted if the functi
 ---
 
 ```SQL
-select append([1,2,3], 4);
-[1,2,3,4]
+SELECT append([1,2,3], 4);
 
-select [1,2,3]::public.append(4);
-[1,2,3,4]
+append
+──────
+[1, 2, 3, 4]
 
-update test set data = data::append(4) where id = 1;
+SELECT "2024-09-26 12:12:10.684550+03"::timestamp::int;
 
-select "2024-09-26 12:12:10.684550+03"::timestamp::int;
-[1727341930684550]
+int
+───
+1727341930684550
 
-select [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector);
-[0.481455]
+SELECT [3,2,0,1,4]::vector::cos_distance([1,3,1,2,0]::vector);
+
+cos_distance
+────────────
+0.481455
+
+UPDATE test SET data = data::append(4);
 ```

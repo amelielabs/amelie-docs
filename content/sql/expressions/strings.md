@@ -18,6 +18,9 @@ Any operation with **`NULL`** value produce **`NULL`**.
 ---
 
 ```SQL
-select "hello " || "world!";
-["hello world!"]
+SELECT "hello " || "world!" as expr;
+
+expr
+────
+hello world!
 ```

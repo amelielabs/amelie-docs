@@ -45,15 +45,15 @@ Any operation with **`NULL`** value produce **`NULL`**.
 ---
 
 ```SQL
-select 2 * 2;
-[4]
+SELECT 2 + 2 as expr;
 
-select 2 + 3.14;
-[5.14]
+expr
+────
+4
 
-select current_timestamp - interval '5 hours';
-["2024-09-26 12:12:10.684550+03"]
+SELECT current_timestamp - interval '5 hours' as expr;
 
-select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector;
-[1.5, 3.15, 4.5]
+expr
+────
+2026-05-17 12:52:51.743287+03
 ```

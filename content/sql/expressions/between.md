@@ -22,14 +22,14 @@ expr >= a AND expr <= b
 
 **`BETWEEN`** operator accepts values as consts of the following types: **`INT`**, **`FLOAT`**, **`DOUBLE`**, **`STRING`**, **`INTERVAL`**, **`TIMESTAMP`** and **`DATE`**.
 
-**`BETWEEN`** operator can be used to define range scan start/stop keys ([SELECT FROM WHERE](/docs/sql/query/select)).
+**`BETWEEN`** operator can be used to define range scan start/stop keys ([SELECT FROM WHERE](/docs/sql/ops/query/select)).
 
 ---
 
 ```SQL
-select 3 between 1 and 3;
-[true]
+SELECT 3 between 1 and 3 as expr;
 
-select id from test where id between 1 and 4;
-[1, 2, 3, 4]
+expr
+────
+true
 ```

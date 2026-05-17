@@ -18,37 +18,57 @@ operator **`[`** can access the object value by key.
 Objects are dynamic, and each value is an expression that is evaluated at runtime.
 It may contain other expressions, function calls, and subqueries.
 
-[JSON Functions](/docs/sql/functions/json) can be used to do basic operations using JSON arrays and objects.
+[JSON Functions](/docs/sql/builtin/json) can be used to do basic operations using JSON arrays and objects.
 
-Any type can be [casted](/docs/sql/functions/casting) to the **`JSON`**, or a string can be
-parsed and [imported](/docs/sql/functions/json) as the **`JSON`** type.
+Any type can be [casted](/docs/sql/builtin/casting) to the **`JSON`**, or a string can be
+parsed and [imported](/docs/sql/builtin/json) as the **`JSON`** type.
 
 ---
 
 ```SQL
-select [1,2,3];
+SELECT [1,2,3] as const;
+
+const
+─────
 [1, 2, 3]
 
-select [1,2,3][2];
-[3]
+SELECT [1,2,3][2] as expr;
 
-select {"id": 48, "data": [1,2,3]};
-[{
+expr
+────
+3
+
+SELECT {"id": 48, "data": [1,2,3]} as json;
+
+json
+────
+{
   "id": 48,
   "data": [1, 2, 3]
-}]
+}
 
-select {"id": 48, "data": [1,2,3]}.data[0];
-[1]
+SELECT {"id": 48, "data": [1,2,3]}.data[0] as json_expr;
 
-select {"at": current_timestamp, "id": system.config().uuid};
-[{
-  "at": "2024-09-26 16:14:00.722393+03",
-  "id": "a74fbf39-cc9d-314e-a33e-3aa47559ffe5"
-}]
+json_expr
+─────────
+1
 
-select {"total": select count(*) from test};
-[{
+SELECT {"at": current_timestamp, "id": show('config').uuid} as json_expr;
+
+json_expr
+─────────
+{
+  "at": "2026-05-17 17:59:01.821945+03",
+  "id": "b9b6fbf1-85de-9a0b-63e2-3233e03c6803"
+}
+
+SELECT
+{
+  "total": select count(*) from test
+} as json_expr;
+
+json_expr
+─────────
+{
   "total": 3
-}]
-```
+}

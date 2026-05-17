@@ -31,28 +31,25 @@ if the **`ELSE`** clause is not defined. All expression types must match.
 
 ```SQL
 -- case expr with else
-select
+SELECT
 	case 0
 		when 1 then 1
 		when 2 then 2
 		else 3
-	end;
-[3]
+	end as expr;
+
+expr
+────
+3
 
 -- case expr
-select
+SELECT
 	case 0
 		when 1 then 1
 		when 2 then 2
-	end;
-[null]
+	end as expr
 
--- case without expr
-select
-	case
-		when id = 2 then 'found'
-		else 'not found'
-	end
-from test;
-["not found", "found", "not found"]
+expr
+────
+null
 ```

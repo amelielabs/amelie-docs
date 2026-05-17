@@ -16,9 +16,15 @@ EXISTS (expr)
 ---
 
 ```SQL
-select exists(select * from test);
-[true]
+SELECT exists(select * from test) as query;
 
-select exists(select * from test limit 0);
-[false]
+query
+─────
+true
+
+SELECT exists(select * from test limit 0) as query;
+
+query
+─────
+false
 ```

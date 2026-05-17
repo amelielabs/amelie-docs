@@ -30,23 +30,32 @@ Supported fields are:
 * microsecond
 * us
 
-**`EXTRACT`** implemented as an alias to the [extract()](/docs/sql/functions/time) function.
+**`EXTRACT`** implemented as an alias to the [extract()](/docs/sql/builtin/time) function.
 
 ---
 
 ```SQL
-select extract(us from timestamp '2001-01-16 20:38:40.123456');
-[123456]
+SELECT extract(us from timestamp '2001-01-16 20:38:40.123456');
 
-select extract(us from '2001-01-16 20:38:40.123456'::timestamp);
-[123456]
+extract
+───────
+123456
 
-select timestamp '2001-01-16 20:38:40.123456'::extract('us');
-[123456]
+SELECT timestamp '2001-01-16 20:38:40.123456'::extract('us');
 
-select extract(min from interval '3 days 2 hr 47 min');
-[47]
+extract
+───────
+123456
 
-select '3 days 2 hr 47 min'::interval::extract('min');
-[47]
+SELECT extract(min from interval '3 days 2 hr 47 min');
+
+extract
+───────
+47
+
+SELECT '3 days 2 hr 47 min'::interval::extract('min');
+
+extract
+───────
+47
 ```

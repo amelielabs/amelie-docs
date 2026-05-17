@@ -17,9 +17,15 @@ the expressions (including subqueries results) on the right.
 ---
 
 ```SQL
-select 1 in (1,2,3);
-[true]
+SELECT 1 in (1,2,3) as expr;
 
-select 1 in (select id from test);
-[true]
+expr
+────
+true
+
+SELECT 1 in (select id from test) as query;
+
+query
+─────
+true
 ```

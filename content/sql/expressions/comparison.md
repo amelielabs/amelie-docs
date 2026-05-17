@@ -68,21 +68,21 @@ Any operation with **`NULL`** value produce **`NULL`**.
 ---
 
 ```SQL
-select 1 > 2;
-[false]
+SELECT 1 > 2 as expr;
 
-select [1,2,3] = [1,2,3];
-[true]
+expr
+────
+false
 
-select {"id": 48} = {'id': 48};
-[true]
+SELECT [1,2,3] = [1,2,3] as expr;
 
-select now() = now();
-[true]
+expr
+────
+true
 
-select now() = now()::int;
-[true]
+SELECT now() - interval '1 hour' < now() as expr;
 
-select now() - interval '1 hour' < now();
-[true]
+expr
+────
+true
 ```

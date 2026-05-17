@@ -5,15 +5,20 @@ type: docs
 bookToc: true
 ---
 
-## SELECT [alias.]*
+## SELECT [target.]*
 
 Stars are used as a placeholder for all target columns in the **`SELECT`** statement.
 
 ---
 
 ```SQL
-create table example (id int primary key);
-insert into example values (1), (2), (3);
-select * format 'json-obj' from example;
-[{"id": 1}, {"id": 2}, {"id": 3}]
+CREATE TABLE example (id int primary key);
+INSERT INTO example VALUES (1), (2), (3);
+SELECT *, test.* FROM test ORDER BY id;
+
+id  id
+────────
+1   1
+2   2
+3   3
 ```
