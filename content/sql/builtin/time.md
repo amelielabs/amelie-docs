@@ -4,11 +4,7 @@ title: "Time"
 bookToc: true
 ---
 
-## Time Functions
-
-All time functions are located in the **`public`** schema, which is default.
-
----
+# Time Functions
 
 ### **`timestamp timestamp(string, timezone)`**
 ### **`timestamp timestamp(string)`**
@@ -24,36 +20,47 @@ Unix epoch in UTC with microsecond precision.
 Convert from **`date`** to **`timestamp`**. The time will be set to **`00:00:00`**.
 
 ```SQL
-select timestamp("2024-09-26 12:12:10.684550+03");
-["2024-09-26 12:12:10.684550+03"]
+SELECT timestamp("2024-09-26 12:12:10.684550+03");
 
-select "2024-09-26 12:12:10.684550+03"::timestamp;
-["2024-09-26 12:12:10.684550+03"]
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
 
-select "2024-09-26 12:12:10.684550+03"::timestamp::int;
-[1727341930684550]
+SELECT "2024-09-26 12:12:10.684550+03"::timestamp;
 
-select 1727341930684550::timestamp;
-["2024-09-26 12:12:10.684550+03"]
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
 
-show timezone;
-["Asia/Famagusta"]
+SELECT "2024-09-26 12:12:10.684550+03"::timestamp::int;
 
-select "2024-09-26 12:12:10.684550"::timestamp('Asia/Famagusta');
-["2024-09-26 12:12:10.684550+03"]
+int
+───
+1727341930684550
 
-select "2024-09-26 12:12:10.684550"::timestamp('UTC');
-["2024-09-26 15:12:10.684550+03"]
+SELECT 1727341930684550::timestamp;
 
-...
-show timezone;
-["UTC"]
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
 
-select "2024-09-26 12:12:10.684550"::timestamp('UTC');
-["2024-09-26 12:12:10.684550+00"]
+SHOW timezone;
 
-select current_date::timestamp;
-["2024-09-26 00:00:00+00"]
+timezone
+────────
+"Asia/Famagusta"
+
+SELECT "2024-09-26 12:12:10.684550"::timestamp('Asia/Famagusta');
+
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
+
+SELECT "2024-09-26 12:12:10.684550"::timestamp('UTC');
+
+timestamp
+─────────
+2024-09-26 15:12:10.684550+03
 ```
 
 ---
@@ -63,8 +70,17 @@ select current_date::timestamp;
 Get transaction time.
 
 ```SQL
-select now();
-["2024-09-28 17:40:08.876414+03"]
+SELECT now();
+
+now
+───
+2026-05-17 19:07:11.549954+03
+
+SELECT current_timestamp;
+
+current_timestamp
+─────────────────
+2026-05-17 19:07:11.549954+03
 ```
 
 ---
@@ -75,11 +91,17 @@ Do explicit convertion of **`timestamp`** to the **`timezone`**,
 function returns **`string`**.
 
 ```SQL
-show timezone;
-["asia/famagusta"]
+SHOW timezone;
 
-select now(), now()::at_timezone('Japan');
-["2024-09-28 17:43:12.403002+03", "2024-09-28 23:43:12.403002+09"]
+timezone
+────────
+"Asia/Famagusta"
+
+SELECT now(), now()::at_timezone('Japan');
+
+now                               at_timezone
+─────────────────────────────────────────────────────────────────
+2026-05-17 19:08:11.002193+03     2026-05-18 01:08:11.002193+09
 ```
 
 ---
@@ -93,14 +115,17 @@ Align the **`timestamp`** with the **`interval`** using the origin timestamp. If
 origin timestamp is not provided, it will be set as **`2001-01-01 00:00:00`**.
 
 ```SQL
-select now(), date_bin(interval '15 minutes', now());
-["2024-09-28 18:06:05.698093+03", "2024-09-28 18:00:00+03"
+SELECT now(), date_bin(interval '15 minutes', now());
 
-select now(), now()::date_bin(interval '15 minutes');
-["2024-09-28 18:06:53.966574+03", "2024-09-28 18:00:00+03"]
+now                               date_bin
+────────────────────────────────────────────────────────────────────
+2026-05-17 19:10:01.142653+03     2026-05-17 19:00:00+03
 
-select now();
-["2024-09-29 10:56:52.753882+03"]
+SELECT now(), current_timestamp::date_bin(interval '15 minutes');
+
+now                               date_bin
+────────────────────────────────────────────────────────────────────
+2026-05-17 19:10:01.142653+03     2026-05-17 19:00:00+03
 ```
 
 ---
@@ -129,8 +154,11 @@ Supported precisions are:
 * us
 
 ```SQL
-select '2001-02-16 20:38:40.123456+00'::timestamp::date_trunc('hour');
-["2001-02-16 20:00:00+00"]
+SELECT '2001-02-16 20:38:40.123456+00'::timestamp::date_trunc('hour');
+
+date_trunc
+──────────
+2001-02-16 20:00:00+02
 ```
 
 ---
@@ -157,11 +185,17 @@ Supported precisions are:
 * us
 
 ```SQL
-select interval_trunc(INTERVAL '3 days 2 hr 47 min 33 sec', 'hour');
-["3 days 2 hours"]
+SELECT interval_trunc(INTERVAL '3 days 2 hr 47 min 33 sec', 'hour');
 
-select '3 days 2 hr 47 min 33 sec'::interval::interval_trunc('hour');
-["3 days 2 hours"]
+interval_trunc
+──────────────
+3 days 2 hours
+
+SELECT '3 days 2 hr 47 min 33 sec'::interval::interval_trunc('hour');
+
+interval_trunc
+──────────────
+3 days 2 hours
 ```
 
 ---
@@ -195,15 +229,27 @@ Supported fields are:
 
 
 ```SQL
-select extract(us from '2001-01-16 20:38:40.123456'::timestamp);
-[123456]
+SELECT extract(us from '2001-01-16 20:38:40.123456'::timestamp);
 
-select timestamp '2001-01-16 20:38:40.123456'::extract('us');
-[123456]
+extract
+───────
+123456
 
-select extract(min from interval '3 days 2 hr 47 min');
-[47]
+SELECT timestamp '2001-01-16 20:38:40.123456'::extract('us');
 
-select '3 days 2 hr 47 min'::interval::extract('min');
-[47]
+extract
+───────
+123456
+
+SELECT extract(min from interval '3 days 2 hr 47 min');
+
+extract
+───────
+47
+
+SELECT '3 days 2 hr 47 min'::interval::extract('min');
+
+extract
+───────
+47
 ```

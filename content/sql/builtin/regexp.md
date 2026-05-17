@@ -4,9 +4,7 @@ title: "Regexp"
 bookToc: true
 ---
 
-## Regular Expressions
-
-All functions are located in the **`public`** schema, which is default.
+# Regular Expressions
 
 All string functions work with UTF-8 encoded strings.
 
@@ -17,11 +15,17 @@ All string functions work with UTF-8 encoded strings.
 Return true if the **`string`** matches the **`pattern`**.
 
 ```SQL
-select 'foobarbequebazilbarfbonk'::regexp_like('(b[^b]+)(b[^b]+)');
-[true]
+SELECT 'foobarbequebazilbarfbonk'::regexp_like('(b[^b]+)(b[^b]+)');
 
-select '<a href="../">Up</a>'::regexp_like('<(?<tag>[a-z][a-z0-9]*)[^>]*>');
-[true]
+regexp_like
+───────────
+true
+
+SELECT '<a href="../">Up</a>'::regexp_like('<(?<tag>[a-z][a-z0-9]*)[^>]*>');
+
+regexp_like
+───────────
+true
 ```
 
 ---
@@ -31,8 +35,11 @@ select '<a href="../">Up</a>'::regexp_like('<(?<tag>[a-z][a-z0-9]*)[^>]*>');
 Match and return substring from the **`string`** using the **`pattern`**.
 
 ```SQL
-select 'foobarbequebazilbarfbonk'::regexp_substr('(b[^b]+)(b[^b]+)');
-["barbeque"]
+SELECT 'foobarbequebazilbarfbonk'::regexp_substr('(b[^b]+)(b[^b]+)');
+
+regexp_substr
+─────────────
+barbeque
 ```
 
 ---
@@ -42,8 +49,11 @@ select 'foobarbequebazilbarfbonk'::regexp_substr('(b[^b]+)(b[^b]+)');
 Return an array of substrings which matches the **`pattern`**.
 
 ```SQL
-select 'foobarbequebazilbarfbonk'::regexp_match('(b[^b]+)(b[^b]+)');
-[["barbeque", "bar", "beque"]]
+SELECT 'foobarbequebazilbarfbonk'::regexp_match('(b[^b]+)(b[^b]+)');
+
+regexp_match
+────────────
+["barbeque", "bar", "beque"]
 ```
 
 ---
@@ -53,6 +63,9 @@ select 'foobarbequebazilbarfbonk'::regexp_match('(b[^b]+)(b[^b]+)');
 Match and replace substrings from the **`string`** using the **`pattern`**.
 
 ```SQL
-select 'foobarbequebazilbarfbonk'::regexp_replace('(b[^b]+)(b[^b]+)', '_');
-["foo__bonk"]
+SELECT 'foobarbequebazilbarfbonk'::regexp_replace('(b[^b]+)(b[^b]+)', '_');
+
+regexp_replace
+──────────────
+foo__bonk
 ```

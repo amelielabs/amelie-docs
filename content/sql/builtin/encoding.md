@@ -4,11 +4,7 @@ title: "Encoding"
 bookToc: true
 ---
 
-## Functions for Data Encoding
-
-All encoding functions are located in the **`public`** schema, which is default.
-
----
+# Data Encoding Functions
 
 ### **`string encode(string, encoding)`**
 
@@ -20,8 +16,11 @@ Supported encodings are:
 * **`base64url`**
 
 ```SQL
-select {"data": [1,2,3]}::string::encode("base64");
-["eyJkYXRhIjogWzEsIDIsIDNdfQ=="]
+SELECT {"data": [1,2,3]}::string::encode("base64");
+
+encode
+──────
+eyJkYXRhIjogWzEsIDIsIDNdfQ==
 ```
 
 ---
@@ -36,8 +35,11 @@ Supported encodings are:
 * **`base64url`**
 
 ```SQL
-select "eyJkYXRhIjogWzEsIDIsIDNdfQ=="::decode("base64")::json_import;
-[{
+SELECT "eyJkYXRhIjogWzEsIDIsIDNdfQ=="::decode("base64")::json_import;
+
+json_import
+───────────
+{
   "data": [1, 2, 3]
-}]
+}
 ```

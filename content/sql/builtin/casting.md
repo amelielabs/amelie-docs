@@ -4,22 +4,24 @@ title: "Casting"
 bookToc: true
 ---
  
-## Type Casting
-
-All casting functions are located in the **`public`** schema, which is default.
-
----
+# Type Casting
 
 ### **`string type(arg)`**
 
 Return string description of the **`arg`** type.
 
 ```SQL
-select "hello"::type;
-["string"]
+SELECT "hello"::type;
 
-select {"id": 48}::type;
-["json"]
+type
+────
+string
+
+SELECT {"id": 48}::type;
+
+type
+────
+json
 ```
 
 ---
@@ -29,11 +31,17 @@ select {"id": 48}::type;
 Convert **`arg`** value to **`int`**.
 
 ```SQL
-select '1234'::int;
-[1234]
+SELECT '1234'::int;
 
-select "2024-09-26 12:12:10.684550+03"::timestamp::int;
-[1727341930684550]
+int
+───
+1234
+
+SELECT "2024-09-26 12:12:10.684550+03"::timestamp::int;
+
+int
+───
+1727341930684550
 ```
 
 ---
@@ -43,11 +51,17 @@ select "2024-09-26 12:12:10.684550+03"::timestamp::int;
 Convert **`arg`** value to **`bool`**.
 
 ```SQL
-select 1::bool;
-[true]
+SELECT 1::bool;
 
-select 0::bool;
-[false]
+bool
+────
+true
+
+SELECT 0::bool;
+
+bool
+────
+false
 ```
 
 ---
@@ -57,8 +71,11 @@ select 0::bool;
 Convert **`arg`** value to **`double`**.
 
 ```SQL
-select type(123::double);
-["double"]
+SELECT type(123::double);
+
+type
+────
+double
 ```
 
 ---
@@ -68,11 +85,17 @@ select type(123::double);
 Convert **`arg`** value to **`string`**.
 
 ```SQL
-select 1234::string;
-["1234"]
+SELECT 1234::string;
 
-select {"id": 48, "data": [1,2,3]}::string;
-["{\"id\": 48, \"data\": [1, 2, 3]}"]
+string
+──────
+1234
+
+SELECT {"id": 48, "data": [1,2,3]}::string;
+
+string
+──────
+{"id": 48, "data": [1, 2, 3]}
 ```
 
 ---
@@ -82,11 +105,17 @@ select {"id": 48, "data": [1,2,3]}::string;
 Convert **`arg`** value to **`json`**.
 
 ```SQL
-select 123::json;
-[123]
+SELECT 123::json;
 
-select 123::json::type;
-["json"]
+json
+────
+123
+
+SELECT 123::json::type;
+
+type
+────
+json
 ```
 
 ---
@@ -96,11 +125,14 @@ select 123::json::type;
 Parse JSON **`string`** to **`json`** type.
 
 ```SQL
-select '{"id": 48, "data": [1, 2, 3]}'::json_import;
-[{
+SELECT '{"id": 48, "data": [1, 2, 3]}'::json_import;
+
+json_import
+───────────
+{
   "id": 48,
   "data": [1, 2, 3]
-}]
+}
 ```
 
 ---
@@ -110,8 +142,11 @@ select '{"id": 48, "data": [1, 2, 3]}'::json_import;
 Convert value from **`string`** to **`interval`**.
 
 ```SQL
-select '1 hour 5 minutes 6 seconds'::interval;
-["1 hour 5 minutes 6 seconds"]
+SELECT '1 hour 5 minutes 6 seconds'::interval;
+
+interval
+────────
+1 hour 5 minutes 6 seconds
 ```
 
 ---
@@ -130,34 +165,47 @@ Unix epoch in UTC with microsecond precision.
 Convert from **`date`** to **`timestamp`**. The time will be set to **`00:00:00`**.
 
 ```SQL
-select timestamp("2024-09-26 12:12:10.684550+03");
-["2024-09-26 12:12:10.684550+03"]
+SELECT timestamp("2024-09-26 12:12:10.684550+03");
+
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
 
 select "2024-09-26 12:12:10.684550+03"::timestamp;
-["2024-09-26 12:12:10.684550+03"]
+
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
 
 select "2024-09-26 12:12:10.684550+03"::timestamp::int;
-[1727341930684550]
+
+int
+───
+1727341930684550
 
 select 1727341930684550::timestamp;
-["2024-09-26 12:12:10.684550+03"]
 
-show timezone;
-["Asia/Famagusta"]
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
 
-select "2024-09-26 12:12:10.684550"::timestamp('Asia/Famagusta');
-["2024-09-26 12:12:10.684550+03"]
+SHOW timezone;
 
-select "2024-09-26 12:12:10.684550"::timestamp('UTC');
-["2024-09-26 15:12:10.684550+03"]
-...
-show timezone;
-["UTC"]
-select "2024-09-26 12:12:10.684550"::timestamp('UTC');
-["2024-09-26 12:12:10.684550+00"]
+timezone
+────────
+"Asia/Famagusta"
 
-select current_date::timestamp;
-["2024-09-26 00:00:00+00"]
+SELECT "2024-09-26 12:12:10.684550"::timestamp('Asia/Famagusta');
+
+timestamp
+─────────
+2024-09-26 12:12:10.684550+03
+
+SELECT "2024-09-26 12:12:10.684550"::timestamp('UTC');
+
+timestamp
+─────────
+2024-09-26 15:12:10.684550+03
 ```
 ---
 
@@ -168,14 +216,23 @@ select current_date::timestamp;
 Convert from **`timestamp`**, **`string`** or **`int`** to **`date`**.
 
 ```SQL
-select "2025-01-24"::date;
-["2025-01-24"]
+SELECT "2025-01-24"::date;
 
-select now()::date;
-["2025-01-24"]
+date
+────
+2025-01-24
 
-select current_date::int::date;
-["2025-01-24"]
+SELECT now()::date;
+
+date
+────
+2026-05-17
+
+SELECT current_date::int::date;
+
+date
+────
+2026-05-17
 ```
 
 ---
@@ -185,8 +242,11 @@ select current_date::int::date;
 Convert from **`json`** array to **`vector`**. Array values must be integers or floats.
 
 ```SQL
-select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector;
-[1.5, 3.15, 4.5]
+SELECT [1.0, 2.1, 3]::vector;
+
+vector
+──────
+[1, 2.1, 3]
 ```
 
 ---
@@ -196,6 +256,9 @@ select [1.0, 2.1, 3]::vector * [1.5, 1.5, 1.5]::vector;
 Convert from **`string`** to **`uuid`**.
 
 ```SQL
-select "4845888e-dbc4-88bc-2e22-9673ccd23bee"::uuid;
-["4845888e-dbc4-88bc-2e22-9673ccd23bee"]
+SELECT "4845888e-dbc4-88bc-2e22-9673ccd23bee"::uuid;
+
+uuid
+────
+4845888e-dbc4-88bc-2e22-9673ccd23bee
 ```

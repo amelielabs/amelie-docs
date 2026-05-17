@@ -4,19 +4,18 @@ title: "Math"
 bookToc: true
 ---
 
-## Mathematical Functions
-
-All math functions are located in the **`public`** schema, which is default.
-
----
+# Mathematical Functions
 
 ### **`any greatest(...)`**
 
 Compare arguments and return max.
 
 ```SQL
-select greatest(1,2,3);
-[3]
+SELECT greatest(1,2,3);
+
+greatest
+────────
+3
 ```
 
 ---
@@ -26,8 +25,11 @@ select greatest(1,2,3);
 Compare arguments and return min.
 
 ```SQL
-select least(1,2,3);
-[1]
+SELECT least(1,2,3);
+
+least
+─────
+1
 ```
 
 ---
@@ -38,8 +40,11 @@ select least(1,2,3);
 Compute absolute value of the integer or double.
 
 ```SQL
-select (-63)::abs;
-[63]
+SELECT (-63)::abs;
+
+abs
+───
+63
 ```
 
 ---
@@ -49,8 +54,11 @@ select (-63)::abs;
 Round **`double`** value and return int.
 
 ```SQL
-select 3.14::round;
-[3]
+SELECT 3.14::round;
+
+round
+─────
+3
 ```
 
 ---
@@ -60,11 +68,17 @@ select 3.14::round;
 Return **`-1, 0`** or **`1`** depending of the **`int`** or **`double`** sign.
 
 ```SQL
-select -3::sign;
-[-1]
+SELECT -3::sign;
 
-select 0::sign;
-[0]
+sign
+────
+-1
+
+SELECT 0::sign;
+
+sign
+────
+0
 ```
 
 ---
@@ -74,8 +88,11 @@ select 0::sign;
 Return the smallest int value not less than argument.
 
 ```SQL
-select 3.14::ceil;
-[4]
+SELECT 3.14::ceil;
+
+ceil
+────
+4
 ```
 
 ---
@@ -85,8 +102,11 @@ select 3.14::ceil;
 Returns the natural exponential of the value.
 
 ```SQL
-select exp(1.0);
-[2.71828]
+SELECT exp(1.0);
+
+exp
+───
+2.71828
 ```
 
 ---
@@ -96,8 +116,11 @@ select exp(1.0);
 Return the largest int value, which is not greater than the argument.
 
 ```SQL
-select 3.14::floor;
-[3]
+SELECT 3.14::floor;
+
+floor
+─────
+3
 ```
 
 ---
@@ -108,11 +131,17 @@ select 3.14::floor;
 Get the remainder after division. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select mod(9, 4);
-[1]
+SELECT mod(9, 4);
 
-select fmod(30.0, 3.6);
-[1.2]
+mod
+───
+1
+
+SELECT fmod(30.0, 3.6);
+
+fmod
+────
+1.2
 ```
 
 ---
@@ -124,11 +153,17 @@ Return the value of x raised to the power of y.
 Supported types are **`int`** and **`double`**.
 
 ```SQL
-select pow(9, 3);
-[729]
+SELECT pow(9, 3);
 
-select fpow(9.1, 3.2);
-[1172.01]
+pow
+───
+729
+
+SELECT fpow(9.1, 3.2);
+
+fpow
+────
+1172.01
 ```
 
 ---
@@ -138,11 +173,17 @@ select fpow(9.1, 3.2);
 Round to the nearest int value that is not larger in magnitude.
 
 ```SQL
-select trunc(42.8);
-[42]
+SELECT trunc(42.8);
 
-select trunc(-48.8023);
-[-48]
+trunc
+─────
+42
+
+SELECT trunc(-48.8023);
+
+trunc
+─────
+-48
 ```
 
 ---
@@ -152,8 +193,11 @@ select trunc(-48.8023);
 Return the value of PI.
 
 ```SQL
-select pi();
-[3.14159]
+SELECT pi();
+
+pi
+──
+3.14159
 ```
 
 ---
@@ -164,8 +208,11 @@ Return non-negative square root of the argument.
 Supported types are **`int`** and **`double`**.
 
 ```SQL
-select sqrt(2);
-[1.41421]
+SELECT sqrt(2);
+
+sqrt
+────
+1.41421
 ```
 
 ---
@@ -175,8 +222,11 @@ select sqrt(2);
 Return the arc cosine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select acos(1);
-[0]
+SELECT acos(1);
+
+acos
+────
+0
 ```
 
 ---
@@ -186,8 +236,11 @@ select acos(1);
 Return the the inverse hyperbolic cosine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select acosh(1);
-[0]
+SELECT acosh(1);
+
+acosh
+─────
+0
 ```
 
 ---
@@ -197,8 +250,11 @@ select acosh(1);
 Return the arc sine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select asin(1);
-[1.5708]
+SELECT asin(1);
+
+asin
+────
+1.5708
 ```
 
 ---
@@ -208,8 +264,11 @@ select asin(1);
 Return the inverse hyperbolic sine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select asinh(1);
-[0.881374]
+SELECT asinh(1);
+
+asinh
+─────
+0.881374
 ```
 
 ---
@@ -219,8 +278,11 @@ select asinh(1);
 Return the arc tangent of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select atan(1);
-[0.785398]
+SELECT atan(1);
+
+atan
+────
+0.785398
 ```
 
 ---
@@ -230,8 +292,11 @@ select atan(1);
 Return the inverse hyperbolic tangent of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select atanh(0.5);
-[0.549306]
+SELECT atanh(0.5);
+
+atanh
+─────
+0.549306
 ```
 
 ---
@@ -242,8 +307,11 @@ Return the principal value of the arc tangent of **`y / x`**, using the signs of
 arguments to determine the quadrant of the result. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select atan2(1, 0);
-[1.5708]
+SELECT atan2(1, 0);
+
+atan2
+─────
+1.5708
 ```
 
 ---
@@ -253,8 +321,11 @@ select atan2(1, 0);
 Return the cosine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select cos(1);
-[0.540302]
+SELECT cos(1);
+
+cos
+───
+0.540302
 ```
 
 ---
@@ -264,8 +335,11 @@ select cos(1);
 Return the hyperbolic cosine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select cosh(1);
-[1.54308]
+SELECT cosh(1);
+
+cosh
+────
+1.54308
 ```
 
 ---
@@ -275,8 +349,11 @@ select cosh(1);
 Return the sine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select sin(1);
-[0.841471]
+SELECT sin(1);
+
+sin
+───
+0.841471
 ```
 
 ---
@@ -286,8 +363,11 @@ select sin(1);
 Return the hyperbolic sine of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select sin(1);
-[1.1752]
+SELECT sinh(1);
+
+sinh
+────
+1.1752
 ```
 
 ---
@@ -297,8 +377,11 @@ select sin(1);
 Return the tangent of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select tan(1);
-[1.55741]
+SELECT tan(1);
+
+tan
+───
+1.55741
 ```
 
 ---
@@ -308,8 +391,11 @@ select tan(1);
 Return the hyperbolic tangent of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select tanh(1);
-[0.761594]
+SELECT tanh(1);
+
+tanh
+────
+0.761594
 ```
 
 ---
@@ -319,8 +405,11 @@ select tanh(1);
 Return the natural logarithm on the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select ln(2.0);
-[0.693147]
+SELECT ln(2.0);
+
+ln
+──
+0.693147
 ```
 
 ---
@@ -331,7 +420,11 @@ select ln(2.0);
 Return the base 10 logarithm of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select log(1000);
+SELECT log(1000);
+
+log
+───
+3
 ```
 
 ---
@@ -341,6 +434,9 @@ select log(1000);
 Return the base 2 logarithm of the argument. Supported types are **`int`** and **`double`**.
 
 ```SQL
-select log2(16);
-[4]
+SELECT log2(16);
+
+log2
+────
+4
 ```

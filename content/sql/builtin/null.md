@@ -4,19 +4,18 @@ title: "Null"
 bookToc: true
 ---
 
-## Functions to work with NULL
-
-All functions are located in the **`public`** schema, which is default.
-
----
+# Functions to work with NULL
 
 ### **`any coalesce(...)`**
 
 Return a first non-null argument.
 
 ```SQL
-select coalesce(null, 1, null, 2);
-[1]
+SELECT coalesce(null, 1, null, 2);
+
+coalesce
+────────
+1
 ```
 
 ---
@@ -26,6 +25,9 @@ select coalesce(null, 1, null, 2);
 Return a **`null`** value if **`a`** equals **`b`**, otherwise, it returns **`a`**.
 
 ```SQL
-select nullif(1, 1);
-[null]
+SELECT nullif(1, 1);
+
+nullif
+──────
+null
 ```

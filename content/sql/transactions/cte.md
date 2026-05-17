@@ -25,20 +25,17 @@ after its execution.
 ### RETURNING Clause
 
 ```SQL
-RETURNING expression [AS alias][, ...] [FORMAT 'type']
+RETURNING expression [AS alias][, ...]
 ```
 
 All DML statements support a **`RETURNING`** clause, allowing the updated or
 inserted data to be returned.
 
-The [FORMAT](/docs/sql/query/format) clause can be used to specify the format of the result.
-
 ---
 
 ```SQL
 -- with CTE
-with deleted_items as (
-    delete from collection returning *
-) select count(*) from deleted_items;
-[3]
+WITH deleted_items as (
+    DELETE FROM collection RETURNING *
+) SELECT count(*) FROM deleted_items;
 ```

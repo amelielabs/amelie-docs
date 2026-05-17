@@ -25,8 +25,8 @@ there were **`BEGIN/COMMIT`** statements.
 ---
 
 ```SQL
-begin;
-update accounts set ammount = ammount + 5 where client = 1;
-update accounts set ammount = ammount - 5 where client = 2;
-commit;
+BEGIN;
+UPDATE accounts SET ammount = ammount + 5 WHERE client = 1;
+UPDATE accounts SET ammount = ammount - 5 WHERE client = 2;
+END;
 ```

@@ -4,9 +4,7 @@ title: "String"
 bookToc: true
 ---
 
-## String Functions
-
-All string functions are located in the **`public`** schema, which is default.
+# String Functions
 
 All string functions work with UTF-8 encoded strings.
 
@@ -18,11 +16,17 @@ All string functions work with UTF-8 encoded strings.
 Return the size of the argument, which can be **`string`**, **`json`** or **`vector`**.
 
 ```SQL
-select "こんにちは"::length;
-[5]
+SELECT "こんにちは"::length;
 
-select "hello"::size;
-[5]
+length
+──────
+5
+
+SELECT "hello"::size;
+
+size
+────
+5
 ```
 
 ---
@@ -32,8 +36,11 @@ select "hello"::size;
 Return the size of the argument in bytes, which can be **`string`**, **`json`** or **`vector`**.
 
 ```SQL
-select "こんにちは"::octet_length;
-[15]
+SELECT "こんにちは"::octet_length;
+
+octet_length
+────────────
+15
 ```
 
 ---
@@ -43,11 +50,17 @@ select "こんにちは"::octet_length;
 Concatenate strings. **`NULL`** values will be ignored.
 
 ```SQL
-select "hello"::concat(" world!");
-["hello world!"]
+SELECT "hello"::concat(" world!");
 
-select concat("a", "b", null, "c");
-["abc"]
+concat
+──────
+hello world!
+
+SELECT concat("a", "b", null, "c");
+
+concat
+──────
+abc
 ```
 
 ---
@@ -57,8 +70,11 @@ select concat("a", "b", null, "c");
 Convert the ASCII characters of **`string`** to the lowercase presentation.
 
 ```SQL
-select "HELLO"::lower;
-["hello"]
+SELECT "HELLO"::lower;
+
+lower
+─────
+hello
 ```
 
 ---
@@ -68,8 +84,11 @@ select "HELLO"::lower;
 Convert the ASCII characters of **`string`** to the uppercase presentation.
 
 ```SQL
-select "hello"::upper;
-["HELLO"]
+SELECT "hello"::upper;
+
+upper
+─────
+HELLO
 ```
 
 ---
@@ -80,11 +99,17 @@ select "hello"::upper;
 Copy substring starting from **`pos`**. The position starts from one.
 
 ```SQL
-select "hello world"::substr(7);
-["world"]
+SELECT "hello world"::substr(7);
 
-select "hello world"::substr(7, 2);
-["wo"]
+substr
+──────
+world
+
+SELECT "hello world"::substr(7, 2);
+
+substr
+──────
+wo
 ```
 
 ---
@@ -95,8 +120,11 @@ Return **`substring`** position in the **`string`**. Position starts from one.
 If the **`substring`** is not found, zero will be returned.
 
 ```SQL
-select "hello world"::strpos("world");
-[7]
+SELECT "hello world"::strpos("world");
+
+strpos
+──────
+7
 ```
 
 ---
@@ -106,8 +134,11 @@ select "hello world"::strpos("world");
 Replace substring in the **`string`**.
 
 ```SQL
-select "hello world"::replace("hello", "hi");
-["hi world"]
+SELECT "hello world"::replace("hello", "hi");
+
+replace
+───────
+hi world
 ```
 
 ---
@@ -124,11 +155,17 @@ right parts of the **`string`**. If **`filter`** is not
 defined **`" \t\v\n\f"`** characters will be used.
 
 ```SQL
-select "   \t hello world"::ltrim;
-["hello world"]
+SELECT "   \t hello world"::ltrim;
 
-select "XxXxYXZxXhello world"::ltrim("XxYZZ");
-["hello world"]
+ltrim
+─────
+hello world
+
+SELECT "XxXxYXZxXhello world"::ltrim("XxYZZ");
+
+ltrim
+─────
+hello world
 ```
 
 ---
@@ -147,9 +184,15 @@ The **`pattern`** is a regular string with two special characters used for templ
 Escape characters can be used to match template characters.
 
 ```SQL
-select 'http://google.com' like '%google%';
-[true]
+SELECT 'http://google.com' like '%google%' as expr;
 
-select 'http://google.com'::like('%google%');
-[true]
+expr
+────
+true
+
+SELECT 'http://google.com'::like('%google%');
+
+like
+────
+true
 ```
