@@ -4,7 +4,7 @@ title: "START REPLICATION"
 bookToc: true
 ---
 
-## START REPLICATION Statement
+# START REPLICATION Statement
 
 ```SQL
 START REPLICATION
@@ -16,5 +16,5 @@ Start replication and connect to replicas.
 ---
 
 ```SQL
-start repl;
+START REPL;
 ```

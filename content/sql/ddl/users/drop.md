@@ -1,19 +1,19 @@
 ---
-weight: 4
+weight: 2
 title: "DROP USER"
 bookToc: true
 ---
 
-## DROP USER Statement
+# DROP USER Statement
 
 ```SQL
-DROP USER [IF EXISTS] name
+DROP USER|AGENT [IF EXISTS] name
 ```
 
-Drop the user identified by name if it exists.
+Drop the user or agent identified by name if it exists.
 
 ---
 
 ```SQL
-drop user example;
+DROP USER example;
 ```

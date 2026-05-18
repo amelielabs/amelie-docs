@@ -4,19 +4,18 @@ title: "DROP TABLE"
 bookToc: true
 ---
 
-## DROP TABLE Statement
+# DROP TABLE Statement
 
 ```SQL
-DROP TABLE [IF EXISTS] [schema.]name
+DROP TABLE [IF EXISTS] name [CASCADE]
 ```
 
 Drop table object if it exists.
 
-If the schema is not defined, the table will be searched in the **`public`** schema.
 The **`DROP TABLE`** operation cannot be part of multi-statement transactions.
 
 ---
 
 ```SQL
-drop table public.example;
+DROP TABLE IF EXISTS example;
 ```

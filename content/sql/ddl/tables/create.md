@@ -4,14 +4,17 @@ title: "CREATE TABLE"
 bookToc: true
 ---
 
-## CREATE TABLE Statement
+# CREATE TABLE Statement
 
 ```SQL
-CREATE [UNLOGGED] TABLE [IF NOT EXISTS] [schema.]name
-(column [, ...] [, primary key (keys)])
+CREATE [UNLOGGED] TABLE [IF NOT EXISTS] name
+(column [, ...] [, PRIMARY KEY (keys)])
 [PARTITIONS count]
 [WITH (options)]
+[ON STORAGE name, ...]
+```
 
+```text
 column:
 	name type [constraints]
 
@@ -34,8 +37,8 @@ type:
 
 constraints:
 	NOT NULL
-	DEFAULT const
-	PRIMARY KEY
+	DEFAULT value
+	PRIMARY KEY [USING index_type]
 	[ALWAYS GENERATED] AS [(expr)] <IDENTITY | STORED | RESOLVED>
 
 primary key:
@@ -45,18 +48,22 @@ options:
 	name = expr [,...]
 ```
 
-Create a new table if it does not exist.
+Create a new table if it does not exists.
 
-If the schema name is not defined, it will be set to **`public`** by default. One or more columns must be
-defined as a **`PRIMARY KEY`**. Currently, only **`INT`**, **`STRING`**, **`TIMESTAMP`** and **`UUID`** columns can
-be used as part of a key.
+The current user or agent becomes the owner of the table.
+
+One or more columns must be defined as a **`PRIMARY KEY`**. Currently, only **`INT`**, **`STRING`**,
+**`TIMESTAMP`** and **`UUID`** columns can be used as part of a key.
 
 The table **`primary`** index will be automatically created using a defined index type and the primary key.
-The primary index is always created as **`UNIQUE`**. Supported index types are **`hash`** and **`tree`**. The index type can
-be selected using the **`WITH`** clause. If the index type is not defined, it will default to **`tree`**.
+The primary index is always created as **`UNIQUE`**.
+
+The index type can be selected with the **`USING`** clause.
+Supported index types are **`hash`** and **`tree`**. If the index type is not defined, it will
+default to **`tree`**.
 
 All tables are automatically partitioned (hash partitioning), and partitions are created on one or
-more backends. Amelie uses consistent hashing to assign each partition interval to a backend worker.
+more backends. Amelie uses consistent hashing to assign each partition interval to a partition.
 
 **`PRIMARY KEY`** columns are used as the partition key.
 
@@ -66,13 +73,15 @@ point to other column JSON data.
 
 Currently, the **`CREATE TABLE`** operation cannot be part of multi-statement transactions.
 
-### Partitioned Tables
+## Partitioning
 
-All tables are partitioned and distributed across CPU cores. Partitions will be created on each backend worker for parallel access or modification.
+All tables are partitioned (having at least 1 partition). Partitions will be created
+on each backend worker for parallel access or modification.
+
 The number of partitions can be specified using the **`PARTITIONS`** clause. If the number of partitions is not
-defined, it will be set to the number of backends. The table cannot have more partitions than the current number of active backends.
+defined, it will be set to the number of backends. The table can have more partitions than the current number of active backends.
 
-Partitioned tables can be directly joined with other partitioned tables and used in subqueries.
+Tables can be directly joined with other tables and used in subqueries.
 Amelie coordinates access to partitions created on other backends for those cases to avoid concurrent
 writes simultaneously.
 
@@ -80,16 +89,16 @@ Additionally, expressions or CTE can be used to JOIN data. Amelie treats [CTE](/
 statements to combine and execute non-dependable statements in one operation on backend workers. The query planner
 tries to rewrite queries using CTE whenever it can.
 
-### Unlogged Tables
+## Unlogged Tables
 
 Any table can be created using the **`UNLOGGED`** clause.
 
 The unlogged tables DML will be excluded from WAL (and replication streaming), and the table's data will be saved
-during the database [CHECKPOINT](/docs/reliability/checkpoint) and recovered upon restart from the last checkpoint.
+during the database [CHECKPOINT](/docs/sql/ops/checkpoint) and recovered upon restart.
 
 Unlogged tables can provide an additional performance boost for highly volatile tables.
 
-### Generated Columns
+## Generated Columns
 
 Amelie supports several types of generated columns:
 
@@ -115,43 +124,56 @@ Amelie supports several types of generated columns:
   will be rewritten as upsert **`INSERT ON CONFLICT DO UPDATE`** using the resolved expressions as
   the update expressions.
 
+## Storages
+
+It is possible to specify multiple [storages](/docs/sql/ddl/storages/overview) for the table.
+
+This allows for extending disk space and scaling IOPS between multiple storage devices.
+It is possible to add, drop pause or resume or table storage during runtime.
+
 ---
 
 ```SQL
-create table metrics (
-  device_id int primary key,
-  data json
-) with (type = 'hash');
+CREATE TABLE metrics (
+  device_id int primary key using hash,
+  state     json,
+  updates   int default 1
+);
 
-insert into metrics values (42, [1,2,3]);
+INSERT INTO metrics (device_id, state)
+VALUES
+  (1, {"temp": 42}),
+  (2, {"temp": 38}),
+  (1, {"temp": 39})
+ON CONFLICT DO UPDATE SET
+  state   = excluded.state,
+  updates = updates + 1;
 
-select * from metrics;
-[[42, [1, 2, 3]]]
+SELECT * FROM metrics;
 
-select {"id": device_id, "metrics": data} from metrics;
-[{
-  "id": 42,
-  "metrics": [1, 2, 3]
-}]
-
-select * format 'json-obj-pretty' from metrics;
-[{
-  "device_id": 42,
-  "data": [1, 2, 3]
-}]
+device_id  state         updates
+──────────────────────────────────
+1          {"temp": 39}  2
+2          {"temp": 38}  1
 ```
 
 ```SQL
 -- using generated columns to indexate JSON data
-create table example (
+CREATE TABLE example (
   id   int primary key as (data.id::int) stored,
   data json
 );
 
-insert into example (data) values ({"id": 1}), ({"id": 2}), ({"id": 3});
+INSERT INTO example (data)
+VALUES ({"id": 1}), ({"id": 2}), ({"id": 3});
 
-select id from example;
-[1, 2, 3]
+SELECT * FROM example ORDER BY id;
+
+id  data
+───────────────
+1   {"id": 1}
+2   {"id": 2}
+3   {"id": 3}
 ```
 
 ```SQL
@@ -159,18 +181,21 @@ select id from example;
 -- using generated stored and resolved columns to
 -- group inserts by last 5 seconds per device_id and aggregate hits
 --
-create table example (
-  time      timestamp as ( current_timestamp::date_bin(interval '5 sec') ) stored,
-  device_id int,
-  hits      int default 1 as ( hits + 1 ) resolved,
-  primary key(time, device_id)
+CREATE TABLE example (
+  time    timestamp as (current_timestamp::date_bin(interval '5 sec')) stored,
+  device  int,
+  hits    int default 1 as ( hits + 1 ) resolved,
+  primary key(time, device)
 );
 
-insert into example (device_id) values (1);
-insert into example (device_id) values (1);
-insert into example (device_id) values (1);
-insert into example (device_id) values (1);
+INSERT INTO example (device) values (1);
+INSERT INTO example (device) values (1);
+INSERT INTO example (device) values (1);
+INSERT INTO example (device) values (1);
 
-select * from example;
-[["2024-12-11 17:03:30+02", 1, 4]]
+SELECT * FROM example;
+
+time                              device  hits
+─────────────────────────────────────────────────
+2026-05-18 13:27:25+03            1       4
 ```

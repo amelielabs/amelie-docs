@@ -4,7 +4,7 @@ title: "SUBSCRIBE"
 bookToc: true
 ---
 
-## SUBSCRIBE Statement
+# SUBSCRIBE Statement
 
 ```SQL
 SUBSCRIBE id
@@ -19,17 +19,18 @@ commands only from the primary server.
 ---
 
 ```SQL
--- set primary id on replica server and start the replication
-subscribe "00000000-0000-0000-0000-000000000000";
-start repl;
+-- subscribe to the primary (and become replica)
+START REPL;
+SUBSCRIBE "00000000-0000-0000-0000-000000000000";
 
-show repl;
-[{
+SHOW REPL;
+
+repl
+────
+{
   "active": true,
   "role": "replica",
-  "primary": "00000000-0000-0000-0000-000000000000"
-}]
-
-show read_only;
-[true]
+  "primary": "00000000-0000-0000-0000-000000000000",
+  "replicas": []
+}
 ```

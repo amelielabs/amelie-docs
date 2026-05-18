@@ -20,7 +20,7 @@ Learn more about [How it Works](/docs/db/architecture).
 ### Transactions
 
 Amelie supports multi-statement ACID transactions,
-in which all transaction statements (including [BEGIN/COMMIT](/docs/sql/transactions/begin_commit))
+in which all transaction statements (including [BEGIN/END](/docs/sql/transactions/begin_end))
 must be provided for execution.
 
 Amelie is designed for short ACID transactions. It is not intended for

@@ -4,7 +4,7 @@ title: "DROP REPLICA"
 bookToc: true
 ---
 
-## DROP REPLICA Statement
+# DROP REPLICA Statement
 
 ```SQL
 DROP REPLICA [IF EXISTS] id
@@ -15,5 +15,5 @@ Close connection and remove replica object identified by **`ID`** if it exists.
 ---
 
 ```SQL
-drop replica "00000000-0000-0000-0000-000000000001";
+DROP REPLICA "00000000-0000-0000-0000-000000000001";
 ```

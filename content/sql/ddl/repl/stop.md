@@ -4,7 +4,7 @@ title: "STOP REPLICATION"
 bookToc: true
 ---
 
-## STOP REPLICATION Statement
+# STOP REPLICATION Statement
 
 ```SQL
 STOP REPLICATION
@@ -16,5 +16,5 @@ Stop replication and close connections to replicas.
 ---
 
 ```SQL
-stop repl;
+STOP REPL;
 ```
