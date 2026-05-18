@@ -4,4 +4,18 @@ title: "DROP BRANCH"
 bookToc: true
 ---
 
-## DROP BRANCH Statement
+# DROP BRANCH Statement
+
+```SQL
+DROP BRANCH [IF EXISTS] name [CASCADE]
+```
+
+Drop branch object if it exists.
+
+The **`DROP BRANCH`** operation cannot be part of multi-statement transactions.
+
+---
+
+```SQL
+DROP BRANCH IF EXISTS example;
+```
