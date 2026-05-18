@@ -4,7 +4,7 @@ title: "BEGIN / END"
 bookToc: true
 ---
 
-## BEGIN / END Statements
+# BEGIN / END Statements
 
 ```SQL
 [EXPLAIN | PROFILE]

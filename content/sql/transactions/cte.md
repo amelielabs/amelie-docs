@@ -4,7 +4,7 @@ title: "Common Table Expressions (CTE)"
 bookToc: true
 ---
 
-## Common Table Expressions
+# Common Table Expressions
 
 ```SQL
 WITH cte_name1 [(args)] AS ( statement ) [, cte_name2 ...]
@@ -22,7 +22,7 @@ non-dependable CTE statements.
 All DML statements have a **`RETURNING`** clause, which allows the assignment of CTE value
 after its execution.
 
-### RETURNING Clause
+## RETURNING Clause
 
 ```SQL
 RETURNING expression [AS alias][, ...]

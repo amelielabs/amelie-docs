@@ -17,8 +17,8 @@ The **`PROFILE`** clause executes the transaction, measures the execution time, 
 
 Each transaction is compiled into two bytecode sections:
 
-* Frontend — commands for the distributed transaction coordination and results processing by the frontend session.
-* Backend — commands for data access and modification on one or many backend workers.
+* **`main`** — commands for the distributed transaction coordination and results processing by the frontend session.
+* **`pushdown`** — commands for data access and modification on one or many backend workers (per partition).
 
 A **`Virtual Machine`** (VM) interprets bytecode until completion and produces an accessible result.
 There are several VM contexts. One for the frontend (session) and one for each backend worker in the system.
@@ -28,44 +28,37 @@ Each session acts as a distributed transaction coordinator for backend workers.
 ---
 
 ```SQL
-create table example (id int primary key);
+CREATE TABLE example (id int primary key);
+EXPLAIN SELECT count(*) FROM example GROUP BY id;
 
-explain select count(*) from example group by id;
-[{
-  "bytecode": {
-    "frontend": {
-      "00": "send_all            0      0      -     # public.example",
-      "01": "recv                0      0      0     ",
-      "02": "bool                0      1      0     ",
-      "03": "push                0      0      0     ",
-      "04": "union_recv          0      -1     -1    ",
-      "05": "union_set_aggs      0      24     0     ",
-      "06": "set                 1      1      0     ",
-      "07": "store_open          1      0      12    ",
-      "08": "count               2      1      0     ",
-      "09": "push                2      0      0     ",
-      "10": "set_add             1      0      0     ",
-      "11": "store_next          1      8      0     ",
-      "12": "store_close         1      1      0     ",
-      "13": "cte_set             0      1      0     ",
-      "14": "content             0      -      -     ",
-      "15": "ret                 0      0      0     "
-    },
-    "backend": {
-      "00": "set_ordered         0      1      1     ",
-      "01": "table_open          0      1      9     # public.example (primary)",
-      "02": "table_readi32       1      0      0     ",
-      "03": "push                1      0      0     ",
-      "04": "set_get             1      0      0     ",
-      "05": "int                 2      -      0     # 1",
-      "06": "push                2      0      0     ",
-      "07": "set_agg             0      1      24    ",
-      "08": "table_next          0      2      0     ",
-      "09": "table_close         0      0      0     ",
-      "10": "set_sort            0      0      0     ",
-      "11": "result              0      0      0     ",
-      "12": "ret                 0      0      0     "
-    }
-  }
-}]
+explain
+───────
+
+main
+  0   send_all            0      0      40    # amelie.example (select, closing)
+  1   recv_aggs           1      0      32
+  2   set                 2      1      0
+  3   store_open          3      1      8
+  4   count               4      3      0
+  5   push                4      0      0
+  6   set_add             2      0      0
+  7   store_next          3      4      0
+  8   free                3      0      0
+  9   free                1      0      0
+ 10   ret                 2      0      -
+
+pushdown
+  0   set                 0      1      1
+  1   table_open          1      0      8     # amelie.example (primary) part
+  2   table_readi32       2      1      -     # id
+  3   push                2      0      0
+  4   set_get             2      0      0
+  5   push_int            -      0      0     # 1
+  6   set_agg             0      2      32
+  7   table_next          1      2      0
+  8   free                1      0      0
+  9   ret                 0      0      -
+
+access
+  •   amelie.example shared [select]
 ```
