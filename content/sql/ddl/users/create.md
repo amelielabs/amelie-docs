@@ -16,6 +16,24 @@ In Amelie, every user or agent is itself a complete database.  This model elimin
 complex multi-tenancy logic — each user/agent gets its own fully isolated
 relational database by default.
 
+[GRANT/REVOKE](/docs/sql/ops/grant) allows to share relations with other users or agents or
+restrict access to the database.
+
+By default user or agent has following permissions:
+
+```text
+ CREATE_TOKEN
+ CREATE_TABLE
+ CREATE_FUNCTION
+ CREATE_TOPIC
+ CREATE_SUBSCRIPTION
+ GRANT
+ SQL
+ RPC
+```
+
+Learn more about [Permissions](/docs/sql/ddl/users/permissions)
+
 ---
 
 ```SQL

@@ -31,7 +31,7 @@ the same return type and arguments.
 ---
 
 ```SQL
-CREATE FUNCTION json_sum(int a, int b) RETURN json
+CREATE FUNCTION json_sum(a int, b int) RETURN json
 BEGIN
   RETURN {
     "a": a,

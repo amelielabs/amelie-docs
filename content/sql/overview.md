@@ -34,6 +34,15 @@ All transactions always operate on a **`STRICT SERIALIZABLE`** level.
 
 [EXPLAIN/PROFILE](/docs/sql/ops/query/explain) commands can be used to get more details about the transaction and its bytecode.
 
+### Permissions
+
+Amelie designed with the idea that each user/agent gets a sense that its own
+a fully isolated relational database. All users/agents have full
+ownership on their relations.
+
+[GRANT/REVOKE](/docs/sql/ops/grant) allows to share relations with other users or agents or
+restrict access to the database.
+
 ### Tables
 
 All tables are partitioned (having at least 1 partition).
