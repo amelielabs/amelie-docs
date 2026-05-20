@@ -37,7 +37,9 @@ A typical workflow consists of the following steps:
 {{% /steps %}}
 
 By default, the server accepts **`HTTP`** connections on port **`8080`** and the **`UNIX socket file`**
-created in the repository. It is now ready to work.
+created in the repository.
+
+It is now ready to work.
 
 For security reasons, Amelie will listen only on the **`localhost`** addresses. Local connections
 considered secure will be allowed to connect as the **`amelie`** superuser without
@@ -58,7 +60,7 @@ After the repository is created and the server started, it is now possible to:
 * [Connect](/docs/db/admin/cli) to the server using Console Client
 * [Create Users and Agents](/docs/db/admin/auth)
 * [Import](/docs/db/admin/import) data from files
-* Create your Client Applications using the [Amelie API](/docs/api/overview) and [SQL](/docs/sql/overview)
+* Create your Client Applications using the [API](/docs/api/http) and [SQL](/docs/sql/overview)
 
 ## Maintenance
 

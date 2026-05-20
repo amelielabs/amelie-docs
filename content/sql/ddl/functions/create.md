@@ -23,7 +23,7 @@ Functions allow you to organize database interactions in a structured and contro
 They are stored in compiled form, providing a faster, more secure way to work with the database.
 
 Functions can be used in [SELECT](/docs/sql/ops/query/select) expressions or called using the [EXECUTE](/docs/sql/ops/execute)
-command or [HTTP/JSON-RPC API](/docs/api/overview).
+command or [HTTP/JSON-RPC API](/docs/api/http).
 
 Functions are strictly typed. The **REPLACE** requires that the new function have
 the same return type and arguments.

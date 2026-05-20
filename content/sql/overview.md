@@ -43,6 +43,8 @@ ownership on their relations.
 [GRANT/REVOKE](/docs/sql/ops/grant) allows to share relations with other users or agents or
 restrict access to the database.
 
+Learn more about [Permissions](/docs/sql/ddl/users/permissions).
+
 ### Tables
 
 All tables are partitioned (having at least 1 partition).
@@ -95,7 +97,7 @@ User-defined Functions (UDFs) allow you to organize database operations using Fu
 They are stored in compiled form, providing a faster, more secure way to work with the database.
 
 Functions can be used in [SELECT](/docs/sql/ops/query/select) expressions or called using the [EXECUTE](/docs/sql/ops/execute)
-command or [HTTP/JSON-RPC API](/docs/api/overview).
+command or [HTTP/JSON-RPC API](/docs/api/http).
 
 Learn more about [Functions](/docs/sql/ddl/functions/create).
 

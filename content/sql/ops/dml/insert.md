@@ -60,7 +60,7 @@ be used as a result in the corresponding [CTE](/docs/sql/transactions/cte) or as
 ## Data Ingestion and Streaming
 
 An alternative way to insert data directly into a table without using **`SQL`** is to use the
-[JSON-RPC API](/docs/api/overview).
+[JSON-RPC API](/docs/api/http).
 
 ---
 

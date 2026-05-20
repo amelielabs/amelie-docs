@@ -17,4 +17,4 @@ Built to operate on the **frontline**, Amelie serves as a **fast operational dat
 that powers real-time, data-intensive applications and intelligent systems —
 even under **heavy contention** and **multi-tenancy**.
 
-Learn more about [How It Works](/docs/db/architecture/overview) and [Get Started](/docs/get_started/quickstart).
+Learn more about [How It Works](/docs/db/architecture) and [Get Started](/docs/get_started/quickstart).

@@ -27,7 +27,7 @@ Please note that the **ACKNOWLEDGE** does WAL write and should be used
 with batch processing in mind.
 
 Subscription can be used with [SELECT](/docs/sql/ops/query/select) or as a starting
-position for [Real-Time Streaming](/docs/api/overview).
+position for [Real-Time Streaming](/docs/api/http).
 
 ---
 
