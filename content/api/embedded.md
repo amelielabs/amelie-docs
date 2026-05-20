@@ -9,7 +9,8 @@ bookToc: true
 Amelie can be used as a shared library together with your application.
 
 This allows for maximum performance and lowest latency,
-since no network IO will be involved.
+since no network IO will be involved. The embeddable mode has no limitations compared to
+standalone server deployment - remote hot backup and replication can be used if necessary.
 
 Amelie **Embedded API**
 can be used to write directly to the local repository or act as a client to a remote server. In such
@@ -19,9 +20,9 @@ It allows async execution of requests, making it easier to integrate into applic
 
 All functions are FFI-friendly.
 
--> [Amelie Embedded API header](https://github.com/amelielabs/amelie/blob/main/amelie/system/api/amelie.h)
+-> **[Amelie Embedded API header](https://github.com/amelielabs/amelie/blob/main/amelie/system/api/amelie.h)**
 
--> [Amelie Embedded API usage examples](https://github.com/amelielabs/amelie/tree/main/misc/examples)
+-> **[Amelie Embedded API usage examples](https://github.com/amelielabs/amelie/tree/main/misc/examples)**
 
 ```text
 AMELIE_API amelie_t*
