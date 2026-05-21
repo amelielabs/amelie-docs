@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## CASE operator
+# CASE operator
 
 ```SQL
 CASE [expr] [WHEN expr THEN expr]

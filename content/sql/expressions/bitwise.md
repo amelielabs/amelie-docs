@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## Bitwise Operations
+# Bitwise Operations
 
 Following bitwise operations are supported:
 

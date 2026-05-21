@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## JSON
+# JSON
 
 **`JSON`** type is a binary representation of the [JSON](https://www.json.org/) (JavaScript Object Notation).
 It can be used as a column type or as a part of a expression using the **`[]`** and

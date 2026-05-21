@@ -4,7 +4,7 @@ title: "ALTER TOPIC"
 bookToc: true
 ---
 
-# ALTER TOPIC Statement
+# ALTER TOPIC
 
 ```SQL
 ALTER TOPIC [IF EXISTS] name RENAME TO name

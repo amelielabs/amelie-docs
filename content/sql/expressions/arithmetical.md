@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## Arithmetical Expressions
+# Arithmetical Expressions
 
 Following arithmetical operations are supported:
 

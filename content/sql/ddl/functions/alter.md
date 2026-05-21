@@ -4,7 +4,7 @@ title: "ALTER FUNCTION"
 bookToc: true
 ---
 
-# ALTER FUNCTION Statement
+# ALTER FUNCTION
 
 ```SQL
 ALTER FUNCTION [IF EXISTS] name RENAME TO name

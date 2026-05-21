@@ -4,7 +4,7 @@ title: "CREATE REPLICA"
 bookToc: true
 ---
 
-# CREATE REPLICA Statement
+# CREATE REPLICA
 
 ```SQL
 CREATE REPLICA [IF NOT EXISTS] ID URI

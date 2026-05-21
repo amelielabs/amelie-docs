@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## LIKE operator
+# LIKE operator
 
 ```SQL
 expr [NOT] LIKE pattern

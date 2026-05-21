@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## NULL
+# NULL
 
 **`NULL`** represents missing data and is technically not a type unless explicitly encoded inside a **`JSON`**.
 

@@ -4,7 +4,7 @@ title: "GRANT / REVOKE"
 bookToc: true
 ---
 
-# GRANT / REVOKE Statement
+# GRANT / REVOKE
 
 ```SQL
 GRANT  permission, ... [ON relation] TO user

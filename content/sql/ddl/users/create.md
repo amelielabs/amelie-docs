@@ -4,7 +4,7 @@ title: "CREATE USER / AGENT"
 bookToc: true
 ---
 
-# CREATE USER/AGENT Statement
+# CREATE USER/AGENT
 
 ```SQL
 CREATE USER|AGENT [IF NOT EXISTS] name

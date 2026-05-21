@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-# TRUNCATE Statement
+# TRUNCATE
 
 ```SQL
 TRUNCATE [user.]table_name

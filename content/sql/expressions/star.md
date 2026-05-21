@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## SELECT [target.]*
+# SELECT [target.]*
 
 Stars are used as a placeholder for all target columns in the **`SELECT`** statement.
 

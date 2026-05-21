@@ -4,7 +4,7 @@ title: "DROP BRANCH"
 bookToc: true
 ---
 
-# DROP BRANCH Statement
+# DROP BRANCH
 
 ```SQL
 DROP BRANCH [IF EXISTS] name [CASCADE]

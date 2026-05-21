@@ -4,7 +4,7 @@ title: "CREATE BRANCH"
 bookToc: true
 ---
 
-# CREATE BRANCH Statement
+# CREATE BRANCH
 
 ```SQL
 CREATE BRANCH [IF NOT EXISTS] name FROM relation

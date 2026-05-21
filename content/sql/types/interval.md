@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## INTERVAL
+# INTERVAL
 
 Define a time **`INTERVAL`** with microsecond precision. This type is similar in spirit to the `INTERVAL` type, which PostgreSQL uses.
 The type can be used as a column or part of the expression.

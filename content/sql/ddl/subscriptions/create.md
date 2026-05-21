@@ -4,7 +4,7 @@ title: "CREATE SUBSCRIPTION"
 bookToc: true
 ---
 
-# CREATE SUBSCRIPTION Statement
+# CREATE SUBSCRIPTION
 
 ```SQL
 CREATE SUBSCRIPTION [IF NOT EXISTS] name ON [user.]relation

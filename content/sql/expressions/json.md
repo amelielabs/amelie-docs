@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## JSON Expressions
+# JSON Expressions
 
 Unary square brackets **`[]`** operator can be used to create an array object. Arrays can have zero or
 more values. Index operator **`[`** can be used to access array value by index.

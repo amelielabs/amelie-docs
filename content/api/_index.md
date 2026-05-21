@@ -1,6 +1,6 @@
 ---
 weight: 3
-title: "API Reference"
+title: "API"
 bookFlatSection: true
 bookCollapseSection: false
 ---

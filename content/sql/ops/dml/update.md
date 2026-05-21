@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-# UPDATE Statement
+# UPDATE
 
 ```SQL
 [WITH cte_name ...]

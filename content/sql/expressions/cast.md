@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## CAST operator
+# CAST operator
 
 ```SQL
 CAST (expr AS type)

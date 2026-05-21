@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## SMALLINT
+# SMALLINT
 
 **`SMALLINT`**, **`INT16`**, **`I16`** defines `16-bit` integer.
 

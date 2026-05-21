@@ -4,7 +4,7 @@ title: "ALTER USER"
 bookToc: true
 ---
 
-# ALTER USER Statement
+# ALTER USER
 
 ```SQL
 ALTER USER|AGENT [IF EXISTS] name RENAME TO name

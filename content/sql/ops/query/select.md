@@ -4,7 +4,7 @@ title: "SELECT"
 bookToc: true
 ---
 
-# SELECT Statement
+# SELECT
 
 ```SQL
 [WITH cte_name ...]

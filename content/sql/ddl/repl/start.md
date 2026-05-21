@@ -4,7 +4,7 @@ title: "START REPLICATION"
 bookToc: true
 ---
 
-# START REPLICATION Statement
+# START REPLICATION
 
 ```SQL
 START REPLICATION

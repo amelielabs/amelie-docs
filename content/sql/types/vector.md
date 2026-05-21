@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## VECTOR
+# VECTOR
 
 **`VECTOR`** type represents an array of floats and is optimized for fast float operations.
 

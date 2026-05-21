@@ -4,7 +4,7 @@ title: "DROP REPLICA"
 bookToc: true
 ---
 
-# DROP REPLICA Statement
+# DROP REPLICA
 
 ```SQL
 DROP REPLICA [IF EXISTS] id

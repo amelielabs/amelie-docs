@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-# DELETE Statement
+# DELETE
 
 ```SQL
 [WITH cte_name ...]

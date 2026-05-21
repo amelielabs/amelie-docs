@@ -4,7 +4,7 @@ title: "DROP TABLE"
 bookToc: true
 ---
 
-# DROP TABLE Statement
+# DROP TABLE
 
 ```SQL
 DROP TABLE [IF EXISTS] name [CASCADE]

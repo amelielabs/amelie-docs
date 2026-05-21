@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## IS operator
+# IS operator
 
 ```SQL
 expr IS [NOT] NULL

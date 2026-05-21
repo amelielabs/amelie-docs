@@ -4,7 +4,7 @@ title: "CREATE STORAGE"
 bookToc: true
 ---
 
-# CREATE STORAGE Statement
+# CREATE STORAGE
 
 ```SQL
 CREATE STORAGE [IF NOT EXISTS] name [(options)]

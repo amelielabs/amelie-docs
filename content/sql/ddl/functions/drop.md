@@ -4,7 +4,7 @@ title: "DROP FUNCTION"
 bookToc: true
 ---
 
-# DROP FUNCTION Statement
+# DROP FUNCTION
 
 ```SQL
 DROP FUNCTION [IF EXISTS] name [CASCADE]

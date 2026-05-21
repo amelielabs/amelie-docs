@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## Function and Method call
+# Function and Method call
 
 ```SQL
 [user.]function_name(arguments)

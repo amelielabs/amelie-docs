@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## DATE
+# DATE
 
 **`DATE`** type represents date according to the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601).
 Internally type converted, stored, and operated as a `32-bit` integer representing [Julian Day](https://en.wikipedia.org/wiki/Julian_day).

@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## Comparison
+# Comparison
 
 The following operations of comparison are supported:
 

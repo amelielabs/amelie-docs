@@ -4,7 +4,7 @@ title: "DROP STORAGE"
 bookToc: true
 ---
 
-# DROP STORAGE Statement
+# DROP STORAGE
 
 ```SQL
 DROP STORAGE [IF EXISTS] name

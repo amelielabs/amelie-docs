@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## IN operator
+# IN operator
 
 ```SQL
 expr [NOT] IN (expr, ...)

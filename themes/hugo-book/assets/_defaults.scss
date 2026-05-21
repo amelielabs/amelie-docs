@@ -15,11 +15,12 @@ $border-radius: $padding-4 !default;
 $body-font-weight: normal !default;
 
 $body-min-width: 20rem !default;
-$container-max-width: 80rem !default;
+$container-max-width: 81rem !default;
 
 $header-height: 3.5rem !default;
-$menu-width: 15rem !default;
+$menu-width: 15.5rem !default;
 $toc-width: 18rem !default;
+$page-width: 46rem !default;
 
 $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
 
@@ -38,7 +39,7 @@ $hint-colors: (
   --color-link: #202020; //#0055bb;
   --color-visited-link: #202020; //#8440f1;
 
-  --body-background: white;
+  --body-background: #f5f5f5; 
   --body-font-color: black;
 
   --icon-filter: none;

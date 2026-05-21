@@ -4,7 +4,7 @@ title: "CREATE TOKEN"
 bookToc: true
 ---
 
-# CREATE TOKEN Statement
+# CREATE TOKEN
 
 ```SQL
 CREATE TOKEN user_name [EXPIRE interval]

@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-# PUBLISH Statement
+# PUBLISH
 
 ```SQL
 PUBLISH TO [user.]topic [value, ...]

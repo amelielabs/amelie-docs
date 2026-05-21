@@ -4,7 +4,7 @@ title: "ALTER BRANCH"
 bookToc: true
 ---
 
-# ALTER BRANCH Statement
+# ALTER BRANCH
 
 ```SQL
 ALTER BRANCH [IF EXISTS] name RENAME TO name

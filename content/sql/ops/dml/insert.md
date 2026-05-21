@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-# INSERT Statement
+# INSERT
 
 
 ```SQL

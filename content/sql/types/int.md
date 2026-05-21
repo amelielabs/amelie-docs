@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## INT
+# INT
 
 **`INT`**, **`INTEGER`**, **`INT32`**, **`I32`** defines `32-bit` integer.
 

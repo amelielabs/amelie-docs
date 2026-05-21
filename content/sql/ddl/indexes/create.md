@@ -4,7 +4,7 @@ title: "CREATE INDEX"
 bookToc: true
 ---
 
-# CREATE INDEX Statement
+# CREATE INDEX
 
 ```SQL
 CREATE [UNIQUE] INDEX [IF NOT EXISTS] name ON table_name (keys)

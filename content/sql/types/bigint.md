@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## BIGINT
+# BIGINT
 
 **`BIGINT`**, **`INT64`**, **`I64`** defines `64-bit` integer.
 

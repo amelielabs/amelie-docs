@@ -4,7 +4,7 @@ title: "STOP REPLICATION"
 bookToc: true
 ---
 
-# STOP REPLICATION Statement
+# STOP REPLICATION
 
 ```SQL
 STOP REPLICATION

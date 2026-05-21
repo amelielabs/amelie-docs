@@ -128,7 +128,7 @@
         counter-increment: steps;
 
 		font-size: 16px;
-		//font-weight: 600;
+		font-weight: 500;
 
         position: absolute;
         display: flex;
@@ -143,10 +143,10 @@
         white-space: nowrap;
         //line-height: $padding-16;
 
-        color: black;
-        //background: #202020;
+        //color: black;
         background: white;
-        border: 1px solid #cccccc;
+        //border: 1px solid #cccccc;
+        border: 1px solid #dfdfdf;
       }
 
       >li {

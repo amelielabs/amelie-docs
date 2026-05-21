@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## String Expressions
+# String Expressions
 
 Following string expressions are supported:
 

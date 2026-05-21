@@ -69,7 +69,7 @@ A typical server Maintenance should include:
 * [Monitoring](/docs/db/admin/monitoring)
 * [Periodic Backups](/docs/db/admin/backup)
 
-Additionally, it is possible to setup [Replication](/docs/sql/system/repl/overview).
+Additionally, it is possible to setup [Replication](/docs/sql/ddl/repl/overview).
 
 ---
 

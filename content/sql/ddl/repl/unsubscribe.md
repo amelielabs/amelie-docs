@@ -4,7 +4,7 @@ title: "UNSUBSCRIBE"
 bookToc: true
 ---
 
-# UNSUBSCRIBE Statement
+# UNSUBSCRIBE
 
 ```SQL
 UNSUBSCRIBE

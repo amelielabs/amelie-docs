@@ -4,7 +4,7 @@ title: "ACKNOWLEDGE"
 bookToc: true
 ---
 
-# ACKNOWLEDGE Statement
+# ACKNOWLEDGE
 
 ```SQL
 ACKNOWLEDGE subscription TO lsn[, lsn_op]

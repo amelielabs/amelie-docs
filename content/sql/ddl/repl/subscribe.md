@@ -4,7 +4,7 @@ title: "SUBSCRIBE"
 bookToc: true
 ---
 
-# SUBSCRIBE Statement
+# SUBSCRIBE
 
 ```SQL
 SUBSCRIBE id

@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## FLOAT
+# FLOAT
 
 **`FLOAT`**, **`F32`** defines `32-bit` floating-point number.
 

@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## TIMESTAMP
+# TIMESTAMP
 
 **`TIMESTAMP`** type represents timestamp with a timezone according to the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)
 with microsecond precision. This type is similar to `TIMESTAMPTZ` used by PostgreSQL.

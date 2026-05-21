@@ -9,7 +9,6 @@ body {
   color: var(--body-font-color);
   background: var(--body-background);
 
-  //letter-spacing: 0.33px;
   font-weight: $body-font-weight;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -19,6 +18,7 @@ body {
   * {
     box-sizing: inherit;
   }
+  margin-top: 10px;
 }
 
 a {
@@ -72,8 +72,10 @@ ul.pagination {
 }
 
 .container {
-  max-width: $container-max-width;
-  margin: 0 auto;
+  //max-width: $container-max-width;
+  margin: 0;
+  margin-left: 15px;
+  //margin: 0 auto;
   height: 100%;
 }
 
@@ -97,29 +99,32 @@ ul.pagination {
 .book-menu {
   flex: 0 0 $menu-width;
 
-  border-right: 1px solid;
-  border-right-color: #e5e7eb;
+  color: #717171;
+  background: white;
 
-  /*
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  box-shadow: 1px 0 2px -2px rgba(0, 0, 0, 0.3);
+
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: 10px;
+  height: calc(100vh - 10px);
   overflow-y: auto;
-  z-index: 100;
-  */
+  z-index: 10px;
 
-  font-size: 15px;
+  padding-left: 10px;
+
+  scrollbar-width: thin;
+  scrollbar-color: #e5e7eb #e5e7eb;
+
+  font-size: 14.5px;
   line-height: 1.60;
-  color: #374151;
-
-  //transition: color 0.2s;
 
   .book-menu-content {
-    width: 14rem;
+    width: 14.5rem;
     margin-top: 6px;
     padding: $padding-16;
-    background: var(--body-background);
-    //background: gray;
+    background: white;
   }
 
   a,
@@ -130,16 +135,17 @@ ul.pagination {
   }
 
   a.active {
-    //color: var(--color-link);
-    //color: #AF7FEB;
     color: #3a3a3a;
-	//font-weight: 600;
-
-    background: #efefef;
-    border-radius: 5px;
+    background: #f3f3f3;
+    border-radius: 8px;
     margin-left: -10px;
     padding-left: 10px;
-    outline: 4px solid #efefef;
+    outline: 4px solid #f3f3f3;
+  }
+
+  a:hover {
+    color: #3a3a3a;
+    opacity: 1;
   }
 
   input.toggle + label + ul {
@@ -150,8 +156,10 @@ ul.pagination {
     display: block;
     margin-bottom: 1em;
 
+	/*
     border-left: 1px solid;
     border-left-color: #e5e7eb;
+	*/
   }
 
   input.toggle + label::after {
@@ -183,14 +191,13 @@ body[dir="rtl"] .book-menu {
 .book-section-flat {
   //line-height: 1.65;
   //padding-top: 10px;
-  margin-top: 8px;
+  //margin-top: 8px;
   margin-bottom: 40px;
 
   > a,
   > span,
   > label {
-	//font-size: 15px;
-    font-weight: 600;
+    font-weight: 400;
     color: black;
   }
 
@@ -202,10 +209,13 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-page {
-  min-width: $body-min-width;
+  min-width: $page-width; //$body-min-width;
+  max-width: $page-width; 
   flex-grow: 1;
   padding: $padding-16;
   height: 100%;
+
+  margin: 0 auto;
 
   //border-left: 1px solid;
   //border-left-color: #e5e7eb;
@@ -230,19 +240,17 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-search {
-
   position: relative;
-
-  //margin: $padding-16 0;
   margin: 0;
-  border-bottom: 1px solid transparent;
+  padding: 0;
+  margin-bottom: 15px;
 
   input {
     width: 100%;
     padding: $padding-8;
 
-    border: 0;
-    border-radius: $border-radius;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
 
     background: var(--gray-100);
     color: var(--body-font-color);
@@ -275,22 +283,21 @@ body[dir="rtl"] .book-menu {
 
 .book-toc {
   flex: 0 0 $toc-width;
-  font-size: 15px;
-  opacity: 0.8;
-
+  font-size: 14.5px;
+  /*
   border-left: 1px solid #e5e7eb;
+  */
 
   .book-toc-content {
-    margin-top: 95px;
     width: $toc-width;
 	padding-left: $padding-16;
-    //margin-top: $padding-16;
+    margin-top: 30px;
 
     @include fixed;
   }
 
   a {
-  	color: #303030;
+    color: #717171;
   }
 
   img {
@@ -300,6 +307,7 @@ body[dir="rtl"] .book-menu {
 
   nav > ul > li:first-child {
     margin-top: 0;
+
     //background: gray;
 	//padding-left: 10px;
     //border: 1px solid #e5e7eb;
@@ -435,7 +443,7 @@ body[dir="rtl"] .book-menu {
 }
 */
 
-/* PreWrapper */ .chroma { background-color: #fbfbfb; border: 1px solid #f0f0f0; border-radius: 5px; line-height: 1.6 }
+/* PreWrapper */ .chroma { background-color: #fbfbfb; border: 1px solid #f0f0f0; border-radius: 16px; line-height: 1.6 }
 /* Other */ .chroma .x {  }
 /* Error */ .chroma .err { }
 /* CodeLine */ .chroma .cl {  }

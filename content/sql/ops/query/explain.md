@@ -4,7 +4,7 @@ title: EXPLAIN
 bookToc: true
 ---
 
-## EXPLAIN / PROFILE Statements
+# EXPLAIN / PROFILE
 
 ```SQL
 [EXPLAIN] [BEGIN;] statement; [...] [END;]

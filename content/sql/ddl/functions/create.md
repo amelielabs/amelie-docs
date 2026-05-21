@@ -4,7 +4,7 @@ title: "CREATE FUNCTION"
 bookToc: true
 ---
 
-# CREATE FUNCTION Statement
+# CREATE FUNCTION
 
 ```SQL
 CREATE [OR REPLACE] FUNCTION name ([args])

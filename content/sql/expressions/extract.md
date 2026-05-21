@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## EXTRACT operator
+# EXTRACT operator
 
 ```SQL
 EXTRACT(field FROM expr)

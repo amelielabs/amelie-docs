@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## TINYINT
+# TINYINT
 
 **`TINYINT`**, **`INT8`**, **`I8`** defines `8-bit` integer.
 

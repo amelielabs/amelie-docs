@@ -9,20 +9,17 @@ bookToc: true
 <style>
 
 .api {
-  border: 1px solid #e5e7eb;
-  padding: 15px;
-  margin-bottom: 30px;
-  border-radius: 10px;
+  margin-bottom: 60px;
 }
 
 .api_header {
-  font-size: 25px;
+  font-size: 18px;
   font-family: monospace;
-  padding: 10px;
-  background: #eaeaea;
-  padding: 20px;
-  padding-left: 30px;
+  font-weight: 300;
+
+  padding: 15px;
   border-radius: 10px;
+  background: #f0f0f0;
 }
 
 </style>
@@ -34,10 +31,10 @@ POST /sql (text/plain)
 
 | Header            | Optional | Description |
 | :-----------      | :----    | :---- |
-| **Content-Type**  | Yes | **text/plain** (default) |
-| **Accept**        | Yes | **text/plain** or **application/json** (default) |
-| **X-User-Id**     | Yes | user name (**amelie** by default) |
-| **Authorization** | Yes | JWT token |
+| Content-Type  | Yes | text/plain (default) |
+| Accept       | Yes | text/plain or application/json (default) |
+| X-User-Id     | Yes | user name (**amelie** by default) |
+| Authorization | Yes | JWT token |
 
 Simple endpoint to work with plain-text SQL for Console and Human interactions or other
 sentient beings. Output either
@@ -52,12 +49,12 @@ POST /rpc (application/json)
 
 | Header            | Optional | Description |
 | :-----------      | :----    | :---- |
-| **Content-Type**  | Yes | **appliation/json** (default) |
-| **Accept**        | Yes | **application/json** (default) |
-| **X-User-Id**     | Yes | user name (**amelie** by default) |
-| **Authorization** | Yes | JWT token |
+| Content-Type  | Yes | appliation/json (default) |
+| Accept        | Yes | application/json (default) |
+| X-User-Id     | Yes | user name (**amelie** by default) |
+| Authorization | Yes | JWT token |
 
-**[JSON-RPC API](/docs/api/jsonrpc)** endpoint. 
+[JSON-RPC API](/docs/api/jsonrpc) endpoint. 
 
 General use endpoint for applications and agents. Accept and reply only JSON according to
 the protocol API.
@@ -70,12 +67,12 @@ GET /rpc (application/json) websocket
 
 | Header            | Optional | Description |
 | :-----------      | :----    | :---- |
-| **Content-Type**  | Yes | **appliation/json** (default) |
-| **Accept**        | Yes | **application/json** (default) |
-| **X-User-Id**     | Yes | user name (**amelie** by default) |
-| **Authorization** | Yes | JWT token |
+| Content-Type  | Yes | appliation/json (default) |
+| Accept        | Yes | application/json (default) |
+| X-User-Id     | Yes | user name (**amelie** by default) |
+| Authorization | Yes | JWT token |
 
-**[JSON-RPC API](/docs/api/jsonrpc)** over Websockets. 
+[JSON-RPC API](/docs/api/jsonrpc) over Websockets. 
 
 General use endpoint for applications and agents. Accept and reply only JSON according to
 the protocol API.
@@ -125,11 +122,9 @@ Example of the json error format for the **/sql** endpoint:
 ---
 
 ```text
-curl \
-  -X POST \
+curl -X POST http://localhost:8080/sql \
   -H "Accept: text/plain" \
-  -d "SELECT 1 as one, 2 as two" \
-  http://localhost:8080/sql
+  -d "SELECT 1 as one, 2 as two"
 
 one  two
 ──────────
@@ -137,9 +132,7 @@ one  two
 ```
 
 ```text
-curl \
-  -X POST \
+curl -X POST http://localhost:8080/sql \
   -d "SELECT 1 as one, 2 as two" \
-   http://localhost:8080/sql
 {"columns": ["one", "two"], "rows": [[1, 2]]}
 ```

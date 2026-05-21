@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## ANY / ALL operator
+# ANY / ALL operator
 
 ```SQL
 expr operator ANY (expr)

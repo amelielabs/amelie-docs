@@ -4,7 +4,7 @@ title: "SHOW"
 bookToc: true
 ---
 
-# SHOW Statement
+# SHOW
 
 ```SQL
 SHOW [ALL] [section] [name] [ON name] [VERBOSE]

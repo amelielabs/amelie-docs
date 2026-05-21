@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## TEXT
+# TEXT
 
 **`TEXT`**, **`STRING`** defines a UTF8 encoded string.
 

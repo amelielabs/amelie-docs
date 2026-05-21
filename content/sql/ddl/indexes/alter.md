@@ -5,7 +5,7 @@ bookToc: true
 ---
 
 
-# ALTER INDEX Statement
+# ALTER INDEX
 
 ```SQL
 ALTER INDEX [IF EXISTS] name ON table_name RENAME TO name

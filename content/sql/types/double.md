@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## DOUBLE
+# DOUBLE
 
 **`DOUBLE`**, **`F64`** defines `64-bit` floating-point number.
 

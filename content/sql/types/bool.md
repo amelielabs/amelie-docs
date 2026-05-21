@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## BOOL
+# BOOL
 
 **`BOOL`**, **`BOOLEAN`** type can be used in logical operations or as a column type.
 

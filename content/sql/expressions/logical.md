@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## Logical Operations
+# Logical Operations
 
 Following basic logical operations are supported:
 

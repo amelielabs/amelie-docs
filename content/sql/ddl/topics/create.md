@@ -4,7 +4,7 @@ title: "CREATE TOPIC"
 bookToc: true
 ---
 
-# CREATE TOPIC Statement
+# CREATE TOPIC
 
 ```SQL
 CREATE [UNLOGGED] TOPIC [IF NOT EXISTS] name

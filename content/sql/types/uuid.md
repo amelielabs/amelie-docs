@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## UUID
+# UUID
 
 **`UUID`** defines an Universally Unique Identifier.
 

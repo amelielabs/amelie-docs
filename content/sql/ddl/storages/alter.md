@@ -4,7 +4,7 @@ title: "ALTER STORAGE"
 bookToc: true
 ---
 
-# ALTER STORAGE Statement
+# ALTER STORAGE
 
 ```SQL
 ALTER STORAGE [IF EXISTS] name RENAME TO name

@@ -4,7 +4,7 @@ title: "DROP INDEX"
 bookToc: true
 ---
 
-# DROP INDEX Statement
+# DROP INDEX
 
 ```SQL
 DROP INDEX [IF EXISTS] name ON table_name

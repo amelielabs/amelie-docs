@@ -4,7 +4,7 @@ title: "DROP TOPIC"
 bookToc: true
 ---
 
-# DROP TOPIC Statement
+# DROP TOPIC
 
 ```SQL
 DROP TOPIC [IF EXISTS] name [CASCADE]

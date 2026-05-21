@@ -4,7 +4,7 @@ title: "CREATE TABLE"
 bookToc: true
 ---
 
-# CREATE TABLE Statement
+# CREATE TABLE
 
 ```SQL
 CREATE [UNLOGGED] TABLE [IF NOT EXISTS] name
@@ -126,7 +126,7 @@ Amelie supports several types of generated columns:
 
 ## Storages
 
-It is possible to specify multiple [storages](/docs/sql/ddl/storages/overview) for the table.
+It is possible to specify multiple [STORAGES](/docs/sql/ddl/storages/create) for the table.
 
 This allows for extending disk space and scaling IOPS between multiple storage devices.
 It is possible to add, drop pause or resume or table storage during runtime.

@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## BETWEEN operator
+# BETWEEN operator
 
 ```SQL
 expr [NOT] BETWEEN a AND b

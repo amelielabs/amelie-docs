@@ -12,7 +12,7 @@ Unlike regular tables, topics are lightweight and schemaless — every message i
 When you publish to a topic, the message is written to the WAL and immediately distributed in real-time
 to all active subscribers through the in-memory CDC queue.
 
-Designed to work together with [Subscriptions / CDC](/docs/get_started/cdc) and [Real-Time Streaming](/docs/get_started/streaming).
+Designed to work together with [Change Data Capture](/docs/get_started/cdc) and [Real-Time Streaming](/docs/get_started/streaming).
 
 ```SQL
 CREATE TOPIC user_events;

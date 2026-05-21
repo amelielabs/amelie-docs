@@ -4,7 +4,7 @@ title: "DROP USER"
 bookToc: true
 ---
 
-# DROP USER Statement
+# DROP USER
 
 ```SQL
 DROP USER|AGENT [IF EXISTS] name

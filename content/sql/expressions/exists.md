@@ -5,7 +5,7 @@ type: docs
 bookToc: true
 ---
 
-## EXISTS operator
+# EXISTS operator
 
 ```SQL
 EXISTS (expr)

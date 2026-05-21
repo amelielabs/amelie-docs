@@ -4,7 +4,7 @@ title: "CHECKPOINT"
 bookToc: true
 ---
 
-# CHECKPOINT Statement
+# CHECKPOINT
 
 ```SQL
 CHECKPOINT

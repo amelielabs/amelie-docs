@@ -4,7 +4,7 @@ title: "ALTER TABLE"
 bookToc: true
 ---
 
-# ALTER TABLE Statement
+# ALTER TABLE
 
 ```SQL
 ALTER TABLE [IF EXISTS] name RENAME TO name
