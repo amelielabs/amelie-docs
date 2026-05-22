@@ -10,7 +10,7 @@ Local connections considered secure will be allowed to connect as the **`amelie`
 and other users without authentication. Same applies to the connections made by the unix socket.
 
 External connections must be allowed and [configured manually](/docs/db/admin/create).
-The server will validate each API request [authentication tokens](/docs/api/http_api) and match existing users.
+The server will validate each API request [authentication tokens](/docs/api/http) and match existing users.
 
 ## Superuser
 

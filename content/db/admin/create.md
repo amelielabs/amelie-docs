@@ -8,7 +8,7 @@ bookToc: true
 
 The **`amelie init <directory> [options]`** command is used to create a database repository.
 
-Optional [server options](/docs/db/admin/configuration/settings) can be passed to the command.
+Optional [server options](/docs/db/admin/configuration) can be passed to the command.
 
 Options passed during repository creation will be saved in the configuration file, which will be created
 inside the directory: **`<directory>/config.json`**
@@ -54,7 +54,7 @@ It is forbidded to use **`amelie`** superuser in remote connections.
 
 Options **frontends**, **backends** directly impact the performance. They can be also changed at the server start.
 
-[Learn more](/docs/db/architecture/overview) about the IO and Compute processing.
+[Learn more](/docs/db/architecture) about the IO and Compute processing.
 
 ---
 

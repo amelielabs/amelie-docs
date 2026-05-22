@@ -88,67 +88,15 @@ Execute plain text SQL command.
   "params": {
     "user": <user_name>",
     "rel": "<relation_name>",
-    "args": [...]
-  }
-}
-```
-
-Generic write method that can do **batch insert**, **execute function** or
-**batch publish** based on the target relation.
-
-**user** field is optional.
-
-### Insert
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": <value>,
-  "method": "insert",
-  "params": {
-    "user": <user_name>",
-    "rel": "<relation_name>",
     "args": [{...}, ...]
   }
 }
 ```
 
-Do **batch insert** to the table. **user** field is optional.
-Each object key/values must match table column names and type.
+Generic write method that can do single argument or batch **insert**, **execute function**, or
+**publish** based on the target relation.
 
-### Publish
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": <value>,
-  "method": "publish",
-  "params": {
-    "user": <user_name>",
-    "rel": "<relation_name>",
-    "args": [...]
-  }
-}
-```
-
-Do **batch publish** to the topic. **user** field is optional.
-
-### Execute
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": <value>,
-  "method": "execute",
-  "params": {
-    "user": <user_name>",
-    "rel": "<relation_name>",
-    "args": {...}
-  }
-}
-```
-
-Execute a function. Argument object keys/values must match colum names and types.
+Each argument object key/values must match relation columns names and types.
 
 **user** field is optional.
 

@@ -11,7 +11,7 @@ bookToc: true
 PUBLISH TO [user.]topic [value, ...]
 ```
 
-Publish zero or more values to the topic.
+Publish events to the topic.
 
 **PUBLISH** command writes directly to the in-memory CDC queue and the WAL, which
 allows the creation of a real-time communication layer for subscribers.

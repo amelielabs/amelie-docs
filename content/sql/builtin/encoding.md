@@ -35,9 +35,9 @@ Supported encodings are:
 * **`base64url`**
 
 ```SQL
-SELECT "eyJkYXRhIjogWzEsIDIsIDNdfQ=="::decode("base64")::json_import;
+SELECT "eyJkYXRhIjogWzEsIDIsIDNdfQ=="::decode("base64")::json_decode;
 
-json_import
+json_decode
 ───────────
 {
   "data": [1, 2, 3]

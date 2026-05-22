@@ -10,7 +10,7 @@ bookToc: true
 
 The **`amelie start <directory> [options]`** command starts a server.
 
-Optional [server options](/docs/db/admin//configuration/settings) can be passed to the command.
+Optional [server options](/docs/db/admin/configuration) can be passed to the command.
 
 The Server will be started in the current terminal session, waiting for the
 **`SIGINT`** (`Ctrl + C`) or **`SIGTERM`** signals to shut down. The **--daemon=true** option can be used to start the

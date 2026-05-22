@@ -6,7 +6,7 @@ bookToc: true
 
 # Real-Time Streaming
 
-Amelie provides real-time capabilities through **[JSON-RPC API](/docs/sql/jsonrpc)** over WebSockets.
+Amelie provides real-time capabilities through **[JSON-RPC API](/docs/api/jsonrpc)** over WebSockets.
 
 You can execute normal commands (execute sql, insert, publish, call functions, etc.) and subscribe to changes
 in the same connection using the **follow** command.

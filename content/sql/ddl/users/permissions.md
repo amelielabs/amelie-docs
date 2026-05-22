@@ -31,32 +31,32 @@ restrict access to the database.
 
 | Name                | Description |
 | :----------------   | :---- |
-| **CREATE_USER**         | Permission to create users |
-| **CREATE_TOKEN**        | Permission to create auth tokens |
-| **CREATE_TABLE**        | Permission to create tables |
-| **CREATE_BRANCH**       | Permission to create branches |
-| **CREATE_FUNCTION**     | Permission to create functions |
-| **CREATE_TOPIC**        | Permission to create topics |
-| **CREATE_SUBSCRIPTION** | Permission to create subscriptions |
+| CREATE_USER         | Permission to create users |
+| CREATE_TOKEN        | Permission to create auth tokens |
+| CREATE_TABLE        | Permission to create tables |
+| CREATE_BRANCH       | Permission to create branches |
+| CREATE_FUNCTION     | Permission to create functions |
+| CREATE_TOPIC        | Permission to create topics |
+| CREATE_SUBSCRIPTION | Permission to create subscriptions |
 
 ### Operations
 
 | Name                | Description |
 | :----------------   | :---- |
-| **INSERT**              | Permission to INSERT |
-| **UPDATE**              | Permission to UPDATE |
-| **DELETE**              | Permission to DELETE |
-| **PUBLISH**             | Permission to PUBLISH |
-| **SELECT**              | Permission to SELECT |
-| **EXECUTE**             | Permission to EXECUTE |
-| **GRANT**               | Permission to GRANT/REVOKE |
-| **SYSTEM**              | Permission to execute system commands. |
+| INSERT              | Permission to INSERT |
+| UPDATE              | Permission to UPDATE |
+| DELETE              | Permission to DELETE |
+| PUBLISH             | Permission to PUBLISH |
+| SELECT              | Permission to SELECT |
+| EXECUTE             | Permission to EXECUTE |
+| GRANT               | Permission to GRANT/REVOKE |
+| SYSTEM              | Permission to execute system commands. |
 
 
 ### Connections / API permissions
 
 | Name                | Description |
 | :----------------   | :---- |
-| **SERVICE**         | Permission to do replication/backup connections. |
-| **RPC**         | Permission to execute JSON-RPC API. |
-| **SQL**         | Permission to execute SQL commands (including HTTP/JSON-RPC API). |
+| SERVICE         | Permission to do replication/backup connections. |
+| RPC         | Permission to execute JSON-RPC API. |
+| SQL         | Permission to execute SQL commands (including HTTP/JSON-RPC API). |

@@ -27,7 +27,7 @@ Commands:
 
 Please look at the [Build and Install](/docs/db/admin/build) section for the manual build instructions.
 
-## Create Repository and Run Database
+## Create and Run
 
 A typical workflow consists of the following steps:
 
@@ -62,7 +62,7 @@ After the repository is created and the server started, it is now possible to:
 * [Import](/docs/db/admin/import) data from files
 * Create your Client Applications using the [API](/docs/api/http) and [SQL](/docs/sql/overview)
 
-## Maintenance
+## Maintain
 
 A typical server Maintenance should include:
 

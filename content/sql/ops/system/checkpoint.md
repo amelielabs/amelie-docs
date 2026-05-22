@@ -1,5 +1,5 @@
 ---
-weight: 6
+weight: 2
 title: "CHECKPOINT"
 bookToc: true
 ---

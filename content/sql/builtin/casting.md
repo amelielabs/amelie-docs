@@ -120,14 +120,14 @@ json
 
 ---
 
-### **`json json_import(string)`**
+### **`json json_decode(string)`**
 
 Parse JSON **`string`** to **`json`** type.
 
 ```SQL
-SELECT '{"id": 48, "data": [1, 2, 3]}'::json_import;
+SELECT '{"id": 48, "data": [1, 2, 3]}'::json_decode;
 
-json_import
+json_decode
 ───────────
 {
   "id": 48,

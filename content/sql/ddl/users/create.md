@@ -16,6 +16,8 @@ In Amelie, every user or agent is itself a complete database.  This model elimin
 complex multi-tenancy logic — each user/agent gets its own fully isolated
 relational database by default.
 
+[CREATE TOKEN](/docs/sql/ddl/users/create_token) can be used to generate a new authentication token for a user or agent.
+
 [GRANT/REVOKE](/docs/sql/ops/grant) allows to share relations with other users or agents or
 restrict access to the database.
 

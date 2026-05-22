@@ -6,33 +6,19 @@ bookToc: true
 
 # HTTP API
 
-<style>
+Amelie is accessible via two HTTP API endpoints for plain-text SQL and JSON-RPC commands,
+and via websockets for [Real-Time Streaming](/docs/get_started/streaming).
 
-.api {
-  margin-bottom: 60px;
-}
+## SQL endpoint
 
-.api_header {
-  font-size: 18px;
-  font-family: monospace;
-  font-weight: 300;
-
-  padding: 15px;
-  border-radius: 10px;
-  background: #f0f0f0;
-}
-
-</style>
-
-<div class="api">
-<div class="api_header">
+```text
 POST /sql (text/plain)
-</div>
+```
 
 | Header            | Optional | Description |
 | :-----------      | :----    | :---- |
-| Content-Type  | Yes | text/plain (default) |
-| Accept       | Yes | text/plain or application/json (default) |
+| Content-Type  | Yes | text/plain |
+| Accept       | Yes | text/plain (default) or application/json |
 | X-User-Id     | Yes | user name (**amelie** by default) |
 | Authorization | Yes | JWT token |
 
@@ -40,17 +26,27 @@ Simple endpoint to work with plain-text SQL for Console and Human interactions o
 sentient beings. Output either
 plain text (rendered on the server) or JSON.
 
-</div>
+---
 
-<div class="api">
-<div class="api_header">
+```sh
+curl -X POST http://localhost:8080/sql \
+  -d "SELECT 1 as one, 2 as two"
+
+one  two
+──────────
+1    2
+```
+
+## JSON-RPC endpoint
+
+```text
 POST /rpc (application/json)
-</div>
+```
 
 | Header            | Optional | Description |
 | :-----------      | :----    | :---- |
-| Content-Type  | Yes | appliation/json (default) |
-| Accept        | Yes | application/json (default) |
+| Content-Type  | Yes | application/json |
+| Accept        | Yes | application/json |
 | X-User-Id     | Yes | user name (**amelie** by default) |
 | Authorization | Yes | JWT token |
 
@@ -58,17 +54,17 @@ POST /rpc (application/json)
 
 General use endpoint for applications and agents. Accept and reply only JSON according to
 the protocol API.
-</div>
 
-<div class="api">
-<div class="api_header">
+## JSON-RPC endpoint over Websocket
+
+```text
 GET /rpc (application/json) websocket
-</div>
+```
 
 | Header            | Optional | Description |
 | :-----------      | :----    | :---- |
-| Content-Type  | Yes | appliation/json (default) |
-| Accept        | Yes | application/json (default) |
+| Content-Type  | Yes | application/json |
+| Accept        | Yes | application/json |
 | X-User-Id     | Yes | user name (**amelie** by default) |
 | Authorization | Yes | JWT token |
 
@@ -82,23 +78,21 @@ Supports [Real-Time Streaming](/docs/get_started/streaming).
 The request headers must additionally include common websocket
 protocol upgrade headers.
 
-</div>
+## Authentication
 
-### Authentication
-
-Amelie authentication is based on using **[JSON Web Tokens](https://jwt.io/)**. Authentication is mandatory
+Amelie authentication is based on using [JSON Web Tokens](https://jwt.io/). Authentication is mandatory
 for all non-local connections.
 
 If authentication is used, the incoming HTTP request header must include the **`Authorization`** field with
 a valid JWT token in the format:
 
 ```text
-Authentication: Bearer <JWT>
+Authorization: Bearer <JWT>
 ```
 
 The client JWT token can be created using the [CREATE TOKEN](/docs/sql/ddl/users/create_token) command.
 
-### Responses
+## Responses
 
 | Status code       | Description |
 | :---------------- | :---- |
@@ -108,31 +102,25 @@ The client JWT token can be created using the [CREATE TOKEN](/docs/sql/ddl/users
 | 403 Forbidden         | Authentication or access error |
 | 413 Payload Too Large | Limits reached |
 
+#### Result
+
 Example of the json result format for the **/sql** endpoint:
 
 ```json
 {"columns": [...], "rows": [[...], ...]}
 ```
+
+```sh
+curl -X POST http://localhost:8080/sql \
+  -H "Accept: application/json" \
+  -d "SELECT 1 as one, 2 as two"
+{"columns": ["one", "two"], "rows": [[1, 2]]}
+```
+
+#### Error
+
 Example of the json error format for the **/sql** endpoint:
 
 ```json
 {"msg": "..."}
-```
-
----
-
-```text
-curl -X POST http://localhost:8080/sql \
-  -H "Accept: text/plain" \
-  -d "SELECT 1 as one, 2 as two"
-
-one  two
-──────────
-1    2
-```
-
-```text
-curl -X POST http://localhost:8080/sql \
-  -d "SELECT 1 as one, 2 as two" \
-{"columns": ["one", "two"], "rows": [[1, 2]]}
 ```

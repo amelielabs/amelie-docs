@@ -33,7 +33,7 @@ More is not always better, especially if you are running benchmarks on the same 
 situation when workers will start competing for CPU cores and locking each other. Likely it would be better to keep total number
 of frontends and backends less or equal then the number of available physical CPU cores.
 
-[Learn more](/docs/db/architecture/overview) about the IO and Compute.
+[Learn more](/docs/db/architecture) about the IO and Compute.
 
 ### TPC-B Style Benchmark
 
