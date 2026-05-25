@@ -26,6 +26,14 @@ a {
   color: 303030;
 }
 
+a:focus {
+    outline: none;
+}
+
+a:focus img {
+    outline: none;
+}
+
 img {
   vertical-align: baseline;
 }

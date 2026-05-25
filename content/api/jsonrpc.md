@@ -136,7 +136,7 @@ Acknowledge subscription.
 Start real-time streaming of relation updates.
 This command is available only when using **`websocket`** connection.
 
-The relation can be a **subscription**, **table** or **topic**.
+The relation can be a **subscription**, **table**, **table clone** or **topic**.
 It is possible be subscribed on multiple relations.
 
 **user** field is optional.

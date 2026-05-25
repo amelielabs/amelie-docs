@@ -29,5 +29,5 @@ LIMIT 5;
 * **Recommendation Systems** — Find similar users, products, or content
 * **RAG (Retrieval-Augmented Generation)** — Retrieve relevant documents for LLMs in real time
 
-Vector search in Amelie works seamlessly with transactions, branching, and real-time subscriptions, making
+Vector search in Amelie works seamlessly with transactions, table cloning, and real-time subscriptions, making
 it ideal for building modern AI-powered applications.

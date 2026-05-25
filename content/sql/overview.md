@@ -56,18 +56,19 @@ also point to the row, making them as fast as the primary index.
 
 Learn more about [Tables](/docs/sql/ddl/tables/create).
 
-### Branches
+### Table Clones
 
-Table branches can be [CREATED](/docs/sql/ddl/branches/create) based on tables or other branches. Branches are accessible as
-dedicated relations with grants. All DML operations similar to the table are supported.
+A table clone can be [CREATED](/docs/sql/ddl/clones/create) based on other table.
+Clone is accessible as a dedicated relation with grants. All DML operations similar to
+the table are supported.
 
 They can be used for temporary workloads or to organize multi-tenancy storage, where each user or
-agent will use a branch instead of a new table.
+agent will use a dedicated clone instead of a new table.
 
-Branches are applied instantly at the storage row/index level. Table indexes will automatically filter
-rows based on the used branch.
+Table clones are applied instantly at the storage row/index level. Table indexes will
+automatically filter rows based on the used clone.
 
-Learn more about [Branches](/docs/sql/ddl/branches/create).
+Learn more about [Table clones](/docs/sql/ddl/clones/create).
 
 ### Topics
 
@@ -83,7 +84,8 @@ Learn more about [Topics](/docs/sql/ddl/topics/create).
 
 ### Subscriptions
 
-Amelie supports persistent Subscriptions. They can be [CREATED](/docs/sql/ddl/subscriptions/create) any table or topic.
+Amelie supports persistent Subscriptions. They can be [CREATED](/docs/sql/ddl/subscriptions/create) any
+table, table clone or topic.
 Subscription provides direct access to the CDC in-memory queue. Each subscription has a state based
 on the WAL (**LSN**) position. Can be used for queries or real-time streaming.
 

@@ -19,11 +19,11 @@ Learn more about [Permissions](/docs/sql/ddl/users/permissions).
 
 ```SQL
 GRANT select ON example_table TO someuser;
-GRANT create_branch ON example_table TO someuser;
+GRANT create_clone ON example_table TO someuser;
 
 SHOW GRANTS ON example_table;
 
 grants
 ──────
-["someuser", "create_branch", "select"]
+["someuser", "create_clone", "select"]
 ```

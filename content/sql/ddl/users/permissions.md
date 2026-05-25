@@ -17,11 +17,11 @@ restrict access to the database.
 #### Default user/agent permissions
 
 ```text
- CREATE_TOKEN
  CREATE_TABLE
- CREATE_FUNCTION
+ CREATE_CLONE
  CREATE_TOPIC
  CREATE_SUBSCRIPTION
+ CREATE_FUNCTION
  GRANT
  SQL
  RPC
@@ -34,7 +34,7 @@ restrict access to the database.
 | CREATE_USER         | Permission to create users |
 | CREATE_TOKEN        | Permission to create auth tokens |
 | CREATE_TABLE        | Permission to create tables |
-| CREATE_BRANCH       | Permission to create branches |
+| CREATE_CLONE        | Permission to create table clones |
 | CREATE_FUNCTION     | Permission to create functions |
 | CREATE_TOPIC        | Permission to create topics |
 | CREATE_SUBSCRIPTION | Permission to create subscriptions |
@@ -57,6 +57,6 @@ restrict access to the database.
 
 | Name                | Description |
 | :----------------   | :---- |
-| SERVICE         | Permission to do replication/backup connections. |
+| SERVICE         | Permission to do replication and backup. |
 | RPC         | Permission to execute JSON-RPC API. |
 | SQL         | Permission to execute SQL commands (including HTTP/JSON-RPC API). |

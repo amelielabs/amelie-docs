@@ -35,11 +35,11 @@ SHOW PARTITIONS ON table_name [VERBOSE]
 SHOW PARTITION 'id' ON table_name [VERBOSE]
 ```
 
-### Branches
+### Clones
 
 ```SQL
-SHOW [ALL] BRANCHES
-SHOW BRANCH name [VERBOSE]
+SHOW [ALL] CLONES
+SHOW CLONE name [VERBOSE]
 ```
 
 ### Topics

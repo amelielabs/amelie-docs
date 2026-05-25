@@ -14,6 +14,7 @@ in the same connection using the **follow** command.
 You can follow:
 
 * Any table
+* Any table clone
 * Any topic
 * Any existing subscription
 

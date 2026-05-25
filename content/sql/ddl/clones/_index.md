@@ -1,6 +1,6 @@
 ---
 weight: 3
-title: Branches
+title: Clones
 type: docs
 bookFlatSection: false
 bookCollapseSection: true

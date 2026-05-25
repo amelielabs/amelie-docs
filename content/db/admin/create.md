@@ -58,6 +58,22 @@ Options **frontends**, **backends** directly impact the performance. They can be
 
 ---
 
+```text
+> amelie --help
+Usage: amelie [PATH | URI | BOOKMARK] [command] [OPTIONS]
+
+Commands:
+  init       Create database repository
+  start      Start database
+  stop       Stop database
+  backup     Create database backup
+  import     Import data files into the database
+  bookmark   Create, update or delete bookmark
+  bench      Run benchmarks
+  test       Run tests
+  test_slt   Run slt tests
+```
+
 ```sh
 # create repository and run the server
 amelie init ./repo --backends=6 --frontends=4

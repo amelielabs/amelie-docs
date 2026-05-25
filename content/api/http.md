@@ -24,17 +24,24 @@ POST /sql (text/plain)
 
 Simple endpoint to work with plain-text SQL for Console and Human interactions or other
 sentient beings. Output either
-plain text (rendered on the server) or JSON.
-
----
+plain text (rendered on the server) or JSON:
 
 ```sh
-curl -X POST http://localhost:8080/sql \
+curl http://localhost:8080/sql \
+  -X POST \
   -d "SELECT 1 as one, 2 as two"
 
 one  two
 ──────────
 1    2
+```
+
+```sh
+curl http://localhost:8080/sql \
+  -X POST \
+  -H "Accept: application/json" \
+  -d "SELECT 1 as one, 2 as two"
+{"columns": ["one", "two"], "rows": [[1, 2]]}
 ```
 
 ## JSON-RPC endpoint
@@ -101,23 +108,6 @@ The client JWT token can be created using the [CREATE TOKEN](/docs/sql/ddl/users
 | 400 Bad Request       | Invalid URI or execution error |
 | 403 Forbidden         | Authentication or access error |
 | 413 Payload Too Large | Limits reached |
-
-#### Result
-
-Example of the json result format for the **/sql** endpoint:
-
-```json
-{"columns": [...], "rows": [[...], ...]}
-```
-
-```sh
-curl -X POST http://localhost:8080/sql \
-  -H "Accept: application/json" \
-  -d "SELECT 1 as one, 2 as two"
-{"columns": ["one", "two"], "rows": [[1, 2]]}
-```
-
-#### Error
 
 Example of the json error format for the **/sql** endpoint:
 

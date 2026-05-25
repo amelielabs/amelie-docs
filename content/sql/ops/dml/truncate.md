@@ -17,7 +17,7 @@ If the user is not defined, the table name will be searched for the current user
 
 Currently, the **`TRUNCATE`** operation cannot be part of multi-statement transactions.
 
-Trancate cannot be used with branches.
+Trancate cannot be used with table clones.
 
 ---
 

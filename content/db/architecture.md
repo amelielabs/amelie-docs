@@ -32,7 +32,7 @@ Amelie eliminates write-write conflicts entirely. Concurrent updates to the same
 aborts or rollbacks. This makes it exceptionally well-suited for high-volatility domains such as
 Fintech, IoT (real-time device state), and dynamic AI agent systems.
 
-It unifies ultra-fast OLTP, parallel vector search, instant branching, pub/sub, and
+It unifies ultra-fast OLTP, parallel vector search, instant table cloning, pub/sub, and
 real-time event streaming — all in one in-memory relational database.
 
 With easy access through HTTP APIs and native MCP support for both applications and AI agents.

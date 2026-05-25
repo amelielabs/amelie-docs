@@ -19,7 +19,7 @@ This means you can:
 This model eliminates the need for complex multi-tenancy logic — each user/agent gets its own
 fully isolated relational database by default.
 
-Additionally, [Table Branching](/docs/get_started/branching) provides a powerful solution for multi-tenancy.
+Additionally, [Table Cloning](/docs/get_started/cloning) provides a powerful solution for multi-tenancy.
 
 Thousands of users or agents can safely share the same tables, indexes, and partitions while
 maintaining strong isolation and independent access control.

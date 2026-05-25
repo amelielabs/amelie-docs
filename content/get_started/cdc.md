@@ -8,7 +8,7 @@ bookToc: true
 
 Amelie offers powerful, built-in **Change Data Capture (CDC)** system through persistent **Subscriptions**.
 
-You can create a [SUBSCRIPTION](/docs/sql/ddl/subscriptions/create) on any **table** or **topic**:
+You can create a [SUBSCRIPTION](/docs/sql/ddl/subscriptions/create) on any **table**, **table clone** or **topic**:
 
 ```sql
 CREATE SUBSCRIPTION order_changes ON orders;

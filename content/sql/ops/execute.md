@@ -7,7 +7,7 @@ bookToc: true
 # EXECUTE
 
 ```SQL
-EXECUTE function_name[(value, ...)]
+EXECUTE [user.]function_name[(value, ...)]
 ```
 
 Execute a user-defined function.
