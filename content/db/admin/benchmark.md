@@ -13,7 +13,7 @@ The following benchmarking options are supported:
 
 | Argument          | Type | Description |
 | :---------------- |  :----:  | :----      |
-| type          | string | Benchmark type: **`tpcb`** (default), **`insert`**, **`upsert`**, **`resolved`**, **`decre`**. |
+| type          | string | Benchmark type: **`tpcb`** (default), **`insert`**, **`upsert`**, **`decre`**. |
 | threads       | int | Number of client threads (default is 1). |
 | clients       | int | Total number of clients (default is 32). |
 | time          | int | Time in seconds (default is 10). |
@@ -87,21 +87,6 @@ Randomly Insert rows using the [INSERT ON CONFLICT DO UPDATE](/docs/sql/ops/dml/
 can be configured using the **`batch`** option. The test table's primary index is **`hash`**.
 
 The number of rows in the table is set to 100000 random keys.
-
-### Resolved Benchmark
-
-Randomly Insert rows where each column is generated as **`stored`** or **`resolved`** together. The number of rows per one operation
-can be configured using the **`batch`** option. The test table's primary index is **`hash`**.
-
-```SQL
-CREATE TABLE test
-(
-  ts   timestamp as ( current_timestamp::date_bin('3 sec'::interval) ) stored,
-  id   int as identity random (10000),
-  hits int default 0 as ( hits + 1 ) resolved,
-  primary key(ts, id) using hash
-);
-```
 
 ### Third-Party Benchmarking tools
 

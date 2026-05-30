@@ -95,33 +95,6 @@ device_id  hits
 ```
 
 ```SQL
--- using generated stored and resolved columns to
--- group inserts by 1 hour per device_id and aggregate hits
-CREATE TABLE example (
-  time      timestamp as ( time::date_bin(interval '1 hour') ) stored,
-  device_id int,
-  hits      int default 1 as ( hits + 1 ) resolved,
-  primary key(time, device_id) using hash
-);
-
-INSERT INTO example(time, device_id) VALUES ('2024-12-12 13:53:52.712025', 1);
-INSERT INTO example(time, device_id) VALUES ('2024-12-12 14:20:52.712025', 1);
-INSERT INTO example(time, device_id) VALUES ('2024-12-12 14:25:52.712025', 2);
-INSERT INTO example(time, device_id) VALUES ('2024-12-12 14:27:52.712025', 1);
-
--- GROUP BY is not needed, since rows are already aggregated
-SELECT time, device_id, hits
-  FROM example
- ORDER BY 1;
-
-time                              device_id  hits
-───────────────────────────────────────────────────
-2024-12-12 13:00:00+02            1          1
-2024-12-12 14:00:00+02            2          1
-2024-12-12 14:00:00+02            1          2
-```
-
-```SQL
 -- similarity vector search
 CREATE TABLE example (id serial primary key, embedding vector);
 INSERT INTO example (embedding) values ([3,2,0,1,4]);

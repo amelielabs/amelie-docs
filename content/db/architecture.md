@@ -37,7 +37,7 @@ real-time event streaming — all in one in-memory relational database.
 
 With easy access through HTTP APIs and native MCP support for both applications and AI agents.
 
-### Full Parallelization of IO and Compute
+### The CPU as Distributed Database
 
 We built unique architecture for full parallelization and lockless transaction processing.
 It treats local machine CPU cores as distributed system nodes, sharding, partitioning, and generating

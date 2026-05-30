@@ -12,7 +12,7 @@ bookToc: true
 [WITH cte_name ...]
 INSERT INTO [user.]name [(column_list)]
 VALUES (value, ..), ... | SELECT ...
-[ON CONFLICT DO NOTHING | ERROR | RESOLVE | UPDATE ... [WHERE]]
+[ON CONFLICT DO NOTHING | ERROR | UPDATE ... [WHERE]]
 [RETURNING expr [INTO variable]]
 ```
 
@@ -38,15 +38,6 @@ will be emitted. The **`ON CONFLICT`** clause allows to change this behavior:
 * **`ON CONFLICT DO ERROR`**
 
   If the key already exists, throw an error (default INSERT behaviour).
-
-* **`ON CONFLICT DO RESOLVE`**
-
-  If the table has resolved columns, the **`INSERT`** operation will be automatically rewritten as
-  update **`INSERT ON CONFLICT DO UPDATE`** using the resolved expressions as
-  the update expressions.
-  
-  If the table has no resolved columns, this operation will be equal
-  to **`ON CONFLICT DO ERROR`**.
 
 * **`ON CONFLICT DO UPDATE`**
 
@@ -79,25 +70,6 @@ SELECT * FROM example;
 id  matches
 ─────────────
 1   2
-```
-
-```SQL
-CREATE TABLE example (
-  device_id int primary key using hash,
-  hits      int default 1 as ( hits + 1 ) resolved
-);
-INSERT INTO example (device_id) VALUES (1);
-INSERT INTO example (device_id) VALUES (1) ON CONFLICT DO RESOLVE;
-INSERT INTO example (device_id) VALUES (1) ON CONFLICT DO RESOLVE;
-
--- ON CONFLICT DO RESOLVE can be ommited, if the table
--- has resolved columns
-INSERT INTO example (device_id) VALUES (1);
-SELECT * FROM example;
-
-device_id  hits
-─────────────────
-1          4
 ```
 
 ```SQL

@@ -39,7 +39,7 @@ constraints:
 	NOT NULL
 	DEFAULT value
 	PRIMARY KEY [USING index_type]
-	[ALWAYS GENERATED] AS [(expr)] <IDENTITY | STORED | RESOLVED>
+	[[ALWAYS GENERATED] AS IDENTITY]
 
 primary key:
 	PRIMARY KEY [(column_name[, ...])] 
@@ -68,8 +68,6 @@ more backends. Amelie uses consistent hashing to assign each partition interval 
 **`PRIMARY KEY`** columns are used as the partition key.
 
 Organizing tables by separating and creating volatile columns as JSON values (objects and arrays) is recommended.
-It is possible to index JSON documents by creating table keys as generated columns which
-point to other column JSON data.
 
 Currently, the **`CREATE TABLE`** operation cannot be part of multi-statement transactions.
 
@@ -100,7 +98,7 @@ Unlogged tables can provide an additional performance boost for highly volatile 
 
 ## Generated Columns
 
-Amelie supports several types of generated columns:
+Amelie supports following types of generated columns:
 
 * **`ALWAYS GENERATED AS IDENTITY`**
   
@@ -109,20 +107,6 @@ Amelie supports several types of generated columns:
   used as identity columns.
 
   Using **`SERIAL`** as a column type will make the column as an identity column using **`BIGINT`** type.
-
-* **`ALWAYS GENERATED AS (expr) STORED`**
-
-  The content of all stored generated columns will be automatically updated during insert
-  using the expression's result. Amelie allows the user to reuse (access) the provided value for
-  the generated column, which can be used to dynamically change the partition key.
-
-* **`ALWAYS GENERATED AS (expr) RESOLVED`**
-
-  **`RESOLVED`** columns are a unique feature of Amelie that allows you to specify expressions that
-  will be executed automatically when a primary key constraint is violated to resolve conflicts.
-  If the table has resolved columns, **`INSERT`** operations (without explicit **`ON CONFLICT CLAUSE`**)
-  will be rewritten as upsert **`INSERT ON CONFLICT DO UPDATE`** using the resolved expressions as
-  the update expressions.
 
 ## Storages
 
@@ -155,47 +139,4 @@ device_id  state         updates
 ──────────────────────────────────
 1          {"temp": 39}  2
 2          {"temp": 38}  1
-```
-
-```SQL
--- using generated columns to indexate JSON data
-CREATE TABLE example (
-  id   int primary key as (data.id::int) stored,
-  data json
-);
-
-INSERT INTO example (data)
-VALUES ({"id": 1}), ({"id": 2}), ({"id": 3});
-
-SELECT * FROM example ORDER BY id;
-
-id  data
-───────────────
-1   {"id": 1}
-2   {"id": 2}
-3   {"id": 3}
-```
-
-```SQL
---
--- using generated stored and resolved columns to
--- group inserts by last 5 seconds per device_id and aggregate hits
---
-CREATE TABLE example (
-  time    timestamp as (current_timestamp::date_bin(interval '5 sec')) stored,
-  device  int,
-  hits    int default 1 as ( hits + 1 ) resolved,
-  primary key(time, device)
-);
-
-INSERT INTO example (device) values (1);
-INSERT INTO example (device) values (1);
-INSERT INTO example (device) values (1);
-INSERT INTO example (device) values (1);
-
-SELECT * FROM example;
-
-time                              device  hits
-─────────────────────────────────────────────────
-2026-05-18 13:27:25+03            1       4
 ```
