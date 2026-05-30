@@ -1,7 +1,7 @@
 baseURL = 'https://amelielabs.io/docs/'
 languageCode = 'en-us'
 title = 'amelie'
-theme = 'hugo-book'
+theme = 'amelie'
 
 [params]
   BookSection = '/'
