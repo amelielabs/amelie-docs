@@ -8,7 +8,7 @@ bookToc: true
 # PUBLISH
 
 ```SQL
-PUBLISH TO [user.]topic [value, ...]
+PUBLISH INTO [user.]topic [value, ...]
 ```
 
 Publish events to the topic.
@@ -25,8 +25,8 @@ If topic has no [SUBSCRIPTIONS](/docs/sql/ddl/subscriptions/create), the **PUBLI
 ```SQL
 CREATE TOPIC channel;
 CREATE SUBSCRIPTION channel_sub ON channel;
-PUBLISH TO channel "Hello World!";
-PUBLISH TO channel 1, 2, 3;
+PUBLISH INTO channel "Hello World!";
+PUBLISH INTO channel 1, 2, 3;
 
 SELECT * FROM channel_sub;
 

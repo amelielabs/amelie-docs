@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 CREATE [UNLOGGED] TOPIC [IF NOT EXISTS] name
+[DESCRIPTION text]
 ```
 
 Create a new topic if it does not exists.
@@ -38,8 +39,8 @@ for real-time communications.
 ```SQL
 CREATE TOPIC channel;
 CREATE SUBSCRIPTION channel_sub ON channel;
-PUBLISH TO channel "Hello World!";
-PUBLISH TO channel 1, 2, 3;
+PUBLISH INTO channel "Hello World!";
+PUBLISH INTO channel 1, 2, 3;
 
 SELECT * FROM channel_sub;
 

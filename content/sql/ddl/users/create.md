@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 CREATE USER|AGENT [IF NOT EXISTS] name
+[DESCRIPTION text]
 ```
 
 Create a user or agent identified by **`name`** if it does not exist.
@@ -39,7 +40,7 @@ Learn more about [Permissions](/docs/sql/ddl/users/permissions)
 ---
 
 ```SQL
-CREATE USER test;
+CREATE USER test DESCRIPTION "user for tests";
 
 SHOW USERS VERBOSE;
 
@@ -48,6 +49,7 @@ users
 {
   "name": "amelie",
   "parent": "amelie",
+  "description": "",
   "created_at": "2026-05-18 13:27:18.324402+03",
   "revoked_at": "",
   "agent": false,
@@ -57,12 +59,11 @@ users
 {
   "name": "test",
   "parent": "amelie",
+  "description": "user for tests",
   "created_at": "2026-05-18 13:54:45.009308+03",
   "revoked_at": "",
   "agent": false,
   "superuser": false,
   "grants": [["self", "grant", "create_token", "create_table", "create_function", "create_topic", "create_subscription", "rpc", "sql"]]
 }
-
-
 ```

@@ -18,6 +18,13 @@ or in a form of [SELECT FROM SHOW](/docs/sql/ops/query/select).
 The **`ALL`** clause (except for SHOW ALL) allows to additionally include relations that were shared
 with the current user (has grants).
 
+### Relations
+
+```SQL
+SHOW [ALL] RELS
+SHOW REL name [VERBOSE]
+```
+
 ### Tables
 
 ```SQL
@@ -66,13 +73,6 @@ SHOW [ALL] FUNCTIONS
 SHOW FUNCTION name [VERBOSE]
 ```
 
-### Relations
-
-```SQL
-SHOW [ALL] RELS
-SHOW REL name [VERBOSE]
-```
-
 ### Grants
 
 ```SQL
@@ -84,13 +84,6 @@ SHOW GRANTS ON rel_name [VERBOSE]
 ```SQL
 SHOW [ALL] USERS
 SHOW USER name [VERBOSE]
-```
-
-### Storages
-
-```SQL
-SHOW STORAGES
-SHOW STORAGE name [VERBOSE]
 ```
 
 ### Replication

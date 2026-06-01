@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 ALTER SUBSCRIPTION [IF EXISTS] name RENAME TO name
+ALTER SUBSCRIPTION [IF EXISTS] name DESCRIPTION text
 ```
 
 Change the definition of a subscription if it exists.

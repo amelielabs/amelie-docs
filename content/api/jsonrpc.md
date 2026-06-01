@@ -33,6 +33,7 @@ The **params** field depends on the **method** being used.
   "jsonrpc": "2.0",
   "id": <value_from_request>,
   "result": <value>
+}
 ```
 
 The **result** depends on the method. Query result format matches the [HTTP API](/docs/api/http):

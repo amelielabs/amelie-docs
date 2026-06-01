@@ -11,7 +11,7 @@ CREATE [UNLOGGED] TABLE [IF NOT EXISTS] name
 (column [, ...] [, PRIMARY KEY (keys)])
 [PARTITIONS count]
 [WITH (options)]
-[ON STORAGE name, ...]
+[DESCRIPTION text]
 ```
 
 ```text
@@ -107,13 +107,6 @@ Amelie supports following types of generated columns:
   used as identity columns.
 
   Using **`SERIAL`** as a column type will make the column as an identity column using **`BIGINT`** type.
-
-## Storages
-
-It is possible to specify multiple [STORAGES](/docs/sql/ddl/storages/create) for the table.
-
-This allows for extending disk space and scaling IOPS between multiple storage devices.
-It is possible to add, drop pause or resume or table storage during runtime.
 
 ---
 

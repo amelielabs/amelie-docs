@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 ALTER TOPIC [IF EXISTS] name RENAME TO name
+ALTER TOPIC [IF EXISTS] name DESCRIPTION text
 ```
 
 Change the definition of a topic if it exists.

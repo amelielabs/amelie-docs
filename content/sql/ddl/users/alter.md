@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 ALTER USER|AGENT [IF EXISTS] name RENAME TO name
+ALTER USER|AGENT [IF EXISTS] name DESCRIPTION text
 ALTER USER|AGENT [IF EXISTS] name REVOKE TOKEN
 ```
 
@@ -29,6 +30,7 @@ user
 {
   "name": "test",
   "parent": "amelie",
+  "description": "",
   "created_at": "2026-04-18 14:01:28.789517+03",
   "revoked_at": "2026-05-18 14:01:34.577571+03",
   "agent": true,

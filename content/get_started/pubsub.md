@@ -18,7 +18,7 @@ Designed to work together with [Change Data Capture](/docs/get_started/cdc) and 
 CREATE TOPIC user_events;
 CREATE SUBSCRIPTION user_events_sub ON user_events;
 
-PUBLISH TO user_events
+PUBLISH INTO user_events
 {
  "type": "user_logged_in",
  "user_id": 42

@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 ALTER FUNCTION [IF EXISTS] name RENAME TO name
+ALTER FUNCTION [IF EXISTS] name DESCRIPTION text
 ```
 
 Change the definition of a function if it exists.

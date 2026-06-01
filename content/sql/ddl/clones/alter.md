@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 ALTER CLONE [IF EXISTS] name RENAME TO name
+ALTER CLONE [IF EXISTS] name DESCRIPTION text
 ```
 
 Change the definition of a table clone if it exists.

@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 CREATE CLONE [IF NOT EXISTS] name ON relation
+[DESCRIPTION text]
 ```
 
 Create a new table clone if it does not exists.

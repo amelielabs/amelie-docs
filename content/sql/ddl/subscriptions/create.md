@@ -8,6 +8,7 @@ bookToc: true
 
 ```SQL
 CREATE SUBSCRIPTION [IF NOT EXISTS] name ON [user.]relation
+[DESCRIPTION text]
 ```
 
 Create a new subscription if it does not exists.
@@ -34,8 +35,8 @@ position for [Real-Time Streaming](/docs/api/http).
 ```SQL
 CREATE TOPIC channel;
 CREATE SUBSCRIPTION channel_sub ON channel;
-PUBLISH TO channel "Hello World!";
-PUBLISH TO channel 1, 2, 3;
+PUBLISH INTO channel "Hello World!";
+PUBLISH INTO channel 1, 2, 3;
 
 SELECT * FROM channel_sub;
 

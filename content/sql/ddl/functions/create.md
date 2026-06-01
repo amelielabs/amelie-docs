@@ -9,6 +9,7 @@ bookToc: true
 ```SQL
 CREATE [OR REPLACE] FUNCTION name ([args])
 [RETURN type]
+[DESCRIPTION text]
 BEGIN
   [DECLARE variable_name type] | [STATEMENT]
   ...
