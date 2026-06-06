@@ -125,12 +125,10 @@ h4 {
     //background: var(--gray-500);
     //border-radius: $border-radius;
 
-    //overflow-x: hidden;
-
-    white-space: pre-wrap;        /* Main property */
-    word-break: break-all;        /* Optional: break very long words */
-    overflow-wrap: break-word;    /* Modern & recommended */
-    overflow-x: auto;             /* Still allow horizontal scroll as fallback */
+    white-space: pre-wrap;
+    word-break: normal;
+    overflow-x: hidden;
+    overflow-y: hidden;
     max-width: 100%;
 
     code {

@@ -52,7 +52,8 @@ The **result** depends on the method. Query result format matches the [HTTP API]
     "lsn": <value>,
     "lsn_op": <value>,
     "cmd": "<name>",
-    "rel": "<relation_name>",
+    "user": "<user_name>",
+    "name": "<relation_name>",
     "row": <value>
   }
 }
@@ -87,9 +88,9 @@ Execute plain text SQL command.
   "id": <value>,
   "method": "write",
   "params": {
-    "user": <user_name>",
-    "rel": "<relation_name>",
-    "args": [{...}, ...]
+    "user": "<user_name>",
+    "name": "<relation_name>",
+    "arguments": [{...}, ...]
   }
 }
 ```
@@ -109,9 +110,9 @@ Each argument object key/values must match relation columns names and types.
   "id": <value>,
   "method": "ack",
   "params": {
-    "user": <user_name>",
-    "rel": "<relation_name>",
-    "args": [lsn, lsn_op]
+    "user": "<user_name>",
+    "name": "<relation_name>",
+    "arguments": [lsn, lsn_op]
   }
 }
 ```
@@ -128,8 +129,8 @@ Acknowledge subscription.
   "id": <value>,
   "method": "follow",
   "params": {
-    "user": <user_name>",
-    "rel": "<relation_name>"
+    "user": "<user_name>",
+    "name": "<relation_name>"
   }
 }
 ```
@@ -152,7 +153,7 @@ Client will start receiving real-time update events.
   "id": <value>,
   "method": "unfollow",
   "params": {
-    "rel": "<relation_name>"
+    "name": "<relation_name>"
   }
 }
 ```
@@ -164,12 +165,12 @@ Stop real-time streaming.
 ```text
 wscat -c http://localhost:8080/rpc
 
-> {"jsonrpc": "2.0", "id": 0, "method": "follow", "params": {"rel": "x"}}
+> {"jsonrpc": "2.0", "id": 0, "method": "follow", "params": {"name": "x"}}
 < {"jsonrpc": "2.0", "id": 0, "result": {}}
->  {"jsonrpc": "2.0", "id": 0, "method": "publish", "params": {"rel": "x", "args": [1,2,3]}}
+>  {"jsonrpc": "2.0", "id": 0, "method": "write", "params": {"name": "x", "arguments": [1,2,3]}}
 < {"jsonrpc": "2.0", "id": 0, "result": {}}
-{"jsonrpc": "2.0", "method": "event", "params": {"lsn": 9, "lsn_op": 0, "cmd": "publish", "rel": "x", "row": 1}}
-{"jsonrpc": "2.0", "method": "event", "params": {"lsn": 9, "lsn_op": 1, "cmd": "publish", "rel": "x", "row": 2}}
-{"jsonrpc": "2.0", "method": "event", "params": {"lsn": 9, "lsn_op": 2, "cmd": "publish", "rel": "x", "row": 3}}
+{"jsonrpc": "2.0", "method": "event", "params": {"lsn": 9, "lsn_op": 0, "cmd": "publish", "user": "amelie", "name": "x", "row": 1}}
+{"jsonrpc": "2.0", "method": "event", "params": {"lsn": 9, "lsn_op": 1, "cmd": "publish", "user": "amelie", "name": "x", "row": 2}}
+{"jsonrpc": "2.0", "method": "event", "params": {"lsn": 9, "lsn_op": 2, "cmd": "publish", "user": "amelie", "name": "x", "row": 3}}
 
 ```
