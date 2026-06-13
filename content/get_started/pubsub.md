@@ -29,7 +29,6 @@ PUBLISH INTO user_events
 
 * **Real-time messaging** — Messages are delivered instantly to subscribers
 * **Transactional** — [PUBLISH](/docs/sql/ops/dml/publish/) respects transaction boundaries
-* **Unlogged topics** — Create [UNLOGGED TOPIC](/docs/sql/ddl/topics/create) for maximum speed when durability isn’t needed
 * **Simple & scalable** — Perfect for coordination, live updates, and event-driven architectures
 
 Topics give you Kafka-style event streaming with the simplicity and integration of a relational database.

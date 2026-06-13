@@ -7,7 +7,7 @@ bookToc: true
 # CREATE TABLE
 
 ```SQL
-CREATE [UNLOGGED] TABLE [IF NOT EXISTS] name
+CREATE TABLE [IF NOT EXISTS] name
 (column [, ...] [, PRIMARY KEY (keys)])
 [PARTITIONS count]
 [WITH (options)]
@@ -86,15 +86,6 @@ writes simultaneously.
 Additionally, expressions or CTE can be used to JOIN data. Amelie treats [CTE](/docs/sql/transactions/cte) as separate
 statements to combine and execute non-dependable statements in one operation on backend workers. The query planner
 tries to rewrite queries using CTE whenever it can.
-
-## Unlogged Tables
-
-Any table can be created using the **`UNLOGGED`** clause.
-
-The unlogged tables DML will be excluded from WAL (and replication streaming), and the table's data will be saved
-during the database [CHECKPOINT](/docs/sql/ops/checkpoint) and recovered upon restart.
-
-Unlogged tables can provide an additional performance boost for highly volatile tables.
 
 ## Generated Columns
 

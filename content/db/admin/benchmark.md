@@ -20,12 +20,11 @@ The following benchmarking options are supported:
 | batch         | int | Number of rows in one insert/upsert statement (default is 64). |
 | scale         | int | The scale factor for `tpcb` test (default is 1). |
 | init          | bool | Prepare tables for testing (default is true). |
-| unlogged      | bool | Mark tables as unlogged (default is false). |
 | histogram     | bool | Measure times (default is false). |
 
 ### Recommendations
 
-Please note that the number of **`frontends`**, **`backends`** in the system, as well as using **`unlogged`** tables directly
+Please note that the number of **`frontends`**, **`backends`** in the system directly
 impact the performance. It is a good idea to start with minimumal numbers (or defaults) and then alter them
 to see how it affects the performance.
 

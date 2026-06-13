@@ -76,7 +76,7 @@ Topics implement Pub/Sub queues. Unlike tables, topics do not have a schema (eve
 do not store data like tables do.
 
 Instead, [PUBLISH](/docs/sql/ops/dml/publish) writes directly to the in-memory CDC queue and the WAL, which
-allows the creation of a real-time communication layer for subscribers. Topics can be unlogged.
+allows the creation of a real-time communication layer for subscribers.
 
 Topics are transactional and can be used in multi-statement transactions.
 

@@ -63,7 +63,7 @@ and manages write-ahead logging (WAL). All transactions always operate on a **`S
 The current implementation does not support network-distributed transactions — all distributed transactions are local
 and executed as part of the single process involving backend worker threads.
 
-Transaction commits only if data is written to **`WAL`** first (with unlogged relations support).
+Transaction commits only if data is written to **`WAL`** first.
 In case of an error, the transaction will be automatically aborted. An aborted transaction
 might also abort other ongoing transactions that happen to be already processed (and not **`COMMITED`**) after
 the aborted one. This is the only case when transaction can potentially get a conflict.
